@@ -1,6 +1,8 @@
 doc_smoosher
 ===
 
+![Build Status](https://travis-ci.org/dangerousbeans/doc_smoosher.png Build Status)
+
 
 == Contributing to doc_smoosher
  
