@@ -1,6 +1,6 @@
 Doc_Smoosher
 ===
-![Build Status](https://api.travis-ci.org/dangerousbeans/doc_smoosher.png)
+[![Build Status](https://travis-ci.org/dangerousbeans/doc_smoosher.png?branch=master)](https://travis-ci.org/dangerousbeans/doc_smoosher)
 
 A simple API documentation generator for the complicated world we live in
 
