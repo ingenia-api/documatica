@@ -52,3 +52,15 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+namespace :ds do
+  desc "Scan an API"
+  task :scan do
+    require 'rest-client'
+
+    puts 'missing URL' if ENV['URL'].nil?
+    puts 'missing API_KEY' if ENV['API_KEY'].nil?
+
+    
+  end
+end
