@@ -1,0 +1,3 @@
+class DocSmoosher
+
+end
