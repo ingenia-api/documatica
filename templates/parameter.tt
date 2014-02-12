@@ -1,4 +1,4 @@
-define_field '<%= name %>' do
+define_parameter '<%= name %>' do
   name: 'item'
   description: 'a units of your textual content on the ingenia system'
 

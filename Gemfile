@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 # Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
 
 gem 'rake'
 gem 'rest-client'
@@ -16,6 +14,11 @@ group :development do
   gem "bundler", "~> 1.0"
   gem "jeweler", "~> 2.0.1"
   gem "simplecov", ">= 0"
+
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
+  gem 'guard-rspec', require: false
+  gem 'guard'
 
   gem 'rspec'
 end

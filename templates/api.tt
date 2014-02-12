@@ -1,4 +1,11 @@
+##
+# This file defined the APIs primary attributes, along with what requests it can handle
+#
+
 define_api '<%= name %>' do
-  description 'This an amazing new API that needs testing, code examples and wrappers'
+  description '<%= description %>'
   
+  define_request( :get, '/items', name: 'items_idex', description: 'An index of all your items' ) do
+
+  end
 end

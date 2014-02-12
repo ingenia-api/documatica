@@ -1,9 +1,6 @@
 define_entity '<%= name %>' do
-  name: 'item'
-  description: 'a units of your textual content on the ingenia system'
-
-  field :id, 'unique identified for this item'
-  field :text, 'the text of this item', max_length: 500_000, required: true
-
-  field :bundle_id
+  description: '<%= description %>'
+  <% fields.each do |field| %>
+  field :<%= field.name %>, description: '<%= field.description %>'
+  <% end %>
 end

@@ -8,17 +8,10 @@ require 'thor'
 require 'thor/group'
 require 'doc_smoosher'
 
-# args = ARGV.dup
-# ARGV.clear
-
-# puts DocSmoosher.help if args.length != 2
-
-# command = args.first
-# name = args.last
-
 module CLI
   class Root < Thor
     register DocSmoosher::Generators::Api, 'new', 'new <API Name>', 'Makes an new API scaffold folder structure ready for editing'
+    register DocSmoosher::Generators::Builder, 'generate', 'generate', 'Generate stuff based on your API definition '
   end
 end
 
