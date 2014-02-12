@@ -1,0 +1,4 @@
+define_api '<%= name %>' do
+  description 'This an amazing new API that needs testing, code examples and wrappers'
+  
+end
