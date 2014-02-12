@@ -19,20 +19,14 @@ Jeweler::Tasks.new do |gem|
   gem.name = "doc_smoosher"
   gem.homepage = "http://github.com/dangerousbeans/doc_smoosher"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{ A simple API documentation generator for the complicated world we live in }
+  gem.description = %Q{ A simple API documentation generator for the complicated world we live in }
   gem.email = "joran.k@gmail.com"
   gem.authors = ["Joran Kikke"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
 
 desc "Code coverage detail"
 task :simplecov do
@@ -53,14 +47,41 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+
+
 namespace :ds do
   desc "Scan an API"
-  task :scan do
+  task :scan_url do
     require 'rest-client'
 
     puts 'missing URL' if ENV['URL'].nil?
     puts 'missing API_KEY' if ENV['API_KEY'].nil?
 
-    
+  end
+
+  desc "Generate from a directory"
+  task :generate do
+    require 'bundler/setup'
+    require_relative 'lib/doc_smoosher'
+
+    if ENV['DIR'].nil?
+      puts 'missing DIR'
+      next
+    end
+
+    dir = ENV['DIR']
+
+    api_name = File.split(dir).last
+    api_file_name = api_name + '.rb'
+
+    puts "Generating from: #{dir}"
+    puts "API Name: #{api_name}"
+    puts "Loading: #{api_file_name}"
+
+    require File.join(dir, api_file_name)
+  end
+
+  task :create, :project_name do |t, args|
+    puts args
   end
 end

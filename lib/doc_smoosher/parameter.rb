@@ -1,3 +1,5 @@
-class Parameter
+module DocSmoosher
+  class Parameter
   
+  end
 end

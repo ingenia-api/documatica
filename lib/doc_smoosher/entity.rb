@@ -1,3 +1,5 @@
-class Entity
-  
+module DocSmoosher
+  class Entity
+    
+  end
 end

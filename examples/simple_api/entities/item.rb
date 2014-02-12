@@ -3,5 +3,7 @@ entity do
   description: 'a units of your textual content on the ingenia system'
 
   field :id, 'unique identified for this item'
-  field :text, 'the text of this item', :max_length => 9000
+  field :text, 'the text of this item', max_length: 500_000, required: true
+
+  field :bundle_id
 end
