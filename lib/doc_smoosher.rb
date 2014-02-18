@@ -15,9 +15,28 @@ module DocSmoosher
       @@api = api
     end
 
+    def define_resource(params = {}, &block)
+      resource = Resource.new( params, &block )
+      resources << resource unless resources.include?(resource)
+      resource
+    end
+
     def define_request(params = {}, &block)
       request = Request.new( params, &block )
+      requests << request unless requests.include?(request)
       request
+    end
+
+    def api
+      @@api
+    end
+
+    def requests
+      @@requests ||= []
+    end
+
+    def parameters
+      @parameters ||= []
     end
   end
 

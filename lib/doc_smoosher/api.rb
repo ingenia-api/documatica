@@ -3,7 +3,7 @@ module DocSmoosher
     attr_accessor :description, :endpoint, :version, :format
 
     def initialize(params = {}, &block)
-      instance_eval &block
+      instance_eval(&block)
 
       super(params)
     end
