@@ -1,17 +1,35 @@
 module DocSmoosher
   class Request < ApiObject
-    attr_accessor :call_type, :path
+    attr_accessor :call_type, :path, :parameters, :fields
 
-    def initialize args
-      # set some defaults
-
-      # path is plural of name by default
-      args[:path] = args[:name].pluralize unless args[:path] 
+    def initialize(params = {}, &block)
+      # Defaults
+      self.call_type = :get
       
-      # call type is get by default
-      args[:call_type] = :get unless args[:call_type]
+      super(params)
+    end
 
-      super
+    def parameters
+      @parameters ||= []
+    end
+
+    def parameter(params = {}, &block)
+      p = Parameter.new(params, &block)
+      parameters << p unless parameters.include?(p)
+      p
+    end
+
+    def fields
+      @fields ||= []
+    end
+
+    def as_json(options={})
+      super.merge(
+        {
+          :fields => fields.map(&:as_json),
+          :parameters => parameters.map(&:as_json)
+        }
+      )
     end
   end
 end

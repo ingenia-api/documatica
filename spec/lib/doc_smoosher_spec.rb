@@ -13,12 +13,12 @@ describe DocSmoosher do
   describe 'top level methods' do
 
     describe 'lets you define' do
-      it 'an API' do
+      it 'an Api' do
         expect(TestSmoosher.define_api(name: 'test api'){}).to be_true
       end
 
-      it 'a request' do
-        expect(TestSmoosher.define_request(name: 'new request'){}).to be_true
+      it 'a parameter' do
+        expect(TestSmoosher.parameter(name: 'test field'){}).to be_true
       end
     end
   end
@@ -28,10 +28,6 @@ describe DocSmoosher do
       it 'defines an api' do
         TestSmoosher.define_api(name: 'test api') do |api|
           api.description = "a test api example"
-          
-          # api.define_request('items') do |r|
-
-          # end
         end
 
         api = TestSmoosher.api

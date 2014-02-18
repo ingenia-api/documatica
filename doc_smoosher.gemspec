@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/doc_smoosher.rb",
-    "lib/doc_smoosher/entity.rb",
+    "lib/doc_smoosher/resource.rb",
     "lib/doc_smoosher/example.rb",
     "lib/doc_smoosher/parameter.rb",
     "spec/lib/doc_smoosher_spec.rb",

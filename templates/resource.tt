@@ -1,5 +1,5 @@
-define_entity '<%= name %>' do
-  description: '<%= description %>'
+define_resource name: '<%= name %>' do |r|
+  r.description = '<%= description %>'
   <% fields.each do |field| %>
   field :<%= field.name %>, description: '<%= field.description %>'
   <% end %>

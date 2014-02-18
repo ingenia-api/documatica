@@ -15,17 +15,12 @@ module DocSmoosher
       @@api = api
     end
 
-    def define_resource(params = {}, &block)
-      resource = Resource.new( params, &block )
-      resources << resource unless resources.include?(resource)
-      resource
+    def parameter(params = {}, &block)
+      parameter = Parameter.new( params, &block )
+      parameters << parameter unless parameters.include?(parameter)
+      parameter
     end
 
-    def define_request(params = {}, &block)
-      request = Request.new( params, &block )
-      requests << request unless requests.include?(request)
-      request
-    end
 
     def api
       @@api
@@ -35,8 +30,12 @@ module DocSmoosher
       @@requests ||= []
     end
 
+    def resources
+      @@resources ||= []
+    end
+
     def parameters
-      @parameters ||= []
+      @@parameters ||= []
     end
   end
 
@@ -77,8 +76,8 @@ module DocSmoosher
       include Thor::Actions
       argument :name, :type => :string
       argument :description, default: 'Example API'
-      argument :requests, default: [DocSmoosher::Request.new(:name => 'item', :description => 'A unique identifier')]
-      argument :fields, default: [DocSmoosher::Field.new(:name => 'id', :description => 'A unique identifier')]
+      # argument :requests, default: [DocSmoosher::Request.new(:name => 'item', :description => 'A unique identifier')]
+      # argument :fields, default: [DocSmoosher::Field.new(:name => 'id', :description => 'A unique identifier')]
 
       class_option :test_framework, :default => :test_unit
 
@@ -90,7 +89,7 @@ module DocSmoosher
         template(File.join(TEMPLATES, 'api.tt'), "#{name}/#{name}.rb")
       end
 
-      %w( entity parameter request ).each do |thing_name|
+      %w( resource parameter request ).each do |thing_name|
         define_method "#{thing_name}_folder" do
           template(File.join(TEMPLATES, "#{thing_name}.tt"), "#{name}/#{thing_name.pluralize}/#{thing_name}_example.rb")
         end
