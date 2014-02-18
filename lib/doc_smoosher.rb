@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+
 require 'thor/group'
 require 'load_doc_smoosher'
 
@@ -6,8 +9,15 @@ module DocSmoosher
 
   # DSL methods
   module TopLevel
-    def define_api(api_name, &block)
-      Api.define_api( &block )
+    def define_api(params = {}, &block)
+      api = Api.new( params, &block )
+      
+      @@api = api
+    end
+
+    def define_request(params = {}, &block)
+      request = Request.new( params, &block )
+      request
     end
   end
 

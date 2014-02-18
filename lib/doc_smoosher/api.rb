@@ -2,9 +2,10 @@ module DocSmoosher
   class Api < ApiObject
     attr_accessor :description, :endpoint, :version, :format
 
-    def self.define_api(&block)
-      puts "API: define_api"
-      
+    def initialize(params = {}, &block)
+      instance_eval &block
+
+      super(params)
     end
   end
 end
