@@ -29,13 +29,11 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "examples/simple_api/entities/item.rb",
-    "examples/simple_api/simple_api.rb",
     "lib/doc_smoosher.rb",
     "lib/doc_smoosher/entity.rb",
     "lib/doc_smoosher/example.rb",
     "lib/doc_smoosher/parameter.rb",
-    "spec/doc_smoosher_spec.rb",
+    "spec/lib/doc_smoosher_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/dangerousbeans/doc_smoosher"

@@ -1,7 +1,16 @@
 require 'thor/group'
 require 'load_doc_smoosher'
 
+
 module DocSmoosher
+
+  # DSL methods
+  module TopLevel
+    def define_api(api_name, &block)
+      Api.define_api( &block )
+    end
+  end
+
 
   TEMPLATES = "../templates"
 
@@ -24,6 +33,10 @@ module DocSmoosher
 
       def api
         puts "api"
+        api_name = File.basename(Dir.getwd)
+        api_file = File.join(Dir.getwd, "#{api_name}.rb")
+
+        require api_file
       end
 
       def entities
@@ -35,6 +48,7 @@ module DocSmoosher
       include Thor::Actions
       argument :name, :type => :string
       argument :description, default: 'Example API'
+      argument :requests, default: [DocSmoosher::Request.new(:name => 'item', :description => 'A unique identifier')]
       argument :fields, default: [DocSmoosher::Field.new(:name => 'id', :description => 'A unique identifier')]
 
       class_option :test_framework, :default => :test_unit
@@ -49,7 +63,7 @@ module DocSmoosher
 
       %w( entity parameter request ).each do |thing_name|
         define_method "#{thing_name}_folder" do
-          template(File.join(TEMPLATES, "#{thing_name}.tt"), "#{name}/#{thing_name.pluralize}/example.rb")
+          template(File.join(TEMPLATES, "#{thing_name}.tt"), "#{name}/#{thing_name.pluralize}/#{thing_name}_example.rb")
         end
       end
 
