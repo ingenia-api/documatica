@@ -14,13 +14,28 @@ module DocSmoosher
     end
 
     def parameter(params = {}, &block)
-      p = Parameter.new(params, &block)
+      if params.class == Parameter
+        p = params
+      else
+        p = Parameter.new(params, &block)
+      end
       parameters << p unless parameters.include?(p)
       p
     end
 
+
     def fields
       @fields ||= []
+    end
+
+    def field(params = {}, &block)
+      if params.class == Field
+        f = params
+      else
+        f = Field.new(params, &block)
+      end
+      fields << f unless fields.include?(f)
+      p
     end
 
     def as_json(options={})

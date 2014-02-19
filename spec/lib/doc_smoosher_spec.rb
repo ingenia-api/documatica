@@ -18,7 +18,13 @@ describe DocSmoosher do
       end
 
       it 'a parameter' do
-        expect(TestSmoosher.parameter(name: 'test field'){}).to be_true
+        expect(TestSmoosher.define_parameter(name: 'test param'){}).to be_true
+      end
+
+      it 'keeps track of shared parameters' do
+        TestSmoosher.define_parameter(name: 'test param'){}
+
+        expect(TestSmoosher.parameters.first.name).to eql('test param')
       end
     end
   end

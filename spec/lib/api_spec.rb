@@ -14,6 +14,7 @@ describe DocSmoosher::Api do
         expect(api.name).to eql('test api')
         expect(api.description).to eql('a test api example')
       end
+
     end
   end
 end

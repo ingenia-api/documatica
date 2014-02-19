@@ -15,12 +15,11 @@ module DocSmoosher
       @@api = api
     end
 
-    def parameter(params = {}, &block)
+    def define_parameter(params = {}, &block)
       parameter = Parameter.new( params, &block )
       parameters << parameter unless parameters.include?(parameter)
       parameter
     end
-
 
     def api
       @@api
