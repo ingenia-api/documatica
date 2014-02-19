@@ -1,10 +1,13 @@
 Doc Smoosher
 ===
-[![Build Status](https://travis-ci.org/dangerousbeans/doc_smoosher.png?branch=master)](https://travis-ci.org/dangerousbeans/doc_smoosher)
+[![Build Status](https://travis-ci.org/dangerousbeans/doc_smoosher.png?branch=master)](https://travis-ci.org/dangerousbeans/doc_smoosher) <-- Yep, that's right.
 
 ![BEING_SMOOSHED.jaypurgz](http://i.imgur.com/Fu4YNJa.jpg)
 
-A simple API documentation and test generator for the complicated world we live in
+###### A simple API documentation and test generator for the complicated world we live in
+
+
+## DO IT
 
 Install the stuff
 
@@ -20,8 +23,8 @@ Edit your API folder
 Setup API Basics
 ===
 #### example_api/example_api.rb
-```ruby
-require 'bundler/setup'
+
+    require 'bundler/setup'
     require 'doc_smoosher'
 
     extend DocSmoosher::TopLevel
@@ -68,7 +71,6 @@ Define Shared Parameters
 ruby files in the ./parameters folder are automatically included, so if you setup some variables you can use them all over the rest of your API definition, *to keep things DRY*.
 
 #### example_api/parameters/shared.rb
-
 
     ##
     # These guys can be used across your API spec to keep things DRY
