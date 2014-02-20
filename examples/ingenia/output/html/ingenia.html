@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<style>
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1 class="title" >
+        Ingenia API
+      </h1>
+
+
+      <div class="description" >
+        <h4>
+          Description
+        </h4>
+        Ingenia analyses your textual content and automatically categorises it using your tags.
+      </div>
+
+
+
+      <h4>
+        Endpoint
+      </h4>
+      <div class = "endpoint well"
+        <code>
+          api.ingeniapi.com/v2/
+        </code>
+      </div>
+
+    </div>
+    <div class="row">
+      <h4>
+        Resources
+      </h4>
+
+      <div class = "resource items">
+        <h3 class = "resource-heading">
+          items
+        </h3>
+
+        <div class = "resource-body" >
+          <div class = "description">
+            Nuggets of textual content: somewhat self-contained and homogeneous.
+          </div>
+
+          <div class = "requests">
+            <h4>
+              Requests
+            </h4>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                index
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /items
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  An index of all your items
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          limit
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>50</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            How many results to return
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          full_text
+                        </td>
+
+                        <td class = "type">
+
+                            <code>boolean</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Should the results be shown with all their text
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          offset
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>0</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Offset returned results by this amount
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                show
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /items/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  View a single item
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          full_text
+                        </td>
+
+                        <td class = "type">
+
+                            <code>boolean</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Should the results be shown with all their text
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the item you want to show.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            3casjghd67
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  post
+                </button>
+                create
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /items
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Create a new item
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          file
+                        </td>
+
+                        <td class = "type">
+
+                            <code>multipart</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          update_existing
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>true</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            If the same text is sent, should the existing item be updated on Ingenia? If true then any tags supplied will overwrite those set on the existing item (default). If false, no data is changed and a response is returned with a 409 code (Conflict) together with the existing item as JSON.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          classify
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Should the response also include a classification.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          json
+                        </td>
+
+                        <td class = "type">
+
+                            <code>json</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            JSON encoded string containing a hash of fields for the text item.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  put
+                </button>
+                update
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /items/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Update an existing item
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the item you want to update.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            3casjghd67
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          json
+                        </td>
+
+                        <td class = "type">
+
+                            <code>json</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            JSON encoded string containing a hash of fields for the text item.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          file
+                        </td>
+
+                        <td class = "type">
+
+                            <code>multipart</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  delete
+                </button>
+                delete
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /items/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Delete an existing item
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the item you want to delete.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            3casjghd67
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class = "resource tags">
+        <h3 class = "resource-heading">
+          tags
+        </h3>
+
+        <div class = "resource-body" >
+          <div class = "description">
+            Tags are meaningful words or expressions that you want to associate to some or all your content items.
+          </div>
+
+          <div class = "requests">
+            <h4>
+              Requests
+            </h4>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                index
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tags
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  An index of all your tags
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          limit
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>50</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            How many results to return
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          offset
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>0</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Offset returned results by this amount
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                show
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tags/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  View a single tag
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the tag you want to show.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            42
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  post
+                </button>
+                create
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tags
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Create a new tag
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          tag
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            A tag
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  put
+                </button>
+                update
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tags/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Update an existing tag
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the tag you want to update.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            42
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  delete
+                </button>
+                delete
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tags/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Delete an existing tag
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the tag you want to delete.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            42
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class = "resource tag_sets">
+        <h3 class = "resource-heading">
+          tag_sets
+        </h3>
+
+        <div class = "resource-body" >
+          <div class = "description">
+            Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc.
+          </div>
+
+          <div class = "requests">
+            <h4>
+              Requests
+            </h4>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                index
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tag_sets
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  An index of all your Tag Sets
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          limit
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>50</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            How many results to return
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          offset
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                            <code>0</code>
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            Offset returned results by this amount
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  get
+                </button>
+                show
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tag_sets/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  View a single Tag Set
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the Tag Set you want to show.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            412
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  post
+                </button>
+                create
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tag_sets
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Create a new Tag Set
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          tag_set
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            A tag set
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  put
+                </button>
+                update
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tag_sets/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Update an existing Tag Set
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the Tag Set you want to update.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            412
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          tag_set
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                        </td>
+
+                        <td class = "description">
+
+                            A tag set
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading">
+                <button class = "btn btn-default disabled">
+                  delete
+                </button>
+                delete
+              </div>
+
+              <div class = "panel-body">
+
+                <h4>
+                  Path
+                </h4>
+                <div class = "path well">
+                  /tag_sets/:id
+                </div>
+
+
+
+                <div class = "description">
+                  <h4>
+                    Description
+                  </h4>
+                  Delete an existing Tag Set
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>
+                    Parameters
+                  </h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>
+                          name
+                        </th>
+
+                        <th>
+                          type
+                        </th>
+
+                        <th>
+                          default
+                        </th>
+
+                        <th>
+                          
+                        </th>
+
+                        <th>
+                          description
+                        </th>
+
+                        <th>
+                          example
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+                          id
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the Tag Set you want to delete.
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            412
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+                          api_key
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "default">
+
+                        </td>
+
+                        <td class = "required">
+
+                            <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Your API key
+
+                        </td>
+                        
+                        
+                        <td class = "example">
+
+                            hg7JHG6daSgf56FjhgsSa
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>    
+  </div>
+</body>
+</html>

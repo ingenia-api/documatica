@@ -72,16 +72,32 @@ module DocSmoosher
 
       OUTPUT = './output'
 
+      argument :api, required:  false
       argument :path, default: './'
 
-      def api
-        puts 'api'
+
+      def self.source_root
+        File.dirname(__FILE__)
+      end
+
+      # output directory
+      def output
+        empty_directory OUTPUT
+      end
+
+      def build_api_html
         api_name = File.basename(Dir.getwd)
         api_file = File.join(Dir.getwd, "#{api_name}.rb")
 
-        require api_file
-      end
+        # load api_file
+        File.open(api_file) do |f|
+          instance_eval f.read
+        end
 
+        self.api = @api
+        copy_file(File.join(TEMPLATES, 'html', 'bootstrap.min.css'), "output/html/bootstrap.min.css")
+        template(File.join(TEMPLATES, 'html', 'api.html.erb'), "output/html/#{api_name}.html")
+      end
     end
 
     class Api < Thor::Group

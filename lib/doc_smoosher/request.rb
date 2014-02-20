@@ -1,6 +1,6 @@
 module DocSmoosher
   class Request < ApiObject
-    attr_accessor :call_type, :path, :fields
+    attr_accessor :call_type, :path, :fields, :response
 
     def initialize(params = {}, &block)
       # Defaults
