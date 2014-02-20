@@ -21,6 +21,18 @@ module DocSmoosher
       parameter
     end
 
+    def define_resource(params = {}, &block)
+      resource = Resource.new( params, &block )
+      resources << resource unless resources.include?(resource)
+      resource
+    end
+
+    def define_object(params = {}, &block)
+      object = ApiObject.new( params, &block )
+      objects << object unless resources.include?(object)
+      object
+    end
+
     def api
       @@api
     end
@@ -35,6 +47,10 @@ module DocSmoosher
 
     def parameters
       @@parameters ||= []
+    end
+
+    def objects
+      @@objects ||= []
     end
   end
 
@@ -59,16 +75,13 @@ module DocSmoosher
       argument :path, default: './'
 
       def api
-        puts "api"
+        puts 'api'
         api_name = File.basename(Dir.getwd)
         api_file = File.join(Dir.getwd, "#{api_name}.rb")
 
         require api_file
       end
 
-      def entities
-        puts "entities"
-      end
     end
 
     class Api < Thor::Group

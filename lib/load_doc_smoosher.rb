@@ -1,3 +1,5 @@
+require_relative 'doc_smoosher/parameters'
+
 require_relative 'doc_smoosher/api_object'
 
 require_relative 'doc_smoosher/api'

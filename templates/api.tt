@@ -2,8 +2,11 @@
 # This file defined the APIs primary attributes, along with what requests it can handle
 #
 
-define_api '<%= name %>' do |api|
+define_api name: '<%= name %>' do |api|
   api.description '<%= description %>'
+  api.endpoint = 'http://api.where.you.at.com'
+  api.version = '1.0'
+  api.format = 'json'
   
   <% requests.each do |reqest| %>
   api.define_request( :<%= reqest.call_type %>, '/<%= reqest.path %>' ) do |r|

@@ -2,9 +2,7 @@ module DocSmoosher
   class ApiObject
     attr_accessor :name, :description
 
-    def requests
-      @requests ||= []
-    end
+    include DocSmoosher::Parameters
 
     def initialize(params = {}, &block)
       instance_eval(&block)

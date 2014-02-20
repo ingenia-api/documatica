@@ -20,8 +20,8 @@ Edit your API folder
 Setup API Basics
 ===
 #### example_api/example_api.rb
-```ruby
-require 'bundler/setup'
+
+    require 'bundler/setup'
     require 'doc_smoosher'
 
     extend DocSmoosher::TopLevel

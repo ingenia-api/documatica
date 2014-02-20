@@ -1,26 +1,12 @@
 module DocSmoosher
   class Request < ApiObject
-    attr_accessor :call_type, :path, :parameters, :fields
+    attr_accessor :call_type, :path, :fields
 
     def initialize(params = {}, &block)
       # Defaults
       self.call_type = :get
       
       super(params)
-    end
-
-    def parameters
-      @parameters ||= []
-    end
-
-    def parameter(params = {}, &block)
-      if params.class == Parameter
-        p = params
-      else
-        p = Parameter.new(params, &block)
-      end
-      parameters << p unless parameters.include?(p)
-      p
     end
 
 
