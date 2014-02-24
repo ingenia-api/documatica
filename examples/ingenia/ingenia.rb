@@ -56,11 +56,13 @@ json_item = define_object( name: 'item' ) do |item|
     p.type = :hash
     p.example = '{ "category": [ "politics", "education", "r&d" ], "geography": [ "united kingdom" ] }'
   end
+
+  item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}'
 end
 
 # Tag JSON POST form
 json_tag = define_object( name: 'tag' ) do |tag|
-  tag.description = "A tag"
+  tag.description = "A JSON tag"
   tag.parameter name: 'name' do |p|
     p.description = 'The name of your tag'
     p.type = :string
@@ -100,12 +102,12 @@ json_tag_set = define_object( name: 'tag_set' ) do |tag_set|
 end
 
 
-item_json = define_parameter( name: 'json' ) do |p|
-  p.description = 'JSON encoded string containing a hash of fields for the text item.'
-  p.type = :json
-  p.required = false
-  p.parameter(json_item)
-end
+# item_json = define_parameter( name: 'json' ) do |p|
+#   p.description = 'JSON encoded string containing a hash of fields for the text item.'
+#   p.type = :json
+#   p.required = false
+#   p.parameter(json_item)
+# end
 
 
 define_api( name: 'Ingenia API' ) do |api|
@@ -113,6 +115,10 @@ define_api( name: 'Ingenia API' ) do |api|
   api.endpoint = 'api.ingeniapi.com/v2/'
   api.version = '2.0'
   api.format = 'json'
+
+  api.object(json_item)
+  api.object(json_tag)
+  api.object(json_tag_set)
 
   ##
   # Items
@@ -167,7 +173,7 @@ define_api( name: 'Ingenia API' ) do |api|
       end
 
       req.parameter api_key
-      req.parameter item_json
+      req.parameter json_item
     end
 
     r.request name: 'update' do |req|
@@ -182,7 +188,7 @@ define_api( name: 'Ingenia API' ) do |api|
         p.required = true
       end
       req.parameter api_key
-      req.parameter item_json
+      req.parameter json_item
       req.parameter name: 'file' do |p|
         p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).'
         p.type = :multipart

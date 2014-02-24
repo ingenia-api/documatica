@@ -90,12 +90,17 @@ module DocSmoosher
         api_file = File.join(Dir.getwd, "#{api_name}.rb")
 
         # load api_file
+        puts "opening: #{api_file}"
         File.open(api_file) do |f|
           instance_eval f.read
         end
 
         self.api = @api
         copy_file(File.join(TEMPLATES, 'html', 'bootstrap.min.css'), "output/html/bootstrap.min.css")
+        copy_file(File.join(TEMPLATES, 'html', 'prettify.css'), "output/html/prettify.css")
+        copy_file(File.join(TEMPLATES, 'html', 'prettify.js'), "output/html/prettify.js")
+        copy_file(File.join(TEMPLATES, 'html', 'run_prettify.js'), "output/html/run_prettify.js")
+
         template(File.join(TEMPLATES, 'html', 'api.html.erb'), "output/html/#{api_name}.html")
       end
     end

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <script src="run_prettify.js"></script>
 <style>
 </style>
 
@@ -33,6 +34,111 @@
       </div>
       <%- end %>
     </div>
+
+    <div class="row">
+      <h4>
+        Objects
+      </h4>
+    <%- api.objects.each do |o| %>
+      <div id="<%= o.name %>" class = "object <%= o.name %>">
+        <h3 class = "object-heading">
+          <%= o.name %>
+        </h3>
+
+        <div class = "parameters">
+          <h4>
+            Parameters
+          </h4>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Type
+                </th>
+
+                <th>
+                  Default
+                </th>
+
+                <th>
+                  
+                </th>
+
+                <th>
+                  Description
+                </th>
+
+                <th>
+                  Example
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <%- o.parameters.each do |parameter| %>
+              <tr>
+                <td>
+                  <%= parameter.name %>
+                </td>
+
+                <td class = "type">
+                  <%- if parameter.type %>
+                    <code><%= parameter.type %></code>
+                  <%- end %>
+                </td>
+
+                <td class = "default">
+                  <%- if parameter.default %>
+                    <code><%= parameter.default %></code>
+                  <%- end %>
+                </td>
+
+                <td class = "required">
+                  <%- if parameter.required %>
+                    <span class='text-muted'>required</span>
+                  <%- end %>
+                </td>
+
+                <td class = "description">
+                  <%- if parameter.description %>
+                    <%= parameter.description %>
+                  <%- end %>
+                </td>
+                
+                
+                <td class = "example">
+                  <%- if parameter.example %>
+                    <%= parameter.example %>
+                  <%- end %>
+                </td>
+              </tr>
+
+          <%- end %>
+            </tbody>
+            </table>
+        </div>
+
+        <%- if o.example %>
+        <div class = "example clear">
+          <h4>
+            Example
+          </h4>
+
+          <code class="prettyprint">
+            <%= o.example %>
+          </code>
+        </div>
+        <%- end %>
+
+      </div>
+    <%- end %>
+    </div>
+
+    
     <div class="row">
       <h4>
         Resources
@@ -89,15 +195,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -105,11 +211,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -117,7 +223,13 @@
                     <%- req.parameters.each do |parameter| %>
                       <tr>
                         <td>
+                        <%- if parameter.class == DocSmoosher::ApiObject %>
+                          <a href='#<%= parameter.name %>'>
+                            <%= parameter.name %>
+                          </a>
+                        <%- else %>
                           <%= parameter.name %>
+                        <%- end %>
                         </td>
 
                         <td class = "type">
@@ -146,7 +258,7 @@
                         
                         
                         <td class = "example">
-                          <%- if parameter.example %>
+                          <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
                             <%= parameter.example %>
                           <%- end %>
                         </td>

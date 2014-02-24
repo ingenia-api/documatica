@@ -1,14 +1,20 @@
+PATH
+  remote: .
+  specs:
+    doc_smoosher (0.0.1)
+      active_support
+      i18n
+      rake
+      rest-client
+      thor
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.0.2)
-      i18n (~> 0.6, >= 0.6.4)
-      minitest (~> 4.2)
-      multi_json (~> 1.3)
-      thread_safe (~> 0.1)
-      tzinfo (~> 0.3.37)
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
     addressable (2.3.5)
-    atomic (1.1.14)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -65,7 +71,6 @@ GEM
     method_source (0.8.2)
     mime-types (2.1)
     mini_portile (0.5.2)
-    minitest (4.7.5)
     multi_json (1.8.4)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -83,6 +88,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-protection (1.5.2)
+      rack
     rake (10.1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
@@ -110,20 +117,23 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    sinatra (1.4.4)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
     slop (3.4.7)
     terminal-notifier (1.5.1)
     terminal-notifier-guard (1.5.3)
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    tilt (1.4.1)
     timers (1.1.0)
-    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.0)
+  doc_smoosher!
   guard
   guard-rspec
   jeweler (~> 2.0.1)
@@ -133,6 +143,7 @@ DEPENDENCIES
   rspec
   shoulda
   simplecov
+  sinatra
   terminal-notifier
   terminal-notifier-guard
   thor

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <script src="run_prettify.js"></script>
 <style>
 </style>
 
@@ -33,6 +34,475 @@
       </div>
 
     </div>
+
+    <div class="row">
+      <h4>
+        Objects
+      </h4>
+
+      <div id="item" class = "object item">
+        <h3 class = "object-heading">
+          item
+        </h3>
+
+        <div class = "parameters">
+          <h4>
+            Parameters
+          </h4>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Type
+                </th>
+
+                <th>
+                  Default
+                </th>
+
+                <th>
+                  
+                </th>
+
+                <th>
+                  Description
+                </th>
+
+                <th>
+                  Example
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  text
+                </td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    Your item's content
+
+                </td>
+                
+                
+                <td class = "example">
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  id
+                </td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    Custom text/numeric id. This can be used for mapping items back to your own dataset without needing to store the item's generated id from ingenia.
+
+                </td>
+                
+                
+                <td class = "example">
+
+                    785uU423aC
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  tag_ids
+                </td>
+
+                <td class = "type">
+
+                    <code>array</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    The tags you want to have associated with this text item.
+
+                </td>
+                
+                
+                <td class = "example">
+
+                    [ "politics", "education", "r&d" ]
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  tag_sets
+                </td>
+
+                <td class = "type">
+
+                    <code>hash</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    Groups of tags that you consider of the same type; tags will come as belonging of a tag set
+
+                </td>
+                
+                
+                <td class = "example">
+
+                    { "category": [ "politics", "education", "r&d" ], "geography": [ "united kingdom" ] }
+
+                </td>
+              </tr>
+
+
+            </tbody>
+            </table>
+        </div>
+
+
+        <div class = "example clear">
+          <h4>
+            Example
+          </h4>
+
+          <code class="prettyprint">
+            {"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}
+          </code>
+        </div>
+
+
+      </div>
+
+      <div id="tag" class = "object tag">
+        <h3 class = "object-heading">
+          tag
+        </h3>
+
+        <div class = "parameters">
+          <h4>
+            Parameters
+          </h4>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Type
+                </th>
+
+                <th>
+                  Default
+                </th>
+
+                <th>
+                  
+                </th>
+
+                <th>
+                  Description
+                </th>
+
+                <th>
+                  Example
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  name
+                </td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    The name of your tag
+
+                </td>
+                
+                
+                <td class = "example">
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  tag_set_id
+                </td>
+
+                <td class = "type">
+
+                    <code>integer</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                    <span class='text-muted'>required</span>
+
+                </td>
+
+                <td class = "description">
+
+                    The ID of the tag_set that this tag belongs to.
+
+                </td>
+                
+                
+                <td class = "example">
+
+                    3
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  description
+                </td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    Textual description of this tag.
+
+                </td>
+                
+                
+                <td class = "example">
+
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>
+                  disposition
+                </td>
+
+                <td class = "type">
+
+                    <code>float</code>
+
+                </td>
+
+                <td class = "default">
+
+                    <code>0.5</code>
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    The disposition of the tag. Float value between 0 and 1, defaults to 0.5. Lower values will tend to privilege precision (we suggest 0.25); higher values will tend to privilege recall (we suggest 0.75). For most uses, the default value will work well.
+
+You will want to privilege precision (with a disposition < 0.5) if you want each tag assignment to be accurate, and are less worried about some items being missed, i.e., you prefer to have false negatives than false positives. If the disposition is 0, no item will be tagged with this tag.
+
+You will want to privilege recall (with a disposition > 0.5) if you want each tag assignment to occur, and are less worried about some items being tagged incorrectly, i.e., you prefer to have false positives than false negatives. If the disposition is 1, all items will be tagged with this tag.
+
+                </td>
+                
+                
+                <td class = "example">
+
+                    0.7
+
+                </td>
+              </tr>
+
+
+            </tbody>
+            </table>
+        </div>
+
+
+
+      </div>
+
+      <div id="tag_set" class = "object tag_set">
+        <h3 class = "object-heading">
+          tag_set
+        </h3>
+
+        <div class = "parameters">
+          <h4>
+            Parameters
+          </h4>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Type
+                </th>
+
+                <th>
+                  Default
+                </th>
+
+                <th>
+                  
+                </th>
+
+                <th>
+                  Description
+                </th>
+
+                <th>
+                  Example
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  name
+                </td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "default">
+
+                </td>
+
+                <td class = "required">
+
+                </td>
+
+                <td class = "description">
+
+                    The name of your tag set
+
+                </td>
+                
+                
+                <td class = "example">
+
+                </td>
+              </tr>
+
+
+            </tbody>
+            </table>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+    
     <div class="row">
       <h4>
         Resources
@@ -89,15 +559,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -105,11 +575,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -117,7 +587,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -153,7 +625,9 @@
 
                       <tr>
                         <td>
+
                           limit
+
                         </td>
 
                         <td class = "type">
@@ -187,7 +661,9 @@
 
                       <tr>
                         <td>
+
                           full_text
+
                         </td>
 
                         <td class = "type">
@@ -219,7 +695,9 @@
 
                       <tr>
                         <td>
+
                           offset
+
                         </td>
 
                         <td class = "type">
@@ -295,15 +773,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -311,11 +789,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -323,7 +801,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -359,7 +839,9 @@
 
                       <tr>
                         <td>
+
                           full_text
+
                         </td>
 
                         <td class = "type">
@@ -391,7 +873,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -469,15 +953,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -485,11 +969,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -497,7 +981,9 @@
 
                       <tr>
                         <td>
+
                           file
+
                         </td>
 
                         <td class = "type">
@@ -529,7 +1015,9 @@
 
                       <tr>
                         <td>
+
                           update_existing
+
                         </td>
 
                         <td class = "type">
@@ -561,7 +1049,9 @@
 
                       <tr>
                         <td>
+
                           classify
+
                         </td>
 
                         <td class = "type">
@@ -591,7 +1081,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -627,12 +1119,14 @@
 
                       <tr>
                         <td>
-                          json
+
+                          <a href='#item'>
+                            item
+                          </a>
+
                         </td>
 
                         <td class = "type">
-
-                            <code>json</code>
 
                         </td>
 
@@ -646,7 +1140,7 @@
 
                         <td class = "description">
 
-                            JSON encoded string containing a hash of fields for the text item.
+                            A text item
 
                         </td>
                         
@@ -701,15 +1195,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -717,11 +1211,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -729,7 +1223,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -765,7 +1261,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -801,12 +1299,14 @@
 
                       <tr>
                         <td>
-                          json
+
+                          <a href='#item'>
+                            item
+                          </a>
+
                         </td>
 
                         <td class = "type">
-
-                            <code>json</code>
 
                         </td>
 
@@ -820,7 +1320,7 @@
 
                         <td class = "description">
 
-                            JSON encoded string containing a hash of fields for the text item.
+                            A text item
 
                         </td>
                         
@@ -833,7 +1333,9 @@
 
                       <tr>
                         <td>
+
                           file
+
                         </td>
 
                         <td class = "type">
@@ -907,15 +1409,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -923,11 +1425,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -935,7 +1437,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -971,7 +1475,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1068,15 +1574,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1084,11 +1590,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1096,7 +1602,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1132,7 +1640,9 @@
 
                       <tr>
                         <td>
+
                           limit
+
                         </td>
 
                         <td class = "type">
@@ -1166,7 +1676,9 @@
 
                       <tr>
                         <td>
+
                           offset
+
                         </td>
 
                         <td class = "type">
@@ -1242,15 +1754,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1258,11 +1770,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1270,7 +1782,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -1306,7 +1820,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1384,15 +1900,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1400,11 +1916,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1412,7 +1928,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1448,7 +1966,11 @@
 
                       <tr>
                         <td>
-                          tag
+
+                          <a href='#tag'>
+                            tag
+                          </a>
+
                         </td>
 
                         <td class = "type">
@@ -1465,7 +1987,7 @@
 
                         <td class = "description">
 
-                            A tag
+                            A JSON tag
 
                         </td>
                         
@@ -1520,15 +2042,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1536,11 +2058,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1548,7 +2070,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -1584,7 +2108,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1662,15 +2188,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1678,11 +2204,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1690,7 +2216,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -1726,7 +2254,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1823,15 +2353,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -1839,11 +2369,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -1851,7 +2381,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -1887,7 +2419,9 @@
 
                       <tr>
                         <td>
+
                           limit
+
                         </td>
 
                         <td class = "type">
@@ -1921,7 +2455,9 @@
 
                       <tr>
                         <td>
+
                           offset
+
                         </td>
 
                         <td class = "type">
@@ -1997,15 +2533,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -2013,11 +2549,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -2025,7 +2561,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -2061,7 +2599,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -2139,15 +2679,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -2155,11 +2695,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -2167,7 +2707,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -2203,7 +2745,11 @@
 
                       <tr>
                         <td>
-                          tag_set
+
+                          <a href='#tag_set'>
+                            tag_set
+                          </a>
+
                         </td>
 
                         <td class = "type">
@@ -2275,15 +2821,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -2291,11 +2837,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -2303,7 +2849,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -2339,7 +2887,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
@@ -2375,7 +2925,11 @@
 
                       <tr>
                         <td>
-                          tag_set
+
+                          <a href='#tag_set'>
+                            tag_set
+                          </a>
+
                         </td>
 
                         <td class = "type">
@@ -2447,15 +3001,15 @@
                     <thead>
                       <tr>
                         <th>
-                          name
+                          Name
                         </th>
 
                         <th>
-                          type
+                          Type
                         </th>
 
                         <th>
-                          default
+                          Default
                         </th>
 
                         <th>
@@ -2463,11 +3017,11 @@
                         </th>
 
                         <th>
-                          description
+                          Description
                         </th>
 
                         <th>
-                          example
+                          Example
                         </th>
                       </tr>
                     </thead>
@@ -2475,7 +3029,9 @@
 
                       <tr>
                         <td>
+
                           id
+
                         </td>
 
                         <td class = "type">
@@ -2511,7 +3067,9 @@
 
                       <tr>
                         <td>
+
                           api_key
+
                         </td>
 
                         <td class = "type">
