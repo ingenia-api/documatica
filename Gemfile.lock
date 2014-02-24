@@ -1,18 +1,6 @@
-PATH
-  remote: .
-  specs:
-    doc_smoosher (0.0.1)
-      active_support
-      i18n
-      rake
-      rest-client
-      thor
-
 GEM
   remote: https://rubygems.org/
   specs:
-    active_support (3.0.0)
-      activesupport (= 3.0.0)
     activesupport (3.0.0)
     addressable (2.3.5)
     builder (3.2.2)
@@ -49,7 +37,6 @@ GEM
       rspec (>= 2.14, < 4.0)
     hashie (2.0.5)
     highline (1.6.20)
-    i18n (0.6.9)
     jeweler (2.0.1)
       builder
       bundler (>= 1.0)
@@ -133,7 +120,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.0)
-  doc_smoosher!
   guard
   guard-rspec
   jeweler (~> 2.0.1)

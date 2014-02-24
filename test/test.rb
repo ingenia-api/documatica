@@ -65,8 +65,8 @@ extend DocSmoosher::TopLevel
 #   item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}'
 # end
 
-define_api name: '<%= name %>' do |api|
-  api.description '<%= description %>'
+define_api name: 'test' do |api|
+  api.description 'Example API'
   api.endpoint = 'http://api.where.you.at.com'
   api.version = '1.0'
   api.format = 'json'
