@@ -58,6 +58,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 2.0", ">= 2.0.1"])
       s.add_development_dependency(%q<simplecov>, ["~> 0"])
       s.add_development_dependency(%q<rspec>, ["~> 0"])
+      s.add_development_dependency(%q<i18n>, ["~> 0"])
     else
       s.add_dependency(%q<rake>, ["~> 0"])
       s.add_dependency(%q<rest-client>, ["~> 0"])
