@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 # Add dependencies required to use your gem here.
 
-gem 'rake'
-gem 'rest-client'
+gem 'rake', "~> 0"
+gem 'rest-client', "~> 0"
 
-gem 'thor'
+gem 'thor', "~> 0"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
