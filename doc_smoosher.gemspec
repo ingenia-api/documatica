@@ -8,12 +8,13 @@ Gem::Specification.new do |s|
   s.name = "doc_smoosher"
   s.version = "0.0.1"
 
-  s.required_rubygems_version = Gem::Requirement.new("~> 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Joran Kikke"]
-  s.date = "2014-02-24"
-  s.description = "A simple API documentation generator for the complicated world we live in."
+  s.date = "2014-02-25"
+  s.description = " A simple API documentation generator for the complicated world we live in "
   s.email = "joran.k@gmail.com"
+  s.executables = ["smoosher"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -25,59 +26,106 @@ Gem::Specification.new do |s|
     ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
+    "Guardfile",
     "LICENSE.txt",
     "README.md",
     "Rakefile",
     "VERSION",
+    "bin/smoosher",
+    "doc_smoosher.gemspec",
+    "examples/ingenia/ingenia.rb",
+    "examples/ingenia/ingenia_webapp.rb",
+    "examples/ingenia/output/html/bootstrap.min.css",
+    "examples/ingenia/output/html/ingenia.html",
+    "examples/ingenia/output/html/prettify.css",
+    "examples/ingenia/output/html/prettify.js",
+    "examples/ingenia/output/html/run_prettify.js",
     "lib/doc_smoosher.rb",
-    "lib/doc_smoosher/resource.rb",
+    "lib/doc_smoosher/api.rb",
+    "lib/doc_smoosher/api_object.rb",
     "lib/doc_smoosher/example.rb",
+    "lib/doc_smoosher/field.rb",
     "lib/doc_smoosher/parameter.rb",
+    "lib/doc_smoosher/parameters.rb",
+    "lib/doc_smoosher/request.rb",
+    "lib/doc_smoosher/resource.rb",
+    "lib/doc_smoosher/response.rb",
+    "lib/load_doc_smoosher.rb",
+    "spec/lib/api_spec.rb",
     "spec/lib/doc_smoosher_spec.rb",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "templates/Readme.md",
+    "templates/api.tt",
+    "templates/html/api.html.erb",
+    "templates/html/bootstrap.min.css",
+    "templates/html/prettify.css",
+    "templates/html/prettify.js",
+    "templates/html/run_prettify.js",
+    "templates/parameter.tt",
+    "templates/request.tt",
+    "templates/resource.tt",
+    "test/test.rb"
   ]
   s.homepage = "http://github.com/dangerousbeans/doc_smoosher"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.2.2"
   s.summary = "A simple API documentation generator for the complicated world we live in"
 
-  s.executables << 'smoosher'
-
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rake>, ["~> 0"])
-      s.add_runtime_dependency(%q<thor>, ["~> 0"])
       s.add_runtime_dependency(%q<rest-client>, ["~> 0"])
-      s.add_runtime_dependency(%q<active_support>, ["~> 0"])
-      s.add_runtime_dependency(%q<i18n>, ["~> 0"])
-      s.add_development_dependency(%q<shoulda>, ["~> 0"])
+      s.add_runtime_dependency(%q<thor>, ["~> 0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 2.0", ">= 2.0.1"])
-      s.add_development_dependency(%q<simplecov>, ["~> 0"])
-      s.add_development_dependency(%q<rspec>, ["~> 0"])
-      s.add_development_dependency(%q<i18n>, ["~> 0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<terminal-notifier>, [">= 0"])
+      s.add_development_dependency(%q<terminal-notifier-guard>, [">= 0"])
+      s.add_development_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_development_dependency(%q<guard>, [">= 0"])
+      s.add_development_dependency(%q<doc_smoosher>, [">= 0"])
+      s.add_development_dependency(%q<sinatra>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
     else
       s.add_dependency(%q<rake>, ["~> 0"])
       s.add_dependency(%q<rest-client>, ["~> 0"])
-      s.add_dependency(%q<shoulda>, ["~> 0"])
+      s.add_dependency(%q<thor>, ["~> 0"])
+      s.add_dependency(%q<activesupport>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_dependency(%q<jeweler>, ["~> 2.0", ">= 2.0.1"])
-      s.add_dependency(%q<simplecov>, ["~> 0"])
-      s.add_dependency(%q<rspec>, ["~> 0"])
+      s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<terminal-notifier>, [">= 0"])
+      s.add_dependency(%q<terminal-notifier-guard>, [">= 0"])
+      s.add_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_dependency(%q<guard>, [">= 0"])
+      s.add_dependency(%q<doc_smoosher>, [">= 0"])
+      s.add_dependency(%q<sinatra>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
     s.add_dependency(%q<rake>, ["~> 0"])
     s.add_dependency(%q<rest-client>, ["~> 0"])
-    s.add_dependency(%q<shoulda>, ["~> 0"])
+    s.add_dependency(%q<thor>, ["~> 0"])
+    s.add_dependency(%q<activesupport>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
-    s.add_dependency(%q<jeweler>, ["~> 2.0", ">= 2.0.1"])
-    s.add_dependency(%q<simplecov>, ["~> 0"])
-    s.add_dependency(%q<rspec>, ["~> 0"])
+    s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<terminal-notifier>, [">= 0"])
+    s.add_dependency(%q<terminal-notifier-guard>, [">= 0"])
+    s.add_dependency(%q<guard-rspec>, [">= 0"])
+    s.add_dependency(%q<guard>, [">= 0"])
+    s.add_dependency(%q<doc_smoosher>, [">= 0"])
+    s.add_dependency(%q<sinatra>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
 

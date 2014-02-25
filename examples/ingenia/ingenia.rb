@@ -31,7 +31,7 @@ full_text = define_parameter( name: 'full_text' ) do |p|
 end
 
 # Item JSON POST form
-json_item = define_object( name: 'item' ) do |item|
+json_item_post = define_object( name: 'item' ) do |item|
   item.description = "A text item"
   item.parameter name: 'text' do |p|
     p.description = 'Your item\'s content'
@@ -55,6 +55,40 @@ json_item = define_object( name: 'item' ) do |item|
     p.description = "Groups of tags that you consider of the same type; tags will come as belonging of a tag set"
     p.type = :hash
     p.example = '{ "category": [ "politics", "education", "r&d" ], "geography": [ "united kingdom" ] }'
+  end
+
+  item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}'
+end
+
+# Item JSON get form
+json_item_show = define_object( name: 'item' ) do |item|
+  item.description = "A text item"
+  item.parameter name: 'text' do |p|
+    p.description = 'Your item\'s content'
+    p.type = :string
+    p.max = 50_000
+  end
+
+  item.parameter name: 'created_at' do |p|
+    p.description = 'When this item was created'
+    p.type = :date_time
+    p.example = '2013-12-16T11:24:52+00:00'
+  end
+  item.parameter name: 'updated_at' do |p|
+    p.description = 'When this item was last updated'
+    p.type = :date_time
+    p.example = '2013-12-16T11:24:52+00:00'
+  end
+  item.parameter name: 'last_classified_at' do |p|
+    p.description = 'When this item was last classified by the system, or null if it has yet to be classified.'
+    p.type = :date_time
+    p.example = 'null'
+  end
+
+  item.parameter name: 'id' do |p|
+    p.description = 'Custom text/numeric id. This can be used for mapping items back to your own dataset without needing to store the item\'s generated id from ingenia.'
+    p.type = :string
+    p.example = '785uU423aC'
   end
 
   item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}'

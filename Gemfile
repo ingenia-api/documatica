@@ -6,6 +6,9 @@ gem 'rest-client', "~> 0"
 
 gem 'thor', "~> 0"
 
+gem "activesupport"
+
+
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
@@ -20,7 +23,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard'
 
-  # gem 'doc_smoosher', :path => '/Users/joran/Documents/development/ruby/retechnica/doc_smoosher'
+  gem 'doc_smoosher', :path => '/Users/joran/Documents/development/ruby/retechnica/doc_smoosher'
 
   gem 'sinatra'
 
