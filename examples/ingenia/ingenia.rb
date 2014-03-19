@@ -35,7 +35,7 @@ end
 
 
 # bundle stuff
-json_bundle = define_object( name: 'bundle' ) do |bundle|
+json_bundle = define_object( name: 'Bundle' ) do |bundle|
   bundle.description = "A collection of items related to each other"
 
   bundle.parameter name: 'name' do |p|
@@ -53,7 +53,7 @@ json_bundle = define_object( name: 'bundle' ) do |bundle|
 end
 
 # Item JSON POST form
-json_item = define_object( name: 'item' ) do |item|
+json_item = define_object( name: 'Item' ) do |item|
 
   item.parameter name: 'id' do |p|
     p.description = 'A unique text/numeric id. You can use your own, or have Ingenia generate one for you'
@@ -98,7 +98,7 @@ json_item = define_object( name: 'item' ) do |item|
 end
 
 # Item JSON get form
-json_item_show = define_object( name: 'item' ) do |item|
+json_item_show = define_object( name: 'Item' ) do |item|
   item.description = "An item"
   item.parameter name: 'text' do |p|
     p.description = 'Your item\'s textual content'
@@ -176,7 +176,7 @@ json_item_show = define_object( name: 'item' ) do |item|
 end
 
 # Tag JSON POST form
-json_tag = define_object( name: 'tag' ) do |tag|
+json_tag = define_object( name: 'Tag' ) do |tag|
   tag.description = "A tag"
   tag.parameter name: 'name' do |p|
     p.description = 'The name of your tag'
@@ -220,7 +220,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 end
 
 # TagSet JSON POST form
-json_tag_set = define_object( name: 'tag_set' ) do |tag_set|
+json_tag_set = define_object( name: 'Tag_set' ) do |tag_set|
   tag_set.description = "A tag set"
   tag_set.parameter name: 'name' do |p|
     p.description = 'The name of your tag set'
@@ -252,7 +252,7 @@ define_api( name: 'Ingenia API' ) do |api|
   ##
   # Items
   #
-  api.resource name: 'items' do |r|
+  api.resource name: 'Items' do |r|
     r.description = "Blocks of textual content, typically self-contained and homogeneous"
     
     r.request name: 'index' do |req|
@@ -356,7 +356,7 @@ define_api( name: 'Ingenia API' ) do |api|
   ##
   # Bundles
   #
-  api.resource name: 'bundles' do |r|
+  api.resource name: 'Bundles' do |r|
     r.description = "Groups of thematically consistent items"
     
     r.request name: 'index' do |req|
@@ -437,7 +437,7 @@ define_api( name: 'Ingenia API' ) do |api|
   ##
   # Tags
   #
-  api.resource name: 'tags' do |r|
+  api.resource name: 'Tags' do |r|
     r.description = "Tags are meaningful words or expressions that you want to associate to some of your items"
     
     r.request name: 'index' do |req|
@@ -541,7 +541,7 @@ define_api( name: 'Ingenia API' ) do |api|
   ##
   # Tag Sets
   #
-  api.resource name: 'tag_sets' do |r|
+  api.resource name: 'Tag_sets' do |r|
     r.description = "Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc"
     
     r.request name: 'index' do |req|

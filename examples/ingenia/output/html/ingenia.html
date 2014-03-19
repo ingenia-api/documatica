@@ -1,14 +1,17 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css"> 
+<script type="text/javascript" src="/javascripts/navigation.js"></script> 
 
   <div class="container">
+
+  <div class="document_container">
 
     <div class="row">
       <h2 id='objects' class="top_h2">Objects</h2>
       
 
-      <div id="json" class = "object json">
-        <h3 class = "object-heading" id="object-bundle">bundle</h3>
+      <div id="Bundle" class = "object Bundle">
+        <h3 class = "object-heading" id="object-Bundle">Bundle</h3>
 
         <div class = "parameters">
           <h4>Fields</h4>
@@ -62,8 +65,8 @@
 
       </div>
 
-      <div id="json" class = "object json">
-        <h3 class = "object-heading" id="object-item">item</h3>
+      <div id="Item" class = "object Item">
+        <h3 class = "object-heading" id="object-Item">Item</h3>
 
         <div class = "parameters">
           <h4>Fields</h4>
@@ -220,8 +223,8 @@
 
       </div>
 
-      <div id="json" class = "object json">
-        <h3 class = "object-heading" id="object-tag">tag</h3>
+      <div id="Tag" class = "object Tag">
+        <h3 class = "object-heading" id="object-Tag">Tag</h3>
 
         <div class = "parameters">
           <h4>Fields</h4>
@@ -348,8 +351,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
       </div>
 
-      <div id="json" class = "object json">
-        <h3 class = "object-heading" id="object-tag_set">tag_set</h3>
+      <div id="Tag_set" class = "object Tag_set">
+        <h3 class = "object-heading" id="object-Tag_set">Tag_set</h3>
 
         <div class = "parameters">
           <h4>Fields</h4>
@@ -403,8 +406,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
       </div>
 
-      <div id="json" class = "object json">
-        <h3 class = "object-heading" id="object-item">item</h3>
+      <div id="Item" class = "object Item">
+        <h3 class = "object-heading" id="object-Item">Item</h3>
 
         <div class = "parameters">
           <h4>Fields</h4>
@@ -595,8 +598,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
       <h2>Resources</h2>
       
 
-      <div class = "resource items">
-        <h3 class = "resource-heading" id='resource-items'>items</h3>
+      <div class = "resource Items">
+        <h3 class = "resource-heading" id='resource-Items'>Items</h3>
 
         <div class = "resource-body" >
           <div class = "description">Blocks of textual content, typically self-contained and homogeneous</div>
@@ -605,7 +608,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-index" >
+              <div class = "panel-heading" id="call-Items-index" >
                 <code class="get_post">get</code>
                 <h5>index</h5>
               </div>
@@ -730,7 +733,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-show" >
+              <div class = "panel-heading" id="call-Items-show" >
                 <code class="get_post">get</code>
                 <h5>show</h5>
               </div>
@@ -829,7 +832,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-create" >
+              <div class = "panel-heading" id="call-Items-create" >
                 <code class="get_post">post</code>
                 <h5>create</h5>
               </div>
@@ -939,7 +942,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Item'>Item</a>
 
 
                         </td>
@@ -968,7 +971,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-update" >
+              <div class = "panel-heading" id="call-Items-update" >
                 <code class="get_post">put</code>
                 <h5>update</h5>
               </div>
@@ -1032,7 +1035,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Item'>Item</a>
 
 
                         </td>
@@ -1085,7 +1088,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-delete" >
+              <div class = "panel-heading" id="call-Items-delete" >
                 <code class="get_post">delete</code>
                 <h5>delete</h5>
               </div>
@@ -1161,8 +1164,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
 
-      <div class = "resource bundles">
-        <h3 class = "resource-heading" id='resource-bundles'>bundles</h3>
+      <div class = "resource Bundles">
+        <h3 class = "resource-heading" id='resource-Bundles'>Bundles</h3>
 
         <div class = "resource-body" >
           <div class = "description">Groups of thematically consistent items</div>
@@ -1171,7 +1174,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-index" >
+              <div class = "panel-heading" id="call-Bundles-index" >
                 <code class="get_post">get</code>
                 <h5>index</h5>
               </div>
@@ -1268,7 +1271,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-show" >
+              <div class = "panel-heading" id="call-Bundles-show" >
                 <code class="get_post">get</code>
                 <h5>show</h5>
               </div>
@@ -1339,7 +1342,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-find_by_name" >
+              <div class = "panel-heading" id="call-Bundles-find_by_name" >
                 <code class="get_post">get</code>
                 <h5>find_by_name</h5>
               </div>
@@ -1408,7 +1411,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-create" >
+              <div class = "panel-heading" id="call-Bundles-create" >
                 <code class="get_post">post</code>
                 <h5>create</h5>
               </div>
@@ -1442,7 +1445,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Bundle'>Bundle</a>
 
 
                         </td>
@@ -1471,7 +1474,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-update" >
+              <div class = "panel-heading" id="call-Bundles-update" >
                 <code class="get_post">put</code>
                 <h5>update</h5>
               </div>
@@ -1535,7 +1538,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Bundle'>Bundle</a>
 
 
                         </td>
@@ -1564,7 +1567,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-bundles-delete" >
+              <div class = "panel-heading" id="call-Bundles-delete" >
                 <code class="get_post">delete</code>
                 <h5>delete</h5>
               </div>
@@ -1640,8 +1643,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
 
-      <div class = "resource tags">
-        <h3 class = "resource-heading" id='resource-tags'>tags</h3>
+      <div class = "resource Tags">
+        <h3 class = "resource-heading" id='resource-Tags'>Tags</h3>
 
         <div class = "resource-body" >
           <div class = "description">Tags are meaningful words or expressions that you want to associate to some of your items</div>
@@ -1650,7 +1653,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-index" >
+              <div class = "panel-heading" id="call-Tags-index" >
                 <code class="get_post">get</code>
                 <h5>index</h5>
               </div>
@@ -1747,7 +1750,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-show" >
+              <div class = "panel-heading" id="call-Tags-show" >
                 <code class="get_post">get</code>
                 <h5>show</h5>
               </div>
@@ -1818,7 +1821,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-find_by_name" >
+              <div class = "panel-heading" id="call-Tags-find_by_name" >
                 <code class="get_post">get</code>
                 <h5>find_by_name</h5>
               </div>
@@ -1887,7 +1890,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-create" >
+              <div class = "panel-heading" id="call-Tags-create" >
                 <code class="get_post">post</code>
                 <h5>create</h5>
               </div>
@@ -1921,7 +1924,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Tag'>Tag</a>
 
 
                         </td>
@@ -1950,7 +1953,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-update" >
+              <div class = "panel-heading" id="call-Tags-update" >
                 <code class="get_post">put</code>
                 <h5>update</h5>
               </div>
@@ -2014,7 +2017,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Tag'>Tag</a>
 
 
                         </td>
@@ -2043,7 +2046,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-merge" >
+              <div class = "panel-heading" id="call-Tags-merge" >
                 <code class="get_post">put</code>
                 <h5>merge</h5>
               </div>
@@ -2144,7 +2147,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tags-delete" >
+              <div class = "panel-heading" id="call-Tags-delete" >
                 <code class="get_post">delete</code>
                 <h5>delete</h5>
               </div>
@@ -2220,8 +2223,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
 
-      <div class = "resource tag_sets">
-        <h3 class = "resource-heading" id='resource-tag_sets'>tag_sets</h3>
+      <div class = "resource Tag_sets">
+        <h3 class = "resource-heading" id='resource-Tag_sets'>Tag_sets</h3>
 
         <div class = "resource-body" >
           <div class = "description">Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc</div>
@@ -2230,7 +2233,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-index" >
+              <div class = "panel-heading" id="call-Tag_sets-index" >
                 <code class="get_post">get</code>
                 <h5>index</h5>
               </div>
@@ -2327,7 +2330,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-show" >
+              <div class = "panel-heading" id="call-Tag_sets-show" >
                 <code class="get_post">get</code>
                 <h5>show</h5>
               </div>
@@ -2398,7 +2401,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-find_by_name" >
+              <div class = "panel-heading" id="call-Tag_sets-find_by_name" >
                 <code class="get_post">get</code>
                 <h5>find_by_name</h5>
               </div>
@@ -2467,7 +2470,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-create" >
+              <div class = "panel-heading" id="call-Tag_sets-create" >
                 <code class="get_post">post</code>
                 <h5>create</h5>
               </div>
@@ -2501,7 +2504,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Tag_set'>Tag_set</a>
 
 
                         </td>
@@ -2530,7 +2533,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-update" >
+              <div class = "panel-heading" id="call-Tag_sets-update" >
                 <code class="get_post">put</code>
                 <h5>update</h5>
               </div>
@@ -2594,7 +2597,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          <a href='#json'>json</a>
+                          <a href='#Tag_set'>Tag_set</a>
 
 
                         </td>
@@ -2623,7 +2626,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-merge" >
+              <div class = "panel-heading" id="call-Tag_sets-merge" >
                 <code class="get_post">put</code>
                 <h5>merge</h5>
               </div>
@@ -2724,7 +2727,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-tag_sets-delete" >
+              <div class = "panel-heading" id="call-Tag_sets-delete" >
                 <code class="get_post">delete</code>
                 <h5>delete</h5>
               </div>
@@ -2801,8 +2804,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
       
-
-    </div>    
+    </div>
+  </div>
+        
   </div>
   
   <div class='navigation'>
@@ -2813,15 +2817,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
         
         <ul class="objects_items">
 
-          <li><a href="#object-bundle">bundle</a></li>
+          <li><a href="#object-Bundle">Bundle</a></li>
 
-          <li><a href="#object-item">item</a></li>
+          <li><a href="#object-Item">Item</a></li>
 
-          <li><a href="#object-tag">tag</a></li>
+          <li><a href="#object-Tag">Tag</a></li>
 
-          <li><a href="#object-tag_set">tag_set</a></li>
+          <li><a href="#object-Tag_set">Tag_set</a></li>
 
-          <li><a href="#object-item">item</a></li>
+          <li><a href="#object-Item">Item</a></li>
 
         </ul>
         
@@ -2829,83 +2833,83 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
       
 
       <li>
-        <a id="items_link" href='#resource-items'>items</a>
+        <a id="Items_link" href='#resource-Items'>Items</a>
         
-        <ul class="resource-items">
+        <ul class="resource-Items">
 
-          <li><a href='#call-items-index'>index</a></li>
+          <li><a href='#call-Items-index'>index</a></li>
 
-          <li><a href='#call-items-show'>show</a></li>
+          <li><a href='#call-Items-show'>show</a></li>
 
-          <li><a href='#call-items-create'>create</a></li>
+          <li><a href='#call-Items-create'>create</a></li>
 
-          <li><a href='#call-items-update'>update</a></li>
+          <li><a href='#call-Items-update'>update</a></li>
 
-          <li><a href='#call-items-delete'>delete</a></li>
+          <li><a href='#call-Items-delete'>delete</a></li>
 
         </ul>
       </li>
 
       <li>
-        <a id="bundles_link" href='#resource-bundles'>bundles</a>
+        <a id="Bundles_link" href='#resource-Bundles'>Bundles</a>
         
-        <ul class="resource-bundles">
+        <ul class="resource-Bundles">
 
-          <li><a href='#call-bundles-index'>index</a></li>
+          <li><a href='#call-Bundles-index'>index</a></li>
 
-          <li><a href='#call-bundles-show'>show</a></li>
+          <li><a href='#call-Bundles-show'>show</a></li>
 
-          <li><a href='#call-bundles-find_by_name'>find_by_name</a></li>
+          <li><a href='#call-Bundles-find_by_name'>find_by_name</a></li>
 
-          <li><a href='#call-bundles-create'>create</a></li>
+          <li><a href='#call-Bundles-create'>create</a></li>
 
-          <li><a href='#call-bundles-update'>update</a></li>
+          <li><a href='#call-Bundles-update'>update</a></li>
 
-          <li><a href='#call-bundles-delete'>delete</a></li>
+          <li><a href='#call-Bundles-delete'>delete</a></li>
 
         </ul>
       </li>
 
       <li>
-        <a id="tags_link" href='#resource-tags'>tags</a>
+        <a id="Tags_link" href='#resource-Tags'>Tags</a>
         
-        <ul class="resource-tags">
+        <ul class="resource-Tags">
 
-          <li><a href='#call-tags-index'>index</a></li>
+          <li><a href='#call-Tags-index'>index</a></li>
 
-          <li><a href='#call-tags-show'>show</a></li>
+          <li><a href='#call-Tags-show'>show</a></li>
 
-          <li><a href='#call-tags-find_by_name'>find_by_name</a></li>
+          <li><a href='#call-Tags-find_by_name'>find_by_name</a></li>
 
-          <li><a href='#call-tags-create'>create</a></li>
+          <li><a href='#call-Tags-create'>create</a></li>
 
-          <li><a href='#call-tags-update'>update</a></li>
+          <li><a href='#call-Tags-update'>update</a></li>
 
-          <li><a href='#call-tags-merge'>merge</a></li>
+          <li><a href='#call-Tags-merge'>merge</a></li>
 
-          <li><a href='#call-tags-delete'>delete</a></li>
+          <li><a href='#call-Tags-delete'>delete</a></li>
 
         </ul>
       </li>
 
       <li>
-        <a id="tag_sets_link" href='#resource-tag_sets'>tag_sets</a>
+        <a id="Tag_sets_link" href='#resource-Tag_sets'>Tag_sets</a>
         
-        <ul class="resource-tag_sets">
+        <ul class="resource-Tag_sets">
 
-          <li><a href='#call-tag_sets-index'>index</a></li>
+          <li><a href='#call-Tag_sets-index'>index</a></li>
 
-          <li><a href='#call-tag_sets-show'>show</a></li>
+          <li><a href='#call-Tag_sets-show'>show</a></li>
 
-          <li><a href='#call-tag_sets-find_by_name'>find_by_name</a></li>
+          <li><a href='#call-Tag_sets-find_by_name'>find_by_name</a></li>
 
-          <li><a href='#call-tag_sets-create'>create</a></li>
+          <li><a href='#call-Tag_sets-create'>create</a></li>
 
-          <li><a href='#call-tag_sets-update'>update</a></li>
+          <li><a href='#call-Tag_sets-update'>update</a></li>
 
-          <li><a href='#call-tag_sets-merge'>merge</a></li>
+          <li><a href='#call-Tag_sets-merge'>merge</a></li>
 
-          <li><a href='#call-tag_sets-delete'>delete</a></li>
+          <li><a href='#call-Tag_sets-delete'>delete</a></li>
 
         </ul>
       </li>
