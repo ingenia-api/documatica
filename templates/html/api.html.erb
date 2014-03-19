@@ -1,14 +1,17 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css"> 
+
   <div class="container">
 
     <div class="row">
-      <h2 id='objects'>Objects</h2>
+      <h2 id='objects top_h2'>Objects</h2>
       
       <%- api.objects.each do |o| %>
       <div id="<%= o.name %>" class = "object <%= o.name %>">
         <h3 class = "object-heading" id="object-<%= o.name2 %>"><%= o.name2 %></h3>
 
         <div class = "parameters">
-          <h3>Fields</h3>
+          <h4>Fields</h4>
 
           <table class = "table">
             <thead>
@@ -48,9 +51,9 @@
 
         <%- if o.example %>
         <div class = "example clear">
-          <h3>Example</h3>
+          <h4>Example</h4>
 
-          <code class="prettyprint"><%= o.example %></code>
+          <pre class="prettyprint"><%= o.example %></pre>
         </div>
         <%- end %>
 
@@ -75,25 +78,25 @@
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
               <div class = "panel-heading" id="call-<%= resource.name %>-<%= req.name %>" >
-                <h5><%= req.call_type %></h5>
+                <h4><%= req.call_type %></h4>
                 <%= req.name %>
               </div>
 
               <div class = "panel-body">
                 <%- if req.path %>
-                  <h4>Path</h4>
+                  <h5>Path</h5>
                   <div class = "path well"><%= req.path %></div>
                 <%- end %>
 
                 <%- if req.description %>
                 <div class = "description">
-                  <h4>Description</h4>
+                  <h5>Description</h5>
                   <%= req.description %>
                 </div>
                 <%- end %>
 
                 <div class = "parameters">
-                  <h4>Parameters</h4>
+                  <h5>Parameters</h5>
 
                   <table class = "table">
                     <thead>
