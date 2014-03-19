@@ -43,7 +43,13 @@ json_bundle = define_object( name: 'bundle' ) do |bundle|
     p.type = :string
   end
   
-  bundle.example = '{"created_at":"2014-03-13T15:36:51Z","id":47858,"name":"Tech Startups","updated_at":"2014-03-13T15:36:51Z"}'
+  bundle.example = '
+  {
+    "created_at":"2014-03-13T15:36:51Z",
+    "id":47858,
+    "name":"Tech Startups",
+    "updated_at":"2014-03-13T15:36:51Z"
+  }'
 end
 
 # Item JSON POST form
@@ -122,7 +128,51 @@ json_item_show = define_object( name: 'item' ) do |item|
     p.example = '785uU423aC'
   end
 
-  item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":2013-12-16T11:25:07+00:00,"text":"How to get to scale with a saas startup in the UK? etc","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"topics":{"id":156, "tags": [{ "id":4352, "name":"startups"},{"id":7811, "name":"saas"},{"id":1327, "name":"marketing"}]}}, {"geography":{"id":622, "tags": [ {"id":3321, "name":"united kingdom"}]}}]}'
+  item.example = '
+  {
+    "created_at":"2013-12-16T11:24:52+00:00",
+    "id":"e19e134d0e79153349ff78a674283e0b",
+    "last_classified_at":2013-12-16T11:25:07+00:00,
+    "text":"How to get to scale with a saas startup in the UK? etc",
+    "updated_at":"2013-12-16T11:24:56+00:00",
+    "tag_sets":
+      [ 
+        {  
+          "topics":
+          {
+            "id":156, 
+            "tags": 
+              [
+                { 
+                  "id":4352, 
+                  "name":"startups"
+                },
+                { 
+                  "id":7811, 
+                  "name":"saas"
+                },
+                { 
+                  "id":1327, 
+                  "name":"marketing"
+                }
+              ]
+          }
+        }, 
+        {
+          "geography":
+          {
+            "id":622, 
+            "tags": 
+              [ 
+                {
+                  "id":3321, 
+                  "name":"united kingdom"
+                }
+              ]
+          }
+        }
+      ]
+  }'
 end
 
 # Tag JSON POST form
@@ -156,7 +206,17 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
     p.default = 0.5
   end
 
-  tag.example = '{"confidence":0.0,"consistency":0.0,"created_at":"2014-03-13T12:59:32Z","description":"","id":554273,"name":"Text Analytics","tag_set_id":8547,"updated_at":"2014-03-13T12:59:32Z"}'
+  tag.example = '
+  {
+    "confidence":0.0,
+    "consistency":0.0,
+    "created_at":"2014-03-13T12:59:32Z",
+    "description":"",
+    "id":554273,
+    "name":"Text Analytics",
+    "tag_set_id":8547,
+    "updated_at":"2014-03-13T12:59:32Z"
+  }'
 end
 
 # TagSet JSON POST form
@@ -167,7 +227,13 @@ json_tag_set = define_object( name: 'tag_set' ) do |tag_set|
     p.type = :string
   end
 
-  tag_set.example = '{"created_at":"2014-03-12T12:17:33Z","id":178751,"name":"Big Data","updated_at":"2014-03-12T12:17:33Z"}' 
+  tag_set.example = '
+  {
+    "created_at":"2014-03-12T12:17:33Z",
+    "id":178751,
+    "name":"Big Data",
+    "updated_at":"2014-03-12T12:17:33Z"
+  }' 
 end
 
 define_api( name: 'Ingenia API' ) do |api|

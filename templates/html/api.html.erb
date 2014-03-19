@@ -1,10 +1,11 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css"> 
+<script type="text/javascript" src="/javascripts/navigation.js"></script> 
 
   <div class="container">
 
     <div class="row">
-      <h2 id='objects top_h2'>Objects</h2>
+      <h2 id='objects' class="top_h2">Objects</h2>
       
       <%- api.objects.each do |o| %>
       <div id="<%= o.name %>" class = "object <%= o.name %>">
@@ -37,8 +38,9 @@
                     <%= parameter.description %>
                   <%- end %>
                   <%- if parameter.example %>
-                    <h5>Example</h5>
-                    <%= parameter.example %>
+                    <br/><br/>
+                    <h6>Example</h6>
+                    <p class="example_code"><%= parameter.example %></p>
                   <%- end %>
                 
                 </td>
@@ -73,13 +75,12 @@
           <div class = "description"><%= resource.description %></div>
 
           <div class = "requests">
-            <h4>Requests</h4>
             
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
               <div class = "panel-heading" id="call-<%= resource.name %>-<%= req.name %>" >
-                <h4><%= req.call_type %></h4>
-                <%= req.name %>
+                <code class="get_post"><%= req.call_type %></code>
+                <h5><%= req.name %></h5>
               </div>
 
               <div class = "panel-body">
@@ -131,12 +132,14 @@
                             <%= parameter.description %>
                           <%- end %>
                           <%- if parameter.default %>
-                            <h5>Default</h5>
-                            <code><%= parameter.default %></code>
+                            <br/><br/>
+                            <h6>Default</h6>
+                            <p class="example_code"><%= parameter.default %></p>
                           <%- end %>
                           <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
-                            <h5>Example</h5>
-                            <%= parameter.example %>
+                            <br/><br/>
+                            <h6>Example</h6>
+                            <p class="example_code"><%= parameter.example %></p>
                           <%- end %>
                         </td>
                       </tr>
@@ -167,7 +170,7 @@
 
 
       <%- end %>
-			
+      
 
     </div>    
   </div>
@@ -176,9 +179,9 @@
     
     <ul>
       <li>
-        <a href='#objects'>objects</a>
+        <a id="objects_link" href='#objects'>objects</a>
         
-        <ul>
+        <ul class="objects_items">
         <%- api.objects.each do |o| %>
           <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
         <%- end %>
@@ -188,9 +191,9 @@
       
       <%- api.resources.each do |resource| %>
       <li>
-        <a href='#resource-<%= resource.name %>'><%= resource.name %></a>
+        <a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>
         
-        <ul>
+        <ul class="resource-<%= resource.name %>">
           <%- resource.requests.each do |req| %>
           <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
           <%- end %>
