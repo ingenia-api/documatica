@@ -1,4 +1,5 @@
 module DocSmoosher
+
   module Parameters
     attr_accessor :parameters, :resource
 

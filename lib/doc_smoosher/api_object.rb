@@ -11,5 +11,21 @@ module DocSmoosher
         instance_variable_set("@#{k}", v) unless v.nil?
       end
     end
+
+		def name
+		  
+		  case @name
+		  when 'item' then 'json'
+		  when 'tag_set' then 'json'
+ 		  when 'bundle' then 'json'
+ 		  when 'tag' then 'json'
+ 		  else @name
+ 		  end
+    end
+    
+    def name2
+      @name
+    end
+    
   end
 end

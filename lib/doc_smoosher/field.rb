@@ -6,7 +6,7 @@ module DocSmoosher
       # Defaults
       self.required = false
 
-      super(params)
+      super
     end
   end
 end

@@ -1,89 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-  <script src="run_prettify.js"></script>
-<style>
-</style>
-
-</head>
-<body>
   <div class="container">
-    <div class="row">
-      <h1 class="title" >
-        Ingenia API
-      </h1>
-
-
-      <div class="description" >
-        <h4>
-          Description
-        </h4>
-        Ingenia analyses your textual content and automatically categorises it using your tags.
-      </div>
-
-
-
-      <h4>
-        Endpoint
-      </h4>
-      <div class = "endpoint well"
-        <code>
-          api.ingeniapi.com/v2/
-        </code>
-      </div>
-
-    </div>
 
     <div class="row">
-      <h4>
-        Objects
-      </h4>
+      <h2 id='objects'>Objects</h2>
+      
 
-      <div id="item" class = "object item">
-        <h3 class = "object-heading">
-          item
-        </h3>
+      <div id="json" class = "object json">
+        <h3 class = "object-heading" id="object-bundle">bundle</h3>
 
         <div class = "parameters">
-          <h4>
-            Parameters
-          </h4>
+          <h3>Fields</h3>
 
           <table class = "table">
             <thead>
               <tr>
-                <th>
-                  Name
-                </th>
-
-                <th>
-                  Type
-                </th>
-
-                <th>
-                  Default
-                </th>
-
-                <th>
-                  
-                </th>
-
-                <th>
-                  Description
-                </th>
-
-                <th>
-                  Example
-                </th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
 
               <tr>
-                <td>
-                  text
-                </td>
+                <td>name</td>
 
                 <td class = "type">
 
@@ -91,125 +29,12 @@
 
                 </td>
 
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
                 <td class = "description">
 
-                    Your item's content
+                    The name of your bundle
 
-                </td>
+
                 
-                
-                <td class = "example">
-
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  id
-                </td>
-
-                <td class = "type">
-
-                    <code>string</code>
-
-                </td>
-
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
-                <td class = "description">
-
-                    Custom text/numeric id. This can be used for mapping items back to your own dataset without needing to store the item's generated id from ingenia.
-
-                </td>
-                
-                
-                <td class = "example">
-
-                    785uU423aC
-
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  tag_ids
-                </td>
-
-                <td class = "type">
-
-                    <code>array</code>
-
-                </td>
-
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
-                <td class = "description">
-
-                    The tags you want to have associated with this text item.
-
-                </td>
-                
-                
-                <td class = "example">
-
-                    [ "politics", "education", "r&d" ]
-
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  tag_sets
-                </td>
-
-                <td class = "type">
-
-                    <code>hash</code>
-
-                </td>
-
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
-                <td class = "description">
-
-                    Groups of tags that you consider of the same type; tags will come as belonging of a tag set
-
-                </td>
-                
-                
-                <td class = "example">
-
-                    { "category": [ "politics", "education", "r&d" ], "geography": [ "united kingdom" ] }
-
                 </td>
               </tr>
 
@@ -220,62 +45,32 @@
 
 
         <div class = "example clear">
-          <h4>
-            Example
-          </h4>
+          <h3>Example</h3>
 
-          <code class="prettyprint">
-            {"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":null,"text":"What type of cheese is the best cheese?","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"Cookery":{"id":107,"tags":["cheese"]}}}]}
-          </code>
+          <code class="prettyprint">{"created_at":"2014-03-13T15:36:51Z","id":47858,"name":"Tech Startups","updated_at":"2014-03-13T15:36:51Z"}</code>
         </div>
 
 
       </div>
 
-      <div id="tag" class = "object tag">
-        <h3 class = "object-heading">
-          tag
-        </h3>
+      <div id="json" class = "object json">
+        <h3 class = "object-heading" id="object-item">item</h3>
 
         <div class = "parameters">
-          <h4>
-            Parameters
-          </h4>
+          <h3>Fields</h3>
 
           <table class = "table">
             <thead>
               <tr>
-                <th>
-                  Name
-                </th>
-
-                <th>
-                  Type
-                </th>
-
-                <th>
-                  Default
-                </th>
-
-                <th>
-                  
-                </th>
-
-                <th>
-                  Description
-                </th>
-
-                <th>
-                  Example
-                </th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
 
               <tr>
-                <td>
-                  name
-                </td>
+                <td>id</td>
 
                 <td class = "type">
 
@@ -283,31 +78,40 @@
 
                 </td>
 
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
                 <td class = "description">
 
-                    The name of your tag
+                    A unique text/numeric id. You can use your own, or have Ingenia generate one for you
 
-                </td>
-                
-                
-                <td class = "example">
 
+                    <h5>Example</h5>
+                    785uU423aC
+
+                
                 </td>
               </tr>
 
 
               <tr>
-                <td>
-                  tag_set_id
+                <td>text</td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
                 </td>
+
+                <td class = "description">
+
+                    Your item's content
+
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>bundle_id</td>
 
                 <td class = "type">
 
@@ -315,35 +119,111 @@
 
                 </td>
 
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                    <span class='text-muted'>required</span>
-
-                </td>
-
                 <td class = "description">
 
-                    The ID of the tag_set that this tag belongs to.
+                    ID of bundle to put item into
 
-                </td>
+
+                    <h5>Example</h5>
+                    45798
+
                 
-                
-                <td class = "example">
-
-                    3
-
                 </td>
               </tr>
 
 
               <tr>
-                <td>
-                  description
+                <td>tags</td>
+
+                <td class = "type">
+
+                    <code>array</code>
+
                 </td>
+
+                <td class = "description">
+
+                    The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist
+
+
+                    <h5>Example</h5>
+                    [ "startups", "saas", "marketing" ]
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>tag_ids</td>
+
+                <td class = "type">
+
+                    <code>array</code>
+
+                </td>
+
+                <td class = "description">
+
+                    The Ingenia IDs of the tags you want to have associated with this item
+
+
+                    <h5>Example</h5>
+                    [ 45, 787, 23 ]
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>tag_sets</td>
+
+                <td class = "type">
+
+                    <code>hash</code>
+
+                </td>
+
+                <td class = "description">
+
+                    Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set
+
+
+                    <h5>Example</h5>
+                    { "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }
+
+                
+                </td>
+              </tr>
+
+
+            </tbody>
+            </table>
+        </div>
+
+
+
+      </div>
+
+      <div id="json" class = "object json">
+        <h3 class = "object-heading" id="object-tag">tag</h3>
+
+        <div class = "parameters">
+          <h3>Fields</h3>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>name</td>
 
                 <td class = "type">
 
@@ -351,45 +231,63 @@
 
                 </td>
 
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
                 <td class = "description">
 
-                    Textual description of this tag.
+                    The name of your tag
 
-                </td>
-                
-                
-                <td class = "example">
 
+                
                 </td>
               </tr>
 
 
               <tr>
-                <td>
-                  disposition
+                <td>tag_set_id</td>
+
+                <td class = "type">
+
+                    <code>integer</code>
+
                 </td>
+
+                <td class = "description">
+
+                    The ID of the tag_set to which this tag belongs
+
+
+                    <h5>Example</h5>
+                    3787
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>description</td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "description">
+
+                    A description of this tag
+
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>disposition</td>
 
                 <td class = "type">
 
                     <code>float</code>
-
-                </td>
-
-                <td class = "default">
-
-                    <code>0.5</code>
-
-                </td>
-
-                <td class = "required">
 
                 </td>
 
@@ -401,13 +299,11 @@ You will want to privilege precision (with a disposition < 0.5) if you want each
 
 You will want to privilege recall (with a disposition > 0.5) if you want each tag assignment to occur, and are less worried about some items being tagged incorrectly, i.e., you prefer to have false positives than false negatives. If the disposition is 1, all items will be tagged with this tag.
 
-                </td>
-                
-                
-                <td class = "example">
 
-                    0.7
+                    <h5>Example</h5>
+                    0.75
 
+                
                 </td>
               </tr>
 
@@ -417,53 +313,33 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
         </div>
 
 
+        <div class = "example clear">
+          <h3>Example</h3>
+
+          <code class="prettyprint">{"confidence":0.0,"consistency":0.0,"created_at":"2014-03-13T12:59:32Z","description":"","id":554273,"name":"Text Analytics","tag_set_id":8547,"updated_at":"2014-03-13T12:59:32Z"}</code>
+        </div>
+
 
       </div>
 
-      <div id="tag_set" class = "object tag_set">
-        <h3 class = "object-heading">
-          tag_set
-        </h3>
+      <div id="json" class = "object json">
+        <h3 class = "object-heading" id="object-tag_set">tag_set</h3>
 
         <div class = "parameters">
-          <h4>
-            Parameters
-          </h4>
+          <h3>Fields</h3>
 
           <table class = "table">
             <thead>
               <tr>
-                <th>
-                  Name
-                </th>
-
-                <th>
-                  Type
-                </th>
-
-                <th>
-                  Default
-                </th>
-
-                <th>
-                  
-                </th>
-
-                <th>
-                  Description
-                </th>
-
-                <th>
-                  Example
-                </th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
 
               <tr>
-                <td>
-                  name
-                </td>
+                <td>name</td>
 
                 <td class = "type">
 
@@ -471,23 +347,12 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                 </td>
 
-                <td class = "default">
-
-                </td>
-
-                <td class = "required">
-
-                </td>
-
                 <td class = "description">
 
                     The name of your tag set
 
-                </td>
-                
-                
-                <td class = "example">
 
+                
                 </td>
               </tr>
 
@@ -496,6 +361,149 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             </table>
         </div>
 
+
+        <div class = "example clear">
+          <h3>Example</h3>
+
+          <code class="prettyprint">{"created_at":"2014-03-12T12:17:33Z","id":178751,"name":"Big Data","updated_at":"2014-03-12T12:17:33Z"}</code>
+        </div>
+
+
+      </div>
+
+      <div id="json" class = "object json">
+        <h3 class = "object-heading" id="object-item">item</h3>
+
+        <div class = "parameters">
+          <h3>Fields</h3>
+
+          <table class = "table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>text</td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "description">
+
+                    Your item's textual content
+
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>created_at</td>
+
+                <td class = "type">
+
+                    <code>date_time</code>
+
+                </td>
+
+                <td class = "description">
+
+                    When this item was created
+
+
+                    <h5>Example</h5>
+                    2013-12-16T11:24:52+00:00
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>updated_at</td>
+
+                <td class = "type">
+
+                    <code>date_time</code>
+
+                </td>
+
+                <td class = "description">
+
+                    When this item was last updated
+
+
+                    <h5>Example</h5>
+                    2013-12-16T11:25:52+00:00
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>last_classified_at</td>
+
+                <td class = "type">
+
+                    <code>date_time</code>
+
+                </td>
+
+                <td class = "description">
+
+                    When this item was last classified by the system, or null if it hasn't been classified yet
+
+
+                    <h5>Example</h5>
+                    2013-12-16T11:25:52+00:00
+
+                
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>id</td>
+
+                <td class = "type">
+
+                    <code>string</code>
+
+                </td>
+
+                <td class = "description">
+
+                    A unique text/numeric id. You can use your own, or have Ingenia generate one for you
+
+
+                    <h5>Example</h5>
+                    785uU423aC
+
+                
+                </td>
+              </tr>
+
+
+            </tbody>
+            </table>
+        </div>
+
+
+        <div class = "example clear">
+          <h3>Example</h3>
+
+          <code class="prettyprint">{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":2013-12-16T11:25:07+00:00,"text":"How to get to scale with a saas startup in the UK? etc","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"topics":{"id":156, "tags": [{ "id":4352, "name":"startups"},{"id":7811, "name":"saas"},{"id":1327, "name":"marketing"}]}}, {"geography":{"id":622, "tags": [ {"id":3321, "name":"united kingdom"}]}}]}</code>
+        </div>
 
 
       </div>
@@ -504,83 +512,47 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
     
     <div class="row">
-      <h4>
-        Resources
-      </h4>
+      <h2>Resources</h2>
+      
 
       <div class = "resource items">
-        <h3 class = "resource-heading">
-          items
-        </h3>
+        <h3 class = "resource-heading" id='resource-items'>items</h3>
 
         <div class = "resource-body" >
-          <div class = "description">
-            Nuggets of textual content: somewhat self-contained and homogeneous.
-          </div>
+          <div class = "description">Blocks of textual content, typically self-contained and homogeneous</div>
 
           <div class = "requests">
-            <h4>
-              Requests
-            </h4>
+            <h4>Requests</h4>
+            
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-items-index" >
+                <h5>get</h5>
                 index
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /items
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/items</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  An index of all your items
+                  <h4>Description</h4>
+                  Returns a list of all your items
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -588,45 +560,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
                           limit
+
 
                         </td>
 
@@ -636,24 +571,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>50</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            How many results to return
+                            Return these many results
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>50</code>
+
 
                         </td>
                       </tr>
@@ -664,6 +589,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           full_text
 
+
                         </td>
 
                         <td class = "type">
@@ -672,22 +598,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Should the results be shown with all their text
+                            Show the results with all their text, however long
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
 
                         </td>
                       </tr>
@@ -698,6 +616,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           offset
 
+
                         </td>
 
                         <td class = "type">
@@ -706,24 +625,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>0</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Offset returned results by this amount
+                            Offset the results I receive by this amount
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
 
                         </td>
                       </tr>
@@ -737,64 +646,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-items-show" >
+                <h5>get</h5>
                 show
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /items/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/items/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  View a single item
+                  <h4>Description</h4>
+                  Returns a single item
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -802,7 +682,10 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          id
+
+
+                          <span class='text-muted'>required</span>
 
                         </td>
 
@@ -812,26 +695,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            Your API key
+                            The ID of the item you want to show
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
-                            hg7JHG6daSgf56FjhgsSa
+
+                            <h5>Example</h5>
+                            3casjghd67
 
                         </td>
                       </tr>
@@ -842,6 +713,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           full_text
 
+
                         </td>
 
                         <td class = "type">
@@ -850,60 +722,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Should the results be shown with all their text
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                        </td>
-                      </tr>
+                            Show the results with all their text, however long
 
 
-                      <tr>
-                        <td>
+                            <h5>Default</h5>
+                            <code>0</code>
 
-                          id
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            The ID of the item you want to show.
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            3casjghd67
 
                         </td>
                       </tr>
@@ -917,64 +743,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  post
-                </button>
+              <div class = "panel-heading" id="call-items-create" >
+                <h5>post</h5>
                 create
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /items
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/items</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  Create a new item
+                  <h4>Description</h4>
+                  Creates a new item
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -984,6 +781,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           file
 
+
                         </td>
 
                         <td class = "type">
@@ -992,22 +790,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+                            File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -1018,30 +805,21 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           update_existing
 
+
                         </td>
 
                         <td class = "type">
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>true</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            If the same text is sent, should the existing item be updated on Ingenia? If true then any tags supplied will overwrite those set on the existing item (default). If false, no data is changed and a response is returned with a 409 code (Conflict) together with the existing item as JSON.
+                            Choice of what to do if the text sent via a create call already exists on Ingenia. If true, the tags supplied will overwrite those on the existing item (default). If false, no data is modified and a response is returned with a 409 code (Conflict) together with the existing item as JSON.
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>true</code>
+
 
                         </td>
                       </tr>
@@ -1052,28 +830,21 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           classify
 
+
                         </td>
 
                         <td class = "type">
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Should the response also include a classification.
+                            If true, the response will also include a classification.
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
 
                         </td>
                       </tr>
@@ -1082,47 +853,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
 
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          <a href='#item'>
-                            item
-                          </a>
 
                         </td>
 
@@ -1130,22 +862,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            A text item
+                            A block of text to which you can associate tags
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -1159,64 +880,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  put
-                </button>
+              <div class = "panel-heading" id="call-items-update" >
+                <h5>put</h5>
                 update
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /items/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/items/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   Update an existing item
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1226,6 +918,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -1234,25 +929,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
                             The ID of the item you want to update.
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             3casjghd67
 
                         </td>
@@ -1262,47 +945,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
 
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          <a href='#item'>
-                            item
-                          </a>
 
                         </td>
 
@@ -1310,22 +954,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            A text item
+                            A block of text to which you can associate tags
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -1336,6 +969,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           file
 
+
                         </td>
 
                         <td class = "type">
@@ -1344,22 +978,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+                            File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -1373,64 +996,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  delete
-                </button>
+              <div class = "panel-heading" id="call-items-delete" >
+                <h5>delete</h5>
                 delete
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /items/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/items/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   Delete an existing item
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1440,21 +1034,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
 
                             <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
 
                         </td>
 
@@ -1462,55 +1049,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                             The ID of the item you want to delete.
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             3casjghd67
 
                         </td>
                       </tr>
 
 
-                      <tr>
-                        <td>
-
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
                     </tbody>
                     </table>
                 </div>
@@ -1519,83 +1066,51 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
           </div>
         </div>
       </div>
 
-      <div class = "resource tags">
-        <h3 class = "resource-heading">
-          tags
-        </h3>
+
+
+      <div class = "resource bundles">
+        <h3 class = "resource-heading" id='resource-bundles'>bundles</h3>
 
         <div class = "resource-body" >
-          <div class = "description">
-            Tags are meaningful words or expressions that you want to associate to some or all your content items.
-          </div>
+          <div class = "description">Groups of thematically consistent items</div>
 
           <div class = "requests">
-            <h4>
-              Requests
-            </h4>
+            <h4>Requests</h4>
+            
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-bundles-index" >
+                <h5>get</h5>
                 index
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tags
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  An index of all your tags
+                  <h4>Description</h4>
+                  Returns a list of all your bundles
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1603,45 +1118,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
                           limit
+
 
                         </td>
 
@@ -1651,24 +1129,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>50</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            How many results to return
+                            Return these many results
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>50</code>
+
 
                         </td>
                       </tr>
@@ -1679,6 +1147,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           offset
 
+
                         </td>
 
                         <td class = "type">
@@ -1687,24 +1156,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>0</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Offset returned results by this amount
+                            Offset the results I receive by this amount
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
 
                         </td>
                       </tr>
@@ -1718,64 +1177,509 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-bundles-show" >
+                <h5>get</h5>
                 show
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tags/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
+                  Returns a single bundle
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          id
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the bundle you want to show
+
+
+
+                            <h5>Example</h5>
+                            2314
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-bundles-find_by_name" >
+                <h5>get</h5>
+                find_by_name
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles/find_by_name</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Looks for a bundle that matches text input
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          text
+
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Text of bundle to look for
+
+
+
+                            <h5>Example</h5>
+                            "Tech Startups"
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-bundles-create" >
+                <h5>post</h5>
+                create
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Creates a new bundle
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          <a href='#json'>json</a>
+
+
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "description">
+
+                            A collection of items related to each other
+
+
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-bundles-update" >
+                <h5>put</h5>
+                update
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles/:id</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Update an existing bundle
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          id
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the bundle you want to update.
+
+
+
+                            <h5>Example</h5>
+                            5611
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+
+                          <a href='#json'>json</a>
+
+
+                        </td>
+
+                        <td class = "type">
+
+                        </td>
+
+                        <td class = "description">
+
+                            A collection of items related to each other
+
+
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-bundles-delete" >
+                <h5>delete</h5>
+                delete
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/bundles/:id</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Delete an existing bundle
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          id
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the bundle you want to delete.
+
+
+
+                            <h5>Example</h5>
+                            gqj78219nc
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class = "resource tags">
+        <h3 class = "resource-heading" id='resource-tags'>tags</h3>
+
+        <div class = "resource-body" >
+          <div class = "description">Tags are meaningful words or expressions that you want to associate to some of your items</div>
+
+          <div class = "requests">
+            <h4>Requests</h4>
+            
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tags-index" >
+                <h5>get</h5>
+                index
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tags</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  List all your tags
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          limit
+
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Return these many results
+
+
+                            <h5>Default</h5>
+                            <code>50</code>
+
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+
+                          offset
+
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Offset the results I receive by this amount
+
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tags-show" >
+                <h5>get</h5>
+                show
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tags/:id</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
                   View a single tag
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1785,6 +1689,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -1793,64 +1700,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the tag you want to show.
+                            The ID of the tag you want to show
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             42
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
 
                         </td>
                       </tr>
@@ -1864,64 +1721,103 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  post
-                </button>
+              <div class = "panel-heading" id="call-tags-find_by_name" >
+                <h5>get</h5>
+                find_by_name
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tags/find_by_name</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Looks for a tag that matches text input
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          text
+
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Text of tag to look for
+
+
+
+                            <h5>Example</h5>
+                            "Tech Startups"
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tags-create" >
+                <h5>post</h5>
                 create
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tags
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tags</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   Create a new tag
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1929,47 +1825,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
 
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          <a href='#tag'>
-                            tag
-                          </a>
 
                         </td>
 
@@ -1977,22 +1834,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            A JSON tag
+                            A tag
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -2006,64 +1852,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  put
-                </button>
+              <div class = "panel-heading" id="call-tags-update" >
+                <h5>put</h5>
                 update
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tags/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tags/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   Update an existing tag
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2073,6 +1890,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -2081,25 +1901,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the tag you want to update.
+                            The ID of the tag you want to update
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             42
 
                         </td>
@@ -2109,36 +1917,20 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
+
 
                         </td>
 
                         <td class = "type">
 
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
                         </td>
 
                         <td class = "description">
 
-                            Your API key
+                            A tag
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
-                            hg7JHG6daSgf56FjhgsSa
 
                         </td>
                       </tr>
@@ -2152,64 +1944,134 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  delete
-                </button>
+              <div class = "panel-heading" id="call-tags-merge" >
+                <h5>put</h5>
+                merge
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tags/:id</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Merge two or more existing tags
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          id
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the tag into which you want to merge other tags; the resulting tag will have this name
+
+
+
+                            <h5>Example</h5>
+                            42
+
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <td>
+
+                          tag_ids
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            An array of tag IDs that will be merged into the main tag
+
+
+
+                            <h5>Example</h5>
+                            [ 23, 43, 2113 ]
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tags-delete" >
+                <h5>delete</h5>
                 delete
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tags/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tags/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   Delete an existing tag
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2219,6 +2081,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -2227,64 +2092,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the tag you want to delete.
+                            The ID of the tag you want to delete
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             42
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
 
                         </td>
                       </tr>
@@ -2298,130 +2113,61 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
           </div>
         </div>
       </div>
 
+
+
       <div class = "resource tag_sets">
-        <h3 class = "resource-heading">
-          tag_sets
-        </h3>
+        <h3 class = "resource-heading" id='resource-tag_sets'>tag_sets</h3>
 
         <div class = "resource-body" >
-          <div class = "description">
-            Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc.
-          </div>
+          <div class = "description">Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc</div>
 
           <div class = "requests">
-            <h4>
-              Requests
-            </h4>
+            <h4>Requests</h4>
+            
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-tag_sets-index" >
+                <h5>get</h5>
                 index
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tag_sets
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  An index of all your Tag Sets
+                  <h4>Description</h4>
+                  List all your tag sets
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
-
-                      <tr>
-                        <td>
-
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
 
                       <tr>
                         <td>
 
                           limit
 
+
                         </td>
 
                         <td class = "type">
@@ -2430,24 +2176,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>50</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            How many results to return
+                            Return these many results
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>50</code>
+
 
                         </td>
                       </tr>
@@ -2458,6 +2194,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           offset
 
+
                         </td>
 
                         <td class = "type">
@@ -2466,24 +2203,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                            <code>0</code>
-
-                        </td>
-
-                        <td class = "required">
-
-                        </td>
-
                         <td class = "description">
 
-                            Offset returned results by this amount
+                            Offset the results I receive by this amount
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
+                            <h5>Default</h5>
+                            <code>0</code>
+
 
                         </td>
                       </tr>
@@ -2497,64 +2224,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  get
-                </button>
+              <div class = "panel-heading" id="call-tag_sets-show" >
+                <h5>get</h5>
                 show
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tag_sets/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  View a single Tag Set
+                  <h4>Description</h4>
+                  View a single tag set
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2564,6 +2262,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -2572,64 +2273,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the Tag Set you want to show.
+                            The ID of the tag set you want to show
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             412
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          api_key
-
-                        </td>
-
-                        <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
 
                         </td>
                       </tr>
@@ -2643,64 +2294,103 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  post
-                </button>
+              <div class = "panel-heading" id="call-tag_sets-find_by_name" >
+                <h5>get</h5>
+                find_by_name
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tag sets/find_by_name</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Looks for a tag set that matches text input
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          text
+
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>string</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            Text of tag set to look for
+
+
+
+                            <h5>Example</h5>
+                            "Tech Startups"
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag_sets-create" >
+                <h5>post</h5>
                 create
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tag_sets
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  Create a new Tag Set
+                  <h4>Description</h4>
+                  Create a new tag set
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2708,59 +2398,12 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
+
 
                         </td>
 
                         <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          <a href='#tag_set'>
-                            tag_set
-                          </a>
-
-                        </td>
-
-                        <td class = "type">
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
 
                         </td>
 
@@ -2768,10 +2411,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                             A tag set
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -2785,64 +2425,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  put
-                </button>
+              <div class = "panel-heading" id="call-tag_sets-update" >
+                <h5>put</h5>
                 update
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tag_sets/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  Update an existing Tag Set
+                  <h4>Description</h4>
+                  Update an existing tag set
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2852,6 +2463,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -2860,25 +2474,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the Tag Set you want to update.
+                            The ID of the tag set you want to update
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             412
 
                         </td>
@@ -2888,59 +2490,12 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          <a href='#json'>json</a>
+
 
                         </td>
 
                         <td class = "type">
-
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
-                        <td class = "description">
-
-                            Your API key
-
-                        </td>
-                        
-                        
-                        <td class = "example">
-
-                            hg7JHG6daSgf56FjhgsSa
-
-                        </td>
-                      </tr>
-
-
-                      <tr>
-                        <td>
-
-                          <a href='#tag_set'>
-                            tag_set
-                          </a>
-
-                        </td>
-
-                        <td class = "type">
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
 
                         </td>
 
@@ -2948,10 +2503,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                             A tag set
 
-                        </td>
-                        
-                        
-                        <td class = "example">
+
 
                         </td>
                       </tr>
@@ -2965,64 +2517,35 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  delete
-                </button>
-                delete
+              <div class = "panel-heading" id="call-tag_sets-merge" >
+                <h5>put</h5>
+                merge
               </div>
 
               <div class = "panel-body">
 
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  /tag_sets/:id
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets/:id</div>
 
 
 
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
-                  Delete an existing Tag Set
+                  <h4>Description</h4>
+                  Merge two or more existing tag sets
                 </div>
 
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -3032,6 +2555,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           id
 
+
+                          <span class='text-muted'>required</span>
+
                         </td>
 
                         <td class = "type">
@@ -3040,25 +2566,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         </td>
 
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
-
-                        </td>
-
                         <td class = "description">
 
-                            The ID of the Tag Set you want to delete.
+                            The ID of the tag set into which you want to merge the other tag sets; the resulting tag set will have this name
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
+
+                            <h5>Example</h5>
                             412
 
                         </td>
@@ -3068,36 +2582,27 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       <tr>
                         <td>
 
-                          api_key
+                          tag_set_ids
+
+
+                          <span class='text-muted'>required</span>
 
                         </td>
 
                         <td class = "type">
 
-                            <code>string</code>
-
-                        </td>
-
-                        <td class = "default">
-
-                        </td>
-
-                        <td class = "required">
-
-                            <span class='text-muted'>required</span>
+                            <code>integer</code>
 
                         </td>
 
                         <td class = "description">
 
-                            Your API key
+                            JSON encoded tag set IDs to merge into request tag set
 
-                        </td>
-                        
-                        
-                        <td class = "example">
 
-                            hg7JHG6daSgf56FjhgsSa
+
+                            <h5>Example</h5>
+                            [ 12, 34, 56 ]
 
                         </td>
                       </tr>
@@ -3111,11 +2616,195 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               </div>
             </div>
 
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag_sets-delete" >
+                <h5>delete</h5>
+                delete
+              </div>
+
+              <div class = "panel-body">
+
+                  <h4>Path</h4>
+                  <div class = "path well">/tag_sets/:id</div>
+
+
+
+                <div class = "description">
+                  <h4>Description</h4>
+                  Delete an existing tag set
+                </div>
+
+
+                <div class = "parameters">
+                  <h4>Parameters</h4>
+
+                  <table class = "table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>
+
+                          id
+
+
+                          <span class='text-muted'>required</span>
+
+                        </td>
+
+                        <td class = "type">
+
+                            <code>integer</code>
+
+                        </td>
+
+                        <td class = "description">
+
+                            The ID of the tag set you want to delete.
+
+
+
+                            <h5>Example</h5>
+                            412
+
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                    </table>
+                </div>
+
+
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
 
+
+
+			
+
     </div>    
   </div>
-</body>
-</html>
+  
+  <div class='navigation'>
+    
+    <ul>
+      <li>
+        <a href='#objects'>objects</a>
+        
+        <ul>
+
+          <li><a href="#object-bundle">bundle</a></li>
+
+          <li><a href="#object-item">item</a></li>
+
+          <li><a href="#object-tag">tag</a></li>
+
+          <li><a href="#object-tag_set">tag_set</a></li>
+
+          <li><a href="#object-item">item</a></li>
+
+        </ul>
+        
+      </li>
+      
+
+      <li>
+        <a href='#resource-items'>items</a>
+        
+        <ul>
+
+          <li><a href='#call-items-index'>index</a></li>
+
+          <li><a href='#call-items-show'>show</a></li>
+
+          <li><a href='#call-items-create'>create</a></li>
+
+          <li><a href='#call-items-update'>update</a></li>
+
+          <li><a href='#call-items-delete'>delete</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href='#resource-bundles'>bundles</a>
+        
+        <ul>
+
+          <li><a href='#call-bundles-index'>index</a></li>
+
+          <li><a href='#call-bundles-show'>show</a></li>
+
+          <li><a href='#call-bundles-find_by_name'>find_by_name</a></li>
+
+          <li><a href='#call-bundles-create'>create</a></li>
+
+          <li><a href='#call-bundles-update'>update</a></li>
+
+          <li><a href='#call-bundles-delete'>delete</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href='#resource-tags'>tags</a>
+        
+        <ul>
+
+          <li><a href='#call-tags-index'>index</a></li>
+
+          <li><a href='#call-tags-show'>show</a></li>
+
+          <li><a href='#call-tags-find_by_name'>find_by_name</a></li>
+
+          <li><a href='#call-tags-create'>create</a></li>
+
+          <li><a href='#call-tags-update'>update</a></li>
+
+          <li><a href='#call-tags-merge'>merge</a></li>
+
+          <li><a href='#call-tags-delete'>delete</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href='#resource-tag_sets'>tag_sets</a>
+        
+        <ul>
+
+          <li><a href='#call-tag_sets-index'>index</a></li>
+
+          <li><a href='#call-tag_sets-show'>show</a></li>
+
+          <li><a href='#call-tag_sets-find_by_name'>find_by_name</a></li>
+
+          <li><a href='#call-tag_sets-create'>create</a></li>
+
+          <li><a href='#call-tag_sets-update'>update</a></li>
+
+          <li><a href='#call-tag_sets-merge'>merge</a></li>
+
+          <li><a href='#call-tag_sets-delete'>delete</a></li>
+
+        </ul>
+      </li>
+
+      
+    </ul>
+  
+  </div>
+

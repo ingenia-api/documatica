@@ -1,89 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-  <script src="run_prettify.js"></script>
-<style>
-</style>
-
-</head>
-<body>
   <div class="container">
-    <div class="row">
-      <h1 class="title" >
-        <%= api.name %>
-      </h1>
-
-      <%- if api.description %>
-      <div class="description" >
-        <h4>
-          Description
-        </h4>
-        <%= api.description %>
-      </div>
-      <%- end %>
-
-      <%- if api.endpoint %>
-      <h4>
-        Endpoint
-      </h4>
-      <div class = "endpoint well"
-        <code>
-          <%= api.endpoint %>
-        </code>
-      </div>
-      <%- end %>
-    </div>
 
     <div class="row">
-      <h4>
-        Objects
-      </h4>
-    <%- api.objects.each do |o| %>
+      <h2 id='objects'>Objects</h2>
+      
+      <%- api.objects.each do |o| %>
       <div id="<%= o.name %>" class = "object <%= o.name %>">
-        <h3 class = "object-heading">
-          <%= o.name %>
-        </h3>
+        <h3 class = "object-heading" id="object-<%= o.name2 %>"><%= o.name2 %></h3>
 
         <div class = "parameters">
-          <h4>
-            Parameters
-          </h4>
+          <h3>Fields</h3>
 
           <table class = "table">
             <thead>
               <tr>
-                <th>
-                  Name
-                </th>
-
-                <th>
-                  Type
-                </th>
-
-                <th>
-                  Default
-                </th>
-
-                <th>
-                  
-                </th>
-
-                <th>
-                  Description
-                </th>
-
-                <th>
-                  Example
-                </th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
             <%- o.parameters.each do |parameter| %>
               <tr>
-                <td>
-                  <%= parameter.name %>
-                </td>
+                <td><%= parameter.name %></td>
 
                 <td class = "type">
                   <%- if parameter.type %>
@@ -91,132 +29,78 @@
                   <%- end %>
                 </td>
 
-                <td class = "default">
-                  <%- if parameter.default %>
-                    <code><%= parameter.default %></code>
-                  <%- end %>
-                </td>
-
-                <td class = "required">
-                  <%- if parameter.required %>
-                    <span class='text-muted'>required</span>
-                  <%- end %>
-                </td>
-
                 <td class = "description">
                   <%- if parameter.description %>
                     <%= parameter.description %>
                   <%- end %>
-                </td>
-                
-                
-                <td class = "example">
                   <%- if parameter.example %>
+                    <h5>Example</h5>
                     <%= parameter.example %>
                   <%- end %>
+                
                 </td>
               </tr>
 
-          <%- end %>
+            <%- end %>
             </tbody>
             </table>
         </div>
 
         <%- if o.example %>
         <div class = "example clear">
-          <h4>
-            Example
-          </h4>
+          <h3>Example</h3>
 
-          <code class="prettyprint">
-            <%= o.example %>
-          </code>
+          <code class="prettyprint"><%= o.example %></code>
         </div>
         <%- end %>
 
       </div>
-    <%- end %>
+      <%- end %>
     </div>
 
     
     <div class="row">
-      <h4>
-        Resources
-      </h4>
+      <h2>Resources</h2>
+      
       <%- api.resources.each do |resource| %>
       <div class = "resource <%= resource.name %>">
-        <h3 class = "resource-heading">
-          <%= resource.name %>
-        </h3>
+        <h3 class = "resource-heading" id='resource-<%= resource.name %>'><%= resource.name %></h3>
 
         <div class = "resource-body" >
-          <div class = "description">
-            <%= resource.description %>
-          </div>
+          <div class = "description"><%= resource.description %></div>
 
           <div class = "requests">
-            <h4>
-              Requests
-            </h4>
+            <h4>Requests</h4>
+            
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
-              <div class = "panel-heading">
-                <button class = "btn btn-default disabled">
-                  <%= req.call_type %>
-                </button>
+              <div class = "panel-heading" id="call-<%= resource.name %>-<%= req.name %>" >
+                <h5><%= req.call_type %></h5>
                 <%= req.name %>
               </div>
 
               <div class = "panel-body">
                 <%- if req.path %>
-                <h4>
-                  Path
-                </h4>
-                <div class = "path well">
-                  <%= req.path %>
-                </div>
+                  <h4>Path</h4>
+                  <div class = "path well"><%= req.path %></div>
                 <%- end %>
 
                 <%- if req.description %>
                 <div class = "description">
-                  <h4>
-                    Description
-                  </h4>
+                  <h4>Description</h4>
                   <%= req.description %>
                 </div>
                 <%- end %>
 
                 <div class = "parameters">
-                  <h4>
-                    Parameters
-                  </h4>
+                  <h4>Parameters</h4>
 
                   <table class = "table">
                     <thead>
                       <tr>
-                        <th>
-                          Name
-                        </th>
-
-                        <th>
-                          Type
-                        </th>
-
-                        <th>
-                          Default
-                        </th>
-
-                        <th>
-                          
-                        </th>
-
-                        <th>
-                          Description
-                        </th>
-
-                        <th>
-                          Example
-                        </th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -224,11 +108,12 @@
                       <tr>
                         <td>
                         <%- if parameter.class == DocSmoosher::ApiObject %>
-                          <a href='#<%= parameter.name %>'>
-                            <%= parameter.name %>
-                          </a>
+                          <a href='#<%= parameter.name %>'><%= parameter.name %></a>
                         <%- else %>
                           <%= parameter.name %>
+                        <%- end %>
+                        <%- if parameter.required %>
+                          <span class='text-muted'>required</span>
                         <%- end %>
                         </td>
 
@@ -238,33 +123,22 @@
                           <%- end %>
                         </td>
 
-                        <td class = "default">
-                          <%- if parameter.default %>
-                            <code><%= parameter.default %></code>
-                          <%- end %>
-                        </td>
-
-                        <td class = "required">
-                          <%- if parameter.required %>
-                            <span class='text-muted'>required</span>
-                          <%- end %>
-                        </td>
-
                         <td class = "description">
                           <%- if parameter.description %>
                             <%= parameter.description %>
                           <%- end %>
-                        </td>
-                        
-                        
-                        <td class = "example">
+                          <%- if parameter.default %>
+                            <h5>Default</h5>
+                            <code><%= parameter.default %></code>
+                          <%- end %>
                           <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
+                            <h5>Example</h5>
                             <%= parameter.example %>
                           <%- end %>
                         </td>
                       </tr>
 
-                  <%- end %>
+                    <%- end %>
                     </tbody>
                     </table>
                 </div>
@@ -282,12 +156,46 @@
                 <%- end %>
               </div>
             </div>
+
             <%- end %>
           </div>
         </div>
       </div>
+
+
       <%- end %>
+			
+
     </div>    
   </div>
-</body>
-</html>
+  
+  <div class='navigation'>
+    
+    <ul>
+      <li>
+        <a href='#objects'>objects</a>
+        
+        <ul>
+        <%- api.objects.each do |o| %>
+          <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
+        <%- end %>
+        </ul>
+        
+      </li>
+      
+      <%- api.resources.each do |resource| %>
+      <li>
+        <a href='#resource-<%= resource.name %>'><%= resource.name %></a>
+        
+        <ul>
+          <%- resource.requests.each do |req| %>
+          <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
+          <%- end %>
+        </ul>
+      </li>
+      <%- end %>
+      
+    </ul>
+  
+  </div>
+

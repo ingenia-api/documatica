@@ -1,6 +1,7 @@
 module DocSmoosher
   class Api < ApiObject
-    attr_accessor :endpoint, :version, :format, :resources, :resquests, :objects
+
+    attr_accessor :endpoint, :version, :format
 
     def resources
       @resources ||= []
@@ -39,7 +40,6 @@ module DocSmoosher
     def initialize(params = {}, &block)
       super(params)
     end
-
 
     def as_json(options={})
       {

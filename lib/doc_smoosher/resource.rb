@@ -20,6 +20,10 @@ module DocSmoosher
       r
     end
 
+		def response( params = {}, &block)
+			responses << Response.new( params, &block )
+		end
+
 
     def as_json(options={})
       json = super
