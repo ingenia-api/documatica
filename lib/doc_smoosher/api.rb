@@ -11,12 +11,18 @@ module DocSmoosher
       @objects ||= []
     end
 
-    def resquests
-      @resquests ||= []
+    def intros
+      @intros ||= []
+    end
+    
+    def requests
+      @requests ||= []
     end
 
     def request( params = {}, &block )
-
+      r = Request.new( params, &block )
+      requests << r unless requests.include?(r)
+      r
     end
 
     def resource( params = {}, &block )
@@ -36,6 +42,19 @@ module DocSmoosher
       objects << o unless objects.include?(o)
       o
     end
+
+
+    def intro( params = {}, &block )
+      if params.class == Intro
+        o = params
+      else
+        o = Intro.new( params, &block )
+      end
+      
+      intros << o unless intros.include?(o)
+      o
+    end
+
 
     def initialize(params = {}, &block)
       super(params)

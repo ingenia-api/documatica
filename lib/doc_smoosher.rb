@@ -29,8 +29,14 @@ module DocSmoosher
 
     def define_object(params = {}, &block)
       object = ApiObject.new( params, &block )
-      objects << object unless resources.include?(object)
+      objects << object unless objects.include?(object)
       object
+    end
+
+    def define_intro(params = {}, &block)
+      intro = Intro.new( params, &block )
+      intros << intro unless intros.include?(intro)
+      intro
     end
 
     def api
@@ -51,6 +57,10 @@ module DocSmoosher
 
     def objects
       @@objects ||= []
+    end
+
+    def intros
+      @@intros ||= []
     end
   end
 

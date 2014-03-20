@@ -4,13 +4,27 @@
 
   <div class="container">
 
+  <div class="document_container">
+
     <div class="row">
-      <h2 id='objects' class="top_h2">Objects</h2>
+      
+      <h2 id="objects" class="top_h2">Getting started</h2>
+
+
+
+
+    </div>
+
+
+
+    <div class="row">
+
+      <h2 id='objects' class="">Objects</h2>
       
       <%- api.objects.each do |o| %>
       <div id="<%= o.name %>" class = "object <%= o.name %>">
         <h3 class = "object-heading" id="object-<%= o.name2 %>"><%= o.name2 %></h3>
-
+        <p><%= o.description%> </p>
         <div class = "parameters">
           <h4>Fields</h4>
 
@@ -171,37 +185,41 @@
 
       <%- end %>
       
-
-    </div>    
+    </div>
   </div>
+        
+
   
-  <div class='navigation'>
-    
-    <ul>
-      <li>
-        <a id="objects_link" href='#objects'>objects</a>
-        
-        <ul class="objects_items">
-        <%- api.objects.each do |o| %>
-          <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
-        <%- end %>
-        </ul>
-        
-      </li>
+  <div class="nav_container">
+    <div class='navigation'>
       
-      <%- api.resources.each do |resource| %>
-      <li>
-        <a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>
-        
-        <ul class="resource-<%= resource.name %>">
-          <%- resource.requests.each do |req| %>
-          <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
+      <ul>
+        <li>
+          <a id="objects_link" href='#objects'>Objects</a>
+          
+          <ul class="objects_items">
+          <%- api.objects.each do |o| %>
+            <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
           <%- end %>
-        </ul>
-      </li>
-      <%- end %>
-      
-    </ul>
-  
+          </ul>
+          
+        </li>
+        
+        <%- api.resources.each do |resource| %>
+        <li>
+          <a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>
+          
+          <ul class="resource-<%= resource.name %>">
+            <%- resource.requests.each do |req| %>
+            <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
+            <%- end %>
+          </ul>
+        </li>
+        <%- end %>
+        
+      </ul>
+    
+    </div>
   </div>
 
+  </div>
