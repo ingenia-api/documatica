@@ -8,11 +8,11 @@
 
     <div id="reference" class="has_side_menu">
 
-      <div class="row">
+      <div class="stanza">
         
         <h2 id="objects" class="top_h2">Getting started. <small>Version <%= api.version %></small></h2>
 
-
+        <%= api.description %> 
 
         <h2>Endpoint</h2>
 
@@ -24,7 +24,7 @@
       </div>
 
 
-      <div class="row">
+      <div class="stanza">
 
         <h2 id='objects' class="">Data structures</h2>
         
@@ -95,7 +95,7 @@
       </div>
 
       
-      <div class="row">
+      <div class="stanza">
         <h2>API calls</h2>
         
         <%- api.resources.each do |resource| %>
