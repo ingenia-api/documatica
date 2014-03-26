@@ -12,20 +12,18 @@ module DocSmoosher
       end
     end
 
-		def name
-		  
-		  case @name
-		  when 'item' then 'json'
-		  when 'tag_set' then 'json'
- 		  when 'bundle' then 'json'
- 		  when 'tag' then 'json'
- 		  else @name
- 		  end
+    def this_is_json!
+      @as_json = true
+    end
+
+		def param_name
+		  @as_json ? 'json' : @name
     end
     
-    def name2
-      @name
+
+    def html_name
+      @name.downcase.gsub(/[ \/]/, '-')
     end
-    
+
   end
 end

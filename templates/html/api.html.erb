@@ -14,23 +14,19 @@
 
         <%= api.description %> 
 
-        <h2>Endpoint</h2>
+        <h3 id="api-endpoint">Endpoint</h3>
 
         <p>All calls are made with the following end point</p>
 
         <code><%= api.endpoint %></code>
 
         <p>Both HTTP and HTTPS are supported as protocols. JSON is the data encapsulation format</p>
-      </div>
 
+        <p>&nbsp;</p>
 
-      <div class="stanza">
-
-        <h2 id='objects' class="">Data structures</h2>
-        
-        <%- api.objects.each do |o| %>
-        <div id="<%= o.name %>" class = "object <%= o.name %>">
-          <h3 class = "object-heading" id="object-<%= o.name2 %>"><%= o.name2 %></h3>
+        <%- o = api.objects.first  %>
+        <div id="api-<%= o.html_name %>" class = "object <%= o.html_name %>">
+          <h3 class = "object-heading" id="object-<%= o.html_name %>"><%= o.name %></h3>
 
           <p><%= o.description%> </p>
 
@@ -39,20 +35,20 @@
           <% end %>
 
           <div class = "parameters">
-            <h4>Fields</h4>
+            <h5>Fields</h5>
 
             <table class = "table">
               <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                </tr>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
               </thead>
               <tbody>
               <%- o.parameters.each do |parameter| %>
                 <tr>
-                  <td><%= parameter.name %></td>
+                  <td><%= parameter.param_name %></td>
 
                   <td class = "type">
                     <%- if parameter.type %>
@@ -69,7 +65,76 @@
                       <h6>Example</h6>
                       <p class="example_code"><%= parameter.example %></p>
                     <%- end %>
-                  
+                  </td>
+                </tr>
+
+              <%- end %>
+              </tbody>
+            </table>
+            <% if o.footnote %>
+              <h5>Notes</h5>
+              <p class='footnote'><%= o.footnote %></p>
+            <% end %>
+          </div>
+
+          <%- if o.example %>
+            <div class = "example clear">
+              <h4>Example</h4>
+
+              <pre class="prettyprint"><%= o.example %></pre>
+            </div>
+          <%- end %>
+
+      </div>
+      </div>
+
+
+      <div class="stanza">
+        <p>&nbsp;</p>
+
+        <h2 id='objects' class="">Data structures</h2>
+        
+        <%- api.objects[1..api.objects.size].each do |o| %>
+        <div id="<%= o.html_name %>" class = "object <%= o.html_name %>">
+          <h3 class = "object-heading" id="object-<%= o.html_name %>"><%= o.name %></h3>
+
+          <p><%= o.description%> </p>
+
+          <% if o.subtitle %>
+            <h4><%= o.subtitle %></h4>
+          <% end %>
+
+          <div class = "parameters">
+            <h5>Fields</h5>
+
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+              <%- o.parameters.each do |parameter| %>
+                <tr>
+                  <td><%= parameter.param_name %></td>
+
+                  <td class = "type">
+                    <%- if parameter.type %>
+                      <code><%= parameter.type %></code>
+                    <%- end %>
+                  </td>
+
+                  <td class = "description">
+                    <%- if parameter.description %>
+                      <%= parameter.description %>
+                    <%- end %>
+                    <%- if parameter.example %>
+                      <br/><br/>
+                      <h5>Example</h5>
+                      <p class="example_code"><%= parameter.example %></p>
+                    <%- end %>
                   </td>
                 </tr>
 
@@ -84,7 +149,7 @@
 
           <%- if o.example %>
           <div class = "example clear">
-            <h4>Example</h4>
+            <h5>Example</h5>
 
             <pre class="prettyprint"><%= o.example %></pre>
           </div>
@@ -94,12 +159,18 @@
         <%- end %>
       </div>
 
-    
+
     <div class="stanza">
+      <p>&nbsp;</p>
+
       <h2>API calls</h2>
+      <p>
+        The Ingenia API allows developers to create, retrieve, update, and delete all resources.
+       </p>
       
       <%- api.resources.each do |resource| %>
-      <div class = "resource <%= resource.name %>">
+
+        <div class = "resource <%= resource.name %>">
         <h3 class = "resource-heading" id='resource-<%= resource.name %>'><%= resource.name %></h3>
 
         <div class = "resource-body" >
@@ -109,7 +180,7 @@
             
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-<%= resource.name %>-<%= req.name %>" >
+              <div class = "panel-heading" id="call-<%= resource.html_name %>-<%= req.html_name %>" >
                  <h5><%= req.name %></h5>
               </div>
 
@@ -144,9 +215,9 @@
                         <tr>
                           <td>
                           <%- if parameter.class == DocSmoosher::ApiObject %>
-                            <a href='#<%= parameter.name %>'><%= parameter.name %></a>
+                            <a href='#<%= parameter.html_name %>'><%= parameter.param_name %></a>
                           <%- else %>
-                            <%= parameter.name %>
+                            <%= parameter.param_name %>
                           <%- end %>
                           <%- if parameter.required %>
                             <span class='text-muted'>required</span>
@@ -170,7 +241,7 @@
                             <%- end %>
                             <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
                               <br/><br/>
-                              <h6>Example</h6>
+                              <h5>Example</h5>
                               <p class="example_code"><%= parameter.example %></p>
                             <%- end %>
                           </td>
@@ -183,13 +254,10 @@
 
                   <%- if req.response %>
                   <div class = "response">
-                    <h4>
-                      Response
-                    </h4>
+                    <h4>Response</h4>
 
-                    <div class = 'well'>
-                    <%= req.response.to_json %>
-                    </div>
+                    <p>See <a href="#object-<%= req.response.html_name %>"><%= req.response.name %></a></p>
+
                   </div>
                   <%- end %>
                 </div>
@@ -211,24 +279,34 @@
     <div id="navigation" class="is_side_menu">
 
       <ul id="sections">
+        <li class="title expandable" data-submenuid='menu_getting_started'>Getting started with Ingenia</li>
+        <li class="options">
+          <ul id="menu_getting_started">
+            <li><a href="#api-libraries">API libraries</a></li>
+            <li><a href="#api-rate-limiting">Rate limiting</a></li>
+            <li><a href="#api-endpoint">Endpoint</a></li>
+            <li><a href="#api-basic-response-format">Basic response format</a></li>
+          </ul>
+        </li>
+
+
+
         <li class="title expandable" data-submenuid='menu_object_items'>Data Structures</li>
         <li class="options">
 
           <ul id="menu_object_items">
-          <%- api.objects.each do |o| %>
-            <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
+          <%- api.objects[1..api.objects.size].each do |o| %>
+            <li><a href="#object-<%= o.html_name %>"><%= o.name %></a></li>
           <%- end %>
           </ul>
-          
         </li>
-        
+
         <%- api.resources.each do |resource| %>
-          <li class="title expandable" data-submenuid="menu_<%= resource.name %>"><%= resource.name %></li>
-            <!--<a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>-->
+          <li class="title expandable" data-submenuid="menu_<%= resource.html_name %>"><%= resource.name %></li>
           <li class="options">
-            <ul id="menu_<%= resource.name %>">
+            <ul id="menu_<%= resource.html_name %>">
               <%- resource.requests.each do |req| %>
-              <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
+              <li><a href='#call-<%= resource.html_name %>-<%= req.html_name %>'><%= req.name %></a></li>
               <%- end %>
             </ul>
           </li>
