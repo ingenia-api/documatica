@@ -6,15 +6,13 @@
 <div id="main_content">
   <div class="container_960">
 
-  <div id="reference" class="has_side_menu">
+    <div id="reference" class="has_side_menu">
 
-    <div class="row">
-      
+    <div class="stanza">
       <h2 id="objects" class="top_h2">Getting started</h2>
-
     </div>
 
-    <div class="row">
+    <div class="stanza">
 
       <h2 id='objects' class="">Data structures</h2>
       
@@ -85,7 +83,7 @@
     </div>
 
     
-    <div class="row">
+    <div class="stanza">
       <h2>API calls</h2>
       
       <%- api.resources.each do |resource| %>
@@ -100,17 +98,18 @@
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
               <div class = "panel-heading" id="call-<%= resource.name %>-<%= req.name %>" >
-                <code class="get_post"><%= req.call_type %></code>
-                <h5><%= req.name %></h5>
+                 <h5><%= req.name %></h5>
               </div>
 
               <div class = "panel-body">
                 <%- if req.path %>
                   <h5>Path</h5>
-                  <div class = "path well"><%= req.path %></div>
+
+                    <div class = "path"> <%= req.call_type.upcase %> <%= api.endpoint.sub( /\/?$/, '') %><%= req.path %></div>
+
                 <%- end %>
 
-                <%- if req.description %>
+                <%- if req.description.present? %>
                 <div class = "description">
                   <h5>Description</h5>
                   <%= req.description %>
@@ -196,10 +195,8 @@
       
     </div>
   </div>
-        
 
-
-  <div id="navigation" class="is_side_menu">
+    <div id="navigation" class="is_side_menu">
 
       <ul id="sections">
         <li class="title expandable" data-submenuid='menu_object_items'>Data Structures</li>
