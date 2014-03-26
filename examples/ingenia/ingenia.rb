@@ -1017,7 +1017,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     r.request name: 'status' do |req|
       req.description = 'Use this to test your API key, see [status call] for details'
       req.call_type = :get
-      req.path = 'https://api.ingeniapi.com/status?api_key=<API KEY>'
+      req.path = '/status'
 
       req.parameter name: 'total_items' do |p|
         p.description = 'Number of items you have created'
@@ -1069,7 +1069,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     r.request name: 'clear_data' do |req|
       req.description = 'View a single tag set'
       req.call_type = :post
-      req.path = 'https://api.ingeniapi.com/clear_data?api_key=<API KEY>'
+      req.path = '/clear_data'
 
       req.parameter name: 'item_count' do |p|
         p.description = 'Number of items you have that are about to be deleted'
