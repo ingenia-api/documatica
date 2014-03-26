@@ -10,9 +10,18 @@
 
     <div class="row">
       
-      <h2 id="objects" class="top_h2">Getting started</h2>
+      <h2 id="objects" class="top_h2">Getting started. <small>Version <%= api.version %></small></h2>
 
-    </div>
+
+
+    <h2>Endpoint</h2>
+
+    <p>All calls are made with the following end point</p>
+
+    <code><%= api.endpoint %></code>
+
+    <p>Both HTTP and HTTPS are supported as protocols. JSON is the data encapsulation format</p>
+
 
     <div class="row">
 
@@ -168,8 +177,6 @@
                     <%- end %>
                     </tbody>
                     </table>
-
-
                 </div>
 
                 <%- if req.response %>
@@ -210,6 +217,7 @@
             <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
           <%- end %>
           </ul>
+          
         </li>
         
         <%- api.resources.each do |resource| %>
