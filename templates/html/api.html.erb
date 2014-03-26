@@ -1,21 +1,18 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css"> 
-<script type="text/javascript" src="/javascripts/navigation.js"></script> 
+<link rel="stylesheet" type="text/css" href="http://localhost:3000/stylesheets/front_style.css">
+<script type="text/javascript" src="/javascripts/navigation.js"></script>
+<script type="text/javascript" src="/javascripts/menu_manager.js"></script>
 
-  <div class="container">
+<div id="main_content">
+  <div class="container_960">
 
-  <div class="document_container">
+  <div id="reference" class="has_side_menu">
 
     <div class="row">
       
       <h2 id="objects" class="top_h2">Getting started</h2>
 
-
-
-
     </div>
-
-
 
     <div class="row">
 
@@ -166,6 +163,8 @@
                     <%- end %>
                     </tbody>
                     </table>
+
+
                 </div>
 
                 <%- if req.response %>
@@ -194,37 +193,35 @@
   </div>
         
 
-  
-  <div class="nav_container">
-    <div class='navigation'>
-      
-      <ul>
-        <li>
-          <a id="objects_link" href='#objects'>Objects</a>
-          
-          <ul class="objects_items">
+
+  <div id="navigation" class="is_side_menu">
+
+      <ul id="sections">
+        <li class="title expandable" data-submenuid='menu_object_items'>Data Items</li>
+        <li class="options">
+
+          <ul id="menu_object_items">
           <%- api.objects.each do |o| %>
             <li><a href="#object-<%= o.name2 %>"><%= o.name2 %></a></li>
           <%- end %>
           </ul>
-          
         </li>
         
         <%- api.resources.each do |resource| %>
-        <li>
-          <a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>
-          
-          <ul class="resource-<%= resource.name %>">
-            <%- resource.requests.each do |req| %>
-            <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
-            <%- end %>
-          </ul>
-        </li>
+          <li class="title expandable" data-submenuid="menu_<%= resource.name %>"><%= resource.name %></li>
+            <!--<a id="<%= resource.name %>_link" href='#resource-<%= resource.name %>'><%= resource.name %></a>-->
+          <li class="options">
+            <ul id="menu_<%= resource.name %>">
+              <%- resource.requests.each do |req| %>
+              <li><a href='#call-<%= resource.name %>-<%= req.name %>'><%= req.name %></a></li>
+              <%- end %>
+            </ul>
+          </li>
         <%- end %>
-        
+
       </ul>
-    
+      <a href="/documentation?version=1">V1 documentation</a>
+
     </div>
   </div>
-
-  </div>
+</div>
