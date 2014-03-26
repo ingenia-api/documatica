@@ -88,7 +88,9 @@ json_bundle = define_object( name: 'Bundle' ) do |bundle|
 end
 
 # Item JSON POST form
-json_item = define_object( name: 'Item' ) do |item|
+json_item = define_object( name: 'Item create/update input' ) do |item|
+
+  item.description = "A block of text to which you can associate tags"
 
   item.parameter name: 'id' do |p|
     p.description = 'A unique text/numeric id. You can use your own, or have Ingenia generate one for you'
@@ -97,11 +99,9 @@ json_item = define_object( name: 'Item' ) do |item|
     p.example = '785uU423aC'
   end
 
-  item.description = "A block of text to which you can associate tags"
   item.parameter name: 'text' do |p|
     p.description = 'Your item\'s content'
     p.type = :string
-    p.max = 50_000
   end
 
   item.parameter name: 'bundle_id' do |p|
@@ -112,32 +112,39 @@ json_item = define_object( name: 'Item' ) do |item|
   end
 
   item.parameter name: 'tags' do |p|
-    p.description = "The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist"
+    p.description = "The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. (Note 1)"
     p.type = :array
     p.example = '[ "startups", "saas", "marketing" ]'
   end
 
   item.parameter name: 'tag_ids' do |p|
-    p.description = "The Ingenia IDs of the tags you want to have associated with this item"
+    p.description = "The Ingenia IDs of the tags you want to have associated with this item. (Note 1)"
     p.type = :array
     p.example = '[ 45, 787, 23 ]'
   end
 
   item.parameter name: 'tag_sets' do |p|
-    p.description = "Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set"
+    p.description = "Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. (Note 1)"
     p.type = :hash
     p.example = '{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }'
   end
+
+  item.footnote = "Note 1: Only specify one of the following: tags, tag_ids or tag_sets"
 
   #item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":2013-12-16T11:25:07+00:00,"text":"How to get to scale with a saas startup in the UK? etc","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"topics":{"id":156, "tags": [{ "id":4352, "name":"startups"},{"id":7811, "name":"saas"},{"id":1327, "name":"marketing"}]}}, {"geography":{"id":622, "tags": [ {"id":3321, "name":"united kingdom"}]}}]}'
 end
 
 # Item JSON get form
-json_item_show = define_object( name: 'Item' ) do |item|
+json_item_show = define_object( name: 'Item show output' ) do |item|
+  item.parameter name: 'id' do |p|
+    p.description = 'A unique text/numeric id. You can use your own, or have Ingenia generate one for you'
+    p.type = :string
+    p.example = '785uU423aC'
+  end
+
   item.parameter name: 'text' do |p|
     p.description = 'Your item\'s textual content'
     p.type = :string
-    p.max = 50_000
   end
 
   item.parameter name: 'created_at' do |p|
@@ -145,22 +152,20 @@ json_item_show = define_object( name: 'Item' ) do |item|
     p.type = :date_time
     p.example = '2013-12-16T11:24:52+00:00'
   end
+
+  #We should probably not show this to the user
   item.parameter name: 'updated_at' do |p|
     p.description = 'When this item was last updated'
     p.type = :date_time
     p.example = '2013-12-16T11:25:52+00:00'
   end
+
   item.parameter name: 'last_classified_at' do |p|
     p.description = 'When this item was last classified by the system, or null if it hasn\'t been classified yet'
     p.type = :date_time
     p.example = '2013-12-16T11:25:52+00:00'
   end
 
-  item.parameter name: 'id' do |p|
-    p.description = 'A unique text/numeric id. You can use your own, or have Ingenia generate one for you'
-    p.type = :string
-    p.example = '785uU423aC'
-  end
 
   item.example = '
   {
@@ -179,15 +184,20 @@ json_item_show = define_object( name: 'Item' ) do |item|
               [
                 { 
                   "id":4352, 
-                  "name":"startups"
+                  "name":"startups",
+                  "score":"0.8",
+                  "user_selected": "f"
                 },
                 { 
                   "id":7811, 
-                  "name":"saas"
+                  "name":"saas",
+                  "score":"0.45",
+                  "user_selected": "t"
                 },
                 { 
                   "id":1327, 
-                  "name":"marketing"
+                  "name":"marketing",
+                  "user_selected": "t"
                 }
               ]
           }
@@ -200,7 +210,9 @@ json_item_show = define_object( name: 'Item' ) do |item|
               [ 
                 {
                   "id":3321, 
-                  "name":"united kingdom"
+                  "name":"united kingdom",
+                  "score":"0.37",
+                  "user_selected": "f"
                 }
               ]
           }
@@ -210,11 +222,13 @@ json_item_show = define_object( name: 'Item' ) do |item|
 end
 
 # Tag JSON POST form
-json_tag = define_object( name: 'Tag' ) do |tag|
+json_tag = define_object( name: 'Tag create/update input' ) do |tag|
   tag.description = "A tag"
+
   tag.parameter name: 'name' do |p|
     p.description = 'The name of your tag'
     p.type = :string
+    p.required = true
   end
 
   tag.parameter name: 'tag_set_id' do |p|
@@ -242,13 +256,62 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
   tag.example = '
   {
-    "confidence":0.0,
-    "consistency":0.0,
-    "created_at":"2014-03-13T12:59:32Z",
     "description":"",
+    "name":"Text Analytics",
+    "tag_set_id":37874,
+    "disposition": 0.3
+  }'
+end
+
+json_tag_show = define_object( name: 'Tag show output' ) do |tag|
+  tag.description = "A tag"
+
+  tag.parameter name: 'confidence' do |p|
+    p.description = "Higher if Ingenia understands this tag; from 0 to 1"
+    p.type = :float
+  end
+
+  tag.parameter name: 'consistency' do |p|
+    p.description = "Higher if the tag has been applied to items that are very similar to one another; from 0 to 1"
+    p.type = :float
+  end
+
+  tag.parameter name: 'description' do |p|
+    p.description = "A description of this tag"
+    p.type = :string
+  end
+
+  tag.parameter name: 'disposition' do |p|
+    p.description = "The disposition of the tag. Float value between 0 and 1, defaults to 0.5. Lower values will tend to privilege precision (we suggest 0.25); higher values will tend to privilege recall (we suggest 0.75). For most uses, the default value will work well.
+
+You will want to privilege precision (with a disposition < 0.5) if you want each tag assignment to be accurate, and are less worried about some items being missed, i.e., you prefer to have false negatives than false positives. If the disposition is 0, no item will be tagged with this tag.
+
+You will want to privilege recall (with a disposition > 0.5) if you want each tag assignment to occur, and are less worried about some items being tagged incorrectly, i.e., you prefer to have false positives than false negatives. If the disposition is 1, all items will be tagged with this tag."
+    p.type = :float
+    p.example = 0.75
+  end
+
+  tag.parameter name: 'name' do |p|
+    p.description = 'The name of your tag'
+    p.type = :string
+  end
+
+  tag.parameter name: 'tag_set_id' do |p|
+    p.description = 'The ID of the tag_set to which this tag belongs'
+    p.type = :integer
+    p.example = '3787'
+  end
+
+
+  tag.example = '
+  {
     "id":554273,
+    "confidence":0.95,
+    "consistency":0.92,
+    "description":"",
     "name":"Text Analytics",
     "tag_set_id":8547,
+    "created_at":"2014-03-13T12:59:32Z",
     "updated_at":"2014-03-13T12:59:32Z"
   }'
 end
@@ -344,6 +407,7 @@ define_api( name: 'Ingenia API' ) do |api|
   api.object json_item 
   api.object json_item_show 
   api.object json_tag 
+  api.object json_tag_show
   api.object json_tag_set
   api.object json_classify 
 
@@ -611,6 +675,8 @@ define_api( name: 'Ingenia API' ) do |api|
         p.description = 'If true, the response will also include a classification.'
         p.default = '0'
       end
+
+
 
       #req.parameter api_key
       req.parameter json_item

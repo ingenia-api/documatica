@@ -1,6 +1,6 @@
 module DocSmoosher
   class ApiObject
-    attr_accessor :name, :description, :example, :type, :required, :default
+    attr_accessor :name, :description, :example, :type, :required, :default, :footnote
 
     include DocSmoosher::Parameters
 
