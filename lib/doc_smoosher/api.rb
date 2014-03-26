@@ -11,12 +11,12 @@ module DocSmoosher
       @objects ||= []
     end
 
-    def intros
-      @intros ||= []
-    end
-    
     def requests
       @requests ||= []
+    end
+
+    def bare_calls
+      @bare_calls ||= []
     end
 
     def request( params = {}, &block )
@@ -31,6 +31,12 @@ module DocSmoosher
       r
     end
 
+    def bare_call( params = {}, &block )
+      r = BareCall.new( params, &block )
+      bare_calls << r unless bare_calls.include?(r)
+      r 
+    end
+
 
     def object( params = {}, &block )
       if params.class == ApiObject
@@ -40,18 +46,6 @@ module DocSmoosher
       end
       
       objects << o unless objects.include?(o)
-      o
-    end
-
-
-    def intro( params = {}, &block )
-      if params.class == Intro
-        o = params
-      else
-        o = Intro.new( params, &block )
-      end
-      
-      intros << o unless intros.include?(o)
       o
     end
 

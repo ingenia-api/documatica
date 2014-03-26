@@ -37,37 +37,31 @@ end
 # Introduction 
 #
 
-json_intro = define_object( name: 'Getting started with Ingenia' ) do |intro|
-  intro.description = '
+DESCRIPTION =<<-DESC
+  <p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
 
-<p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
+  <p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
 
-<p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
+  <p> Go through the documentation and choose if you want to use Ingenia by the API or with one of the libraries. </p>
 
-<p> Go through the documentation and choose if you want to use Ingenia by the API or with one of the libraries. </p>
+  <p> <a href="/contact"> Contact us </a> to get your API key or if you have any questions.</p>
 
-<p> <a href="/contact"> Contact us </a> to get your API key or if you have any questions.</p>
+  <p>If you would like to verify your API key or code data path then use the <a href="#call-Administrative_Calls-status">status</a> call.</p>
 
-<p>If you would like to verify your API key or code data path then use the status call.</p>
+  <h3>API libraries</h3>
 
-<h3>API libraries</h3>
+  <h4>Ruby</h4>
+  <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
 
-<h4>Ruby</h4>
-<a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
+  <h4>Javascript</h4>
 
-<h4>Javascript</h4>
+  <p>See <a href="/pages/javascript"> javascript examples </a> for document on how to use APIs from client based applications.</p>
 
-<p>See <a href="/pages/javascript"> javascript examples </a> for document on how to use APIs from client based applications.</p>
+  <h3>Rate limiting</h3>
 
-<h3>Rate limiting</h3>
+  <p>Ingenia by default limits a user to 4 calls per second, for every type of API call. Contact us to have this limit increased or removed if needed. </p>
+DESC
 
-<p>Ingenia by default limits a user to 4 calls per second, for every type of API call. This limit can be increased or removed if needed. </p>
-
-<h3>Basic response format</h3>
-
-<p>All responses from the API gateway have the following format</p>'
-
-end
 
 # bundle
 json_bundle = define_object( name: 'Bundle' ) do |bundle|
@@ -87,10 +81,44 @@ json_bundle = define_object( name: 'Bundle' ) do |bundle|
   }'
 end
 
-# Item JSON POST form
-json_item = define_object( name: 'Item create/update input' ) do |item|
+json_basic_response = define_object( name: 'Basic response format' ) do |brf|
+  
+  brf.description = "All responses from the API gateway have the following format"
 
-  item.description = "A block of text to which you can associate tags"
+  brf.parameter name: 'version' do |p|
+    p.description = 'The version of the API that is responding'
+    p.type = :string
+    p.example = '"2.0"'
+  end
+
+  #data
+  brf.parameter name: 'data' do |p|
+    p.description = 'The data payload response from the call'
+    p.type = :object
+  end
+
+
+  #status
+  brf.parameter name: 'status' do |p|
+    p.description = '"okay" if the call is processed correctly, otherwise will be "error"'
+    p.type = :thing
+  end
+
+  #message
+  brf.parameter name: 'message' do |p|
+    p.description = 'Message text describing nature of error. Only returned if an error occurred'
+    p.type = :thing
+  end
+
+end
+
+# Item JSON POST form
+json_item = define_object( name: 'Item' ) do |item|
+
+
+  item.description = "An items is a block of text to which you can associate tags"
+
+  item.subtitle = 'Item as input'
 
   item.parameter name: 'id' do |p|
     p.description = 'A unique text/numeric id. You can use your own, or have Ingenia generate one for you'
@@ -131,7 +159,6 @@ json_item = define_object( name: 'Item create/update input' ) do |item|
 
   item.footnote = "Note 1: Only specify one of the following: tags, tag_ids or tag_sets"
 
-  #item.example = '{"created_at":"2013-12-16T11:24:52+00:00","id":"e19e134d0e79153349ff78a674283e0b","last_classified_at":2013-12-16T11:25:07+00:00,"text":"How to get to scale with a saas startup in the UK? etc","updated_at":"2013-12-16T11:24:56+00:00","tag_sets":[{"topics":{"id":156, "tags": [{ "id":4352, "name":"startups"},{"id":7811, "name":"saas"},{"id":1327, "name":"marketing"}]}}, {"geography":{"id":622, "tags": [ {"id":3321, "name":"united kingdom"}]}}]}'
 end
 
 # Item JSON get form
@@ -395,56 +422,20 @@ end
 
 
 
-define_api( name: 'Ingenia API' ) do |api|
+define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
-  api.description = 'Ingenia is the next generation of text analytics: it provides categorization, personalization and summarization, and is automatically tailored to your content'
   api.endpoint = 'api.ingeniapi.com/v2/'
   api.version = '2.0'
   api.format = 'json'
 
-  api.object json_intro
-  api.object json_bundle 
+  api.object json_basic_response
   api.object json_item 
   api.object json_item_show 
+  api.object json_bundle 
   api.object json_tag 
   api.object json_tag_show
   api.object json_tag_set
   api.object json_classify 
-
-  ##
-  # Getting started
-  #
- 
-  api.resource name: 'Getting_started' do |r|
-    r.description = '
-      <p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
-
-      <p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
-
-      <p> Go through the documentation and choose if you want to use Ingenia by the API or with one of the libraries. </p>
-
-      <p> <a href="/contact"> Contact us </a> to get your API key or if you have any questions.</p>
-
-      <p>If you would like to verify your API key or code data path then use the status call.</p>
-
-      <h3>API libraries</h3>
-
-      <h4>Ruby</h4>
-      <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
-
-      <h4>Javascript</h4>
-
-      <p>See <a href="/pages/javascript"> javascript examples </a> for document on how to use APIs from client based applications.</p>
-
-      <h3>Rate limiting</h3>
-
-      <p>Ingenia by default limits a user to 4 calls per second, for every type of API call. This limit can be increased or removed if needed. </p>
-
-      <h3>Basic response format</h3>
-
-      <p>All responses from the API gateway have the following format</p>'
-    
-  end
 
 
   ##

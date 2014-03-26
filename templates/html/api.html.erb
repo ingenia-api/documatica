@@ -10,6 +10,7 @@
       
       <h2 id="objects" class="top_h2">Getting started</h2>
 
+      <%= api.description %>
 
 
 
@@ -19,12 +20,18 @@
 
     <div class="row">
 
-      <h2 id='objects' class="">Objects</h2>
+      <h2 id='objects' class="">Data structures</h2>
       
       <%- api.objects.each do |o| %>
       <div id="<%= o.name %>" class = "object <%= o.name %>">
         <h3 class = "object-heading" id="object-<%= o.name2 %>"><%= o.name2 %></h3>
+
         <p><%= o.description%> </p>
+
+        <% if o.subtitle %>
+          <h4><%= o.subtitle %></h4>
+        <% end %>
+
         <div class = "parameters">
           <h4>Fields</h4>
 
@@ -63,6 +70,10 @@
             <%- end %>
             </tbody>
             </table>
+            <% if o.footnote %>
+              <h5>Notes</h5>
+              <p class='footnote'><%= o.footnote %></p>
+            <% end %>
         </div>
 
         <%- if o.example %>
@@ -79,7 +90,7 @@
 
     
     <div class="row">
-      <h2>Resources</h2>
+      <h2>API calls</h2>
       
       <%- api.resources.each do |resource| %>
       <div class = "resource <%= resource.name %>">
@@ -161,6 +172,7 @@
                     <%- end %>
                     </tbody>
                     </table>
+
                 </div>
 
                 <%- if req.response %>
