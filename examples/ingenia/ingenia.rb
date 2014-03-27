@@ -113,7 +113,7 @@ json_bundle = define_object( name: 'Bundle create / update input' ) do |bundle|
   bundle.parameter name: 'tag_set_ids' do |p|
     p.description =<<-DESC
     An array of tag set IDs to be applied to this bundle. The tags in these tag sets will be available to the items in the bundle.
-    If an existing bundle already has tag sets, then these can be removed by omiting the ID in the call.
+    If an existing bundle already has tag sets, then these can be removed by omitting the ID in the call.
     DESC
     p.type = :array
   end
@@ -184,9 +184,7 @@ end
 
 # Item JSON POST form
 json_item = define_object( name: 'Item create / update input' ) do |item|
-  item.description = "An items is a block of text to which you can associate tags"
-
-  #item.subtitle = 'Item as input'
+  item.description = "An item is a block of text to which you can associate tags"
 
   item.this_is_json!
 
@@ -545,7 +543,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.path = '/classify'
 
       req.parameter name: 'api_version' do |p|
-        p.description = 'The version of the api to use'
+        p.description = 'The version of the API to use'
         p.type = :integer
       end
 
@@ -619,7 +617,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
     
-    r.request name: 'similiar_to_tags' do |req|
+    r.request name: 'similar_to_tags' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_tags'
@@ -645,7 +643,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
 
-    r.request name: 'similiar_to_items' do |req|
+    r.request name: 'similar_to_items' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_item'
