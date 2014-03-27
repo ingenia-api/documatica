@@ -329,7 +329,7 @@ end
 
 # Tag JSON POST form
 json_tag = define_object( name: 'Tag create / update input' ) do |tag|
-  tag.description = "A tag"
+  tag.description = "Something you want to associate to an item, e.g., a concept, topic, tone, sentiment, keyword, person, company, product, etc."
 
   tag.this_is_json!
 
@@ -372,7 +372,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 end
 
 json_tag_show = define_object( name: 'Tag show output' ) do |tag|
-  tag.description = "A tag"
+  tag.description = "Something you want to associate to an item, e.g., a concept, topic, tone, sentiment, keyword, person, company, product, etc."
 
   tag.parameter name: 'name' do |p|
     p.description = 'The name of your tag'
@@ -425,7 +425,7 @@ end
 
 # TagSet JSON POST form
 json_tag_set = define_object( name: 'Tag set create / update input' ) do |tag_set|
-  tag_set.description = "A tag set"
+  tag_set.description = "A collection of thematically consistent tags"
   tag_set.this_is_json!
 
   tag_set.parameter name: 'name' do |p|
@@ -440,7 +440,7 @@ json_tag_set = define_object( name: 'Tag set create / update input' ) do |tag_se
 end
 
 json_tag_set_show = define_object( name: 'Tag set show output' ) do |tag_set|
-  tag_set.description = "A tag set"
+  tag_set.description = "A collection of thematically consistent tags"
   tag_set.parameter name: 'name' do |p|
     p.description = 'The name of your tag set'
     p.type = :string
@@ -514,8 +514,6 @@ end
 
 
 
-
-
 define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
   api.endpoint = 'api.ingeniapi.com/v2/'
@@ -537,7 +535,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Classifications' do |r|
     r.description = ""
     
-    r.request name: 'classify' do |req|
+    r.request name: 'Classify' do |req|
       req.description = ''
       req.call_type = :post
       req.path = '/classify'
@@ -591,7 +589,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Recommendation engine' do |r|
     r.description = ""
     
-    r.request name: 'similar_to_text' do |req|
+    r.request name: 'Similar_to_text' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_text'
@@ -617,7 +615,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
     
-    r.request name: 'similar_to_tags' do |req|
+    r.request name: 'Similar_to_tags' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_tags'
@@ -643,7 +641,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
 
-    r.request name: 'similar_to_items' do |req|
+    r.request name: 'Similar_to_items' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_item'
@@ -675,7 +673,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Summarization' do |r|
     r.description = ""
     
-    r.request name: 'summarise' do |req|
+    r.request name: 'Summarise' do |req|
       req.description = ''
       req.call_type = :post
       req.path = '/summarise'
@@ -715,7 +713,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Items' do |r|
     r.description = "Blocks of textual content, typically self-contained and homogeneous"
     
-    r.request name: 'index' do |req|
+    r.request name: 'Index' do |req|
       req.description = 'Returns a list of all your items'
       req.call_type = :get
       req.path = '/items'
@@ -729,7 +727,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
 
-    r.request name: 'show' do |req|
+    r.request name: 'Show' do |req|
       req.description = 'Returns a single item'
       req.call_type = :get
       req.path = '/items/:id'
@@ -746,7 +744,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.response = json_item_show
     end
 
-    r.request name: 'create' do |req|
+    r.request name: 'Create' do |req|
       req.description = 'Creates a new item'
       req.call_type = :post
       req.path = '/items'
@@ -785,7 +783,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 #      req.field do |
     end
 
-    r.request name: 'update' do |req|
+    r.request name: 'Update' do |req|
       req.description = 'Update an existing item'
       req.call_type = :put
       req.path = '/items/:id'
@@ -804,7 +802,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'delete' do |req|
+    r.request name: 'Delete' do |req|
       req.description = 'Delete an existing item'
       req.call_type = :delete
       req.path = '/items/:id'
@@ -825,7 +823,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Bundles' do |r|
     r.description = "Groups of thematically consistent items"
     
-    r.request name: 'index' do |req|
+    r.request name: 'Index' do |req|
       req.description = 'Returns a list of all your bundles'
       req.call_type = :get
       req.path = '/bundles'
@@ -835,7 +833,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter offset
     end
 
-    r.request name: 'show' do |req|
+    r.request name: 'Show' do |req|
       req.description = 'Returns a single bundle'
       req.call_type = :get
       req.path = '/bundles/:id'
@@ -851,7 +849,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.response = json_bundle_show
     end
 
-    r.request name: 'find_by_name' do |req|
+    r.request name: 'Find_by_name' do |req|
       req.description = 'Looks for a bundle that matches text input'
       req.call_type = :get
       req.path = '/bundles/find_by_name'
@@ -864,7 +862,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'create' do |req|
+    r.request name: 'Create' do |req|
       req.description = 'Creates a new bundle'
       req.call_type = :post
       req.path = '/bundles'
@@ -872,7 +870,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_bundle
     end
 
-    r.request name: 'update' do |req|
+    r.request name: 'Update' do |req|
       req.description = 'Update an existing bundle'
       req.call_type = :put
       req.path = '/bundles/:id'
@@ -887,7 +885,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_bundle
     end
 
-    r.request name: 'delete' do |req|
+    r.request name: 'Delete' do |req|
       req.description = 'Delete an existing bundle'
       req.call_type = :delete
       req.path = '/bundles/:id'
@@ -908,7 +906,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Tags' do |r|
     r.description = "Tags are meaningful words or expressions that you want to associate to some of your items"
     
-    r.request name: 'index' do |req|
+    r.request name: 'Index' do |req|
       req.description = 'List all your tags'
       req.call_type = :get
       req.path = '/tags'
@@ -918,7 +916,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter offset
     end
 
-    r.request name: 'show' do |req|
+    r.request name: 'Show' do |req|
       req.description = 'View a single tag'
       req.call_type = :get
       req.path = '/tags/:id'
@@ -933,7 +931,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
     end
 
-    r.request name: 'find_by_name' do |req|
+    r.request name: 'Find_by_name' do |req|
       req.description = 'Looks for a tag that matches text input'
       req.call_type = :get
       req.path = '/tags/find_by_name'
@@ -945,7 +943,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'create' do |req|
+    r.request name: 'Create' do |req|
       req.description = 'Create a new tag'
       req.call_type = :post
       req.path = '/tags'
@@ -953,7 +951,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_tag
     end
 
-    r.request name: 'update' do |req|
+    r.request name: 'Update' do |req|
       req.description = 'Update an existing tag'
       req.call_type = :put
       req.path = '/tags/:id'
@@ -967,7 +965,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_tag
     end
 
-    r.request name: 'merge' do |req|
+    r.request name: 'Merge' do |req|
       req.description = 'Merge two or more existing tags'
       req.call_type = :put
       req.path = '/tags/:id'
@@ -987,7 +985,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'delete' do |req|
+    r.request name: 'Delete' do |req|
       req.description = 'Delete an existing tag'
       req.call_type = :delete
       req.path = '/tags/:id'
@@ -1007,7 +1005,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Tag sets' do |r|
     r.description = "Tag sets are thematically consistent groups of tags, such as, say, world countries, business sectors, product types, companies, concepts, topics, etc"
     
-    r.request name: 'index' do |req|
+    r.request name: 'Index' do |req|
       req.description = 'List all your tag sets'
       req.call_type = :get
       req.path = '/tag_sets'
@@ -1017,7 +1015,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter offset
     end
 
-    r.request name: 'show' do |req|
+    r.request name: 'Show' do |req|
       req.description = 'View a single tag set'
       req.call_type = :get
       req.path = '/tag_sets/:id'
@@ -1032,7 +1030,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
     end
 
-    r.request name: 'find_by_name' do |req|
+    r.request name: 'Find_by_name' do |req|
       req.description = 'Looks for a tag set that matches text input'
       req.call_type = :get
       req.path = '/tag sets/find_by_name'
@@ -1044,7 +1042,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'create' do |req|
+    r.request name: 'Create' do |req|
       req.description = 'Create a new tag set'
       req.call_type = :post
       req.path = '/tag_sets'
@@ -1052,7 +1050,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_tag_set
     end
 
-    r.request name: 'update' do |req|
+    r.request name: 'Update' do |req|
       req.description = 'Update an existing tag set'
       req.call_type = :put
       req.path = '/tag_sets/:id'
@@ -1067,7 +1065,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter json_tag_set
     end
 
-    r.request name: 'merge' do |req|
+    r.request name: 'Merge' do |req|
       req.description = 'Merge two or more existing tag sets'
       req.call_type = :put
       req.path = '/tag_sets/:id'
@@ -1087,7 +1085,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
     end
 
-    r.request name: 'delete' do |req|
+    r.request name: 'Delete' do |req|
       req.description = 'Delete an existing tag set'
       req.call_type = :delete
       req.path = '/tag_sets/:id'
@@ -1107,7 +1105,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Administrative Calls' do |r|
     r.description = ""
     
-    r.request name: 'status' do |req|
+    r.request name: 'Status' do |req|
       req.description = 'Use this to test your API key, see [status call] for details'
       req.call_type = :get
       req.path = '/status'
@@ -1159,7 +1157,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
     
-    r.request name: 'clear_data' do |req|
+    r.request name: 'Clear_data' do |req|
       req.description = 'View a single tag set'
       req.call_type = :post
       req.path = '/clear_data'

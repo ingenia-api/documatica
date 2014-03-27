@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/stylesheets/front_style.css">
-<script type="text/javascript" src="/javascripts/navigation.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css">
 <script type="text/javascript" src="/javascripts/menu_manager.js"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 <div id="main_content">
   <div class="container_960">
@@ -10,7 +10,7 @@
 
       <div class="stanza">
         
-        <h2 id="objects" class="top_h2">Getting started. <small>Version <%= api.version %></small></h2>
+        <h2 id="objects">Getting started. <small>Version <%= api.version %></small></h2>
 
         <%= api.description %> 
 
@@ -22,15 +22,13 @@
 
         <p>Both HTTP and HTTPS are supported as protocols. JSON is the data encapsulation format</p>
 
-        <p>&nbsp;</p>
-
         <%- o = api.objects.first  %>
         <div id="api-<%= o.html_name %>" class = "object <%= o.html_name %>">
           <h3 class = "object-heading" id="object-<%= o.html_name %>"><%= o.name %></h3>
 
           <p><%= o.description%> </p>
 
-          <div class = "parameters">
+          <div class = "fields">
             <h4>Fields</h4>
 
             <table class = "table">
@@ -38,7 +36,7 @@
               <tr>
                 <th>Name</th>
                 <th>Type</th>
-                <th>Description</th>
+                <th char="title_desc">Description</th>
               </tr>
               </thead>
               <tbody>
@@ -57,9 +55,11 @@
                       <%= parameter.description %>
                     <%- end %>
                     <%- if parameter.example %>
-                      <br/><br/>
+                      <div class="desc_example">
                       <h6>Example</h6>
                       <p class="example_code"><%= parameter.example %></p>
+                      </div>
+                      
                     <%- end %>
                   </td>
                 </tr>
@@ -76,7 +76,6 @@
           <%- if o.example %>
             <div class = "example clear">
               <h4>Example</h4>
-
               <pre class="prettyprint"><%= o.example %></pre>
             </div>
           <%- end %>
@@ -96,7 +95,7 @@
 
           <p><%= o.description%> </p>
 
-          <div class = "parameters">
+          <div class = "fields">
             <h4>Fields</h4>
 
             <table class = "table">
@@ -104,13 +103,13 @@
                 <tr>
                   <th>Name</th>
                   <th>Type</th>
-                  <th>Description</th>
+                  <th class="title_desc">Description</th>
                 </tr>
               </thead>
               <tbody>
               <%- o.parameters.each do |parameter| %>
                 <tr>
-                  <td><%= parameter.param_name %></td>
+                  <td class="param_name"><%= parameter.param_name %></td>
 
                   <td class = "type">
                     <%- if parameter.type %>
@@ -123,9 +122,11 @@
                       <%= parameter.description %>
                     <%- end %>
                     <%- if parameter.example %>
-                      <br/><br/>
-                      <h5>Example</h5>
-                      <p class="example_code"><%= parameter.example %></p>
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code"><%= parameter.example %></p>
+                      </div>
+                     
                     <%- end %>
                   </td>
                 </tr>
@@ -141,8 +142,7 @@
 
           <%- if o.example %>
           <div class = "example clear">
-            <h5>Example</h5>
-
+            <h4>Example</h4>
             <pre class="prettyprint"><%= o.example %></pre>
           </div>
           <%- end %>
@@ -179,8 +179,8 @@
               <div class = "panel-body">
                 <%- if req.path %>
                   <h5>Path</h5>
-
-                    <div class = "path"> <%= req.call_type.upcase %> <%= api.endpoint.sub( /\/?$/, '') %><%= req.path %></div>
+                    
+                    <div class = "path well"> <span> <code class="get_post"><%= req.call_type.upcase %></code> </span> <%= api.endpoint.sub( /\/?$/, '') %><%= req.path %></div>
 
                 <%- end %>
 
@@ -199,13 +199,13 @@
                         <tr>
                           <th>Name</th>
                           <th>Type</th>
-                          <th>Description</th>
+                          <th class="title_desc">Description</th>
                         </tr>
                       </thead>
                       <tbody>
                       <%- req.parameters.each do |parameter| %>
                         <tr>
-                          <td>
+                          <td class="param_name">
                           <%- if parameter.class == DocSmoosher::ApiObject %>
                             <a href='#<%= parameter.html_name %>'><%= parameter.param_name %></a>
                           <%- else %>
@@ -227,14 +227,17 @@
                               <%= parameter.description %>
                             <%- end %>
                             <%- if parameter.default %>
-                              <br/><br/>
-                              <h6>Default</h6>
-                              <p class="example_code"><%= parameter.default %></p>
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code"><%= parameter.default %></p>
+                              </div>                              
                             <%- end %>
                             <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
-                              <br/><br/>
-                              <h5>Example</h5>
-                              <p class="example_code"><%= parameter.example %></p>
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code"><%= parameter.example %></p>
+                              </div>
+                              
                             <%- end %>
                           </td>
                         </tr>
@@ -271,7 +274,7 @@
     <div id="navigation" class="is_side_menu">
 
       <ul id="sections">
-        <li class="title expandable" data-submenuid='menu_getting_started'>Getting started with Ingenia</li>
+        <li class="title expandable" data-submenuid='menu_getting_started'>Getting started: version 2</li>
         <li class="options">
           <ul id="menu_getting_started">
             <li><a href="#api-libraries">API libraries</a></li>
@@ -280,8 +283,6 @@
             <li><a href="#api-basic-response-format">Basic response format</a></li>
           </ul>
         </li>
-
-
 
         <li class="title expandable" data-submenuid='menu_object_items'>Data structures</li>
         <li class="options">
