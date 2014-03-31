@@ -245,6 +245,10 @@
                       <%- end %>
                       </tbody>
                       </table>
+                      <% if req.footnote %>
+                        <h5>Notes</h5>
+                        <p class='footnote'><%= req.footnote %></p>
+                      <% end %>
                   </div>
 
                   <%- if req.response %>

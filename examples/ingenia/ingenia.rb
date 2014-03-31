@@ -196,8 +196,22 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
   end
 
   item.parameter name: 'text' do |p|
-    p.description = 'Your item\'s content'
+    p.description = 'Your item\'s content. (See notes in Item create call)'
     p.type = :string
+  end
+
+  # this is sent as a naked parameter (not in json object) as it needs 
+  # some http url encoding magic 
+  #
+  #item.parameter name: 'file' do |p|
+  #  p.description = 'Your item\'s content'
+  #  p.type = :string
+  #end
+
+  item.parameter name: 'url' do |p|
+    p.description = 'Source URL to pull text from. (See notes in Item create call)'
+    p.type = :string
+    p.example = 'http://example.com'
   end
 
   item.parameter name: 'bundle_id' do |p|
@@ -557,22 +571,23 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
 
       req.parameter name: 'text' do |p|
-        p.description = 'The text you want Ingenia to classify'
+        p.description = 'The text you want Ingenia to classify. (See Item create notes)'
         p.type = :string
         p.example = 'A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...'
       end
 
       req.parameter name: 'url' do |p|
-        p.description = 'Source URL to read text from and classify from'
+        p.description = 'Source URL to read text from and classify from. (See Item create notes)'
         p.type = :string
         p.example = 'http://example.com'
       end
 
       req.parameter name: 'file' do |p|
-        p.description = 'Source document sent as multi-part form submission. '
-        p.type = 'binary'
+        p.description = 'Source document sent as multi-part form submission. (See Item creat notes)'
+        p.type = :multipart
         p.example = 'document.pdf'
       end
+
     end
 
 
@@ -750,7 +765,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.path = '/items'
 
       req.parameter name: 'file' do |p|
-        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)'
+        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See notes below)'
         p.type = :multipart
       end
 
@@ -764,23 +779,26 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.default = '0'
       end
 
+      req.parameter name: 'file' do |p|
+        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).'
+      end
 
-
-      #req.parameter api_key
       req.parameter json_item
 
-      #req.field json_item_show
-#      req.field do |f| 
-#        f.name = 'id'
-#        f.description = 'ID of item' 
-#      end
+      req.footnote =<<-FN
+        <p>Note: you can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded http field.</p>
+      FN
 #
-#      req.field do |f|
-#        f.name = 'text'
-#        f.description = 'Text of knowledge item that has been created'
-#      end
+#        Notes: at least one input (text, url, file) field is required. If more inputs are sent, fields are selected in the following order: text, url, file.
 #
-#      req.field do |
+#        Notes: if the input already exists in your Ingenia account, this call will act like an 'update'. Warning: it will delete the previous tags, and apply the new ones you've sent
+#       "
     end
 
     r.request name: 'Update' do |req|
@@ -794,6 +812,12 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = '3casjghd67'
         p.required = true
       end
+
+      req.parameter name: 'file' do |p|
+        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See Item create call notes)'
+        p.type = :multipart
+      end
+
       #req.parameter api_key
       req.parameter json_item
       req.parameter name: 'file' do |p|
