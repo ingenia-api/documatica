@@ -115,6 +115,37 @@ module DocSmoosher
 
         template(File.join(TEMPLATES, 'html', 'api.html.erb'), "output/html/#{api_name}.html")
       end
+
+      def build_api_rspec
+        api_name = File.basename(Dir.getwd)
+        api_file = File.join(Dir.getwd, "#{api_name}.rb")
+
+        # load api_file
+        puts "opening: #{api_file}"
+        File.open(api_file) do |f|
+          instance_eval {
+            eval f.read
+          }
+        end
+
+        self.api = @api
+
+        @api.resources.each do |r|
+          puts "-- Resource: #{r.name}"
+          build_resource(r)
+        end
+
+        # template(File.join(TEMPLATES, 'rspec', 'api.html.erb'), "output/html/#{api_name}.html")
+      end
+
+      private
+
+        def build_resource r
+          r.requests.each do |req|
+            puts "  - #{req.name}"
+            template(File.join(TEMPLATES, 'spec', 'request_spec.rb.erb'), File.join('output', 'rspec', 'resources', r.name.downcase, "#{req.name.downcase}_spec.rb"))
+          end
+        end
     end
 
     class Api < Thor::Group

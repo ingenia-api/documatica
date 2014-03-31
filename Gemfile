@@ -24,7 +24,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard'
 
-  # gem 'doc_smoosher', :path => '/Users/joran/Documents/development/ruby/retechnica/doc_smoosher'
+  gem 'doc_smoosher', :path => '/Users/joran/Documents/development/ruby/retechnica/documatica'
 
   gem 'sinatra'
 

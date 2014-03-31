@@ -34,7 +34,7 @@ module DocSmoosher
     def bare_call( params = {}, &block )
       r = BareCall.new( params, &block )
       bare_calls << r unless bare_calls.include?(r)
-      r 
+      r
     end
 
 
