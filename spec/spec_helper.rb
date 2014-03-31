@@ -1,5 +1,5 @@
 require 'doc_smoosher'
 
-Rspec.configure do |c|
+RSpec.configure do |c|
   c.color = true
 end
