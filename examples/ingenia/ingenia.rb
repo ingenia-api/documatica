@@ -196,7 +196,7 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
   end
 
   item.parameter name: 'text' do |p|
-    p.description = 'Your item\'s content. (See notes in Item create call)'
+    p.description = 'Your item\'s content. [1]'
     p.type = :string
   end
 
@@ -209,7 +209,7 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
   #end
 
   item.parameter name: 'url' do |p|
-    p.description = 'Source URL to pull text from. (See notes in Item create call)'
+    p.description = 'Source URL to pull text from. [1]'
     p.type = :string
     p.example = 'http://example.com'
   end
@@ -222,19 +222,19 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
   end
 
   item.parameter name: 'tags' do |p|
-    p.description = "The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. (Note 1)"
+    p.description = "The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. [2]"
     p.type = :array
     p.example = '[ "startups", "saas", "marketing" ]'
   end
 
   item.parameter name: 'tag_ids' do |p|
-    p.description = "The Ingenia IDs of the tags you want to have associated with this item. (Note 1)"
+    p.description = "The Ingenia IDs of the tags you want to have associated with this item. [2]"
     p.type = :array
     p.example = '[ 45, 787, 23 ]'
   end
 
   item.parameter name: 'tag_sets' do |p|
-    p.description = "Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. (Note 1)"
+    p.description = "Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. [2]"
     p.type = :hash
     p.example = '{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }'
   end
@@ -250,7 +250,17 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
   }
   '
 
-  item.footnote = "Note 1: Only specify one of the following: tags, tag_ids or tag_sets"
+  item.footnote =<<-FN
+    <p>[1] You can input content as ONE of: text, a URL, a file (formats
+    supported include txt, html, pdf, all the MS Office formats). If you
+    send a URL, Ingenia will extract the most meaningful text from it,
+    e.g., ignoring links. If you send a file, it will extract the text
+    from it.</p>
+    <p>The text and the URL are input as part of the JSON component. The file
+    is sent as a multipart encoded http field.</p>
+
+    <p>[2] Only specify one of the following: tags, tag_ids or tag_sets</p>
+  FN
 
 end
 
@@ -571,23 +581,30 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
 
       req.parameter name: 'text' do |p|
-        p.description = 'The text you want Ingenia to classify. (See Item create notes)'
+        p.description = 'The text you want Ingenia to classify. [1]'
         p.type = :string
         p.example = 'A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...'
       end
 
       req.parameter name: 'url' do |p|
-        p.description = 'Source URL to read text from and classify from. (See Item create notes)'
+        p.description = 'Source URL to read text from and classify from. [1]'
         p.type = :string
         p.example = 'http://example.com'
       end
 
       req.parameter name: 'file' do |p|
-        p.description = 'Source document sent as multi-part form submission. (See Item creat notes)'
+        p.description = 'Source document sent as multi-part form submission. [1]'
         p.type = :multipart
         p.example = 'document.pdf'
       end
 
+      req.footnote = <<-FN
+        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+      FN
     end
 
 
@@ -764,29 +781,27 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :post
       req.path = '/items'
 
-      req.parameter name: 'file' do |p|
-        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See notes below)'
-        p.type = :multipart
-      end
-
       req.parameter name: 'update_existing' do |p|
         p.description = 'Choice of what to do if the text sent via a create call already exists on Ingenia. If true, the tags supplied will overwrite those on the existing item (default). If false, no data is modified and a response is returned with a 409 code (Conflict) together with the existing item as JSON.'
         p.default = true
+        p.type = :boolean
       end
 
       req.parameter name: 'classify' do |p|
         p.description = 'If true, the response will also include a classification.'
-        p.default = '0'
+        p.default = false
+        p.type = :boolean
       end
 
       req.parameter name: 'file' do |p|
-        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).'
+        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx). [1]'
+        p.type = :multipart
       end
 
       req.parameter json_item
 
       req.footnote =<<-FN
-        <p>Note: you can input content as ONE of: text, a URL, a file (formats
+        <p>[1] You can input content as ONE of: text, a URL, a file (formats
         supported include txt, html, pdf, all the MS Office formats). If you
         send a URL, Ingenia will extract the most meaningful text from it,
         e.g., ignoring links. If you send a file, it will extract the text
@@ -814,16 +829,22 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
 
       req.parameter name: 'file' do |p|
-        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See Item create call notes)'
+        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). [1]'
         p.type = :multipart
       end
 
       #req.parameter api_key
       req.parameter json_item
-      req.parameter name: 'file' do |p|
-        p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)'
-        p.type = :multipart
-      end
+
+      req.footnote =<<-FN
+        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded http field.</p>
+      FN
     end
 
     r.request name: 'Delete' do |req|

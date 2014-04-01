@@ -205,7 +205,7 @@
 
                   <td class = "description">
 
-                      Your item's content. (See notes in Item create call)
+                      Your item's content. [1]
 
 
                   </td>
@@ -223,7 +223,7 @@
 
                   <td class = "description">
 
-                      Source URL to pull text from. (See notes in Item create call)
+                      Source URL to pull text from. [1]
 
 
                       <div class="desc_example">
@@ -271,7 +271,7 @@
 
                   <td class = "description">
 
-                      The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. (Note 1)
+                      The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. [2]
 
 
                       <div class="desc_example">
@@ -295,7 +295,7 @@
 
                   <td class = "description">
 
-                      The Ingenia IDs of the tags you want to have associated with this item. (Note 1)
+                      The Ingenia IDs of the tags you want to have associated with this item. [2]
 
 
                       <div class="desc_example">
@@ -319,7 +319,7 @@
 
                   <td class = "description">
 
-                      Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. (Note 1)
+                      Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. [2]
 
 
                       <div class="desc_example">
@@ -336,7 +336,16 @@
               </table>
               
                 <h5>Notes</h5>
-                <p class='footnote'>Note 1: Only specify one of the following: tags, tag_ids or tag_sets</p>
+                <p class='footnote'>    <p>[1] You can input content as ONE of: text, a URL, a file (formats
+    supported include txt, html, pdf, all the MS Office formats). If you
+    send a URL, Ingenia will extract the most meaningful text from it,
+    e.g., ignoring links. If you send a file, it will extract the text
+    from it.</p>
+    <p>The text and the URL are input as part of the JSON component. The file
+    is sent as a multipart encoded http field.</p>
+
+    <p>[2] Only specify one of the following: tags, tag_ids or tag_sets</p>
+</p>
               
           </div>
 
@@ -1362,7 +1371,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              The text you want Ingenia to classify. (See Item create notes)
+                              The text you want Ingenia to classify. [1]
 
 
 
@@ -1392,7 +1401,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Source URL to read text from and classify from. (See Item create notes)
+                              Source URL to read text from and classify from. [1]
 
 
 
@@ -1422,7 +1431,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Source document sent as multi-part form submission. (See Item creat notes)
+                              Source document sent as multi-part form submission. [1]
 
 
 
@@ -1438,6 +1447,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       </tbody>
                       </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+</p>
                       
                   </div>
 
@@ -2296,36 +2313,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See notes below)
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
                             update_existing
 
 
                           </td>
 
                           <td class = "type">
+
+                              <code>boolean</code>
 
                           </td>
 
@@ -2354,17 +2349,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "type">
 
+                              <code>boolean</code>
+
                           </td>
 
                           <td class = "description">
 
                               If true, the response will also include a classification.
 
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">0</p>
-                              </div>                              
 
 
                           </td>
@@ -2381,11 +2373,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "type">
 
+                              <code>multipart</code>
+
                           </td>
 
                           <td class = "description">
 
-                              File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+                              File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx). [1]
 
 
 
@@ -2419,7 +2413,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       </table>
                       
                         <h5>Notes</h5>
-                        <p class='footnote'>        <p>Note: you can input content as ONE of: text, a URL, a file (formats
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
         supported include txt, html, pdf, all the MS Office formats). If you
         send a URL, Ingenia will extract the most meaningful text from it,
         e.g., ignoring links. If you send a file, it will extract the text
@@ -2516,7 +2510,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See Item create call notes)
+                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). [1]
 
 
 
@@ -2546,32 +2540,18 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         </tr>
 
 
-                        <tr>
-                          <td class="param_name">
-
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)
-
-
-
-                          </td>
-                        </tr>
-
-
                       </tbody>
                       </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded http field.</p>
+</p>
                       
                   </div>
 
