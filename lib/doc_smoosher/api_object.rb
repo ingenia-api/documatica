@@ -20,10 +20,15 @@ module DocSmoosher
 		  @as_json ? 'json' : @name
     end
     
-
     def html_name
       @name.downcase.gsub(/[ \/]/, '-')
     end
 
+    def to_params
+      params = {}
+      parameters.map{|p| params[p.name] = p.example }
+
+      params
+    end
   end
 end

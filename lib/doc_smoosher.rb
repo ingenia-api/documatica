@@ -108,10 +108,6 @@ module DocSmoosher
         end
 
         self.api = @api
-#        copy_file(File.join(TEMPLATES, 'html', 'bootstrap.min.css'), "output/html/bootstrap.min.css")
-#        copy_file(File.join(TEMPLATES, 'html', 'prettify.css'), "output/html/prettify.css")
-#        copy_file(File.join(TEMPLATES, 'html', 'prettify.js'), "output/html/prettify.js")
-#        copy_file(File.join(TEMPLATES, 'html', 'run_prettify.js'), "output/html/run_prettify.js")
 
         template(File.join(TEMPLATES, 'html', 'api.html.erb'), "output/html/#{api_name}.html")
       end
@@ -141,12 +137,27 @@ module DocSmoosher
       private
 
         def build_resource r
-          r.requests.each do |req|
-            puts "  - #{req.name}"
-            template(File.join(TEMPLATES, 'spec', 'request_spec.rb.erb'), File.join('output', 'rspec', 'resources', r.name.downcase, "#{req.name.downcase}_spec.rb"))
-          end
+          ops = { :resource => r }
+          template(File.join(TEMPLATES, 'spec', 'resource_spec.rb.erb'), File.join('output', 'spec', 'resources', "#{r.name.downcase.tr(" ", "_")}_spec.rb"), ops)
         end
     end
+
+
+    class Resource < Thor::Group
+      include Thor::Actions
+
+      OUTPUT = './output/resources'
+
+      argument :resource, required:  true
+
+      def self.source_root
+        File.dirname(__FILE__)
+      end
+
+
+    end
+
+
 
     class Api < Thor::Group
       include Thor::Actions

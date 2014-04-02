@@ -24,6 +24,13 @@ module DocSmoosher
       p
     end
 
+    def to_params
+      params = {}
+      parameters.map{ |p| params[p.name] = p.example }
+
+      params
+    end
+
     def as_json(options={})
       super.merge(
         {
