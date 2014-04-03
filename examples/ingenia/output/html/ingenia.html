@@ -1194,7 +1194,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "type">
 
-                      <code>string</code>
+                      <code>float</code>
 
                   </td>
 
@@ -1480,15 +1480,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_text" >
-                 <h5>Similar_to_text</h5>
+              <div class = "panel-heading" id="call-recommendation-engine-similar-to-text" >
+                 <h5>Similar to text</h5>
               </div>
 
               <div class = "panel-body">
 
                   <h5>Path</h5>
                     
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
 
 
 
@@ -1589,6 +1589,41 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         </tr>
 
 
+                        <tr>
+                          <td class="param_name">
+
+                            mode
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">auto</p>
+                              </div>                              
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">mode=tags</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
                       </tbody>
                       </table>
                       
@@ -1607,8 +1642,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_tags" >
-                 <h5>Similar_to_tags</h5>
+              <div class = "panel-heading" id="call-recommendation-engine-similar-to-tags" >
+                 <h5>Similar to tags</h5>
               </div>
 
               <div class = "panel-body">
@@ -1696,133 +1731,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                           <td class="param_name">
 
                             tag_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              JSON encoded array of tag IDs to use as starting point
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
-
-                  </div>
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_items" >
-                 <h5>Similar_to_items</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-                    
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_item</div>
-
-
-
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Maximum number of items to return
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_set_count
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Return full text of item on Ingenia
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">1</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            item_ids
 
 
                           </td>
@@ -2630,6 +2538,118 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       
                   </div>
 
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-similar-to" >
+                 <h5>Similar to</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+                    
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items/:id/similar_to</div>
+
+
+
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of item to get similar items to
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">3casjghd67</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            mode
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">auto</p>
+                              </div>                              
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">mode=tags</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
+
+                  </div>
 
                 </div>
               </div>
@@ -4843,11 +4863,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
           <li class="options">
             <ul id="menu_recommendation-engine">
 
-              <li><a href='#call-recommendation-engine-similar_to_text'>Similar_to_text</a></li>
+              <li><a href='#call-recommendation-engine-similar-to-text'>Similar to text</a></li>
 
-              <li><a href='#call-recommendation-engine-similar_to_tags'>Similar_to_tags</a></li>
-
-              <li><a href='#call-recommendation-engine-similar_to_items'>Similar_to_items</a></li>
+              <li><a href='#call-recommendation-engine-similar-to-tags'>Similar to tags</a></li>
 
             </ul>
           </li>
@@ -4874,6 +4892,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               <li><a href='#call-items-update'>Update</a></li>
 
               <li><a href='#call-items-delete'>Delete</a></li>
+
+              <li><a href='#call-items-similar-to'>Similar to</a></li>
 
             </ul>
           </li>

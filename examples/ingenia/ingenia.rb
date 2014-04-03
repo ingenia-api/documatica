@@ -76,7 +76,7 @@ json_similarity_response = define_object( name: 'Similarity response' ) do |sr|
 
   sr.parameter name: 'similarity' do |p|
     p.description = 'Score of similarity to source. 0=low, 1=high'
-    p.type = :string
+    p.type = :float
   end
 
   sr.example = '
@@ -621,9 +621,9 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Recommendation engine' do |r|
     r.description = ""
     
-    r.request name: 'Similar_to_text' do |req|
+    r.request name: 'Similar to text' do |req|
       req.description = ''
-      req.call_type = :get
+      req.call_type = :post
       req.path = '/similar_to_text'
 
       req.parameter name: 'limit' do |p|
@@ -643,11 +643,18 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.type = :string
       end
 
+      req.parameter name: 'mode' do |p|
+        p.description = 'Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).'
+        p.type = :string
+        p.example = 'mode=tags'
+        p.default = 'auto'
+      end
+
       req.response = json_similarity_response
     end
 
     
-    r.request name: 'Similar_to_tags' do |req|
+    r.request name: 'Similar to tags' do |req|
       req.description = ''
       req.call_type = :get
       req.path = '/similar_to_tags'
@@ -673,30 +680,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     end
 
 
-    r.request name: 'Similar_to_items' do |req|
-      req.description = ''
-      req.call_type = :get
-      req.path = '/similar_to_item'
-
-      req.parameter name: 'limit' do |p|
-        p.description = 'Maximum number of items to return'
-        p.type = :integer
-        p.default = '10'
-      end
-
-      req.parameter name: 'tag_set_count' do |p|
-        p.description = 'Return full text of item on Ingenia'
-        p.type = :integer
-        p.default = '1'
-      end
-
-      req.parameter name: 'item_ids' do |p|
-        p.description = 'JSON encoded array of tag IDs to use as starting point'
-        p.type = :array
-      end
-      req.response = json_similarity_response
-
-    end
   end
 
   ##
@@ -859,6 +842,28 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.required = true
       end
       #req.parameter api_key
+    end
+
+    r.request name: 'Similar to' do |req|
+      req.description = ''
+      req.call_type = :get
+      req.path = '/items/:id/similar_to'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of item to get similar items to'
+        p.type = :string
+        p.example = '3casjghd67'
+        p.required = true
+      end
+
+      req.parameter name: 'mode' do |p|
+        p.description = 'Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).'
+        p.type = :string
+        p.example = 'mode=tags'
+        p.default = 'auto'
+      end
+
+      req.response = json_similarity_response
     end
   end
 
