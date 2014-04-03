@@ -1160,6 +1160,12 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :get
       req.path = '/status'
 
+      req.parameter name: 'total_bundles' do |p|
+        p.description = 'Number of bundles you have created'
+        p.type = :integer
+        p.example = '64'
+      end
+
       req.parameter name: 'total_items' do |p|
         p.description = 'Number of items you have created'
         p.type = :integer
