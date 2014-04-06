@@ -11,9 +11,9 @@ describe '<%= r.name %>' do
     it 'calls <%= req.name %>' do
       puts "<%= api.endpoint %><%= req.path[1..-1] %>"
       <%- if req.call_type == :get %>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :params =>  { :api_key => api_key }.merge( <%= req.to_params %> )
+      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :params =>  { :api_key => api_key }.merge( <%= req.to_params %> ) }
       <%- else %>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) }
+      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
       <%- end %>
       
       response.code.should be_okay
