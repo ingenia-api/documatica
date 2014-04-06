@@ -19,13 +19,6 @@ offset = define_parameter( name: 'offset' ) do |p|
   p.default = 0
 end
 
-api_key = define_parameter( name: 'api_key' ) do |p|
-  p.description = 'Use this API key'
-  p.type = :string
-  p.required = true
-  p.example = "hg7JHG6daSgf56FjhgsSa"
-end
-
 full_text = define_parameter( name: 'full_text' ) do |p|
   p.description = 'Show the results with all their text, however long'
   p.type = :boolean
@@ -88,16 +81,6 @@ json_similarity_response = define_object( name: 'Similarity response' ) do |sr|
     ]
   }'
 end
-#{
-#    "status": "okay",
-#    "api_version": "1.0",
-#    "data": [
-#    { "item": { "id":12182, "text": "The fall in the rand has given wealthy Russians a new location to search for luxury..." }, "mode": "tag", "similarity": 0.62144 },
-#    { "item": { "id":9293, "text": "Robots tend to do jobs that no one wants to do. I am old enough to remember..."  }, "mode": "tag", "similarity": 0.62174 },
-#    { "item": { "id":25333, "text": "The market for RMB credit raised outside China has gone four weeks without a..." }, "mode": "word", "similariy": 0.62174 }
-#]
-#
-#}
 
 # bundle
 json_bundle = define_object( name: 'Bundle create / update input' ) do |bundle|
@@ -199,14 +182,6 @@ json_item = define_object( name: 'Item create / update input' ) do |item|
     p.description = 'Your item\'s content. (See notes in Item create call)'
     p.type = :string
   end
-
-  # this is sent as a naked parameter (not in json object) as it needs 
-  # some http url encoding magic 
-  #
-  #item.parameter name: 'file' do |p|
-  #  p.description = 'Your item\'s content'
-  #  p.type = :string
-  #end
 
   item.parameter name: 'url' do |p|
     p.description = 'Source URL to pull text from. (See notes in Item create call)'
@@ -733,7 +708,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :get
       req.path = '/items'
 
-      #req.parameter api_key
+      
       req.parameter limit
       req.parameter full_text
       req.parameter offset
@@ -753,7 +728,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = '3casjghd67'
         p.required = true
       end
-      #req.parameter api_key
+      
       req.parameter full_text
 
       req.response = json_item_show
@@ -818,7 +793,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.type = :multipart
       end
 
-      #req.parameter api_key
+      
       req.parameter json_item
       req.parameter name: 'file' do |p|
         p.description = 'File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)'
@@ -837,7 +812,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = '3casjghd67'
         p.required = true
       end
-      #req.parameter api_key
     end
   end
 
@@ -852,7 +826,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :get
       req.path = '/bundles'
 
-      #req.parameter api_key
       req.parameter limit
       req.parameter offset
     end
@@ -861,8 +834,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.description = 'Returns a single bundle'
       req.call_type = :get
       req.path = '/bundles/:id'
-
-      #req.parameter api_key
+      
       req.parameter name: 'id' do |p|
         p.description = 'The ID of the bundle you want to show'
         p.type = :integer
@@ -877,8 +849,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.description = 'Looks for a bundle that matches text input'
       req.call_type = :get
       req.path = '/bundles/find_by_name'
-
-      #req.parameter api_key
+      
       req.parameter name: 'text' do |p|
         p.description = 'Text of bundle to look for'
         p.type = :string
@@ -890,7 +861,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.description = 'Creates a new bundle'
       req.call_type = :post
       req.path = '/bundles'
-      #req.parameter api_key
+      
       req.parameter json_bundle
     end
 
@@ -905,7 +876,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = 5611
         p.required = true
       end
-      #req.parameter api_key
+      
       req.parameter json_bundle
     end
 
@@ -920,7 +891,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = 'gqj78219nc'
         p.required = true
       end
-      #req.parameter api_key
+      
     end
   end
 
@@ -934,8 +905,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.description = 'List all your tags'
       req.call_type = :get
       req.path = '/tags'
-
-      #req.parameter api_key
+      
       req.parameter limit
       req.parameter offset
     end
@@ -1033,8 +1003,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.description = 'List all your tag sets'
       req.call_type = :get
       req.path = '/tag_sets'
-
-      #req.parameter api_key
+ 
       req.parameter limit
       req.parameter offset
     end
@@ -1152,7 +1121,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = '2'
       end
 
-
       req.parameter name: 'processed_tag_sets' do |p|
         p.description = 'Number of tag sets Ingenia has processed'
         p.type = :integer
@@ -1177,9 +1145,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = 'yes'
       end
 
-
     end
-
     
     r.request name: 'Clear_data' do |req|
       req.description = 'View a single tag set'
