@@ -205,7 +205,7 @@
 
                   <td class = "description">
 
-                      Your item's content. (See notes in Item create call)
+                      Your item's content. [1]
 
 
                   </td>
@@ -223,7 +223,7 @@
 
                   <td class = "description">
 
-                      Source URL to pull text from. (See notes in Item create call)
+                      Source URL to pull text from. [1]
 
 
                       <div class="desc_example">
@@ -271,7 +271,7 @@
 
                   <td class = "description">
 
-                      The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. (Note 1)
+                      The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. [2]
 
 
                       <div class="desc_example">
@@ -295,7 +295,7 @@
 
                   <td class = "description">
 
-                      The Ingenia IDs of the tags you want to have associated with this item. (Note 1)
+                      The Ingenia IDs of the tags you want to have associated with this item. [2]
 
 
                       <div class="desc_example">
@@ -319,7 +319,7 @@
 
                   <td class = "description">
 
-                      Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. (Note 1)
+                      Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. [2]
 
 
                       <div class="desc_example">
@@ -336,7 +336,16 @@
               </table>
               
                 <h5>Notes</h5>
-                <p class='footnote'>Note 1: Only specify one of the following: tags, tag_ids or tag_sets</p>
+                <p class='footnote'>    <p>[1] You can input content as ONE of: text, a URL, a file (formats
+    supported include txt, html, pdf, all the MS Office formats). If you
+    send a URL, Ingenia will extract the most meaningful text from it,
+    e.g., ignoring links. If you send a file, it will extract the text
+    from it.</p>
+    <p>The text and the URL are input as part of the JSON component. The file
+    is sent as a multipart encoded http field.</p>
+
+    <p>[2] Only specify one of the following: tags, tag_ids or tag_sets</p>
+</p>
               
           </div>
 
@@ -1185,7 +1194,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "type">
 
-                      <code>string</code>
+                      <code>float</code>
 
                   </td>
 
@@ -1362,7 +1371,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              The text you want Ingenia to classify. (See Item create notes)
+                              The text you want Ingenia to classify. [1]
 
 
 
@@ -1392,7 +1401,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Source URL to read text from and classify from. (See Item create notes)
+                              Source URL to read text from and classify from. [1]
 
 
 
@@ -1422,7 +1431,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Source document sent as multi-part form submission. (See Item creat notes)
+                              Source document sent as multi-part form submission. [1]
 
 
 
@@ -1438,6 +1447,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       </tbody>
                       </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+</p>
                       
                   </div>
 
@@ -1463,15 +1480,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_text" >
-                 <h5>Similar_to_text</h5>
+              <div class = "panel-heading" id="call-recommendation-engine-similar-to-text" >
+                 <h5>Similar to text</h5>
               </div>
 
               <div class = "panel-body">
 
                   <h5>Path</h5>
                     
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
 
 
 
@@ -1572,6 +1589,41 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         </tr>
 
 
+                        <tr>
+                          <td class="param_name">
+
+                            mode
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">auto</p>
+                              </div>                              
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">mode=tags</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
                       </tbody>
                       </table>
                       
@@ -1590,8 +1642,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_tags" >
-                 <h5>Similar_to_tags</h5>
+              <div class = "panel-heading" id="call-recommendation-engine-similar-to-tags" >
+                 <h5>Similar to tags</h5>
               </div>
 
               <div class = "panel-body">
@@ -1679,133 +1731,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                           <td class="param_name">
 
                             tag_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              JSON encoded array of tag IDs to use as starting point
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
-
-                  </div>
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar_to_items" >
-                 <h5>Similar_to_items</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-                    
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_item</div>
-
-
-
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Maximum number of items to return
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_set_count
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Return full text of item on Ingenia
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">1</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            item_ids
 
 
                           </td>
@@ -2296,36 +2221,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See notes below)
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
                             update_existing
 
 
                           </td>
 
                           <td class = "type">
+
+                              <code>boolean</code>
 
                           </td>
 
@@ -2354,17 +2257,14 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "type">
 
+                              <code>boolean</code>
+
                           </td>
 
                           <td class = "description">
 
                               If true, the response will also include a classification.
 
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">0</p>
-                              </div>                              
 
 
                           </td>
@@ -2381,11 +2281,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "type">
 
+                              <code>multipart</code>
+
                           </td>
 
                           <td class = "description">
 
-                              File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx).
+                              File to be used as text source. Sent as multipart upload. Accepted file extensions are; Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx). [1]
 
 
 
@@ -2419,7 +2321,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       </table>
                       
                         <h5>Notes</h5>
-                        <p class='footnote'>        <p>Note: you can input content as ONE of: text, a URL, a file (formats
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
         supported include txt, html, pdf, all the MS Office formats). If you
         send a URL, Ingenia will extract the most meaningful text from it,
         e.g., ignoring links. If you send a file, it will extract the text
@@ -2516,7 +2418,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). (See Item create call notes)
+                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). [1]
 
 
 
@@ -2546,32 +2448,18 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         </tr>
 
 
-                        <tr>
-                          <td class="param_name">
-
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx)
-
-
-
-                          </td>
-                        </tr>
-
-
                       </tbody>
                       </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded http field.</p>
+</p>
                       
                   </div>
 
@@ -2650,6 +2538,118 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       
                   </div>
 
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-similar-to" >
+                 <h5>Similar to</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+                    
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items/:id/similar_to</div>
+
+
+
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of item to get similar items to
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">3casjghd67</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            mode
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Using this field it is possible to constrain mathces to just "tags", "words" or "auto" (both tags and words).
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">auto</p>
+                              </div>                              
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">mode=tags</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
+
+                  </div>
 
                 </div>
               </div>
@@ -4448,6 +4448,36 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
+                            total_bundles
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of bundles you have created
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">64</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             total_items
 
 
@@ -4863,11 +4893,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
           <li class="options">
             <ul id="menu_recommendation-engine">
 
-              <li><a href='#call-recommendation-engine-similar_to_text'>Similar_to_text</a></li>
+              <li><a href='#call-recommendation-engine-similar-to-text'>Similar to text</a></li>
 
-              <li><a href='#call-recommendation-engine-similar_to_tags'>Similar_to_tags</a></li>
-
-              <li><a href='#call-recommendation-engine-similar_to_items'>Similar_to_items</a></li>
+              <li><a href='#call-recommendation-engine-similar-to-tags'>Similar to tags</a></li>
 
             </ul>
           </li>
@@ -4894,6 +4922,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               <li><a href='#call-items-update'>Update</a></li>
 
               <li><a href='#call-items-delete'>Delete</a></li>
+
+              <li><a href='#call-items-similar-to'>Similar to</a></li>
 
             </ul>
           </li>
