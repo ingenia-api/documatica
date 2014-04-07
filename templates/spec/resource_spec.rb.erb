@@ -1,36 +1,51 @@
 <%- r = config[:resource] %>
 require 'rest_client'
+require 'json'
 # 
 # Spec for <%= r.name %>
 #
 
 describe '<%= r.name %>' do
   let(:api_key){ 'YhSysdemYvxqENGrSCHP' }
-  <%- r.requests.each do |req| %>
+
+  <%- r.requests.each do |req| -%>
   describe '<%= req.name %>' do
     it 'calls <%= req.name %>' do
-      puts "<%= api.endpoint %><%= req.path[1..-1] %>"
-      <%- if req.call_type == :get %>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :params =>  { :api_key => api_key }.merge( <%= req.to_params %> ) }
-      <%- else %>
+      <%- if req.call_type == :get -%>
+      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
+      <%- else -%>
       response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
-      <%- end %>
-      
-      response.code.should be_okay
-      puts response
+      <%- end -%>
+
+      response.code.should eq(200)
     end
 
-<%- if req.response %>
-    it 'responds as expected' do
-      <%- if req.call_type == :get %>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :params =>  { :api_key => api_key } }
-      <%- else %>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', :api_key => api_key
-      <%- end %>
-      
-      response.should == '<%= req.response.to_params %>'
+    it 'responds with JSON' do
+      <%- if req.call_type == :get -%>
+      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
+      <%- else -%>
+      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
+      <%- end -%>
+
+      JSON.parse(response).should be_true
     end
-<%- end %>
+
+<%- if req.response -%>
+    it 'responds as expected' do
+      <%- if req.call_type == :get -%>
+      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
+      <%- else -%>
+      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
+      <%- end -%>
+
+      json_response = JSON.parse(response)
+      json = json_response['data']
+
+      <%- req.parameters.each do |p| -%>
+      json[<%= p.name %>]<%= p.matcher %>
+      <%- end -%>
+    end
+<%- end -%>
   end
-  <%- end %> 
+  <%- end -%> 
 end

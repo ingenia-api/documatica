@@ -1,5 +1,6 @@
 
 require 'rest_client'
+require 'json'
 # 
 # Spec for Bundles
 #
@@ -9,93 +10,94 @@ describe 'Bundles' do
 
   describe 'Index' do
     it 'calls Index' do
-      puts "api.ingeniapi.com/v2/bundles"
+      response = RestClient.get "api.ingeniapi.com/v2/bundles?api_key=#{ api_key }", { :params =>  {"limit"=>42, "offset"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/bundles', { :params =>  { :api_key => api_key }.merge( {"limit"=>nil, "offset"=>nil} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/bundles?api_key=#{ api_key }", { :params =>  {"limit"=>42, "offset"=>42} }
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Show' do
     it 'calls Show' do
-      puts "api.ingeniapi.com/v2/bundles/:id"
+      response = RestClient.get "api.ingeniapi.com/v2/bundles/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/bundles/:id', { :params =>  { :api_key => api_key }.merge( {"id"=>2314} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/bundles/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
+
+      JSON.parse(response).should be_true
+    end
 
     it 'responds as expected' do
+      response = RestClient.get "api.ingeniapi.com/v2/bundles/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/bundles/:id', { :params =>  { :api_key => api_key } }
+      json_response = JSON.parse(response)
+      json = json_response['data']
 
-      
-      response.should == '{"name"=>nil, "tag_sets"=>nil}'
+      json[id].class == Fixnum
     end
-
   end
-
   describe 'Find_by_name' do
     it 'calls Find_by_name' do
-      puts "api.ingeniapi.com/v2/bundles/find_by_name"
+      response = RestClient.get "api.ingeniapi.com/v2/bundles/find_by_name?api_key=#{ api_key }", { :params =>  {"text"=>"example string"} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/bundles/find_by_name', { :params =>  { :api_key => api_key }.merge( {"text"=>"\"Tech Startups\""} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/bundles/find_by_name?api_key=#{ api_key }", { :params =>  {"text"=>"example string"} }
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Create' do
     it 'calls Create' do
-      puts "api.ingeniapi.com/v2/bundles"
+      response = RestClient.post 'api.ingeniapi.com/v2/bundles', { :api_key => api_key }.merge( {"Bundle create / update input"=>nil} ) 
 
-      response = RestClient.post 'api.ingeniapi.com/v2/bundles', { :api_key => api_key }.merge( {"Bundle create / update input"=>"\n  {\n    \"name\":\"Tech Startups\",\n    \"tag_set_ids\": [ 232, 332, 6582 ]\n  }"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.post 'api.ingeniapi.com/v2/bundles', { :api_key => api_key }.merge( {"Bundle create / update input"=>nil} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Update' do
     it 'calls Update' do
-      puts "api.ingeniapi.com/v2/bundles/:id"
+      response = RestClient.put 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>42, "Bundle create / update input"=>nil} ) 
 
-      response = RestClient.put 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>5611, "Bundle create / update input"=>"\n  {\n    \"name\":\"Tech Startups\",\n    \"tag_set_ids\": [ 232, 332, 6582 ]\n  }"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.put 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>42, "Bundle create / update input"=>nil} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Delete' do
     it 'calls Delete' do
-      puts "api.ingeniapi.com/v2/bundles/:id"
+      response = RestClient.delete 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>"example string"} ) 
 
-      response = RestClient.delete 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>"gqj78219nc"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.delete 'api.ingeniapi.com/v2/bundles/:id', { :api_key => api_key }.merge( {"id"=>"example string"} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
  

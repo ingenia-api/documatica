@@ -30,5 +30,11 @@ module DocSmoosher
 
       params
     end
+
+    def test_value
+    end
+
+    def matcher
+    end
   end
 end

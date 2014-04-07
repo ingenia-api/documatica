@@ -1,5 +1,6 @@
 
 require 'rest_client'
+require 'json'
 # 
 # Spec for Tag sets
 #
@@ -9,107 +10,108 @@ describe 'Tag sets' do
 
   describe 'Index' do
     it 'calls Index' do
-      puts "api.ingeniapi.com/v2/tag_sets"
+      response = RestClient.get "api.ingeniapi.com/v2/tag_sets?api_key=#{ api_key }", { :params =>  {"limit"=>42, "offset"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/tag_sets', { :params =>  { :api_key => api_key }.merge( {"limit"=>nil, "offset"=>nil} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/tag_sets?api_key=#{ api_key }", { :params =>  {"limit"=>42, "offset"=>42} }
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Show' do
     it 'calls Show' do
-      puts "api.ingeniapi.com/v2/tag_sets/:id"
+      response = RestClient.get "api.ingeniapi.com/v2/tag_sets/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/tag_sets/:id', { :params =>  { :api_key => api_key }.merge( {"id"=>"412"} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/tag_sets/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
+
+      JSON.parse(response).should be_true
+    end
 
     it 'responds as expected' do
+      response = RestClient.get "api.ingeniapi.com/v2/tag_sets/:id?api_key=#{ api_key }", { :params =>  {"id"=>42} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/tag_sets/:id', { :params =>  { :api_key => api_key } }
+      json_response = JSON.parse(response)
+      json = json_response['data']
 
-      
-      response.should == '{"name"=>nil}'
+      json[id].class == Fixnum
     end
-
   end
-
   describe 'Find_by_name' do
     it 'calls Find_by_name' do
-      puts "api.ingeniapi.com/v2/tag sets/find_by_name"
+      response = RestClient.get "api.ingeniapi.com/v2/tag sets/find_by_name?api_key=#{ api_key }", { :params =>  {"text"=>"example string"} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/tag sets/find_by_name', { :params =>  { :api_key => api_key }.merge( {"text"=>"\"Tech Startups\""} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/tag sets/find_by_name?api_key=#{ api_key }", { :params =>  {"text"=>"example string"} }
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Create' do
     it 'calls Create' do
-      puts "api.ingeniapi.com/v2/tag_sets"
+      response = RestClient.post 'api.ingeniapi.com/v2/tag_sets', { :api_key => api_key }.merge( {"Tag set create / update input"=>nil} ) 
 
-      response = RestClient.post 'api.ingeniapi.com/v2/tag_sets', { :api_key => api_key }.merge( {"Tag set create / update input"=>"\n  {\n    \"name\":\"Big Data\"\n  }"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.post 'api.ingeniapi.com/v2/tag_sets', { :api_key => api_key }.merge( {"Tag set create / update input"=>nil} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Update' do
     it 'calls Update' do
-      puts "api.ingeniapi.com/v2/tag_sets/:id"
+      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42, "Tag set create / update input"=>nil} ) 
 
-      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>"412", "Tag set create / update input"=>"\n  {\n    \"name\":\"Big Data\"\n  }"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42, "Tag set create / update input"=>nil} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Merge' do
     it 'calls Merge' do
-      puts "api.ingeniapi.com/v2/tag_sets/:id"
+      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42, "tag_set_ids"=>42} ) 
 
-      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>"412", "tag_set_ids"=>"[ 12, 34, 56 ]"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.put 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42, "tag_set_ids"=>42} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Delete' do
     it 'calls Delete' do
-      puts "api.ingeniapi.com/v2/tag_sets/:id"
+      response = RestClient.delete 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42} ) 
 
-      response = RestClient.delete 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>"412"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.delete 'api.ingeniapi.com/v2/tag_sets/:id', { :api_key => api_key }.merge( {"id"=>42} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
  

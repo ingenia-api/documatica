@@ -1,5 +1,6 @@
 
 require 'rest_client'
+require 'json'
 # 
 # Spec for Administrative Calls
 #
@@ -9,29 +10,30 @@ describe 'Administrative Calls' do
 
   describe 'Status' do
     it 'calls Status' do
-      puts "api.ingeniapi.com/v2/status"
+      response = RestClient.get "api.ingeniapi.com/v2/status?api_key=#{ api_key }", { :params =>  {"total_items"=>42, "processed_items"=>42, "total_tag_sets"=>42, "processed_tag_sets"=>42, "total_tags"=>42, "processed_tags"=>42, "ready_to_classify"=>true} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/status', { :params =>  { :api_key => api_key }.merge( {"total_items"=>"1554", "processed_items"=>"1554", "total_tag_sets"=>"2", "processed_tag_sets"=>"2", "total_tags"=>"167", "processed_tags"=>"167", "ready_to_classify"=>"yes"} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/status?api_key=#{ api_key }", { :params =>  {"total_items"=>42, "processed_items"=>42, "total_tag_sets"=>42, "processed_tag_sets"=>42, "total_tags"=>42, "processed_tags"=>42, "ready_to_classify"=>true} }
+
+      JSON.parse(response).should be_true
+    end
 
   end
-
   describe 'Clear_data' do
     it 'calls Clear_data' do
-      puts "api.ingeniapi.com/v2/clear_data"
+      response = RestClient.post 'api.ingeniapi.com/v2/clear_data', { :api_key => api_key }.merge( {"item_count"=>42, "tag_set_count"=>42, "tag_count"=>42} ) 
 
-      response = RestClient.post 'api.ingeniapi.com/v2/clear_data', { :api_key => api_key }.merge( {"item_count"=>"123", "tag_set_count"=>"4", "tag_count"=>"6502"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.post 'api.ingeniapi.com/v2/clear_data', { :api_key => api_key }.merge( {"item_count"=>42, "tag_set_count"=>42, "tag_count"=>42} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
  

@@ -1,5 +1,6 @@
 
 require 'rest_client'
+require 'json'
 # 
 # Spec for Classifications
 #
@@ -9,15 +10,16 @@ describe 'Classifications' do
 
   describe 'Classify' do
     it 'calls Classify' do
-      puts "api.ingeniapi.com/v2/classify"
+      response = RestClient.post 'api.ingeniapi.com/v2/classify', { :api_key => api_key }.merge( {"api_version"=>42, "min_tags"=>42, "max_tags"=>42, "text"=>"example string", "url"=>"example string", "file"=>nil} ) 
 
-      response = RestClient.post 'api.ingeniapi.com/v2/classify', { :api_key => api_key }.merge( {"api_version"=>nil, "min_tags"=>nil, "max_tags"=>nil, "text"=>"A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...", "url"=>"http://example.com", "file"=>"document.pdf"} ) }
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.post 'api.ingeniapi.com/v2/classify', { :api_key => api_key }.merge( {"api_version"=>42, "min_tags"=>42, "max_tags"=>42, "text"=>"example string", "url"=>"example string", "file"=>nil} ) 
+
+      JSON.parse(response).should be_true
+    end
 
   end
  

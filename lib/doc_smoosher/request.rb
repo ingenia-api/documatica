@@ -26,7 +26,7 @@ module DocSmoosher
 
     def to_params
       params = {}
-      parameters.map{ |p| params[p.name] = p.example }
+      parameters.map{ |p| params[p.name] = p.test_value }
 
       params
     end

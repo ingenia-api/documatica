@@ -1,5 +1,6 @@
 
 require 'rest_client'
+require 'json'
 # 
 # Spec for Recommendation engine
 #
@@ -9,68 +10,75 @@ describe 'Recommendation engine' do
 
   describe 'Similar_to_text' do
     it 'calls Similar_to_text' do
-      puts "api.ingeniapi.com/v2/similar_to_text"
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_text', { :params =>  { :api_key => api_key }.merge( {"limit"=>nil, "full_text"=>nil, "text"=>nil} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
+
+      JSON.parse(response).should be_true
+    end
 
     it 'responds as expected' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_text', { :params =>  { :api_key => api_key } }
+      json_response = JSON.parse(response)
+      json = json_response['data']
 
-      
-      response.should == '{"id"=>nil, "text"=>nil, "mode"=>nil, "similarity"=>nil}'
+      json[limit].class == Fixnum
+      json[full_text].class == Fixnum
+      json[text].class == String
     end
-
   end
-
   describe 'Similar_to_tags' do
     it 'calls Similar_to_tags' do
-      puts "api.ingeniapi.com/v2/similar_to_tags"
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_tags', { :params =>  { :api_key => api_key }.merge( {"limit"=>nil, "tag_set_count"=>nil, "tag_ids"=>nil} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
+
+      JSON.parse(response).should be_true
+    end
 
     it 'responds as expected' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_tags', { :params =>  { :api_key => api_key } }
+      json_response = JSON.parse(response)
+      json = json_response['data']
 
-      
-      response.should == '{"id"=>nil, "text"=>nil, "mode"=>nil, "similarity"=>nil}'
+      json[limit].class == Fixnum
+      json[tag_set_count].class == Fixnum
+      json[tag_ids]
     end
-
   end
-
   describe 'Similar_to_items' do
     it 'calls Similar_to_items' do
-      puts "api.ingeniapi.com/v2/similar_to_item"
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_item', { :params =>  { :api_key => api_key }.merge( {"limit"=>nil, "tag_set_count"=>nil, "item_ids"=>nil} )
-
-      
-      response.code.should be_okay
-      puts response
+      response.code.should eq(200)
     end
 
+    it 'responds with JSON' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
+
+      JSON.parse(response).should be_true
+    end
 
     it 'responds as expected' do
+      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
 
-      response = RestClient.get 'api.ingeniapi.com/v2/similar_to_item', { :params =>  { :api_key => api_key } }
+      json_response = JSON.parse(response)
+      json = json_response['data']
 
-      
-      response.should == '{"id"=>nil, "text"=>nil, "mode"=>nil, "similarity"=>nil}'
+      json[limit].class == Fixnum
+      json[tag_set_count].class == Fixnum
+      json[item_ids]
     end
-
   end
  
 end
