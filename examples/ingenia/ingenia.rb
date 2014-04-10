@@ -29,7 +29,7 @@ end
 full_text = define_parameter( name: 'full_text' ) do |p|
   p.description = 'Show the results with all their text, however long'
   p.type = :boolean
-  p.default = '0'
+  p.default = false
 end
 
 ##
@@ -171,13 +171,13 @@ json_basic_response = define_object( name: 'Basic response format' ) do |brf|
   #status
   brf.parameter name: 'status' do |p|
     p.description = '"okay" if the call is processed correctly, otherwise will be "error"'
-    p.type = :thing
+    p.type = :string
   end
 
   #message
   brf.parameter name: 'message' do |p|
     p.description = 'Message text describing nature of error. Only returned if an error occurred'
-    p.type = :thing
+    p.type = :string
   end
 
 end
@@ -484,7 +484,7 @@ json_classify = define_object( name: 'Classifications' ) do |classify|
 
     classify.example = '
 {
-  "api_version": "1.0",
+  "api_version": "2.0",
   "status": "okay",
 
   "data": {
@@ -564,11 +564,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :post
       req.path = '/classify'
 
-      req.parameter name: 'api_version' do |p|
-        p.description = 'The version of the API to use'
-        p.type = :integer
-      end
-
       req.parameter name: 'min_tags' do |p|
         p.description = 'Return at least these many tags'
         p.type = :integer
@@ -620,11 +615,17 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
  
   api.resource name: 'Recommendation engine' do |r|
     r.description = ""
-    
+
+
     r.request name: 'Similar to text' do |req|
       req.description = ''
       req.call_type = :post
       req.path = '/similar_to_text'
+
+      req.parameter name: 'text' do |p|
+        p.description = 'Text to use as a starting point'
+        p.type = :string
+      end
 
       req.parameter name: 'limit' do |p|
         p.description = 'Maximum number of items to return'
@@ -636,11 +637,6 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.description = 'Return full text of item on Ingenia'
         p.type = :integer
         p.default = '1'
-      end
-
-      req.parameter name: 'text' do |p|
-        p.description = 'Text to use as a starting point'
-        p.type = :string
       end
 
       req.parameter name: 'mode' do |p|
@@ -659,22 +655,22 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.call_type = :get
       req.path = '/similar_to_tags'
 
+      req.parameter name: 'tag_ids' do |p|
+        p.description = 'JSON encoded array of tag IDs to use as starting point'
+        p.type = :array
+      end
+
       req.parameter name: 'limit' do |p|
         p.description = 'Maximum number of items to return'
         p.type = :integer
         p.default = '10'
       end
 
-      req.parameter name: 'tag_set_count' do |p|
+      req.parameter name: 'full_text' do |p|
         p.description = 'Return full text of item on Ingenia'
         p.type = :integer
         p.default = '1'
       end
-
-      req.parameter name: 'tag_ids' do |p|
-        p.description = 'JSON encoded array of tag IDs to use as starting point'
-        p.type = :array
-      end      
 
       req.response = json_similarity_response
     end
@@ -1206,7 +1202,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter name: 'ready_to_classify' do |p|
         p.description = 'It will be true if all your data has been processed'
         p.type = :boolean
-        p.example = 'yes'
+        p.example = true
       end
 
 
