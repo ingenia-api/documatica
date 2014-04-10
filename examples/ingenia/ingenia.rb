@@ -681,7 +681,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   ##
   # Summarization
   #
-  api.resource name: 'Summarization' do |r|
+  api.resource name: 'Summarisation' do |r|
     r.description = ""
     
     r.request name: 'Summarise' do |req|
@@ -709,7 +709,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter name: 'order_by_position' do |p|
         p.description = 'If true, the results will be ordered as they appear in the text, if false, they will be ordered by score.'
         p.type = :boolean
-        p.default = false
+        p.default = 'false'
       end
 
 
