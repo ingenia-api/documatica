@@ -22,7 +22,7 @@ end
 full_text = define_parameter( name: 'full_text' ) do |p|
   p.description = 'Show the results with all their text, however long'
   p.type = :boolean
-  p.default = '0'
+  p.default = false
 end
 
 ##
@@ -640,10 +640,10 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.default = '10'
       end
 
-      req.parameter name: 'tag_set_count' do |p|
+      req.parameter name: 'full_text' do |p|
         p.description = 'Return full text of item on Ingenia'
-        p.type = :integer
-        p.default = '1'
+        p.type = :boolean
+        p.default = false
       end
 
       req.parameter name: 'tag_ids' do |p|
