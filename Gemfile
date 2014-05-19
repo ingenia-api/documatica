@@ -24,8 +24,6 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard'
 
-  gem 'doc_smoosher'
-  
   gem 'sinatra'
 
   gem 'rspec'

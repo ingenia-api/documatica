@@ -115,6 +115,9 @@ module DocSmoosher
       def build_api_rspec
         api_name = File.basename(Dir.getwd)
         api_file = File.join(Dir.getwd, "#{api_name}.rb")
+        values = YAML.load_file(File.join(Dir.getwd, "#{api_name}-values.yml"))
+
+        puts "VALUES>>> #{values.to_yaml}"
 
         # load api_file
         puts "opening: #{api_file}"
@@ -128,7 +131,7 @@ module DocSmoosher
 
         @api.resources.each do |r|
           puts "-- Resource: #{r.name}"
-          build_resource(r)
+          build_resource(r, values)
         end
 
         # template(File.join(TEMPLATES, 'rspec', 'api.html.erb'), "output/html/#{api_name}.html")
@@ -136,8 +139,8 @@ module DocSmoosher
 
       private
 
-        def build_resource r
-          ops = { :resource => r }
+        def build_resource r, v
+          ops = { :resource => r, :values => v }
           template(File.join(TEMPLATES, 'spec', 'resource_spec.rb.erb'), File.join('output', 'spec', 'resources', "#{r.name.downcase.tr(" ", "_")}_spec.rb"), ops)
         end
     end

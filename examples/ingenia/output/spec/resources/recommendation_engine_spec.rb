@@ -1,84 +1,72 @@
 
 require 'rest_client'
 require 'json'
+
 # 
 # Spec for Recommendation engine
 #
 
 describe 'Recommendation engine' do
-  let(:api_key){ 'YhSysdemYvxqENGrSCHP' }
 
-  describe 'Similar_to_text' do
-    it 'calls Similar_to_text' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
+
+
+
+  describe 'Similar to text' do
+    it 'calls Similar to text' do
+
+      response = RestClient.post '/similar_to_text', :limit => limit, :full_text => full_text, :text => text, :mode => mode, :api_key => api_key 
 
       response.code.should eq(200)
     end
 
     it 'responds with JSON' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
+
+      response = RestClient.post '/similar_to_text', :limit => limit, :full_text => full_text, :text => text, :mode => mode, :api_key => api_key 
 
       JSON.parse(response).should be_true
     end
 
-    it 'responds as expected' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_text?api_key=#{ api_key }", { :params =>  {"limit"=>42, "full_text"=>42, "text"=>"example string"} }
+      it 'responds as expected' do
 
-      json_response = JSON.parse(response)
-      json = json_response['data']
+      response = RestClient.post '/similar_to_text', :limit => limit, :full_text => full_text, :text => text, :mode => mode, :api_key => api_key 
 
-      json[limit].class == Fixnum
-      json[full_text].class == Fixnum
-      json[text].class == String
-    end
+        json_response = JSON.parse(response)
+        json = json_response['data']
+
+          json[limit].class == Fixnum
+          json[full_text].class == Boolean
+          json[text].class == String
+          json[mode].class == String
+      end
   end
-  describe 'Similar_to_tags' do
-    it 'calls Similar_to_tags' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
+
+
+  describe 'Similar to tags' do
+    it 'calls Similar to tags' do
+
+      response = RestClient.get '/similar_to_tags',  :params => { :limit => limit, :full_text => full_text, :tag_ids => tag_ids, :api_key => api_key }  
 
       response.code.should eq(200)
     end
 
     it 'responds with JSON' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
+
+      response = RestClient.get '/similar_to_tags',  :params => { :limit => limit, :full_text => full_text, :tag_ids => tag_ids, :api_key => api_key }  
 
       JSON.parse(response).should be_true
     end
 
-    it 'responds as expected' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_tags?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "tag_ids"=>nil} }
+      it 'responds as expected' do
 
-      json_response = JSON.parse(response)
-      json = json_response['data']
+      response = RestClient.get '/similar_to_tags',  :params => { :limit => limit, :full_text => full_text, :tag_ids => tag_ids, :api_key => api_key }  
 
-      json[limit].class == Fixnum
-      json[tag_set_count].class == Fixnum
-      json[tag_ids]
-    end
-  end
-  describe 'Similar_to_items' do
-    it 'calls Similar_to_items' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
+        json_response = JSON.parse(response)
+        json = json_response['data']
 
-      response.code.should eq(200)
-    end
-
-    it 'responds with JSON' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
-
-      JSON.parse(response).should be_true
-    end
-
-    it 'responds as expected' do
-      response = RestClient.get "api.ingeniapi.com/v2/similar_to_item?api_key=#{ api_key }", { :params =>  {"limit"=>42, "tag_set_count"=>42, "item_ids"=>nil} }
-
-      json_response = JSON.parse(response)
-      json = json_response['data']
-
-      json[limit].class == Fixnum
-      json[tag_set_count].class == Fixnum
-      json[item_ids]
-    end
+          json[limit].class == Fixnum
+          json[full_text].class == Boolean
+          json[tag_ids]
+      end
   end
  
 end

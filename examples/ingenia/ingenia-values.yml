@@ -1,0 +1,17 @@
+spec:
+  endpoint: http://master.test.ingeniapi.com:8080/v2
+  api_key:  8xnKeWZPzKSiDJSsK45s
+
+items:
+  id: 1234
+  json:
+    text: "Sample text"
+#  url: "http://example.com"
+#  file: "somefile.pdf"
+#  tags: 
+#    json: [ "alpha", "beta", "cappa" ]
+#  tag_ids: 
+#    json: [ 123, 456, 789 ]
+    tag_sets: 
+      json: { "tag set 1": [ "alpha" ], "tag set 2": [ "beta", "cappa" ] }
+

@@ -1,51 +1,141 @@
-<%- r = config[:resource] %>
+<%- 
+
+  # I'm sure this can be done in a less hideous manner...
+
+  r = config[:resource]
+  values_db = config[:values];
+  values = values_db[r.name.downcase] 
+  global_values = values_db['spec']
+  default_values = {}
+  
+  if values
+    default_values = {}
+    default_json_values = {}
+
+    default_values['api_key'] = '"' + global_values['api_key'] + '"'
+    endpoint = global_values['endpoint']
+
+    values.each do |n, v|
+
+      value = ''
+
+      if v.is_a?(Hash)
+        if v['json']
+          value = v['json']
+        end
+      elsif v.is_a?(String)
+        value = "'#{v}'"
+      elsif v.is_a?(Fixnum)
+        value = v.to_s
+      end 
+
+      default_values[n] = value
+
+    end
+  end 
+-%>
+
 require 'rest_client'
 require 'json'
+
 # 
 # Spec for <%= r.name %>
 #
 
 describe '<%= r.name %>' do
-  let(:api_key){ 'YhSysdemYvxqENGrSCHP' }
 
-  <%- r.requests.each do |req| -%>
+  <%- default_values.each do |n, v| -%>
+  <%- next if n == 'id' -%>
+  let(:<%= n %>) { <%= v %> }
+  <%- end -%>
+
+<%- r.requests.each do |req| -%>
+
+
   describe '<%= req.name %>' do
     it 'calls <%= req.name %>' do
-      <%- if req.call_type == :get -%>
-      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
-      <%- else -%>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
-      <%- end -%>
+
+      <%-
+
+        verb = req.call_type
+        path = req.path.dup
+        path.sub! ':id', default_values['id'].to_s if default_values['id'].to_s.length > 0
+
+        args = req.parameters.map( &:name )
+        args << 'api_key'
+
+        #if verb == 'post'
+          if args.member?('json')
+            puts '>>> hacky json hack'
+          end
+        #end
+
+        args.delete('id')
+        args.keep_if { |arg| default_values.has_key?(arg) } if default_values.size > 0
+
+        args_s = args.map { |a| ":#{a} => #{a}" }.join(', ') 
+        args_s = " :params => { #{args_s} } " if verb == :get
+
+
+        url = "#{endpoint}#{path}"
+      -%>
+      response = RestClient.<%= verb %> '<%= url %>', <%= args_s %> 
 
       response.code.should eq(200)
     end
 
     it 'responds with JSON' do
-      <%- if req.call_type == :get -%>
-      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
-      <%- else -%>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
-      <%- end -%>
+
+      <%-
+        verb = req.call_type
+        path = req.path.dup
+        path.sub! ':id', default_values['id'].to_s if default_values['id'].to_s.length > 0
+
+        args = req.parameters.map( &:name )
+        args << 'api_key'
+
+        args.delete('id')
+        args.keep_if { |arg| default_values.has_key?(arg) } if default_values.size > 0
+
+        args_s = args.map { |a| ":#{a} => #{a}" }.join(', ') 
+        args_s = " :params => { #{args_s} } " if verb == :get
+
+        url = "#{endpoint}#{path}"
+      -%>
+      response = RestClient.<%= verb %> '<%= url %>', <%= args_s %> 
 
       JSON.parse(response).should be_true
     end
 
-<%- if req.response -%>
-    it 'responds as expected' do
-      <%- if req.call_type == :get -%>
-      response = RestClient.<%= req.call_type %> "<%= api.endpoint %><%= req.path[1..-1] %>?api_key=#{ api_key }", { :params =>  <%= req.to_params %> }
-      <%- else -%>
-      response = RestClient.<%= req.call_type %> '<%= api.endpoint %><%= req.path[1..-1] %>', { :api_key => api_key }.merge( <%= req.to_params %> ) 
-      <%- end -%>
+    <%- if req.response -%>
+      it 'responds as expected' do
 
-      json_response = JSON.parse(response)
-      json = json_response['data']
+      <%-
+        verb = req.call_type
+        path = req.path.dup
+        path.sub! ':id', default_values['id'].to_s if default_values['id'].to_s.length > 0
 
-      <%- req.parameters.each do |p| -%>
-      json[<%= p.name %>]<%= p.matcher %>
-      <%- end -%>
-    end
-<%- end -%>
+        args = req.parameters.map( &:name )
+        args << 'api_key'
+
+        args.delete('id')
+        args.keep_if { |arg| default_values.has_key?(arg) } if default_values.size > 0
+
+        args_s = args.map { |a| ":#{a} => #{a}" }.join(', ') 
+        args_s = " :params => { #{args_s} } " if verb == :get
+
+        url = "#{endpoint}#{path}"
+      -%>
+      response = RestClient.<%= verb %> '<%= url %>', <%= args_s %> 
+
+        json_response = JSON.parse(response)
+        json = json_response['data']
+
+        <%- req.parameters.each do |p| -%>
+          json[<%= p.name %>]<%= p.matcher %>
+        <%- end -%>
+      end
+    <%- end -%>
   end
-  <%- end -%> 
+<%- end -%> 
 end
