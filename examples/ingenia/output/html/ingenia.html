@@ -16,7 +16,7 @@
 
   <p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
 
-  <p> Go through the documentation and choose if you want to use Ingenia by the API or with one of the libraries. </p>
+  <p> Go through the documentation and choose if you want to use Ingenia by the API or with the Ruby gem. </p>
 
   <p> <a href="/contact"> Contact us </a> to get your API key or if you have any questions.</p>
 
@@ -104,13 +104,13 @@
 
                   <td class = "type">
 
-                      <code>thing</code>
+                      <code>string</code>
 
                   </td>
 
                   <td class = "description">
 
-                      "okay" if the call is processed correctly, otherwise will be "error"
+                      "okay" if the call is processed correctly, otherwise it will be "error"
 
 
                   </td>
@@ -122,13 +122,13 @@
 
                   <td class = "type">
 
-                      <code>thing</code>
+                      <code>string</code>
 
                   </td>
 
                   <td class = "description">
 
-                      Message text describing nature of error. Only returned if an error occurred
+                      A message describing the nature of the error, returned if an error occurred
 
 
                   </td>
@@ -152,10 +152,10 @@
         <h2 id='objects' class="">Data structures</h2>
         
 
-        <div id="item-create---update-input" class = "object item-create---update-input">
-          <h3 class = "object-heading" id="object-item-create---update-input">Item create / update input</h3>
+        <div id="item:-create---update-input" class = "object item:-create---update-input">
+          <h3 class = "object-heading" id="object-item:-create---update-input">Item: create / update input</h3>
 
-          <p>An item is a block of text to which you can associate tags </p>
+          <p>An item is a block of text to which you can associate tags, that belongs to a bundle </p>
 
           <div class = "fields">
             <h4>Fields</h4>
@@ -181,7 +181,7 @@
 
                   <td class = "description">
 
-                      A unique text/numeric id. You can use your own, or have Ingenia generate one for you
+                      An alphanumeric id unique to each bundle. You can use your own, or have Ingenia generate one for you
 
 
                       <div class="desc_example">
@@ -223,12 +223,12 @@
 
                   <td class = "description">
 
-                      Source URL to pull text from. [1]
+                      Source URL to get text from. Ingenia will extract the most relevant text [1]
 
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">http://example.com</p>
+                        <p class="example_code">http://www.example.com</p>
                       </div>
                      
 
@@ -247,14 +247,8 @@
 
                   <td class = "description">
 
-                      ID of bundle to put item into
+                      ID of the bundle in which to put the item
 
-
-                      <div class="desc_example">
-                        <h6>Example</h6>
-                        <p class="example_code">45798</p>
-                      </div>
-                     
 
                   </td>
                 </tr>
@@ -271,7 +265,7 @@
 
                   <td class = "description">
 
-                      The name of tags you wish applied to this item. Tags will be looked for first, then created if they do not exist. [2]
+                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]
 
 
                       <div class="desc_example">
@@ -295,7 +289,7 @@
 
                   <td class = "description">
 
-                      The Ingenia IDs of the tags you want to have associated with this item. [2]
+                      The Ingenia IDs of the tags you wish to assign to this item [2]
 
 
                       <div class="desc_example">
@@ -319,7 +313,7 @@
 
                   <td class = "description">
 
-                      Groups of tags that you consider of the same type; tags will be returned as belonging to a tag set. [2]
+                      A hash of tag sets, each of which is an array of tags that you consider of the same type [2]
 
 
                       <div class="desc_example">
@@ -336,10 +330,8 @@
               </table>
               
                 <h5>Notes</h5>
-                <p class='footnote'>    <p>[1] You can input content as ONE of: text, a URL, a file (formats
-    supported include txt, html, pdf, all the MS Office formats). If you
-    send a URL, Ingenia will extract the most meaningful text from it,
-    e.g., ignoring links. If you send a file, it will extract the text
+                <p class='footnote'>    <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
+    supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
     from it.</p>
     <p>The text and the URL are input as part of the JSON component. The file
     is sent as a multipart encoded http field.</p>
@@ -354,11 +346,11 @@
             <h4>Example</h4>
             <pre class="prettyprint">
   {
-    text: "High tech startups and their positive power to change for the good",
+    text: "High tech startups and their positive power to change for good",
     tag_sets: {
-      "Business": [ "startups", "business" ],
-      "Economics": [ "technology"],
-      "Mood": [ "positive" ]
+      "Topics": [ "startups", "technology" ],
+      "Mood": [ "positive" ],
+      "Geography": [ ]
     }
   }
   </pre>
@@ -367,8 +359,8 @@
 
         </div>
 
-        <div id="item-show-output" class = "object item-show-output">
-          <h3 class = "object-heading" id="object-item-show-output">Item show output</h3>
+        <div id="item:-show-output" class = "object item:-show-output">
+          <h3 class = "object-heading" id="object-item:-show-output">Item: show output</h3>
 
           <p> </p>
 
@@ -396,7 +388,7 @@
 
                   <td class = "description">
 
-                      A unique text/numeric id. You can use your own, or have Ingenia generate one for you
+                      A unique alphanumeric id
 
 
                       <div class="desc_example">
@@ -420,7 +412,7 @@
 
                   <td class = "description">
 
-                      Your item's textual content
+                      Your item's content
 
 
                   </td>
@@ -486,7 +478,7 @@
 
                   <td class = "description">
 
-                      When this item was last classified by the system, or null if it hasn't been classified yet
+                      When this item was last classified by the system; null if it hasn't been classified yet
 
 
                       <div class="desc_example">
@@ -494,6 +486,96 @@
                         <p class="example_code">2013-12-16T11:25:52+00:00</p>
                       </div>
                      
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_sets</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      An array of tag sets associated to the item
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_set</td>
+
+                  <td class = "type">
+
+                      <code>hash</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A hash containing the tag set id and the array of tags associated to the item
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag</td>
+
+                  <td class = "type">
+
+                      <code>hash</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A hash with the details of a tag associated to the item, including its id, name, score and user_selected
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">score</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A number which quantifies the strength of the association between an item and a tag, between 0 (lowest) and 1 (highest)
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">user_selected</td>
+
+                  <td class = "type">
+
+                      <code>boolean</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      true if the tag was assigned to the item by the user, false if it was assigned by Ingenia
+
 
                   </td>
                 </tr>
@@ -511,7 +593,7 @@
   {
     "id":"e19e134d0e79153349ff78a674283e0b",
     "last_classified_at":2013-12-16T11:25:07+00:00,
-    "text":"How to get to scale with a saas startup in the UK? etc",
+    "text":"How to get to scale with a saas startup in the UK? ...",
     "tag_sets":
       [
         {
@@ -550,7 +632,7 @@
                   "id":3321,
                   "name":"united kingdom",
                   "score":"0.37",
-                  "user_selected": "f"
+                  "user_selected": "t"
                 }
               ]
           }
@@ -564,8 +646,8 @@
 
         </div>
 
-        <div id="bundle-create---update-input" class = "object bundle-create---update-input">
-          <h3 class = "object-heading" id="object-bundle-create---update-input">Bundle create / update input</h3>
+        <div id="bundle:-create---update-input" class = "object bundle:-create---update-input">
+          <h3 class = "object-heading" id="object-bundle:-create---update-input">Bundle: create / update input</h3>
 
           <p>A collection of items related to each other </p>
 
@@ -638,8 +720,8 @@
 
         </div>
 
-        <div id="bundle-show-output" class = "object bundle-show-output">
-          <h3 class = "object-heading" id="object-bundle-show-output">Bundle show output</h3>
+        <div id="bundle:-show-output" class = "object bundle:-show-output">
+          <h3 class = "object-heading" id="object-bundle:-show-output">Bundle: show output</h3>
 
           <p>A collection of items related to each other </p>
 
@@ -655,6 +737,24 @@
                 </tr>
               </thead>
               <tbody>
+
+                <tr>
+                  <td class="param_name">id</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A unique numeric id generated by Ingenia
+
+
+                  </td>
+                </tr>
+
 
                 <tr>
                   <td class="param_name">name</td>
@@ -692,6 +792,54 @@
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">created_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this bundle was created
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                      </div>
+                     
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">updated_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this bundle was last updated
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                      </div>
+                     
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -716,8 +864,8 @@
 
         </div>
 
-        <div id="tag-create---update-input" class = "object tag-create---update-input">
-          <h3 class = "object-heading" id="object-tag-create---update-input">Tag create / update input</h3>
+        <div id="tag:-create---update-input" class = "object tag:-create---update-input">
+          <h3 class = "object-heading" id="object-tag:-create---update-input">Tag: create / update input</h3>
 
           <p>Something you want to associate to an item, e.g., a concept, topic, tone, sentiment, keyword, person, company, product, etc. </p>
 
@@ -745,7 +893,7 @@
 
                   <td class = "description">
 
-                      The name of your tag
+                      The name of your tag; we advise to make it short but meaningful; unique to each tag set
 
 
                   </td>
@@ -766,12 +914,6 @@
                       The ID of the tag_set to which this tag belongs
 
 
-                      <div class="desc_example">
-                        <h6>Example</h6>
-                        <p class="example_code">3787</p>
-                      </div>
-                     
-
                   </td>
                 </tr>
 
@@ -787,7 +929,7 @@
 
                   <td class = "description">
 
-                      A description of this tag
+                      A description of this tag: this is helpful to define in a focused way how the tag should be used
 
 
                   </td>
@@ -811,12 +953,6 @@ You will want to privilege precision (with a disposition < 0.5) if you want each
 
 You will want to privilege recall (with a disposition > 0.5) if you want each tag assignment to occur, and are less worried about some items being tagged incorrectly, i.e., you prefer to have false positives than false negatives. If the disposition is 1, all items will be tagged with this tag.
 
-
-                      <div class="desc_example">
-                        <h6>Example</h6>
-                        <p class="example_code">0.75</p>
-                      </div>
-                     
 
                   </td>
                 </tr>
@@ -834,16 +970,16 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
   {
     "name":"Text Analytics",
     "tag_set_id":37874,
-    "description":"",
-    "disposition": 0.3
+    "description":"A set of techniques designed to extract valuable information from textual content",
+    "disposition": 0.5
   }</pre>
           </div>
 
 
         </div>
 
-        <div id="tag-show-output" class = "object tag-show-output">
-          <h3 class = "object-heading" id="object-tag-show-output">Tag show output</h3>
+        <div id="tag:-show-output" class = "object tag:-show-output">
+          <h3 class = "object-heading" id="object-tag:-show-output">Tag: show output</h3>
 
           <p>Something you want to associate to an item, e.g., a concept, topic, tone, sentiment, keyword, person, company, product, etc. </p>
 
@@ -859,6 +995,24 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                 </tr>
               </thead>
               <tbody>
+
+                <tr>
+                  <td class="param_name">id</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A unique numeric id, generated by Ingenia
+
+
+                  </td>
+                </tr>
+
 
                 <tr>
                   <td class="param_name">name</td>
@@ -892,12 +1046,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       The ID of the tag_set to which this tag belongs
 
 
-                      <div class="desc_example">
-                        <h6>Example</h6>
-                        <p class="example_code">3787</p>
-                      </div>
-                     
-
                   </td>
                 </tr>
 
@@ -913,7 +1061,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      Higher if Ingenia understands this tag; from 0 to 1
+                      From 0 to 1; confidence gets closer to 1 the more Ingenia considers the training for this tag sufficient; if this value is low, we advise to increase your training set for this tag
 
 
                   </td>
@@ -931,7 +1079,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      Higher if the tag has been applied to items that are very similar to one another; from 0 to 1
+                      From 0 to 1; consistency gets closer to 1 the more Ingenia considers the items associated to this tag as similar to one another; if this value is low, we advise to re-assess the items associated to this tag
 
 
                   </td>
@@ -957,26 +1105,46 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
                 <tr>
-                  <td class="param_name">disposition</td>
+                  <td class="param_name">created_at</td>
 
                   <td class = "type">
 
-                      <code>float</code>
+                      <code>date_time</code>
 
                   </td>
 
                   <td class = "description">
 
-                      The disposition of the tag. Float value between 0 and 1, defaults to 0.5. Lower values will tend to privilege precision (we suggest 0.25); higher values will tend to privilege recall (we suggest 0.75). For most uses, the default value will work well.
-
-You will want to privilege precision (with a disposition < 0.5) if you want each tag assignment to be accurate, and are less worried about some items being missed, i.e., you prefer to have false negatives than false positives. If the disposition is 0, no item will be tagged with this tag.
-
-You will want to privilege recall (with a disposition > 0.5) if you want each tag assignment to occur, and are less worried about some items being tagged incorrectly, i.e., you prefer to have false positives than false negatives. If the disposition is 1, all items will be tagged with this tag.
+                      When this tag was created
 
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">0.75</p>
+                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                      </div>
+                     
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">updated_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag was last updated
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
                       </div>
                      
 
@@ -1008,8 +1176,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
         </div>
 
-        <div id="tag-set-create---update-input" class = "object tag-set-create---update-input">
-          <h3 class = "object-heading" id="object-tag-set-create---update-input">Tag set create / update input</h3>
+        <div id="tag-set:-create---update-input" class = "object tag-set:-create---update-input">
+          <h3 class = "object-heading" id="object-tag-set:-create---update-input">Tag set: create / update input</h3>
 
           <p>A collection of thematically consistent tags </p>
 
@@ -1037,7 +1205,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      The name of your tag set
+                      The name of your tag set; we advise to make it short but meaningful; must be unique
 
 
                   </td>
@@ -1061,8 +1229,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
         </div>
 
-        <div id="tag-set-show-output" class = "object tag-set-show-output">
-          <h3 class = "object-heading" id="object-tag-set-show-output">Tag set show output</h3>
+        <div id="tag-set:-show-output" class = "object tag-set:-show-output">
+          <h3 class = "object-heading" id="object-tag-set:-show-output">Tag set: show output</h3>
 
           <p>A collection of thematically consistent tags </p>
 
@@ -1080,6 +1248,24 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
               <tbody>
 
                 <tr>
+                  <td class="param_name">id</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A unique numeric id, generated by Ingenia
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
                   <td class="param_name">name</td>
 
                   <td class = "type">
@@ -1092,6 +1278,54 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       The name of your tag set
 
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">created_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag set was created
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                      </div>
+                     
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">updated_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag set was last updated
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                      </div>
+                     
 
                   </td>
                 </tr>
@@ -1120,7 +1354,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
         <div id="similarity-response" class = "object similarity-response">
           <h3 class = "object-heading" id="object-similarity-response">Similarity response</h3>
 
-          <p>An array of item matches to the similarity call </p>
+          <p>An array of items that are related to an origin item sent via a similarity API call </p>
 
           <div class = "fields">
             <h4>Fields</h4>
@@ -1146,7 +1380,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      The ID of the item. (either created by user or generated by the system)
+                      The ID of the origin item
 
 
                   </td>
@@ -1164,7 +1398,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      Text of item, only first 50 characters
+                      First 50 characters of the text of each related item
 
 
                   </td>
@@ -1182,7 +1416,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      Is either tag or word.
+                      If 'tag', it will determine related items on the basis of their tags; if 'word', it will do so on the basis of the words contained in the item
 
 
                   </td>
@@ -1200,7 +1434,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                   <td class = "description">
 
-                      Score of similarity to source. 0=low, 1=high
+                      From 0 to 1, it measures how similar each related item is to the origin item; the response will sort items on descending similarity
 
 
                   </td>
@@ -1218,9 +1452,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             <pre class="prettyprint">
   {
     [
-      { "item": { "id":12182, "text": "The fall in the rand has given wealthy Russians a new location to search for luxury..." }, "mode": "tag", "similarity": 0.62144 },
-      { "item": { "id":9293, "text": "Robots tend to do jobs that no one wants to do. I am old enough to remember..."  }, "mode": "tag", "similarity": 0.62174 },
-      { "item": { "id":25333, "text": "The market for RMB credit raised outside China has gone four weeks without a..." }, "mode": "word", "similariy": 0.62174 }
+      { "item": { "id":12182, "text": "The fall in the rand has given wealthy Russians a new location to search for luxury..." }, "mode": "tag", "similarity": 0.62 },
+      { "item": { "id":9293, "text": "Robots tend to do jobs that no one wants to do. I am old enough to remember..."  }, "mode": "tag", "similarity": 0.55 },
+      { "item": { "id":25333, "text": "The market for RMB credit raised outside China has gone four weeks without a..." }, "mode": "word", "similariy": 0.22 }
     ]
   }</pre>
           </div>
@@ -1281,22 +1515,88 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            api_version
+                            text
 
 
                           </td>
 
                           <td class = "type">
 
-                              <code>integer</code>
+                              <code>string</code>
 
                           </td>
 
                           <td class = "description">
 
-                              The version of the API to use
+                              The text you want Ingenia to classify [1]
 
 
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            url
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The source URL from which to extract the text to be classified; Ingenia will extract the most relevant text [1]
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">http://www.example.com</p>
+                              </div>
+                              
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            file
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>multipart</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The source document from which to extract the text to be classified, sent as multi-part form submission [1]
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                <p class="example_code">document.pdf</p>
+                              </div>
+                              
 
                           </td>
                         </tr>
@@ -1350,96 +1650,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               Return at most these many tags
 
 
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The text you want Ingenia to classify. [1]
-
-
-
                               <div class="desc_example">
-                                <h6>Example</h6>
-                                <p class="example_code">A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...</p>
-                              </div>
-                              
+                                <h6>Default</h6>
+                                <p class="example_code">6</p>
+                              </div>                              
 
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            url
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Source URL to read text from and classify from. [1]
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                <p class="example_code">http://example.com</p>
-                              </div>
-                              
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Source document sent as multi-part form submission. [1]
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                <p class="example_code">document.pdf</p>
-                              </div>
-                              
 
                           </td>
                         </tr>
@@ -1449,11 +1664,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                       </table>
                       
                         <h5>Notes</h5>
-                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
-        supported include txt, html, pdf, all the MS Office formats). If you
-        send a URL, Ingenia will extract the most meaningful text from it,
-        e.g., ignoring links. If you send a file, it will extract the text
-        from it.</p>
+                        <p class='footnote'>      <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
+    supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
+    from it.</p>
+      <p>The text and the URL are input as part of the JSON component. The file
+    is sent as a multipart encoded http field.</p>
 </p>
                       
                   </div>
@@ -1510,6 +1725,30 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
+                            text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Text to use as a starting point
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             limit
 
 
@@ -1523,7 +1762,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Maximum number of items to return
+                              Return these many results
 
 
                               <div class="desc_example">
@@ -1546,42 +1785,13 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "type">
 
-                              <code>integer</code>
+                              <code>boolean</code>
 
                           </td>
 
                           <td class = "description">
 
-                              Return full text of item on Ingenia
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">1</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Text to use as a starting point
+                              Show the results with all their text, however long
 
 
 
@@ -1672,6 +1882,30 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
+                            tag_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              JSON encoded array of tag IDs to use as starting point
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             limit
 
 
@@ -1685,7 +1919,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Maximum number of items to return
+                              Return these many results
 
 
                               <div class="desc_example">
@@ -1701,49 +1935,20 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            tag_set_count
+                            full_text
 
 
                           </td>
 
                           <td class = "type">
 
-                              <code>integer</code>
+                              <code>boolean</code>
 
                           </td>
 
                           <td class = "description">
 
-                              Return full text of item on Ingenia
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">1</p>
-                              </div>                              
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              JSON encoded array of tag IDs to use as starting point
+                              Show the results with all their text, however long
 
 
 
@@ -1775,8 +1980,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
 
-        <div class = "resource Summarization">
-        <h3 class = "resource-heading" id='resource-Summarization'>Summarization</h3>
+        <div class = "resource Summarisation">
+        <h3 class = "resource-heading" id='resource-Summarisation'>Summarisation</h3>
 
         <div class = "resource-body" >
           <div class = "description"></div>
@@ -1785,7 +1990,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-summarization-summarise" >
+              <div class = "panel-heading" id="call-summarisation-summarise" >
                  <h5>Summarise</h5>
               </div>
 
@@ -1913,6 +2118,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               If true, the results will be ordered as they appear in the text, if false, they will be ordered by score.
 
 
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">false</p>
+                              </div>                              
+
 
                           </td>
                         </tr>
@@ -1998,7 +2208,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Default</h6>
-                                <p class="example_code">50</p>
+                                <p class="example_code">10</p>
                               </div>                              
 
 
@@ -2024,11 +2234,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               Show the results with all their text, however long
 
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">0</p>
-                              </div>                              
 
 
                           </td>
@@ -2158,11 +2363,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               Show the results with all their text, however long
 
 
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">0</p>
-                              </div>                              
-
 
                           </td>
                         </tr>
@@ -2177,7 +2377,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                   <div class = "response">
                     <h4>Response</h4>
 
-                    <p>See <a href="#object-item-show-output">Item show output</a></p>
+                    <p>See <a href="#object-item:-show-output">Item: show output</a></p>
 
                   </div>
 
@@ -2298,7 +2498,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#item-create---update-input'>json</a>
+                            <a href='#item:-create---update-input'>json</a>
 
 
                           </td>
@@ -2309,7 +2509,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              An item is a block of text to which you can associate tags
+                              An item is a block of text to which you can associate tags, that belongs to a bundle
 
 
 
@@ -2429,7 +2629,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#item-create---update-input'>json</a>
+                            <a href='#item:-create---update-input'>json</a>
 
 
                           </td>
@@ -2440,7 +2640,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              An item is a block of text to which you can associate tags
+                              An item is a block of text to which you can associate tags, that belongs to a bundle
 
 
 
@@ -2725,7 +2925,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Default</h6>
-                                <p class="example_code">50</p>
+                                <p class="example_code">10</p>
                               </div>                              
 
 
@@ -2846,7 +3046,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                   <div class = "response">
                     <h4>Response</h4>
 
-                    <p>See <a href="#object-bundle-show-output">Bundle show output</a></p>
+                    <p>See <a href="#object-bundle:-show-output">Bundle: show output</a></p>
 
                   </div>
 
@@ -2963,7 +3163,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#bundle-create---update-input'>json</a>
+                            <a href='#bundle:-create---update-input'>json</a>
 
 
                           </td>
@@ -3060,7 +3260,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#bundle-create---update-input'>json</a>
+                            <a href='#bundle:-create---update-input'>json</a>
 
 
                           </td>
@@ -3234,7 +3434,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Default</h6>
-                                <p class="example_code">50</p>
+                                <p class="example_code">10</p>
                               </div>                              
 
 
@@ -3355,7 +3555,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                   <div class = "response">
                     <h4>Response</h4>
 
-                    <p>See <a href="#object-tag-show-output">Tag show output</a></p>
+                    <p>See <a href="#object-tag:-show-output">Tag: show output</a></p>
 
                   </div>
 
@@ -3472,7 +3672,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#tag-create---update-input'>json</a>
+                            <a href='#tag:-create---update-input'>json</a>
 
 
                           </td>
@@ -3569,7 +3769,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#tag-create---update-input'>json</a>
+                            <a href='#tag:-create---update-input'>json</a>
 
 
                           </td>
@@ -3850,7 +4050,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Default</h6>
-                                <p class="example_code">50</p>
+                                <p class="example_code">10</p>
                               </div>                              
 
 
@@ -3971,7 +4171,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                   <div class = "response">
                     <h4>Response</h4>
 
-                    <p>See <a href="#object-tag-set-show-output">Tag set show output</a></p>
+                    <p>See <a href="#object-tag-set:-show-output">Tag set: show output</a></p>
 
                   </div>
 
@@ -4088,7 +4288,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#tag-set-create---update-input'>json</a>
+                            <a href='#tag-set:-create---update-input'>json</a>
 
 
                           </td>
@@ -4185,7 +4385,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
-                            <a href='#tag-set-create---update-input'>json</a>
+                            <a href='#tag-set:-create---update-input'>json</a>
 
 
                           </td>
@@ -4677,7 +4877,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">yes</p>
+                                <p class="example_code">true</p>
                               </div>
                               
 
@@ -4858,21 +5058,21 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
           <ul id="menu_object_items">
 
-            <li><a href="#object-item-create---update-input">Item create / update input</a></li>
+            <li><a href="#object-item:-create---update-input">Item: create / update input</a></li>
 
-            <li><a href="#object-item-show-output">Item show output</a></li>
+            <li><a href="#object-item:-show-output">Item: show output</a></li>
 
-            <li><a href="#object-bundle-create---update-input">Bundle create / update input</a></li>
+            <li><a href="#object-bundle:-create---update-input">Bundle: create / update input</a></li>
 
-            <li><a href="#object-bundle-show-output">Bundle show output</a></li>
+            <li><a href="#object-bundle:-show-output">Bundle: show output</a></li>
 
-            <li><a href="#object-tag-create---update-input">Tag create / update input</a></li>
+            <li><a href="#object-tag:-create---update-input">Tag: create / update input</a></li>
 
-            <li><a href="#object-tag-show-output">Tag show output</a></li>
+            <li><a href="#object-tag:-show-output">Tag: show output</a></li>
 
-            <li><a href="#object-tag-set-create---update-input">Tag set create / update input</a></li>
+            <li><a href="#object-tag-set:-create---update-input">Tag set: create / update input</a></li>
 
-            <li><a href="#object-tag-set-show-output">Tag set show output</a></li>
+            <li><a href="#object-tag-set:-show-output">Tag set: show output</a></li>
 
             <li><a href="#object-similarity-response">Similarity response</a></li>
 
@@ -4900,11 +5100,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             </ul>
           </li>
 
-          <li class="title expandable" data-submenuid="menu_summarization">Summarization</li>
+          <li class="title expandable" data-submenuid="menu_summarisation">Summarisation</li>
           <li class="options">
-            <ul id="menu_summarization">
+            <ul id="menu_summarisation">
 
-              <li><a href='#call-summarization-summarise'>Summarise</a></li>
+              <li><a href='#call-summarisation-summarise'>Summarise</a></li>
 
             </ul>
           </li>
