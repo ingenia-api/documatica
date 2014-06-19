@@ -630,6 +630,12 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = 'document.pdf'
       end
 
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'ID of the bundle to which the item belongs'
+        p.type = :integer
+        p.default = '[user\'s first bundle]'
+      end
+      
       req.parameter name: 'min_tags' do |p|
         p.description = 'Return at least these many tags'
         p.type = :integer
