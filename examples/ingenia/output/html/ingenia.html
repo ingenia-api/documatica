@@ -4812,7 +4812,31 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Number of bundles you have created
+                              Number of bundles you have own
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            processed_bundles
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of bundles where all items have been processed
 
 
 
@@ -4837,6 +4861,30 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                           <td class = "description">
 
                               Number of items you have created
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            pending_items
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of items Ingenia has not yet processed
 
 
 
@@ -4884,7 +4932,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Number of tag sets you have created
+                              Number of tag sets you own
 
 
 
@@ -4919,6 +4967,54 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
+                            pending_tag_sets
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tag sets ready to process, but which Ingenia has not yet processed
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            untrained_tag_sets
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tag sets which do not have enough items to process
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             total_tags
 
 
@@ -4932,7 +5028,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Number of tags you have created
+                              Number of tags you have own
 
 
 
@@ -4967,6 +5063,54 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                         <tr>
                           <td class="param_name">
 
+                            pending_tags
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tags Ingenia has not yet processed
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            untrained_tags
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tags which are not assigned to items
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             ready_to_classify
 
 
@@ -4980,7 +5124,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              It will be true if all your data has been processed; if false, Ingenia will return incomplete results
+                              True if all tags assigned to items have been processed
 
 
 

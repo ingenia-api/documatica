@@ -1192,12 +1192,22 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.path = '/status'
 
       req.parameter name: 'total_bundles' do |p|
-        p.description = 'Number of bundles you have created'
+        p.description = 'Number of bundles you have own'
+        p.type = :integer
+      end
+
+      req.parameter name: 'processed_bundles' do |p|
+        p.description = 'Number of bundles where all items have been processed'
         p.type = :integer
       end
 
       req.parameter name: 'total_items' do |p|
         p.description = 'Number of items you have created'
+        p.type = :integer
+      end
+
+      req.parameter name: 'pending_items' do |p|
+        p.description = 'Number of items Ingenia has not yet processed'
         p.type = :integer
       end
 
@@ -1207,7 +1217,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
 
       req.parameter name: 'total_tag_sets' do |p|
-        p.description = 'Number of tag sets you have created'
+        p.description = 'Number of tag sets you own'
         p.type = :integer
       end
 
@@ -1216,8 +1226,18 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.type = :integer
       end
 
+      req.parameter name: 'pending_tag_sets' do |p|
+        p.description = 'Number of tag sets ready to process, but which Ingenia has not yet processed'
+        p.type = :integer
+      end
+
+      req.parameter name: 'untrained_tag_sets' do |p|
+        p.description = 'Number of tag sets which do not have enough items to process'
+        p.type = :integer
+      end
+
       req.parameter name: 'total_tags' do |p|
-        p.description = 'Number of tags you have created'
+        p.description = 'Number of tags you have own'
         p.type = :integer
       end      
 
@@ -1226,8 +1246,18 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.type = :integer
       end
 
+      req.parameter name: 'pending_tags' do |p|
+        p.description = 'Number of tags Ingenia has not yet processed'
+        p.type = :integer
+      end
+
+      req.parameter name: 'untrained_tags' do |p|
+        p.description = 'Number of tags which are not assigned to items'
+        p.type = :integer
+      end
+
       req.parameter name: 'ready_to_classify' do |p|
-        p.description = 'It will be true if all your data has been processed; if false, Ingenia will return incomplete results'
+        p.description = 'True if all tags assigned to items have been processed'
         p.type = :boolean
       end
 
