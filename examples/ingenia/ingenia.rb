@@ -134,6 +134,11 @@ json_bundle_show = define_object( name: 'Bundle: show output' ) do |bundle|
     ts.type = :array
   end
 
+  bundle.parameter name: 'language' do |p|
+    p.description = 'The language of your bundle'
+    p.type = :string
+  end
+
   bundle.parameter name: 'created_at' do |p|
     p.description = 'When this bundle was created'
     p.type = :date_time
@@ -154,7 +159,8 @@ json_bundle_show = define_object( name: 'Bundle: show output' ) do |bundle|
     "tag_sets": [
       { "name": "technology", "id": 14562 },
       { "name": "business", "id": 666 }
-    ]
+    ],
+    "language": "en",
     "created_at":"2014-03-13T15:36:51Z",
     "updated_at":"2014-03-13T15:36:51Z",
   }'
