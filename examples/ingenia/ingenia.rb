@@ -869,7 +869,7 @@ curl -X POST \\
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
   http://api.ingeniapi.com/v2/items=$api_ke
 
-# Post a file
+# Post a file using multipart/form-data upload
 curl -X POST \\
   -F'json={}' \\
   -F'file=@article.txt \\
