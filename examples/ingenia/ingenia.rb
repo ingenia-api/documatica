@@ -867,7 +867,7 @@ curl -X POST \\
 # Post url to retrieve content from
 curl -X POST \\
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
-  http://api.ingeniapi.com/v2/items=$api_ke
+  http://api.ingeniapi.com/v2/items=$api_key
 
 # Post a file using multipart/form-data upload
 curl -X POST \\
@@ -1033,7 +1033,7 @@ curl -X POST \\
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/tag?api_key=$api_key
+curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
       EOF
     end
 
@@ -1139,7 +1139,11 @@ EOF
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
+# Simple request to fetch all tag sets
 curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+
+# ...and a bit more advanced example
+curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
       EOF
     end
 
