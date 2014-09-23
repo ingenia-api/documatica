@@ -857,6 +857,26 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         is sent as a multipart encoded http field.</p>
 
       FN
+
+      req.example = <<-EOF
+# Simply post item's text
+curl -X POST \\
+  -F'json={ "text" : "Some inline text" }' \\
+  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+
+# Post url to retrieve content from
+curl -X POST \\
+  -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
+  http://api.ingeniapi.com/v2/items=$api_ke
+
+# Post a file
+curl -X POST \\
+  -F'json={}' \\
+  -F'file=@article.txt \\
+  http://api.ingeniapi.com/v2/items=$api_key&update_existing=true
+      EOF
+
+
     end
 
     r.request name: 'Update' do |req|
@@ -1012,7 +1032,7 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
       req.parameter limit
       req.parameter offset
-      req.example <<-EOF
+      req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tag?api_key=$api_key
       EOF
     end
