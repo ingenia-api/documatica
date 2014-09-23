@@ -9,10 +9,10 @@
     <div id="reference" class="has_side_menu">
 
       <div class="stanza">
-        
+
         <h2 id="objects">Getting started. <small>Version <%= api.version %></small></h2>
 
-        <%= api.description %> 
+        <%= api.description %>
 
         <h3 id="api-endpoint">Endpoint</h3>
 
@@ -59,7 +59,7 @@
                       <h6>Example</h6>
                       <p class="example_code"><%= parameter.example %></p>
                       </div>
-                      
+
                     <%- end %>
                   </td>
                 </tr>
@@ -88,7 +88,7 @@
         <p>&nbsp;</p>
 
         <h2 id='objects' class="">Data structures</h2>
-        
+
         <%- api.objects[1..api.objects.size].each do |o| %>
         <div id="<%= o.html_name %>" class = "object <%= o.html_name %>">
           <h3 class = "object-heading" id="object-<%= o.html_name %>"><%= o.name %></h3>
@@ -126,7 +126,7 @@
                         <h6>Example</h6>
                         <p class="example_code"><%= parameter.example %></p>
                       </div>
-                     
+
                     <%- end %>
                   </td>
                 </tr>
@@ -156,7 +156,7 @@
       <p>&nbsp;</p>
 
       <h2>API calls</h2>
-      
+
       <%- api.resources.each do |resource| %>
 
         <div class = "resource <%= resource.name %>">
@@ -166,7 +166,7 @@
           <div class = "description"><%= resource.description %></div>
 
           <div class = "requests">
-            
+
             <%- resource.requests.each do |req| %>
             <div class = "request panel panel-default">
               <div class = "panel-heading" id="call-<%= resource.html_name %>-<%= req.html_name %>" >
@@ -176,7 +176,7 @@
               <div class = "panel-body">
                 <%- if req.path %>
                   <h5>Path</h5>
-                    
+
                     <div class = "path well"> <span> <code class="get_post"><%= req.call_type.upcase %></code> </span> <%= api.endpoint.sub( /\/?$/, '') %><%= req.path %></div>
 
                 <%- end %>
@@ -227,14 +227,14 @@
                               <div class="desc_example">
                                 <h6>Default</h6>
                                 <p class="example_code"><%= parameter.default %></p>
-                              </div>                              
+                              </div>
                             <%- end %>
                             <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
                               <div class="desc_example">
                                 <h6>Example</h6>
                                 <p class="example_code"><%= parameter.example %></p>
                               </div>
-                              
+
                             <%- end %>
                           </td>
                         </tr>
@@ -246,6 +246,14 @@
                         <h5>Notes</h5>
                         <p class='footnote'><%= req.footnote %></p>
                       <% end %>
+
+
+                      <%- if req.example  %>
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint"><%= req.example %></pre>
+                        </div>
+                      <%- end  %>
                   </div>
 
                   <%- if req.response %>
@@ -256,6 +264,7 @@
 
                   </div>
                   <%- end %>
+
                 </div>
               </div>
 
@@ -269,7 +278,7 @@
 
       </div>
     </div>
-          
+
 
 
     <div id="navigation" class="is_side_menu">
