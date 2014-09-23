@@ -1012,6 +1012,9 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
       req.parameter limit
       req.parameter offset
+      req.example <<-EOF
+curl http://api.ingeniapi.com/v2/tag?api_key=$api_key
+      EOF
     end
 
     r.request name: 'Show' do |req|
@@ -1045,6 +1048,11 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.path = '/tags'
 
       req.parameter json_tag
+      req.example = <<-EOF
+curl -X POST \\
+  -F'json={ "tag_set_id" : 52, "name" : "wine" }' \\
+  http://api.ingeniapi.com/v2/tags?api_key=$api_key
+      EOF
     end
 
     r.request name: 'Update' do |req|
@@ -1077,6 +1085,11 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.example = '[ 23, 43, 2113 ]'
         p.required = true
       end
+
+      req.example = <<-EOF
+curl -X POST \\
+  http://api.ingeniapi.com/v2/tags/8/merge?tag_ids='[7,8]'&api_key=$api_key
+EOF
     end
 
     r.request name: 'Delete' do |req|
@@ -1105,6 +1118,9 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 
       req.parameter limit
       req.parameter offset
+      req.example = <<-EOF
+curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+      EOF
     end
 
     r.request name: 'Show' do |req|
@@ -1138,6 +1154,11 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.path = '/tag_sets'
 
       req.parameter json_tag_set
+      req.example = <<-EOF
+curl -s -X POST \\
+  -F'json={ "name" : "new tag s" }' \\
+  http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+      EOF
     end
 
     r.request name: 'Update' do |req|
