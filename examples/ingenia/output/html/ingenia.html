@@ -2776,7 +2776,13 @@ curl -X POST \
 # Post url to retrieve content from
 curl -X POST \
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  http://api.ingeniapi.com/v2/items=$api_ke
+
+# Post a file
+curl -X POST \
+  -F'json={}' \
+  -F'file=@article.txt \
+  http://api.ingeniapi.com/v2/items=$api_key&update_existing=true
 </pre>
                         </div>
 
