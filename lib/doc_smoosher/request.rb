@@ -1,11 +1,11 @@
 module DocSmoosher
   class Request < ApiObject
-    attr_accessor :call_type, :path, :fields, :response
+    attr_accessor :call_type, :path, :fields, :response, :example
 
     def initialize(params = {}, &block)
       # Defaults
       self.call_type = :get
-      
+
       super(params)
     end
 
@@ -28,7 +28,8 @@ module DocSmoosher
       super.merge(
         {
           :fields => fields.map(&:as_json),
-          :parameters => parameters.map(&:as_json)
+          :parameters => parameters.map(&:as_json),
+          :example => example
         }
       )
     end
