@@ -1,5 +1,6 @@
 $: << '../../lib'
 
+
 $LOAD_PATH << '.'
 require 'bundler/setup'
 require 'doc_smoosher'
@@ -864,12 +865,28 @@ curl -X POST \\
   -F'json={ "text" : "Some inline text" }' \\
   http://api.ingeniapi.com/v2/items=$api_key&classify=true
 
-# Post url to retrieve content from
+# Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
+curl -X POST \\
+  -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \\
+  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+
+# Create an item with some text, create a new tag set ('my tag set') and add
+# a tag ('foo') with a score of 0.2 to that tag set..
+curl -X POST \\
+  -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \\
+  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+
+# Create an item with the tag ('foo')
+curl -X POST \\
+  -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \\
+  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+
+# Post url to retrieve content from and create an item with that content
 curl -X POST \\
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
   http://api.ingeniapi.com/v2/items=$api_key
 
-# Post a file using multipart/form-data upload
+# Post a file using multipart/form-data upload and create an item with that content
 curl -X POST \\
   -F'json={}' \\
   -F'file=@article.txt \\
