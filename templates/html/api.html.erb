@@ -56,8 +56,10 @@
                     <%- end %>
                     <%- if parameter.example %>
                       <div class="desc_example">
-                      <h6>Example</h6>
-                      <p class="example_code"><%= parameter.example %></p>
+                        <h6>Example</h6>
+                        <%  parameter.example.each_line do |line|  %>
+                          <p class="example_code"><%= line %></p>
+                        <%- end  %>
                       </div>
 
                     <%- end %>
@@ -124,7 +126,9 @@
                     <%- if parameter.example %>
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code"><%= parameter.example %></p>
+                        <%  parameter.example.each_line do |line|  %>
+                          <p class="example_code"><%= line %></p>
+                        <%- end  %>
                       </div>
 
                     <%- end %>
@@ -232,7 +236,9 @@
                             <%- if parameter.example && parameter.class != DocSmoosher::ApiObject %>
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code"><%= parameter.example %></p>
+                                <%  parameter.example.each_line do |line|  %>
+                                  <p class="example_code"><%= line %></p>
+                                <%- end  %>
                               </div>
 
                             <%- end %>

@@ -230,9 +230,13 @@ json_item = define_object( name: 'Item: create / update input' ) do |item|
   end
 
   item.parameter name: 'tags' do |p|
-    p.description = "An array with the name of the tags you wish to assign to this item. If the tag doesn\'t exist, it will be created [2]"
+    p.description = "An array with the name of the tags you wish to assign to this item. If the tag doesn\'t exist, it will be created [2]. Tags can also be created with user's assigned score, see 2nd example"
     p.type = :array
-    p.example = '[ "startups", "saas", "marketing" ]'
+    p.example = <<-EOF
+[ "startups", "saas", "marketing" ]'
+# or with user assigned score:
+{ "statrups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
+EOF
   end
 
   item.parameter name: 'tag_ids' do |p|
@@ -313,7 +317,7 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
   end
 
   item.parameter name: 'tag' do |p|
-    p.description = 'A hash with the details of a tag associated to the item, including its id, name, score and user_selected'
+    p.description = 'A hash with the details of a tag associated to the item, including its id, name, user assigned score and user_selected'
     p.type = :hash
   end
 
@@ -325,6 +329,11 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
   item.parameter name: 'user_selected' do |p|
     p.description = 'true if the tag was assigned to the item by the user, false if it was assigned by Ingenia'
     p.type = :boolean
+  end
+
+  item.parameter name: 'user_assigned_score' do |p|
+    p.description = 'score assigned by the user when tag was created'
+    p.type = :float
   end
 
   item.example = '
@@ -350,7 +359,8 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
                   "id":7811,
                   "name":"saas",
                   "score":"0.45",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "user_assigned_score" : 0.7
                 },
                 {
                   "id":1327,

@@ -72,8 +72,10 @@
 
 
                       <div class="desc_example">
-                      <h6>Example</h6>
-                      <p class="example_code">"2.0"</p>
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">"2.0"</p>
+
                       </div>
 
 
@@ -186,7 +188,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">785uU423aC</p>
+                        
+                          <p class="example_code">785uU423aC</p>
+
                       </div>
 
 
@@ -228,7 +232,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">http://www.example.com</p>
+                        
+                          <p class="example_code">http://www.example.com</p>
+
                       </div>
 
 
@@ -265,12 +271,21 @@
 
                   <td class = "description">
 
-                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]
+                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]. Tags can also be created with user's score, see 2nd example
 
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">[ "startups", "saas", "marketing" ]</p>
+                        
+                          <p class="example_code">[ "startups", "saas", "marketing" ]'
+</p>
+
+                          <p class="example_code"># or with user assigned score:
+</p>
+
+                          <p class="example_code">{ "statrups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
+</p>
+
                       </div>
 
 
@@ -294,7 +309,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">[ 45, 787, 23 ]</p>
+                        
+                          <p class="example_code">[ 45, 787, 23 ]</p>
+
                       </div>
 
 
@@ -318,7 +335,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }</p>
+                        
+                          <p class="example_code">{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }</p>
+
                       </div>
 
 
@@ -393,7 +412,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">785uU423aC</p>
+                        
+                          <p class="example_code">785uU423aC</p>
+
                       </div>
 
 
@@ -435,7 +456,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
                       </div>
 
 
@@ -459,7 +482,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
                       </div>
 
 
@@ -483,7 +508,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
                       </div>
 
 
@@ -581,6 +608,24 @@
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">user_assigned_score</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      score assigned by the user when tag was created
+
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -606,7 +651,8 @@
                   "id":4352,
                   "name":"startups",
                   "score":"0.8",
-                  "user_selected": "f"
+                  "user_selected": "f",
+                  "user_assigned_score" : 0.7
                 },
                 {
                   "id":7811,
@@ -826,7 +872,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
                       </div>
 
 
@@ -850,7 +898,9 @@
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
                       </div>
 
 
@@ -1139,7 +1189,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
                       </div>
 
 
@@ -1163,7 +1215,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
                       </div>
 
 
@@ -1318,7 +1372,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:24:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
                       </div>
 
 
@@ -1342,7 +1398,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                       <div class="desc_example">
                         <h6>Example</h6>
-                        <p class="example_code">2013-12-16T11:25:52+00:00</p>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
                       </div>
 
 
@@ -1550,7 +1608,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...</p>
+                                
+                                  <p class="example_code">A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability...</p>
+
                               </div>
 
 
@@ -1580,7 +1640,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">http://www.example.com</p>
+                                
+                                  <p class="example_code">http://www.example.com</p>
+
                               </div>
 
 
@@ -1610,7 +1672,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">document.pdf</p>
+                                
+                                  <p class="example_code">document.pdf</p>
+
                               </div>
 
 
@@ -1877,7 +1941,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">mode=tags</p>
+                                
+                                  <p class="example_code">mode=tags</p>
+
                               </div>
 
 
@@ -2038,7 +2104,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">mode=tags</p>
+                                
+                                  <p class="example_code">mode=tags</p>
+
                               </div>
 
 
@@ -2117,7 +2185,9 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">[ 45, 787, 23 ]</p>
+                                
+                                  <p class="example_code">[ 45, 787, 23 ]</p>
+
                               </div>
 
 
@@ -2773,18 +2843,18 @@ curl -X POST \
   -F'json={ "text" : "Some inline text" }' \
   http://api.ingeniapi.com/v2/items=$api_key&classify=true
 
-# Create an item with given text, assign a tag ('foo') to it with score 0.2
+# Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \
   http://api.ingeniapi.com/v2/items=$api_key&classify=true
 
-# Create an item with given text, create a new tag set ('my tag set') and add
-# a tag 'foo' with score 0.2 to that tag set
+# Create an item with some text, create a new tag set ('my tag set') and add
+# a tag ('foo') with a score of 0.2 to that tag set..
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \
   http://api.ingeniapi.com/v2/items=$api_key&classify=true
 
-# Create an item with tag 'foo'
+# Create an item with the tag ('foo')
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \
   http://api.ingeniapi.com/v2/items=$api_key&classify=true
@@ -3148,7 +3218,9 @@ curl -X POST \
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">mode=tags</p>
+                                
+                                  <p class="example_code">mode=tags</p>
+
                               </div>
 
 
@@ -4227,7 +4299,9 @@ curl -X POST \
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">[ 23, 43, 2113 ]</p>
+                                
+                                  <p class="example_code">[ 23, 43, 2113 ]</p>
+
                               </div>
 
 
@@ -4870,7 +4944,9 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
                               <div class="desc_example">
                                 <h6>Example</h6>
-                                <p class="example_code">[ 12, 34, 56 ]</p>
+                                
+                                  <p class="example_code">[ 12, 34, 56 ]</p>
+
                               </div>
 
 
