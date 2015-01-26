@@ -271,7 +271,7 @@
 
                   <td class = "description">
 
-                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]. Tags can also be created with user's score, see 2nd example
+                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]. Tags can also be created with user's assigned score, see 2nd example
 
 
                       <div class="desc_example">
@@ -565,7 +565,7 @@
 
                   <td class = "description">
 
-                      A hash with the details of a tag associated to the item, including its id, name, score and user_selected
+                      A hash with the details of a tag associated to the item, including its id, name, user assigned score and user_selected
 
 
                   </td>
@@ -651,14 +651,14 @@
                   "id":4352,
                   "name":"startups",
                   "score":"0.8",
-                  "user_selected": "f",
-                  "user_assigned_score" : 0.7
+                  "user_selected": "f"
                 },
                 {
                   "id":7811,
                   "name":"saas",
                   "score":"0.45",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "user_assigned_score" : 0.7
                 },
                 {
                   "id":1327,
@@ -2299,6 +2299,11 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
 
+                <div class = "description">
+                  <h5>Description</h5>
+                  <code class="get_post">GET</code> is also supported
+                </div>
+
 
                   <div class = "parameters">
                     <h5>Parameters</h5>
@@ -2330,6 +2335,30 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                           <td class = "description">
 
                               Text to summarise: the key sentences will be extracted
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the item to be summarised.
 
 
 
