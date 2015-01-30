@@ -712,42 +712,42 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
   api.resource name: 'Recommendation engine' do |r|
     r.description = ""
 
-    r.request name: 'Similar to' do |req|
-      req.description = ''
-      req.call_type = :get
-      req.path = '/items/:id/similar_to'
-
-      req.parameter name: 'id' do |p|
-        p.description = 'ID of item for which we want other similar items'
-        p.type = :string
-        p.required = true
-      end
-
-      req.parameter limit
-
-      req.parameter full_text
-
-      req.parameter name: 'mode' do |p|
-        p.description = 'Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)'
-        p.type = :string
-        p.example = 'mode=tag'
-        p.default = 'auto'
-      end
-
-      req.parameter name: 'metadata_filters' do |p|
-        p.description = 'Instruct ingenia to only consider knowledge items which match these criteria'
-        p.type = :string
-        p.example = 'metadata_filters[author]=Joe%20Bloggs'
-      end
-
-      req.parameter name: 'item_filters' do |p|
-        p.description = 'Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.'
-        p.type = :string
-        p.example = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
-      end
-
-      req.response = json_similarity_response
-    end
+    # r.request name: 'Similar to' do |req|
+    #   req.description = ''
+    #   req.call_type = :get
+    #   req.path = '/items/:id/similar_to'
+    #
+    #   req.parameter name: 'id' do |p|
+    #     p.description = 'ID of item for which we want other similar items'
+    #     p.type = :string
+    #     p.required = true
+    #   end
+    #
+    #   req.parameter limit
+    #
+    #   req.parameter full_text
+    #
+    #   req.parameter name: 'mode' do |p|
+    #     p.description = 'Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)'
+    #     p.type = :string
+    #     p.example = 'mode=tag'
+    #     p.default = 'auto'
+    #   end
+    #
+    #   req.parameter name: 'metadata_filters' do |p|
+    #     p.description = 'Instruct ingenia to only consider knowledge items which match these criteria'
+    #     p.type = :string
+    #     p.example = 'metadata_filters[author]=Joe%20Bloggs'
+    #   end
+    #
+    #   req.parameter name: 'item_filters' do |p|
+    #     p.description = 'Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.'
+    #     p.type = :string
+    #     p.example = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
+    #   end
+    #
+    #   req.response = json_similarity_response
+    # end
 
     r.request name: 'Similar to text' do |req|
       req.description = ''
@@ -757,6 +757,18 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       req.parameter name: 'text' do |p|
         p.description = 'Text of item for which we want other similar items'
         p.type = :string
+      end
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the default bundle'
+        p.type = :integer
+        p.example = '77'
+      end
+
+      req.parameter name: 'bundle_ids' do |p|
+        p.description = 'Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the text'
+        p.type = :array
+        p.example = '1,4,77'
       end
 
       req.parameter limit
@@ -795,6 +807,12 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
         p.description = 'JSON encoded array of tag IDs for which we want relevant items'
         p.type = :array
         p.example = '[ 45, 787, 23 ]'
+      end
+
+      req.parameter name: 'bundle_ids' do |p|
+        p.description = 'Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the tags'
+        p.type = :array
+        p.example = '1,4,77'
       end
 
       req.parameter limit
@@ -937,35 +955,35 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
 # Simply post item's text
 curl -X POST \\
   -F'json={ "text" : "Some inline text" }' \\
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \\
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text, create a new tag set ('my tag set') and add
 # a tag ('foo') with a score of 0.2 to that tag set..
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \\
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with the tag ('foo')
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \\
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items=$api_key&classify=true'
 
 # Post url to retrieve content from and create an item with that content
 curl -X POST \\
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
-  http://api.ingeniapi.com/v2/items=$api_key
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key'
 
 # Post a file using multipart/form-data upload and create an item with that content
 curl -X POST \\
   -F'json={}' \\
-  -F'file=@article.txt \\
-  http://api.ingeniapi.com/v2/items=$api_key&update_existing=true
-      EOF
+  -F'file=@article.txt' \\
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
+EOF
 
 
     end
@@ -1020,6 +1038,18 @@ curl -X POST \\
         p.description = 'ID of item to get similar items to'
         p.type = :string
         p.required = true
+      end
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'Tell ingenia which bundle this item is in. If this parameter is omitted, ingenia will only look for the item in the default bundle'
+        p.type = :integer
+        p.example = '77'
+      end
+
+      req.parameter name: 'bundle_ids' do |p|
+        p.description = 'Restrict your search to one or more bundles. If this parameter is omitted, all bundles will be scanned'
+        p.type = :array
+        p.example = '1,4,77'
       end
 
       req.parameter limit

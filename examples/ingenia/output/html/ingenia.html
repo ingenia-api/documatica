@@ -1859,235 +1859,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar-to" >
-                 <h5>Similar to</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items/:id/similar_to</div>
-
-
-
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            id
-
-
-                            <span class='text-muted'>required</span>
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              ID of item for which we want other similar items
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Return these many results
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            full_text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Show the results with all their text, however long
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            mode
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">auto</p>
-                              </div>
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">mode=tag</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            metadata_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which match these criteria
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            item_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
-
-                  </div>
-
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
               <div class = "panel-heading" id="call-recommendation-engine-similar-to-text" >
                  <h5>Similar to text</h5>
               </div>
@@ -2133,6 +1904,70 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               Text of item for which we want other similar items
 
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the default bundle
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">77</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the text
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">1,4,77</p>
+
+                              </div>
 
 
                           </td>
@@ -2366,6 +2201,38 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                                 <h6>Example</h6>
                                 
                                   <p class="example_code">[ 45, 787, 23 ]</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the tags
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">1,4,77</p>
 
                               </div>
 
@@ -3113,34 +2980,34 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                           <pre class="prettyprint"># Simply post item's text
 curl -X POST \
   -F'json={ "text" : "Some inline text" }' \
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text, create a new tag set ('my tag set') and add
 # a tag ('foo') with a score of 0.2 to that tag set..
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with the tag ('foo')
 curl -X POST \
   -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \
-  http://api.ingeniapi.com/v2/items=$api_key&classify=true
+  'http://api.ingeniapi.com/v2/items=$api_key&classify=true'
 
 # Post url to retrieve content from and create an item with that content
 curl -X POST \
   -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \
-  http://api.ingeniapi.com/v2/items=$api_key
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key'
 
 # Post a file using multipart/form-data upload and create an item with that content
 curl -X POST \
   -F'json={}' \
-  -F'file=@article.txt \
-  http://api.ingeniapi.com/v2/items=$api_key&update_existing=true
+  -F'file=@article.txt' \
+  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
 </pre>
                         </div>
 
@@ -3404,6 +3271,70 @@ curl -X POST \
 
                               ID of item to get similar items to
 
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Tell ingenia which bundle this item is in. If this parameter is omitted, ingenia will only look for the item in the default bundle
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">77</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Restrict your search to one or more bundles. If this parameter is omitted, all bundles will be scanned
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">1,4,77</p>
+
+                              </div>
 
 
                           </td>
@@ -5959,8 +5890,6 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
           <li class="title expandable" data-submenuid="menu_recommendation-engine">Recommendation engine</li>
           <li class="options">
             <ul id="menu_recommendation-engine">
-
-              <li><a href='#call-recommendation-engine-similar-to'>Similar to</a></li>
 
               <li><a href='#call-recommendation-engine-similar-to-text'>Similar to text</a></li>
 
