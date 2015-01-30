@@ -760,13 +760,13 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
       end
 
       req.parameter name: 'bundle_id' do |p|
-        p.description = 'The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the default bundle'
+        p.description = 'The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the first bundle you created.'
         p.type = :integer
         p.example = '77'
       end
 
       req.parameter name: 'bundle_ids' do |p|
-        p.description = 'Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the text'
+        p.description = 'Find similar items in one or more bundles. If this parameter is omitted, ingenia find items from any of your bundles.'
         p.type = :array
         p.example = '1,4,77'
       end
