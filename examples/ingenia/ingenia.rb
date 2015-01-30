@@ -826,12 +826,17 @@ define_api( name: 'Ingenia API', description: DESCRIPTION ) do |api|
     r.description = ""
 
     r.request name: 'Summarise' do |req|
-      req.description = ''
-      req.call_type = :post
+      req.description = '<code class="get_post">GET</code> is also supported'
+      req.call_type =  :post
       req.path = '/summarise'
 
       req.parameter name: 'text' do |p|
         p.description = 'Text to summarise: the key sentences will be extracted'
+        p.type = :string
+      end
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of the item to be summarised.'
         p.type = :string
       end
 
