@@ -345,6 +345,40 @@
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">metadata</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                        A list of attributes you can associate to the knowledge item.
+
+  Valid types of metadata are date, string, collection and number.
+  'date': which includes a time for when an event occurred
+  'string': General purpose content
+  'collection': One item from defined collection
+  'number': A numerical value
+
+
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">[{ name: 'published_date', type: 'date', content: '2012-01-20 00:00:00' }, { name: 'title', type: 'string', content: 'A day to remember',  { name: 'author', type: 'collection', content: 'Joe Bloggs' },      { name: 'author', type: 'collection', content: 'John Smith' }]</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -363,8 +397,7 @@
 
           <div class = "example clear">
             <h4>Example</h4>
-            <pre class="prettyprint">
-  {
+            <pre class="prettyprint">  {
     text: "High tech startups and their positive power to change for good",
     tag_sets: {
       "Topics": [ "startups", "technology" ],
@@ -372,7 +405,7 @@
       "Geography": [ ]
     }
   }
-  </pre>
+</pre>
           </div>
 
 
@@ -620,6 +653,24 @@
                   <td class = "description">
 
                       score assigned by the user when tag was created
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">membership_degree</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the degree to which this item is a member of its bundle
 
 
                   </td>
@@ -1930,7 +1981,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Constrain matches to base similarity on just "tags", just "words", or "auto" (first tags, then words)
+                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
 
 
                               <div class="desc_example">
@@ -1942,7 +1993,71 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               <div class="desc_example">
                                 <h6>Example</h6>
                                 
-                                  <p class="example_code">mode=tags</p>
+                                  <p class="example_code">mode=tag</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
 
                               </div>
 
@@ -2093,7 +2208,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Constrain matches to base similarity on just "tags", just "words", or "auto" (first tags, then words)
+                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
 
 
                               <div class="desc_example">
@@ -2105,7 +2220,71 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               <div class="desc_example">
                                 <h6>Example</h6>
                                 
-                                  <p class="example_code">mode=tags</p>
+                                  <p class="example_code">mode=tag</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
 
                               </div>
 
@@ -2242,6 +2421,70 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                               Show the results with all their text, however long
 
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
+
+                              </div>
 
 
                           </td>
@@ -3236,7 +3479,7 @@ curl -X POST \
 
                           <td class = "description">
 
-                              Constrain matches to base similarity on just "tags", just "words", or "auto" (first tags, then words)
+                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
 
 
                               <div class="desc_example">
@@ -3248,7 +3491,71 @@ curl -X POST \
                               <div class="desc_example">
                                 <h6>Example</h6>
                                 
-                                  <p class="example_code">mode=tags</p>
+                                  <p class="example_code">mode=tag</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
 
                               </div>
 
