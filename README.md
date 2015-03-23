@@ -1,8 +1,17 @@
 Doc Smoosher
 ===
-[![Build Status](https://travis-ci.org/dangerousbeans/doc_smoosher.png?branch=master)](https://travis-ci.org/dangerousbeans/doc_smoosher) <-- Yep, that's right.
 
-![BEING_SMOOSHED.jaypurgz](http://i.imgur.com/Fu4YNJa.jpg)
+To generate documentaion for ingenia api
+
+goto path/documatica/examples
+
+run ../../bin/smoosher generate
+
+cp output/html/ingenia.html Nowa/app/views/documentation/v2/documentation.html
+
+ta daaa
+
+tl;dr
 
 ###### A simple API documentation and test generator for the complicated world we live in
 
