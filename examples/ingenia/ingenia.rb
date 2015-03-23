@@ -341,7 +341,7 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
   end
 
   item.parameter name: 'score' do |p|
-    p.description = 'A number which quantifies the strength of the association between an item and a tag, between 0 (lowest) and 1 (highest)'
+    p.description = 'An aggregation of the machine and rule scores, between 0 (lowest) and 1 (highest).'
     p.type = :numeric
   end
 
@@ -355,12 +355,22 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
     p.type = :float
   end
 
+  item.parameter name: 'machine_score' do |p|
+    p.description = 'A number which quantifies the strength of the association between an item and a tag, between 0 (lowest) and 1 (highest)'
+    p.type = :numeric
+  end
+
+  item.parameter name: 'rule_score' do |p|
+    p.description = 'A number which quantifies the strength of the association between an item and a tag score, between -1 (lowest) and 1 (highest)'
+    p.type = :numeric
+  end
+
   item.parameter name: 'membership_degree' do |p|
     p.description = 'the degree to which this item is a member of its bundle'
     p.type = :float
   end
 
-  item.example = '
+item.example = '
   {
     "id":"e19e134d0e79153349ff78a674283e0b",
     "last_classified_at":2013-12-16T11:25:07+00:00,
@@ -376,20 +386,29 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
                 {
                   "id":4352,
                   "name":"startups",
+                  "user_selected": "f",
                   "score":"0.8",
-                  "user_selected": "f"
+                  "machine_score":"0.45",
+                  "rule_score": "0.35",
+                  "user_assigned_score": null
                 },
                 {
-                  "id":7811,
-                  "name":"saas",
-                  "score":"0.45",
+                  "id": 7811,
+                  "name": "saas",
                   "user_selected": "t",
-                  "user_assigned_score" : 0.7
+                  "score": "0.45",
+                  "machine_score":"0.45",
+                  "rule_score": null,
+                  "user_assigned_score": 0.7
                 },
                 {
                   "id":1327,
                   "name":"marketing",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "score": "0.50",
+                  "machine_score":"0.45",
+                  "rule_score": "0.05",
+                  "user_assigned_score": 0.7
                 }
               ]
           }
