@@ -261,6 +261,32 @@
 
 
                 <tr>
+                  <td class="param_name">tag_sets</td>
+
+                  <td class = "type">
+
+                      <code>hash</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A hash of tag sets, each of which is an array of tags that you consider of the same type [2]
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "United Kingdom", "Italy" ] }</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
                   <td class="param_name">tags</td>
 
                   <td class = "type">
@@ -271,7 +297,7 @@
 
                   <td class = "description">
 
-                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2]. Tags can also be created with user's assigned score, see 2nd example
+                      An array with the name of the tags you wish to assign to this item. If the tag doesn't exist, it will be created [2].
 
 
                       <div class="desc_example">
@@ -280,10 +306,31 @@
                           <p class="example_code">[ "startups", "saas", "marketing" ]'
 </p>
 
-                          <p class="example_code"># or with user assigned score:
-</p>
+                      </div>
 
-                          <p class="example_code">{ "statrups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tags</td>
+
+                  <td class = "type">
+
+                      <code>hash</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      As above, but with a user-assigned score. The score should be a number between 0 and 1 that quantifies the strength of the association between the item and the tag (1: highest) [2].
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">{ "startups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
 </p>
 
                       </div>
@@ -311,32 +358,6 @@
                         <h6>Example</h6>
                         
                           <p class="example_code">[ 45, 787, 23 ]</p>
-
-                      </div>
-
-
-                  </td>
-                </tr>
-
-
-                <tr>
-                  <td class="param_name">tag_sets</td>
-
-                  <td class = "type">
-
-                      <code>hash</code>
-
-                  </td>
-
-                  <td class = "description">
-
-                      A hash of tag sets, each of which is an array of tags that you consider of the same type [2]
-
-
-                      <div class="desc_example">
-                        <h6>Example</h6>
-                        
-                          <p class="example_code">{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }</p>
 
                       </div>
 
@@ -389,7 +410,7 @@
     <p>The text and the URL are input as part of the JSON component. The file
     is sent as a multipart encoded http field.</p>
 
-    <p>[2] Only specify one of the following: tags, tag_ids or tag_sets</p>
+    <p>[2] Only specify one of the following: tag_sets, tags or tag_ids </p>
 </p>
               
           </div>
@@ -616,7 +637,7 @@
 
                   <td class = "description">
 
-                      A number which quantifies the strength of the association between an item and a tag, between 0 (lowest) and 1 (highest)
+                      An aggregation of the machine and rule scores, between 0 (lowest) and 1 (highest).
 
 
                   </td>
@@ -625,6 +646,24 @@
 
                 <tr>
                   <td class="param_name">user_selected</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      Deprecated: please use user_assigned, this will be removed in the next release
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">user_asigned</td>
 
                   <td class = "type">
 
@@ -653,6 +692,42 @@
                   <td class = "description">
 
                       score assigned by the user when tag was created
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">machine_score</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A number which quantifies the strength of the association between an item and a tag, between 0 (lowest) and 1 (highest)
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">rule_score</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      A number which quantifies the strength of the association between an item and a tag score, between -1 (lowest) and 1 (highest)
 
 
                   </td>
@@ -701,20 +776,32 @@
                 {
                   "id":4352,
                   "name":"startups",
+                  "user_selected": "f",
+                  "user_assigned": false,
                   "score":"0.8",
-                  "user_selected": "f"
+                  "machine_score":"0.45",
+                  "rule_score": "0.35",
+                  "user_assigned_score": null
                 },
                 {
-                  "id":7811,
-                  "name":"saas",
-                  "score":"0.45",
+                  "id": 7811,
+                  "name": "saas",
                   "user_selected": "t",
-                  "user_assigned_score" : 0.7
+                  "user_assigned": true,
+                  "score": "0.45",
+                  "machine_score":"0.45",
+                  "rule_score": null,
+                  "user_assigned_score": 0.7
                 },
                 {
                   "id":1327,
                   "name":"marketing",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "user_assigned": true,
+                  "score": "0.50",
+                  "machine_score":"0.45",
+                  "rule_score": "0.05",
+                  "user_assigned_score": 0.7
                 }
               ]
           }
@@ -729,7 +816,8 @@
                   "id":3321,
                   "name":"united kingdom",
                   "score":"0.37",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "user_assigned": true
                 }
               ]
           }

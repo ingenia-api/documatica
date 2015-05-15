@@ -246,13 +246,25 @@ json_item = define_object( name: 'Item: create / update input' ) do |item|
     p.default = '[user\'s first bundle]'
   end
 
+  item.parameter name: 'tag_sets' do |p|
+    p.description = "A hash of tag sets, each of which is an array of tags that you consider of the same type [2]"
+    p.type = :hash
+    p.example = '{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "United Kingdom", "Italy" ] }'
+  end
+
   item.parameter name: 'tags' do |p|
-    p.description = "An array with the name of the tags you wish to assign to this item. If the tag doesn\'t exist, it will be created [2]. Tags can also be created with user's assigned score, see 2nd example"
+    p.description = "An array with the name of the tags you wish to assign to this item. If the tag doesn\'t exist, it will be created [2]."
     p.type = :array
     p.example = <<-EOF
 [ "startups", "saas", "marketing" ]'
-# or with user assigned score:
-{ "statrups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
+EOF
+  end
+
+  item.parameter name: 'tags' do |p|
+    p.description = "As above, but with a user-assigned score. The score should be a number between 0 and 1 that quantifies the strength of the association between the item and the tag (1: highest) [2]."
+    p.type = :hash
+    p.example = <<-EOF
+{ "startups" : 0.2 , "sass" : 0.7, "marketing" : 1 }
 EOF
   end
 
@@ -262,19 +274,12 @@ EOF
     p.example = '[ 45, 787, 23 ]'
   end
 
-  item.parameter name: 'tag_sets' do |p|
-    p.description = "A hash of tag sets, each of which is an array of tags that you consider of the same type [2]"
-    p.type = :hash
-    p.example = '{ "topics": [ "startups", "saas", "marketing" ], "geography": [ "united kingdom" ] }'
-  end
-
   item.example = <<-EXAMPLE
   {
     text: "High tech startups and their positive power to change for good",
     tag_sets: {
       "Topics": [ "startups", "technology" ],
-      "Mood": [ "positive" ],
-      "Geography": [ ]
+      "Mood": [ "positive" ]
     }
   }
   EXAMPLE
@@ -288,7 +293,7 @@ EOF
     <p>The text and the URL are input as part of the JSON component. The file
     is sent as a multipart encoded http field.</p>
 
-    <p>[2] Only specify one of the following: tags, tag_ids or tag_sets</p>
+    <p>[2] Only specify one of the following: tag_sets, tags or tag_ids </p>
   FN
 
 end
@@ -346,6 +351,11 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
   end
 
   item.parameter name: 'user_selected' do |p|
+    p.description = 'Deprecated: please use user_assigned value, this will be removed in the next release'
+    p.type = :string
+  end
+
+  item.parameter name: 'user_asigned' do |p|
     p.description = 'true if the tag was assigned to the item by the user, false if it was assigned by Ingenia'
     p.type = :boolean
   end
@@ -387,6 +397,7 @@ item.example = '
                   "id":4352,
                   "name":"startups",
                   "user_selected": "f",
+                  "user_assigned": false,
                   "score":"0.8",
                   "machine_score":"0.45",
                   "rule_score": "0.35",
@@ -396,6 +407,7 @@ item.example = '
                   "id": 7811,
                   "name": "saas",
                   "user_selected": "t",
+                  "user_assigned": true,
                   "score": "0.45",
                   "machine_score":"0.45",
                   "rule_score": null,
@@ -405,6 +417,7 @@ item.example = '
                   "id":1327,
                   "name":"marketing",
                   "user_selected": "t",
+                  "user_assigned": true,
                   "score": "0.50",
                   "machine_score":"0.45",
                   "rule_score": "0.05",
@@ -423,7 +436,8 @@ item.example = '
                   "id":3321,
                   "name":"united kingdom",
                   "score":"0.37",
-                  "user_selected": "t"
+                  "user_selected": "t",
+                  "user_assigned": true
                 }
               ]
           }
