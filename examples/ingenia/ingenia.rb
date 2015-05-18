@@ -355,7 +355,7 @@ json_item_show = define_object( name: 'Item: show output' ) do |item|
     p.type = :string
   end
 
-  item.parameter name: 'user_asigned' do |p|
+  item.parameter name: 'user_assigned' do |p|
     p.description = 'true if the tag was assigned to the item by the user, false if it was assigned by Ingenia'
     p.type = :boolean
   end
