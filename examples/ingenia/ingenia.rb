@@ -968,7 +968,11 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
         p.example     = '1,4,77'
       end
 
-      req.parameter limit
+      req.parameter name: 'limit' do |p|
+        p.description = 'The number of items to return, the maximum is 100.'
+        p.type = :integer
+        p.example = '15'
+      end
 
       req.parameter full_text
 
@@ -1012,7 +1016,11 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
         p.example     = '1,4,77'
       end
 
-      req.parameter limit
+      req.parameter name: 'limit' do |p|
+        p.description = 'The number of items to return, the maximum is 100.'
+        p.type = :integer
+        p.example = '15'
+      end
 
       req.parameter full_text
 
@@ -1249,7 +1257,12 @@ curl -X POST \\
         p.example     = '1,4,77'
       end
 
-      req.parameter limit
+      req.parameter name: 'limit' do |p|
+        p.description = 'The number of items to return, the maximum is 100.'
+        p.type = :integer
+        p.example = '15'
+      end
+
 
       req.parameter full_text
 

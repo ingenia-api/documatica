@@ -2077,12 +2077,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Return these many results
+                              The number of items to return, the maximum is 100.
+
 
 
                               <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">15</p>
+
                               </div>
 
 
@@ -2344,12 +2347,15 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Return these many results
+                              The number of items to return, the maximum is 100.
+
 
 
                               <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">15</p>
+
                               </div>
 
 
@@ -3444,12 +3450,15 @@ curl -X POST \
 
                           <td class = "description">
 
-                              Return these many results
+                              The number of items to return, the maximum is 100.
+
 
 
                               <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">15</p>
+
                               </div>
 
 
@@ -4764,6 +4773,431 @@ curl -X POST \
 
 
 
+        <div class = "resource Tag Rules">
+        <h3 class = "resource-heading" id='resource-Tag Rules'>Tag Rules</h3>
+
+        <div class = "resource-body" >
+          <div class = "description">Tag Rules are rules that you want to associate with a tag to influence the tag choice</div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag-rules-index" >
+                 <h5>Index</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  List all your tag rules for a tag
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag to find its associated tag rules
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-rules:-index-output">Tag Rules: index output</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag-rules-show" >
+                 <h5>Show</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  View a single tag rule
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag rule
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-rule:-show-output">Tag Rule: show output</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag-rules-create" >
+                 <h5>Create</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Create a new tag rule
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            <a href='#tag-rule:-create-input'>json</a>
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>json</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              A rule to apply to a tag to influence use of that tag.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST \
+  -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \
+  http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-tag-rules-delete" >
+                 <h5>Delete</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">DELETE</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Delete an existing tag rule
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag rule you want to delete
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the tag
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X DELETE \
+  http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
         <div class = "resource Tag sets">
         <h3 class = "resource-heading" id='resource-Tag sets'>Tag sets</h3>
 
@@ -6049,6 +6483,21 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
               <li><a href='#call-tags-merge'>Merge</a></li>
 
               <li><a href='#call-tags-delete'>Delete</a></li>
+
+            </ul>
+          </li>
+
+          <li class="title expandable" data-submenuid="menu_tag-rules">Tag Rules</li>
+          <li class="options">
+            <ul id="menu_tag-rules">
+
+              <li><a href='#call-tag-rules-index'>Index</a></li>
+
+              <li><a href='#call-tag-rules-show'>Show</a></li>
+
+              <li><a href='#call-tag-rules-create'>Create</a></li>
+
+              <li><a href='#call-tag-rules-delete'>Delete</a></li>
 
             </ul>
           </li>
