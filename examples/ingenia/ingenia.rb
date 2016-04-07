@@ -1408,6 +1408,19 @@ curl -X POST \\
         p.required    = true
       end
       req.parameter json_bundle
+      req.example = <<-EOF
+curl -X PUT \\
+  -F'json={ "name" : "New Bundle Updated" }' \\
+  'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+'{
+    "id" : 47858,
+    "name" : "New Bundle Updated",
+    "tag_sets" : [],
+    "created_at" :"2016-04-06T09:00:44Z",
+    "updated_at" :"2016-04-06T09:00:44Z",
+  }'
+      EOF
     end
 
     r.request name: 'Delete' do |req|
