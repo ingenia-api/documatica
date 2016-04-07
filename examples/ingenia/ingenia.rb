@@ -1382,6 +1382,19 @@ curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%Startups&api_ke
       req.call_type   = :post
       req.path        = '/bundles'
       req.parameter json_bundle
+      req.example = <<-EOF
+curl -X POST \\
+  -F'json={ "name" : "New Bundle" }' \\
+  'http://api.ingeniapi.com/v2/bundles?api_key=$api_key'
+
+'{
+    "id" : 47858,
+    "name" : "New Bundle",
+    "tag_sets" : [],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+      EOF
     end
 
     r.request name: 'Update' do |req|
