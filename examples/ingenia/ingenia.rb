@@ -1301,6 +1301,26 @@ curl -X POST \\
       req.path        = '/bundles'
       req.parameter limit
       req.parameter offset
+      req.example = <<-EOF
+curl http://api.ingeniapi.com/v2/bundles?api_key=$api_key
+
+'{
+  [
+    {
+      "created_at" : "2016-04-06T09:00:44Z",
+      "id":755,
+      "name":"New Bundle",
+      "updated_at":"2016-04-06T09:00:44Z"
+    },
+    {
+      "created_at" : "2016-04-07T11:44:26Z",
+      "id" : 756,
+      "name" : "Another Bundle",
+      "updated_at":"2016-04-07T11:44:26Z"
+    }
+  ]
+}'
+      EOF
     end
 
     r.request name: 'Show' do |req|
