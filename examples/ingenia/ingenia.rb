@@ -1687,9 +1687,12 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
 
-  '{
-    "name":"Big Data"
-  }'
+'{
+  "created_at" : "2016-04-07T16:13:52Z",
+  "id" : 2822,
+  "name" : "Big Data",
+  "updated_at" : "2016-04-07T16:13:52Z"
+}'
 EOF
     end
 
