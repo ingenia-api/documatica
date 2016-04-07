@@ -1360,6 +1360,21 @@ curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
         p.description = 'Text of the bundle to look for'
         p.type        = :string
       end
+
+      req.example = <<-EOF
+curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%Startups&api_key=$api_key'
+
+'{
+    "id" : 47858,
+    "name" : "Tech Startups",
+    "tag_sets" : [
+      { "name" : "technology", "id": 14562 },
+      { "name" : "business", "id": 666 }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+      EOF
     end
 
     r.request name: 'Create' do |req|
