@@ -1751,6 +1751,18 @@ curl -s -X POST \\
       end
 
       req.parameter json_tag_set
+      req.example = <<-EOF
+curl -s -X PUT \\
+  -F'json={ "name" : "Updated Tag Set Name" }' \\
+  http://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key
+
+'{
+  "created_at" : "2016-04-07T16:49:24Z",
+  "id" : 2823,
+  "name" : "Updated Tag Set Name",
+  "updated_at" : "2016-04-07T16:58:11Z"
+}'
+      EOF
     end
 
     r.request name: 'Merge' do |req|
