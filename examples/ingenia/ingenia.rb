@@ -1594,7 +1594,7 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
     r.request name: 'Find_by_name' do |req|
       req.description = 'Looks for a tag set that matches exactly text input'
       req.call_type   = :get
-      req.path        = '/tag sets/find_by_name'
+      req.path        = '/tag_sets/find_by_name'
 
       req.parameter name: 'text' do |p|
         p.description = 'Text of tag set to look for'
