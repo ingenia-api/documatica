@@ -1432,6 +1432,14 @@ curl -X PUT \\
         p.description = 'The ID of the bundle you want to delete'
         p.type        = :integer
         p.required    = true
+        req.example = <<-EOF
+curl -X DELETE \\
+  'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+'{
+    "47858" : "destroyed"
+  }'
+      EOF
       end
     end
   end
