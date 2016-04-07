@@ -1701,7 +1701,23 @@ EOF
       req.parameter name: 'text' do |p|
         p.description = 'Text of tag set to look for'
         p.type        = :string
+      req.example = <<-EOF
+curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Tech%20Startups&api_key=$api_key'
+
+'{
+    "id" : 47858,
+    "name" : "Tech Startups",
+    "tag_sets" : [
+      { "name" : "technology", "id": 14562 },
+      { "name" : "business", "id": 666 }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+      EOF
       end
+
+
     end
 
     r.request name: 'Create' do |req|
