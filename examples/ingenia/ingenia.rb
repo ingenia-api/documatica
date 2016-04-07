@@ -1334,7 +1334,20 @@ curl http://api.ingeniapi.com/v2/bundles?api_key=$api_key
         p.required    = true
       end
 
-      req.response = json_bundle_show
+      req.example = <<-EOF
+curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
+
+'{
+    "id" : 47858,
+    "name" : "Tech Startups",
+    "tag_sets" : [
+      { "name" : "technology", "id": 14562 },
+      { "name" : "business", "id": 666 }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+      EOF
     end
 
     r.request name: 'Find_by_name' do |req|
