@@ -1684,8 +1684,13 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
         p.type        = :integer
         p.required    = true
       end
-      req.response = json_tag_set_show
+      req.example = <<-EOF
+curl http://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
 
+  '{
+    "name":"Big Data"
+  }'
+EOF
     end
 
     r.request name: 'Find_by_name' do |req|
