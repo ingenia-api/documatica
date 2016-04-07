@@ -1729,6 +1729,13 @@ curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=
 curl -s -X POST \\
   -F'json={ "name" : "new tag s" }' \\
   http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+
+'{
+  "created_at" : "2016-04-07T16:49:24Z",
+  "id" : 2823,
+  "name" : "new tag s",
+  "updated_at" : "2016-04-07T16:49:24Z"
+}'
       EOF
     end
 
