@@ -1656,6 +1656,21 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
 
 # ...and a bit more advanced example
 curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
+
+'[
+  {
+    "created_at" : "2016-04-06T11:01:18Z",
+    "id" : 2820,
+    "name" : "Tag Set One",
+    "updated_at" : "2016-04-06T11:04:00Z"
+  },
+  {
+    "created_at" : "2016-04-06T09:00:44Z",
+    "id" : 2819,
+    "name" : "Tag Set Two",
+    "updated_at":"2016-04-06T09:00:44Z"
+  }
+]'
       EOF
     end
 
