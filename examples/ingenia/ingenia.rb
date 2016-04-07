@@ -1362,7 +1362,7 @@ curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
       end
 
       req.example = <<-EOF
-curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%Startups&api_key=$api_key'
+curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_key=$api_key'
 
 '{
     "id" : 47858,
