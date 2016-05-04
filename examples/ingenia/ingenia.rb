@@ -1459,6 +1459,27 @@ curl -X DELETE \\
       req.parameter offset
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
+
+[
+    {
+      "confidence": 0.0,
+      "consistency": 0.0,
+      "created_at": "2016-05-04T16:12:43Z",
+      "description": "",
+      "id": 189453,
+      "name": "New Tag",
+      "tag_set_id": 2858
+    },
+    {
+      "confidence": 0.0,
+      "consistency": 0.0,
+      "created_at": "2016-05-04T16:08:05Z",
+      "description": "",
+      "id": 189452,
+      "name": "Another Tag",
+      "tag_set_id": 2858
+    }
+  ]
       EOF
     end
 
