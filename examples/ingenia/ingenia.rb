@@ -1494,9 +1494,14 @@ curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
 
       req.parameter json_tag
       req.example = <<-EOF
-curl -X POST \\
-  -F'json={ "tag_set_id" : 52, "name" : "wine" }' \\
-  http://api.ingeniapi.com/v2/tags?api_key=$api_key
+curl -X POST \\ 
+  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \\ 
+  'http://api.ingeniapi.com/v2/tags?api_key=$api_key'
+
+  { 
+    "tag_set_id" : 2858, 
+    "name" : "New Tag" 
+  }
       EOF
     end
 
