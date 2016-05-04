@@ -1782,6 +1782,20 @@ curl -s -X PUT \\
         p.example     = '[ 12, 34, 56 ]'
         p.required    = true
       end
+
+      req.example = <<-EOF
+      /*(Where:
+       '%5B' = '['
+       '%2C' = ','
+       '%5D' = ']'
+      for constructing array of IDs in url params)*/
+
+curl -X POST 'http://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B2833%2C2832%5D&api_key=$api_key'
+
+'{
+  {"tag_set_id" : 2824}
+}'
+      EOF
     end
 
     r.request name: 'Delete' do |req|
