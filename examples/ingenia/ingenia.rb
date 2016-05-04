@@ -1607,8 +1607,17 @@ curl -X PUT \\
       end
 
       req.example = <<-EOF
-curl -X POST \\
-  http://api.ingeniapi.com/v2/tags/8/merge?tag_ids='[7,8]'&api_key=$api_key
+      /*(Where:
+       '%5B' = '['
+       '%2C' = ','
+       '%5D' = ']'
+      for constructing array of IDs in url params)*/
+
+curl -X POST 'http://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C189453%5D&api_key=$api_key'
+
+  {
+    "189454":"merged"
+  }
       EOF
     end
 
