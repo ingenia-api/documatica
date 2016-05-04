@@ -1493,7 +1493,20 @@ curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
         p.type        = :integer
         p.required    = true
       end
-      req.response = json_tag_show
+      req.example = <<-EOF
+curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
+
+  {
+    "confidence": 0.0,
+    "consistency": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "description": "",
+    "id": 189453,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:12:43Z"
+  }
+      EOF
 
     end
 
