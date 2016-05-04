@@ -1519,6 +1519,21 @@ curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
         p.description = 'Text of the tag to look for'
         p.type        = :string
       end
+
+      req.example = <<-EOF
+curl 'http://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_key'
+
+  {
+    "confidence": 0.0,
+    "consistency": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "description": "",
+    "id": 189453,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:12:43Z"
+  }
+      EOF
     end
 
     r.request name: 'Create' do |req|
