@@ -1808,6 +1808,15 @@ curl -X POST 'http://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B283
         p.type        = :integer
         p.required    = true
       end
+
+      req.example = <<-EOF
+
+curl -X DELETE 'http://api.ingeniapi.com/v2/tag_sets/2824?api_key=$api_key'
+
+'{
+  "2824" : "destroyed"
+}'
+      EOF
     end
   end
 
