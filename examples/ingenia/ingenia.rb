@@ -1548,8 +1548,14 @@ curl -X POST \\
   'http://api.ingeniapi.com/v2/tags?api_key=$api_key'
 
   { 
-    "tag_set_id" : 2858, 
-    "name" : "New Tag" 
+    "confidence": 0.0,
+    "consistency": 0.0,
+    "created_at": "2016-05-04T17:05:18Z",
+    "description": "",
+    "id": 189455,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T17:05:18Z"
   }
       EOF
     end
