@@ -130,7 +130,9 @@ json_bundle              = define_object(name: 'Bundle: create / update input') 
   bundle.example = '
   {
     "name":"Tech Startups",
-    "tag_set_ids": [ 232, 332, 6582 ]
+    "tag_set_ids": [ 232, 332, 6582 ],
+    "created_at":"2014-03-13T15:36:51Z",
+    "updated_at":"2014-03-13T15:36:51Z"
   }'
 end
 
