@@ -552,7 +552,7 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
   }'
 end
 
-json_tag_rules_show = define_object(name: 'Tag Rules: index output') do |tag_rule|
+json_tag_rules_show = define_object(name: 'Tag rules: index output') do |tag_rule|
   tag_rule.description = "A list of rules applied to a tag to influence whether or not to apply the tag to an item."
 
   tag_rule.parameter name: 'tag:id' do |p|
@@ -1687,8 +1687,8 @@ Response:
   ##
   # Tag rules
   #
-  api.resource name: 'Tag Rules' do |r|
-    r.description = "Tag Rules are rules that you want to associate with a tag to influence the tag choice"
+  api.resource name: 'Tag rules' do |r|
+    r.description = "Tag rules are rules that you want to associate with a tag to influence the tag choice"
 
     r.request name: 'Index' do |req|
       req.description = 'List all your tag rules for a tag'
@@ -1973,7 +1973,7 @@ Response:
   ##
   # Administrative Calls
   #
-  api.resource name: 'Administrative Calls' do |r|
+  api.resource name: 'Administrative calls' do |r|
     r.description = ""
 
     r.request name: 'Status' do |req|
