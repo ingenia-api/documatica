@@ -1308,6 +1308,8 @@ curl -X POST \\
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/bundles?api_key=$api_key
 
+Response:
+
 '{
   [
     {
@@ -1341,6 +1343,8 @@ curl http://api.ingeniapi.com/v2/bundles?api_key=$api_key
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
 
+Response:
+
 '{
     "id" : 47858,
     "name" : "Tech Startups",
@@ -1369,6 +1373,8 @@ curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
       req.example = <<-EOF
 curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_key=$api_key'
 
+Response:
+
 '{
     "id" : 47858,
     "name" : "Tech Startups",
@@ -1391,6 +1397,8 @@ curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_
 curl -X POST \\
   -F'json={ "name" : "New Bundle", "tag_set_ids" : [2820, 2819] }' \\
   'http://api.ingeniapi.com/v2/bundles?api_key=$api_key'
+
+Response:
 
 '{
     "id" : 47858,
@@ -1427,6 +1435,8 @@ curl -X PUT \\
   -F'json={ "name" : "New Bundle Updated" }' \\
   'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
 
+Response:
+
 '{
     "id" : 47858,
     "name" : "New Bundle Updated",
@@ -1449,6 +1459,8 @@ curl -X PUT \\
         req.example = <<-EOF
 curl -X DELETE \\
   'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+Response:
 
 '{
     "47858" : "destroyed"
@@ -1473,6 +1485,8 @@ curl -X DELETE \\
       req.parameter offset
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
+
+Response:
 
 [
     {
@@ -1510,6 +1524,8 @@ curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
 
+Response:
+
   {
     "confidence": 0.0,
     "consistency": 0.0,
@@ -1538,6 +1554,8 @@ curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
       req.example = <<-EOF
 curl 'http://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_key'
 
+Response:
+
   {
     "confidence": 0.0,
     "consistency": 0.0,
@@ -1561,6 +1579,8 @@ curl 'http://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_
 curl -X POST \\ 
   -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \\ 
   'http://api.ingeniapi.com/v2/tags?api_key=$api_key'
+
+Response:
 
   { 
     "confidence": 0.0,
@@ -1590,6 +1610,8 @@ curl -X POST \\
 curl -X PUT \\
   -F'json={ "name" : "New Tag Updated" }' \\
   'http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
+
+Response:
 
   {
     "confidence": 0.0,
@@ -1622,13 +1644,15 @@ curl -X PUT \\
       end
 
       req.example = <<-EOF
-      /*(Where:
-       '%5B' = '['
-       '%2C' = ','
-       '%5D' = ']'
-      for constructing array of IDs in url params)*/
-
 curl -X POST 'http://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C189453%5D&api_key=$api_key'
+
+/*(Where:
+   '%5B' = '['
+   '%2C' = ','
+   '%5D' = ']'
+  for constructing array of IDs in url params)*/
+
+Response:
 
   {
     "189454":"merged"
@@ -1649,7 +1673,9 @@ curl -X POST 'http://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C
 
       req.example = <<-EOF
 
-  curl -X DELETE 'http://api.ingeniapi.com/v2/tags/189454?api_key=$api_key'
+curl -X DELETE 'http://api.ingeniapi.com/v2/tags/189454?api_key=$api_key'
+
+Response:
 
   {
     "189455" : "destroyed"
@@ -1765,6 +1791,8 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
 # ...and a bit more advanced example
 curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
 
+Response:
+
 '[
   {
     "created_at" : "2016-04-06T11:01:18Z",
@@ -1795,6 +1823,8 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
       req.example = <<-EOF
 curl http://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
 
+Response:
+
 '{
   "created_at" : "2016-04-07T16:13:52Z",
   "id" : 2822,
@@ -1815,6 +1845,8 @@ EOF
         p.required = true
       req.example = <<-EOF
 curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=$api_key'
+
+Response:
 
 '{
   "created_at" : "2016-04-07T16:13:52Z",
@@ -1838,6 +1870,8 @@ curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=
 curl -s -X POST \\
   -F'json={ "name" : "new tag s" }' \\
   http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+
+Response:
 
 '{
   "created_at" : "2016-04-07T16:49:24Z",
@@ -1864,6 +1898,8 @@ curl -s -X POST \\
 curl -s -X PUT \\
   -F'json={ "name" : "Updated Tag Set Name" }' \\
   http://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key
+
+Response:
 
 '{
   "created_at" : "2016-04-07T16:49:24Z",
@@ -1893,13 +1929,16 @@ curl -s -X PUT \\
       end
 
       req.example = <<-EOF
-      /*(Where:
-       '%5B' = '['
-       '%2C' = ','
-       '%5D' = ']'
-      for constructing array of IDs in url params)*/
 
 curl -X POST 'http://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B2833%2C2832%5D&api_key=$api_key'
+
+/*(Where:
+ '%5B' = '['
+ '%2C' = ','
+ '%5D' = ']'
+for constructing array of IDs in url params)*/
+
+Response:
 
 '{
   {"tag_set_id" : 2824}
@@ -1921,6 +1960,8 @@ curl -X POST 'http://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B283
       req.example = <<-EOF
 
 curl -X DELETE 'http://api.ingeniapi.com/v2/tag_sets/2824?api_key=$api_key'
+
+Response:
 
 '{
   "2824" : "destroyed"
