@@ -112,6 +112,7 @@ end
 json_bundle              = define_object(name: 'Bundle: create / update input') do |bundle|
   bundle.description = "A collection of items related to each other"
   bundle.type        = :json
+  bundle.required    = true
   bundle.parameter name: 'name' do |p|
     p.description = 'The name of your bundle'
     p.type        = :string
@@ -454,6 +455,7 @@ json_tag            = define_object(name: 'Tag: create / update input') do |tag|
   tag.description = "Something you want to associate to an item, e.g., a concept, topic, tone, sentiment, keyword, person, company, product, etc."
   tag.type        = :json
   tag.this_is_json!
+  tag.required = true
 
   tag.parameter name: 'name' do |p|
     p.description = 'The name of your tag; we advise to make it short but meaningful; unique to each tag set'
@@ -725,6 +727,7 @@ end
 json_tag_set         = define_object(name: 'Tag set: create / update input') do |tag_set|
   tag_set.description = "A collection of thematically consistent tags"
   tag_set.type        = :json
+  tag_set.required    = true
   tag_set.this_is_json!
 
   tag_set.parameter name: 'name' do |p|
@@ -1360,6 +1363,7 @@ curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
       req.parameter name: 'text' do |p|
         p.description = 'Text of the bundle to look for'
         p.type        = :string
+        p.required    = true
       end
 
       req.example = <<-EOF
@@ -1519,6 +1523,7 @@ curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
       req.parameter name: 'text' do |p|
         p.description = 'Text of the tag to look for'
         p.type        = :string
+        p.required    = true
       end
 
       req.example = <<-EOF
@@ -1798,6 +1803,7 @@ EOF
       req.parameter name: 'text' do |p|
         p.description = 'Text of tag set to look for'
         p.type        = :string
+        p.required = true
       req.example = <<-EOF
 curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=$api_key'
 
