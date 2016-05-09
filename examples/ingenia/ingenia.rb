@@ -1389,15 +1389,24 @@ curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_
       req.parameter json_bundle
       req.example = <<-EOF
 curl -X POST \\
-  -F'json={ "name" : "New Bundle" }' \\
+  -F'json={ "name" : "New Bundle", "tag_set_ids" : [2820, 2819] }' \\
   'http://api.ingeniapi.com/v2/bundles?api_key=$api_key'
 
 '{
     "id" : 47858,
     "name" : "New Bundle",
-    "tag_sets" : [],
+    "tag_sets" : [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id : 2819,
+        "name : "Tag Set Two"
+      }
+    ],
     "created_at" :"2014-03-13T15:36:51Z",
-    "updated_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z"
   }'
       EOF
     end
