@@ -1306,7 +1306,7 @@ curl -X POST \\
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
-curl https://api.ingeniapi.com/v2/bundles?api_key=$api_key
+curl 'https://api.ingeniapi.com/v2/bundles?api_key=$api_key'
 
 Response:
 
@@ -1341,7 +1341,7 @@ Response:
       end
 
       req.example = <<-EOF
-curl https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
+curl 'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
 
 Response:
 
@@ -1484,7 +1484,7 @@ Response:
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
-curl https://api.ingeniapi.com/v2/tags?api_key=$api_key
+curl 'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
 
 Response:
 
@@ -1522,7 +1522,7 @@ Response:
         p.required    = true
       end
       req.example = <<-EOF
-curl https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
+curl 'https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
 
 Response:
 
@@ -1786,10 +1786,10 @@ curl -X DELETE \\
       req.parameter offset
       req.example = <<-EOF
 # Simple request to fetch all tag sets
-curl -s -q https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+curl -s -q 'https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key'
 
 # ...and a bit more advanced example
-curl -s -q https://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
+curl -s -q 'https://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key'
 
 Response:
 
@@ -1821,7 +1821,7 @@ Response:
         p.required    = true
       end
       req.example = <<-EOF
-curl https://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
+curl 'https://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x'
 
 Response:
 
@@ -1869,7 +1869,7 @@ Response:
       req.example = <<-EOF
 curl -s -X POST \\
   -F'json={ "name" : "new tag s" }' \\
-  https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+  'https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key'
 
 Response:
 
@@ -1897,7 +1897,7 @@ Response:
       req.example = <<-EOF
 curl -s -X PUT \\
   -F'json={ "name" : "Updated Tag Set Name" }' \\
-  https://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key
+  'https://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key'
 
 Response:
 
