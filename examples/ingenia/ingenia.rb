@@ -66,7 +66,7 @@ DESCRIPTION =<<-DESC
   <p>If you would like to verify your API key or code data path then use the <a href="#call-administrative-calls-status">status</a> call.</p>
 
   <h3 id='api-libraries'>Ruby API library</h3>
-  <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
+  <a href="httpss://github.com/ingenia-api/ingenia_ruby">httpss://github.com/ingenia-api/ingenia_ruby</a>
 
   <h3 id='api-rate-limiting'>Rate limiting</h3>
 
@@ -239,7 +239,7 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
   item.parameter name: 'url' do |p|
     p.description = 'Source URL to get text from. Ingenia will extract the most relevant text [1]'
     p.type        = :string
-    p.example     = 'http://www.example.com'
+    p.example     = 'https://www.example.com'
   end
 
   item.parameter name: 'bundle_id' do |p|
@@ -293,7 +293,7 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
     supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
     from it.</p>
     <p>The text and the URL are input as part of the JSON component. The file
-    is sent as a multipart encoded http field.</p>
+    is sent as a multipart encoded https field.</p>
 
     <p>[2] Only specify one of the following: tag_sets, tags or tag_ids </p>
   FN
@@ -866,7 +866,7 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
       req.parameter name: 'url' do |p|
         p.description = 'The source URL from which to extract the text to be classified; Ingenia will extract the most relevant text [1]'
         p.type        = :string
-        p.example     = 'http://www.example.com'
+        p.example     = 'https://www.example.com'
       end
 
       req.parameter name: 'file' do |p|
@@ -898,7 +898,7 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
     supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
     from it.</p>
       <p>The text and the URL are input as part of the JSON component. The file
-    is sent as a multipart encoded http field.</p>
+    is sent as a multipart encoded https field.</p>
       FN
     end
 
@@ -1156,7 +1156,7 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
         supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
         from it.</p>
         <p>The text and the URL are input as part of the JSON component. The file
-        is sent as a multipart encoded http field.</p>
+        is sent as a multipart encoded https field.</p>
 
       FN
 
@@ -1164,34 +1164,34 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
 # Simply post item's text
 curl -X POST \\
   -F'json={ "text" : "Some inline text" }' \\
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \\
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with some text, create a new tag set ('my tag set') and add
 # a tag ('foo') with a score of 0.2 to that tag set..
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \\
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
 
 # Create an item with the tag ('foo')
 curl -X POST \\
   -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \\
-  'http://api.ingeniapi.com/v2/items=$api_key&classify=true'
+  'https://api.ingeniapi.com/v2/items=$api_key&classify=true'
 
 # Post url to retrieve content from and create an item with that content
 curl -X POST \\
-  -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \\
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key'
+  -F'json={ "url" : "https://www.zdziarski.com/blog/?p=3875" }' \\
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key'
 
 # Post a file using multipart/form-data upload and create an item with that content
 curl -X POST \\
   -F'json={}' \\
   -F'file=@article.txt' \\
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
       EOF
 
 
@@ -1222,7 +1222,7 @@ curl -X POST \\
         e.g., ignoring links. If you send a file, it will extract the text
         from it.</p>
         <p>The text and the URL are input as part of the JSON component. The file
-        is sent as a multipart encoded http field.</p>
+        is sent as a multipart encoded https field.</p>
       FN
     end
 
@@ -1306,7 +1306,7 @@ curl -X POST \\
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/bundles?api_key=$api_key
+curl https://api.ingeniapi.com/v2/bundles?api_key=$api_key
 
 Response:
 
@@ -1341,7 +1341,7 @@ Response:
       end
 
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
+curl https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key
 
 Response:
 
@@ -1371,7 +1371,7 @@ Response:
       end
 
       req.example = <<-EOF
-curl 'http://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_key=$api_key'
+curl 'https://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_key=$api_key'
 
 Response:
 
@@ -1396,7 +1396,7 @@ Response:
       req.example = <<-EOF
 curl -X POST \\
   -F'json={ "name" : "New Bundle", "tag_set_ids" : [2820, 2819] }' \\
-  'http://api.ingeniapi.com/v2/bundles?api_key=$api_key'
+  'https://api.ingeniapi.com/v2/bundles?api_key=$api_key'
 
 Response:
 
@@ -1433,7 +1433,7 @@ Response:
       req.example = <<-EOF
 curl -X PUT \\
   -F'json={ "name" : "New Bundle Updated" }' \\
-  'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+  'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
 
 Response:
 
@@ -1458,7 +1458,7 @@ Response:
         p.required    = true
         req.example = <<-EOF
 curl -X DELETE \\
-  'http://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+  'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
 
 Response:
 
@@ -1484,7 +1484,7 @@ Response:
       req.parameter limit
       req.parameter offset
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tags?api_key=$api_key
 
 Response:
 
@@ -1522,7 +1522,7 @@ Response:
         p.required    = true
       end
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key
 
 Response:
 
@@ -1552,7 +1552,7 @@ Response:
       end
 
       req.example = <<-EOF
-curl 'http://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_key'
+curl 'https://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_key'
 
 Response:
 
@@ -1578,7 +1578,7 @@ Response:
       req.example = <<-EOF
 curl -X POST \\ 
   -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \\ 
-  'http://api.ingeniapi.com/v2/tags?api_key=$api_key'
+  'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
 
 Response:
 
@@ -1609,7 +1609,7 @@ Response:
       req.example = <<-EOF
 curl -X PUT \\
   -F'json={ "name" : "New Tag Updated" }' \\
-  'http://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
+  'https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
 
 Response:
 
@@ -1644,7 +1644,7 @@ Response:
       end
 
       req.example = <<-EOF
-curl -X POST 'http://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C189453%5D&api_key=$api_key'
+curl -X POST 'https://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C189453%5D&api_key=$api_key'
 
 /*(Where:
    '%5B' = '['
@@ -1673,7 +1673,7 @@ Response:
 
       req.example = <<-EOF
 
-curl -X DELETE 'http://api.ingeniapi.com/v2/tags/189454?api_key=$api_key'
+curl -X DELETE 'https://api.ingeniapi.com/v2/tags/189454?api_key=$api_key'
 
 Response:
 
@@ -1697,7 +1697,7 @@ Response:
 
       req.response = json_tag_rules_show
       req.example  = <<-EOF
-curl http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
       EOF
 
       req.parameter name: 'tag_id' do |p|
@@ -1714,7 +1714,7 @@ curl http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
 
       req.response = json_tag_rule_show
       req.example  = <<-EOF
-curl http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
       EOF
 
       req.parameter name: 'id' do |p|
@@ -1738,7 +1738,7 @@ curl http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
       req.example = <<-EOF
 curl -X POST \\
   -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \\
-  http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
       EOF
 
       req.parameter name: 'tag_id' do |p|
@@ -1754,7 +1754,7 @@ curl -X POST \\
       req.path        = '/tag/:tag_id/tag_rules/:id'
       req.example     = <<-EOF
 curl -X DELETE \\
-  http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
       EOF
 
       req.parameter name: 'id' do |p|
@@ -1786,10 +1786,10 @@ curl -X DELETE \\
       req.parameter offset
       req.example = <<-EOF
 # Simple request to fetch all tag sets
-curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+curl -s -q https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
 
 # ...and a bit more advanced example
-curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
+curl -s -q https://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
 
 Response:
 
@@ -1821,7 +1821,7 @@ Response:
         p.required    = true
       end
       req.example = <<-EOF
-curl http://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
+curl https://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x
 
 Response:
 
@@ -1844,7 +1844,7 @@ EOF
         p.type        = :string
         p.required = true
       req.example = <<-EOF
-curl 'http://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=$api_key'
+curl 'https://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=$api_key'
 
 Response:
 
@@ -1869,7 +1869,7 @@ Response:
       req.example = <<-EOF
 curl -s -X POST \\
   -F'json={ "name" : "new tag s" }' \\
-  http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
 
 Response:
 
@@ -1897,7 +1897,7 @@ Response:
       req.example = <<-EOF
 curl -s -X PUT \\
   -F'json={ "name" : "Updated Tag Set Name" }' \\
-  http://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key
 
 Response:
 
@@ -1930,7 +1930,7 @@ Response:
 
       req.example = <<-EOF
 
-curl -X POST 'http://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B2833%2C2832%5D&api_key=$api_key'
+curl -X POST 'https://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B2833%2C2832%5D&api_key=$api_key'
 
 /*(Where:
  '%5B' = '['
@@ -1959,7 +1959,7 @@ Response:
 
       req.example = <<-EOF
 
-curl -X DELETE 'http://api.ingeniapi.com/v2/tag_sets/2824?api_key=$api_key'
+curl -X DELETE 'https://api.ingeniapi.com/v2/tag_sets/2824?api_key=$api_key'
 
 Response:
 
