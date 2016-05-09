@@ -180,7 +180,6 @@ json_bundle_show = define_object(name: 'Bundle: show output') do |bundle|
       { "name": "technology", "id": 14562 },
       { "name": "business", "id": 666 }
     ],
-    "language": "en",
     "created_at":"2014-03-13T15:36:51Z",
     "updated_at":"2014-03-13T15:36:51Z",
   }'
