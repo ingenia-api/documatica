@@ -1103,8 +1103,64 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
       req.parameter limit
       req.parameter full_text
       req.parameter offset
+      req.example = <<-EOF
+curl 'https://api.ingeniapi.com/v2/items?api_key=$api_key'
 
-      #req.response = { :array => json_item_show.example }
+Response:
+
+[
+  {
+    "bundle_id": 778,
+    "bundle_name": "Here we go again",
+    "concordance": null,
+    "created_at": "2016-05-10T15:35:59Z",
+    "id": "61265a8b2e56ff9693753fd044630ed5",
+    "item_state": "processed",
+    "language": "en",
+    "last_classified_at": "2016-05-10T15:38:47Z",
+    "membership_degree": null,
+    "updated_at": "2016-05-10T15:38:47Z",
+    "tag_sets": [
+
+    ],
+    "text": "Some inline text",
+    "metadata": [
+      null
+    ]
+  },
+  {
+    "bundle_id": 778,
+    "bundle_name": "Here we go again",
+    "concordance": null,
+    "created_at": "2016-05-10T16:03:59Z",
+    "id": "3fdb62127e7a839e3f4e0ab6de7cd869",
+    "item_state": "processed",
+    "language": "en",
+    "last_classified_at": "2016-05-10T16:04:00Z",
+    "membership_degree": null,
+    "updated_at": "2016-05-10T16:04:01Z",
+    "tag_sets": [
+
+    ],
+    "text": "Smartwatch cheats force Thai students back to exam halls - BBC News\\nSome 3,000 students in Thailand must retake university entrance exams after a cheating scam involving cameras and smartwatches was uncovered.The sophisticated scam happened at Rangsit University in Bangkok.The ...",
+    "metadata": [
+      null,
+      {
+        "name": "url-fetched",
+        "type": "date",
+        "content": "2016-05-10 16:03:59"
+      },
+      {
+        "name": "url",
+        "type": "url",
+        "content": "http://www.bbc.co.uk/news/world-asia-36253769"
+      }
+    ]
+  }
+]
+      EOF
+
+      req.response = json_item_show
     end
 
 
@@ -1120,7 +1176,31 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
       end
       #req.parameter api_key
       req.parameter full_text
+      req.example = <<-EOF
+curl 'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key'
 
+Response:
+
+{
+  "bundle_id": 778,
+  "bundle_name": "Tech Startups",
+  "concordance": null,
+  "created_at": "2016-05-10T15:35:59Z",
+  "id": "61265a8b2e56ff9693753fd044630ed5",
+  "item_state": "processed",
+  "language": "en",
+  "last_classified_at": "2016-05-10T15:38:47Z",
+  "membership_degree": null,
+  "updated_at": "2016-05-10T15:38:47Z",
+  "tag_sets": [
+
+  ],
+  "text": "Some inline text",
+  "metadata": [
+    null
+  ]
+}
+      EOF
       req.response = json_item_show
     end
 
@@ -1191,7 +1271,7 @@ curl -X POST \\
   -F'file=@article.txt' \\
   'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
       EOF
-
+      req.response = json_item
 
     end
 
@@ -1222,6 +1302,44 @@ curl -X POST \\
         <p>The text and the URL are input as part of the JSON component. The file
         is sent as a multipart encoded https field.</p>
       FN
+
+      req.example = <<-EOF
+curl -X PUT \\
+-F'json={ "text" : "Some updated text" , "tags" : [ "foo"]  }' \\
+'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key
+
+Response:
+
+{
+  "bundle_id": 778,
+  "created_at": "2016-05-10T15:35:59Z",
+  "id": "61265a8b2e56ff9693753fd044630ed5",
+  "last_classified_at": "2016-05-10T16:54:56Z",
+  "updated_at": "2016-05-10T16:54:57Z",
+  "text": "Some updated text",
+  "tag_sets": [
+    {
+      "Technologia": {
+        "id": 2860,
+        "tags": [
+          {
+            "id": 189475,
+            "name": "foo",
+            "user_selected": "t",
+            "user_assigned": true,
+            "score": "0.0",
+            "machine_score": "0",
+            "rule_score": null,
+            "user_assigned_score": "0"
+          }
+        ]
+      }
+    }
+  ]
+}
+      EOF
+
+      req.response = json_item
     end
 
     r.request name: 'Delete' do |req|
@@ -1234,6 +1352,17 @@ curl -X POST \\
         p.type        = :string
         p.required    = true
       end
+
+      req.example = <<-EOF
+curl -X DELETE 'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key'
+
+Response:
+
+{
+  "61265a8b2e56ff9693753fd044630ed5": "destroyed",
+  "bundle_id": 778
+}
+      EOF
     end
 
     r.request name: 'Similar to' do |req|
