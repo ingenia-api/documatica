@@ -516,11 +516,6 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
     p.type        = :float
   end
 
-  tag.parameter name: 'consistency' do |p|
-    p.description = "From 0 to 1; consistency gets closer to 1 the more Ingenia considers the items associated to this tag as similar to one another; if this value is low, we advise to re-assess the items associated to this tag"
-    p.type        = :float
-  end
-
   tag.parameter name: 'description' do |p|
     p.description = "A description of this tag"
     p.type        = :string
@@ -545,7 +540,6 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
     "name":"Text Analytics",
     "tag_set_id":8547,
     "confidence":0.95,
-    "consistency":0.92,
     "description":"",
     "created_at":"2014-03-13T12:59:32Z",
     "updated_at":"2014-03-13T12:59:32Z"
@@ -1491,7 +1485,6 @@ Response:
 [
     {
       "confidence": 0.0,
-      "consistency": 0.0,
       "created_at": "2016-05-04T16:12:43Z",
       "description": "",
       "id": 189453,
@@ -1500,7 +1493,6 @@ Response:
     },
     {
       "confidence": 0.0,
-      "consistency": 0.0,
       "created_at": "2016-05-04T16:08:05Z",
       "description": "",
       "id": 189452,
@@ -1528,7 +1520,6 @@ Response:
 
   {
     "confidence": 0.0,
-    "consistency": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
     "description": "",
     "id": 189453,
@@ -1558,7 +1549,6 @@ Response:
 
   {
     "confidence": 0.0,
-    "consistency": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
     "description": "",
     "id": 189453,
@@ -1584,7 +1574,6 @@ Response:
 
   { 
     "confidence": 0.0,
-    "consistency": 0.0,
     "created_at": "2016-05-04T17:05:18Z",
     "description": "",
     "id": 189455,
@@ -1615,7 +1604,6 @@ Response:
 
   {
     "confidence": 0.0,
-    "consistency": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
     "description": "",
     "id": 189453,
