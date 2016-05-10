@@ -137,8 +137,8 @@ json_bundle              = define_object(name: 'Bundle: create / update input') 
         "name" : "Tag Set One"
       },
       {
-        "id : 2819,
-        "name : "Tag Set Two"
+        "id" : 2819,
+        "name" : "Tag Set Two"
       }
     ],
     "created_at":"2014-03-13T15:36:51Z",
