@@ -1345,6 +1345,7 @@ Response:
     "updated_at" :"2014-03-13T15:36:51Z",
   }'
       EOF
+      req.response = json_bundle_show
     end
 
     r.request name: 'Find_by_name' do |req|
