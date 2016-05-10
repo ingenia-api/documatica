@@ -2063,6 +2063,11 @@ Response:
         p.type        = :integer
       end
 
+      req.parameter name: 'bundle_count' do |p|
+        p.description = 'Number of bundles you have that are about to be deleted'
+        p.type        = :integer
+      end
+
     end
 
   end
