@@ -155,11 +155,6 @@ json_bundle_show = define_object(name: 'Bundle: show output') do |bundle|
     ts.type        = :array
   end
 
-  bundle.parameter name: 'language' do |p|
-    p.description = 'The language of your bundle'
-    p.type        = :string
-  end
-
   bundle.parameter name: 'created_at' do |p|
     p.description = 'When this bundle was created'
     p.type        = :date_time
