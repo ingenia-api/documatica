@@ -540,7 +540,7 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
     "name":"Text Analytics",
     "tag_set_id":8547,
     "confidence":0.95,
-    "description":"",
+    "description":"the process of deriving high-quality information from text",
     "created_at":"2014-03-13T12:59:32Z",
     "updated_at":"2014-03-13T12:59:32Z"
   }'
