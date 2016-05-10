@@ -131,7 +131,16 @@ json_bundle              = define_object(name: 'Bundle: create / update input') 
   bundle.example = '
   {
     "name":"Tech Startups",
-    "tag_set_ids": [ 232, 332, 6582 ],
+    "tag_sets": [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id : 2819,
+        "name : "Tag Set Two"
+      }
+    ],
     "created_at":"2014-03-13T15:36:51Z",
     "updated_at":"2014-03-13T15:36:51Z"
   }'
@@ -1453,6 +1462,7 @@ Response:
     "updated_at" :"2014-03-13T15:36:51Z"
   }'
       EOF
+      req.response = json_bundle
     end
 
     r.request name: 'Update' do |req|
@@ -1476,11 +1486,21 @@ Response:
 '{
     "id" : 47858,
     "name" : "New Bundle Updated",
-    "tag_sets" : [],
+    "tag_sets" : [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id : 2819,
+        "name : "Tag Set Two"
+      }
+    ],
     "created_at" :"2016-04-06T09:00:44Z",
     "updated_at" :"2016-04-06T09:00:44Z",
   }'
       EOF
+      req.response = json_bundle
     end
 
     r.request name: 'Delete' do |req|
