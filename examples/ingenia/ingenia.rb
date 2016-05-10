@@ -1590,7 +1590,7 @@ Response:
     "updated_at": "2016-05-04T16:12:43Z"
   }
       EOF
-
+      req.response = json_tag_show
     end
 
     r.request name: 'Find_by_name' do |req|
@@ -1619,6 +1619,7 @@ Response:
     "updated_at": "2016-05-04T16:12:43Z"
   }
       EOF
+      req.response = json_tag_show
     end
 
     r.request name: 'Create' do |req|
@@ -1644,6 +1645,7 @@ Response:
     "updated_at": "2016-05-04T17:05:18Z"
   }
       EOF
+      req.response = json_tag
     end
 
     r.request name: 'Update' do |req|
@@ -1673,6 +1675,7 @@ Response:
     "tag_set_id": 2858
   }
       EOF
+      req.response = json_tag
     end
 
     r.request name: 'Merge' do |req|
