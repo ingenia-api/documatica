@@ -628,14 +628,24 @@ json_tag_index = define_object(name: 'Tag: index') do |tag|
   end
 
   tag.example = '
-  {
-    "id":554273,
-    "name":"Text Analytics",
-    "tag_set_id":8547,
-    "confidence":0.95,
-    "description":"the process of deriving high-quality information from text",
-    "created_at":"2014-03-13T12:59:32Z"
-  }'
+  [
+    {
+      "confidence": 0.0,
+      "created_at": "2016-05-04T16:12:43Z",
+      "description": "a term for data sets that are so large or complex that traditional data processing applications are inadequate",
+      "id": 189453,
+      "name": "Big Data",
+      "tag_set_id": 2858
+    },
+    {
+      "confidence": 0.0,
+      "created_at": "2016-05-04T16:08:05Z",
+      "description": "the process of deriving high-quality information from text",
+      "id": 189452,
+      "name": "Text Analytics",
+      "tag_set_id": 2858
+    }
+  ]'
 end
 
 json_tag_rules_show = define_object(name: 'Tag rules: index output') do |tag_rule|
@@ -1591,23 +1601,23 @@ curl 'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
 Response:
 
 [
-    {
-      "confidence": 0.0,
-      "created_at": "2016-05-04T16:12:43Z",
-      "description": "",
-      "id": 189453,
-      "name": "New Tag",
-      "tag_set_id": 2858
-    },
-    {
-      "confidence": 0.0,
-      "created_at": "2016-05-04T16:08:05Z",
-      "description": "",
-      "id": 189452,
-      "name": "Another Tag",
-      "tag_set_id": 2858
-    }
-  ]
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "description": "a term for data sets that are so large or complex that traditional data processing applications are inadequate",
+    "id": 189453,
+    "name": "Big Data",
+    "tag_set_id": 2858
+  },
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:08:05Z",
+    "description": "the process of deriving high-quality information from text",
+    "id": 189452,
+    "name": "Text Analytics",
+    "tag_set_id": 2858
+  }
+]
       EOF
       req.response = json_tag_index
     end
