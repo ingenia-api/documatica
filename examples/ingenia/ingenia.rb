@@ -961,10 +961,10 @@ Response:
 
 
   ##
-  # Recommendation Engine
+  # Personalisation
   #
 
-  api.resource name: 'Recommendation engine' do |r|
+  api.resource name: 'Personalisation' do |r|
     r.description = ""
 
     # r.request name: 'Similar to' do |req|
