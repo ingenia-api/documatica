@@ -1259,6 +1259,41 @@ Response:
         p.default     = 2
       end
 
+      req.example = <<-EOF
+curl -X POST 'https://api.ingeniapi.com/v2/summarise?url=http://techcrunch.com/2016/05/11/charged/&api_key=$api_key'
+
+Response:
+
+{
+  "results": {
+    "Relevance": {
+      "tags": [
+        {
+          "machine_score": 0.11,
+          "name": "Relevance",
+          "id": 174842,
+          "rule_score": 0.31,
+          "score": 0.42,
+          "sentences": [
+            {
+              "text": "Venture capitalists in some sectors are increasingly eager to fund serious scientific innovations, they can be much tougher to do due diligence on than simple software that can be assessed based on immediate market traction.",
+              "score": 0.055,
+              "position": 4812
+            },
+            {
+              "text": " Otherwise, it could find it difficult to raise additional funding, hire or retain talent, and avoid a negative press spiral.",
+              "score": 0.043,
+              "position": 4686
+            }
+          ]
+        }
+      ],
+      "id": "1625"
+    }
+  }
+}
+      EOF
+
     end
 
   end
