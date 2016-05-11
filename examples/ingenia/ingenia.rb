@@ -923,6 +923,30 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
         p.default     = 6
       end
 
+      req.example = <<-EOF
+curl -X POST 'https://api.ingeniapi.com/v2/classify?text=A%20comparative%20study%20of%20European%20secondary%20education%20systems%20illustrated%20issues%20related%20to%20their%20budgetary%20sustainability&api_key=$api_key'
+
+Response:
+
+{
+  "classification_status": "complete",
+  "text": "A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability",
+  "results": {
+    "Themes": {
+      "tags": [
+        {
+          "machine_score": -0.15,
+          "name": "Ed-tech",
+          "id": 174857,
+          "rule_score": 0.21,
+          "score": 0.06
+        }
+      ],
+      "id": "1627"
+    }
+  }
+}
+      EOF
       req.footnote = <<-FN
       <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
     supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
