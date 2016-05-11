@@ -225,6 +225,7 @@ end
 json_item           = define_object(name: 'Item: create / update input') do |item|
   item.description = "An item is a block of text to which you can associate tags, that belongs to a bundle"
   item.type        = :json
+  item.required    = true
 
   item.this_is_json!
 
