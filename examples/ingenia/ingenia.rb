@@ -2213,27 +2213,6 @@ Response:
       req.description = 'Delete all the data in your account; useful to restart from zero if the data was polluted'
       req.call_type   = :post
       req.path        = '/clear_data'
-
-      req.parameter name: 'item_count' do |p|
-        p.description = 'Number of items you have that are about to be deleted'
-        p.type        = :integer
-      end
-
-      req.parameter name: 'tag_set_count' do |p|
-        p.description = 'Number of tag sets you have that are about to be deleted'
-        p.type        = :integer
-      end
-
-      req.parameter name: 'tag_count' do |p|
-        p.description = 'Number of tags you have that are about to be deleted'
-        p.type        = :integer
-      end
-
-      req.parameter name: 'bundle_count' do |p|
-        p.description = 'Number of bundles you have that are about to be deleted'
-        p.type        = :integer
-      end
-
     end
 
   end
