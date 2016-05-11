@@ -1107,6 +1107,39 @@ Response:
         p.example     = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
       end
 
+      req.example = <<-EOF
+curl -X POST 'https://api.ingeniapi.com/v2/similar_to_text?text=technology%latest&limit=3&api_key=$api_key'
+
+Response:
+
+[
+  {
+    "item": {
+      "id": "ID218266-10-1425298759",
+      "text": "Clarus Financial Technology | Esma\n+447771824036"
+    },
+    "mode": "word",
+    "similarity": 0.966
+  },
+  {
+    "item": {
+      "id": "CyberVally",
+      "text": "Technology blog group. blogging about latest technology related news."
+    },
+    "mode": "word",
+    "similarity": 0.87
+  },
+  {
+    "item": {
+      "id": "TechoTrack",
+      "text": "This is a technology blog. We provide latest updates on gadgets and technology."
+    },
+    "mode": "word",
+    "similarity": 0.869
+  }
+]
+      EOF
+
       req.response = json_similarity_response
     end
 
