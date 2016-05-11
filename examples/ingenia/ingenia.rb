@@ -1004,6 +1004,60 @@ Response:
     #   req.response = json_similarity_response
     # end
 
+    r.request name: 'Similar to' do |req|
+      req.description = ''
+      req.call_type   = :get
+      req.path        = '/items/:id/similar_to'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of item to get similar items to'
+        p.type        = :string
+        p.required    = true
+      end
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'Tell ingenia which bundle this item is in. If this parameter is omitted, ingenia will only look for the item in the default bundle'
+        p.type        = :integer
+        p.example     = '77'
+      end
+
+      req.parameter name: 'bundle_ids' do |p|
+        p.description = 'Restrict your search to one or more bundles. If this parameter is omitted, all bundles will be scanned'
+        p.type        = :array
+        p.example     = '1,4,77'
+      end
+
+      req.parameter name: 'limit' do |p|
+        p.description = 'The number of items to return, the maximum is 100.'
+        p.type = :integer
+        p.example = '15'
+      end
+
+
+      req.parameter full_text
+
+      req.parameter name: 'mode' do |p|
+        p.description = 'Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)'
+        p.type        = :string
+        p.example     = 'mode=tag'
+        p.default     = 'auto'
+      end
+
+      req.parameter name: 'metadata_filters' do |p|
+        p.description = 'Instruct ingenia to only consider knowledge items which match these criteria'
+        p.type        = :string
+        p.example     = 'metadata_filters[author]=Joe%20Bloggs'
+      end
+
+      req.parameter name: 'item_filters' do |p|
+        p.description = 'Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.'
+        p.type        = :string
+        p.example     = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
+      end
+
+      req.response = json_similarity_response
+    end
+
     r.request name: 'Similar to text' do |req|
       req.description = ''
       req.call_type   = :post
@@ -1419,60 +1473,6 @@ Response:
   "bundle_id": 778
 }
       EOF
-    end
-
-    r.request name: 'Similar to' do |req|
-      req.description = ''
-      req.call_type   = :get
-      req.path        = '/items/:id/similar_to'
-
-      req.parameter name: 'id' do |p|
-        p.description = 'ID of item to get similar items to'
-        p.type        = :string
-        p.required    = true
-      end
-
-      req.parameter name: 'bundle_id' do |p|
-        p.description = 'Tell ingenia which bundle this item is in. If this parameter is omitted, ingenia will only look for the item in the default bundle'
-        p.type        = :integer
-        p.example     = '77'
-      end
-
-      req.parameter name: 'bundle_ids' do |p|
-        p.description = 'Restrict your search to one or more bundles. If this parameter is omitted, all bundles will be scanned'
-        p.type        = :array
-        p.example     = '1,4,77'
-      end
-
-      req.parameter name: 'limit' do |p|
-        p.description = 'The number of items to return, the maximum is 100.'
-        p.type = :integer
-        p.example = '15'
-      end
-
-
-      req.parameter full_text
-
-      req.parameter name: 'mode' do |p|
-        p.description = 'Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)'
-        p.type        = :string
-        p.example     = 'mode=tag'
-        p.default     = 'auto'
-      end
-
-      req.parameter name: 'metadata_filters' do |p|
-        p.description = 'Instruct ingenia to only consider knowledge items which match these criteria'
-        p.type        = :string
-        p.example     = 'metadata_filters[author]=Joe%20Bloggs'
-      end
-
-      req.parameter name: 'item_filters' do |p|
-        p.description = 'Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.'
-        p.type        = :string
-        p.example     = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
-      end
-
-      req.response = json_similarity_response
     end
   end
 
