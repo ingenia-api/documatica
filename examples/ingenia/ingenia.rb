@@ -37,10 +37,10 @@ metadata    = define_parameter(name: 'metadata') do |m|
   m.description = <<-DESC
   A list of attributes you can associate to the knowledge item.
 
-  Valid types of metadata are date, string, collection and number.
-  'date': which includes a time for when an event occurred
-  'string': General purpose content
-  'collection': One item from defined collection
+  Valid types of metadata are date, string, collection and number.</br>
+  'date': which includes a time for when an event occurred</br>
+  'string': General purpose content</br>
+  'collection': One item from defined collection</br>
   'number': A numerical value
 
   DESC
