@@ -307,10 +307,36 @@ end
 
 # Item JSON get form
 json_item_show      = define_object(name: 'Item: show output') do |item|
+
+  item.parameter name: 'bundle_id' do |p|
+    p.description = 'The id of the bundle that this item belongs to'
+    p.type        = :numeric
+  end
+
+  item.parameter name: 'bundle_name' do |p|
+    p.description = 'The name of the bundle that this item belongs to'
+    p.type        = :string
+  end
+
+  item.parameter name: 'concordance' do |p|
+    p.description = 'The extent to which the user and Ingenia agree on the categorisation of the item. 0 if the tags are different, 1 if they are identical. Use this to identify content that may need to be reviewed'
+    p.type        = :float
+  end
+
   item.parameter name: 'id' do |p|
     p.description = 'A unique alphanumeric id'
     p.type        = :string
     p.example     = '785uU423aC'
+  end
+
+  item.parameter name: 'item_state' do |p|
+    p.description = 'The current state of the item'
+    p.type        = :string
+  end
+
+  item.parameter name: 'language' do |p|
+    p.description = 'The language of the conent in this item'
+    p.type        = :string
   end
 
   item.parameter name: 'text' do |p|
@@ -385,6 +411,11 @@ json_item_show      = define_object(name: 'Item: show output') do |item|
   item.parameter name: 'membership_degree' do |p|
     p.description = 'the degree to which this item is a member of its bundle'
     p.type        = :float
+  end
+
+  item.parameter name: 'metadata' do |p|
+    p.description = 'any additional data you associated to this content; it may include dates, values, urls, additional text, etc.'
+    p.type        = :array
   end
 
   item.example = '
