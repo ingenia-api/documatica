@@ -1214,6 +1214,38 @@ Response:
         p.example     = 'item_filters[from]=2014-12-25&item_filters[to]=2014-12-30'
       end
 
+      req.example = <<-EOF
+curl -X GET 'http://api.ingeniapi.com/v2/similar_to_tags?tag_ids=%5B189454%2C189475%5D&limit=3&api_key=$api_key'
+
+Response:
+
+[
+  {
+    "item": {
+      "id": "ID1959443-12-1458267383",
+      "text": "\n So it’s been a little over a year since GitHub fired me.\nI initially made a vague tweet about leaving the company, and then a few weeks later I wrot..."
+    },
+    "mode": "word",
+    "similarity": 0.194
+  },
+  {
+    "item": {
+      "id": "ID1834322-12-1455638255",
+      "text": "  \n I worked there. It was literally the worst experience of my career - and I have worked at all of the hardest charging blue chips and two successfu..."
+    },
+    "mode": "word",
+    "similarity": 0.193
+  },
+  {
+    "item": {
+      "id": "ID1847748-12-1455841393",
+      "text": "Table of Contents (Show)Table of Contents (Hide)\n In This Issue of Venture Weekly:\n Top Story \nWhy Category Leaders Win,  By Ablorde Ashigbi\n Per..."
+    },
+    "mode": "word",
+    "similarity": 0.19
+  }
+]
+      EOF
       req.response = json_similarity_response
     end
 
