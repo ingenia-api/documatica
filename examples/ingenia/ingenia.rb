@@ -1099,6 +1099,7 @@ Response:
       req.parameter name: 'text' do |p|
         p.description = 'Text of item for which we want other similar items'
         p.type        = :string
+        p.required    = true
       end
 
       req.parameter name: 'bundle_id' do |p|
@@ -1186,6 +1187,7 @@ Response:
         p.description = 'JSON encoded array of tag IDs for which we want relevant items'
         p.type        = :array
         p.example     = '[ 45, 787, 23 ]'
+        p.required    = true
       end
 
       req.parameter name: 'bundle_ids' do |p|
@@ -1264,7 +1266,12 @@ Response:
       req.path        = '/summarise'
 
       req.parameter name: 'text' do |p|
-        p.description = 'Text to summarise: the key sentences will be extracted'
+        p.description = 'Text to summarise: the key sentences will be extracted [1]'
+        p.type        = :string
+      end
+
+      req.parameter name: 'url' do |p|
+        p.description = 'URL of article to summarise: the key sentences will be extracted [1]'
         p.type        = :string
       end
 
@@ -1290,6 +1297,10 @@ Response:
         p.type        = :integer
         p.default     = 2
       end
+
+      req.footnote = <<-EOF
+      <p>[1] You must input content as either text or a URL. </p>
+      EOF
 
       req.example = <<-EOF
 curl -X POST 'https://api.ingeniapi.com/v2/summarise?url=http://techcrunch.com/2016/05/11/charged/&api_key=$api_key'
