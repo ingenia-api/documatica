@@ -1838,6 +1838,7 @@ Response:
   {
     "confidence": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
     "description": "a term for data sets that are so large or complex that traditional data processing applications are inadequate",
     "id": 189453,
     "name": "Big Data",
@@ -1847,6 +1848,7 @@ Response:
   {
     "confidence": 0.0,
     "created_at": "2016-05-04T16:08:05Z",
+    "current_state": "not_enough_items_to_learn",
     "description": "the process of deriving high-quality information from text",
     "id": 189452,
     "name": "Text Analytics",
@@ -1876,6 +1878,7 @@ Response:
   {
     "confidence": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
     "description": "",
     "id": 189453,
     "name": "New Tag",
@@ -1905,6 +1908,7 @@ Response:
   {
     "confidence": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
     "description": "",
     "id": 189453,
     "name": "New Tag",
@@ -1931,6 +1935,7 @@ Response:
   { 
     "confidence": 0.0,
     "created_at": "2016-05-04T17:05:18Z",
+    "current_state": "unprocessed",
     "description": "",
     "id": 189455,
     "name": "New Tag",
@@ -1962,6 +1967,7 @@ Response:
   {
     "confidence": 0.0,
     "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "unprocessed",
     "description": "",
     "id": 189453,
     "name": "New Tag Updated",
