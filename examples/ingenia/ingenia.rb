@@ -1339,6 +1339,59 @@ Response:
 
   end
 
+  api.resource name: 'Keywords' do |r|
+    r.description = ""
+
+    r.request name: 'Show' do |req|
+      req.description = 'Returns a list of keywords for a given item'
+      req.call_type   = :get
+      req.path        = '/keywords/:item_id'
+
+      req.parameter name: 'item_id' do |p|
+        p.description = 'ID of the item to show keyfords for.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.example = <<-EOF
+curl -X POST 'https://api.ingeniapi.com/v2/keywords/32f5802a6fd954e1ad25376b347ccdcc?api_key=$api_key'
+
+Response:
+
+[
+  {
+    "text": "the",
+    "occurrences": 63,
+    "score": 5646.27
+  },
+  {
+    "text": "watch",
+    "occurrences": 15,
+    "score": 2082.1
+  },
+  {
+    "text": "chronograph",
+    "occurrences": 13,
+    "score": 2039.43
+  },
+  {
+    "text": "you",
+    "occurrences": 10,
+    "score": 1768.91
+  },
+  {
+    "text": "and",
+    "occurrences": 26,
+    "score": 1653.21
+  },
+  ...
+]
+      EOF
+
+    end
+
+  end
+
 
   ##
   # Items
