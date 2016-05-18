@@ -2444,6 +2444,13 @@ Response:
       req.description = 'Delete all the data in your account; useful to restart from zero if the data was polluted'
       req.call_type   = :post
       req.path        = '/clear_data'
+      req.example = <<-EOF
+curl -X POST 'https://api.ingeniapi.com/v2/clear_data?api_key=$api_key'
+
+Response:
+
+{}
+      EOF
     end
 
   end
