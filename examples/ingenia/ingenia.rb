@@ -2413,7 +2413,30 @@ Response:
         p.type        = :boolean
       end
 
+      req.example = <<-EOF
+curl -X GET 'https://api.ingeniapi.com/v2/status?api_key=$api_key'
 
+Response:
+
+{
+    "total_bundles": 17,
+    "processed_bundles": 1,
+    "total_items": 2,
+    "pending_items": 0,
+    "processed_items": 2,
+    "total_tag_sets": 2,
+    "pending_tag_sets": 0,
+    "processed_tag_sets": 0,
+    "untrained_tag_sets": 2,
+    "idle_tag_sets": 0,
+    "total_tags": 3,
+    "pending_tags": 0,
+    "processed_tags": 0,
+    "untrained_tags": 3,
+    "idle_tags": 0,
+    "ready_to_classify": true
+  }
+      EOF
     end
 
 
