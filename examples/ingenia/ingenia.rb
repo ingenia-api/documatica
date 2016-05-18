@@ -1354,37 +1354,26 @@ Response:
       end
 
       req.example = <<-EOF
-curl -X POST 'https://api.ingeniapi.com/v2/keywords/32f5802a6fd954e1ad25376b347ccdcc?api_key=$api_key'
+curl -X POST 'https://api.ingeniapi.com/v2/keywords/457?api_key=$api_key'
 
 Response:
 
 [
   {
-    "text": "the",
-    "occurrences": 63,
-    "score": 5646.27
-  },
-  {
-    "text": "watch",
-    "occurrences": 15,
-    "score": 2082.1
-  },
-  {
     "text": "chronograph",
-    "occurrences": 13,
-    "score": 2039.43
+    "occurrences": 1,
+    "score": 254
   },
   {
-    "text": "you",
-    "occurrences": 10,
-    "score": 1768.91
+    "text": "measure",
+    "occurrences": 3,
+    "score": 122
   },
   {
-    "text": "and",
-    "occurrences": 26,
-    "score": 1653.21
-  },
-  ...
+    "text": "time",
+    "occurrences": 8,
+    "score": 12
+  }
 ]
       EOF
 
