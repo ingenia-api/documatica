@@ -2383,6 +2383,11 @@ Response:
         p.type        = :integer
       end
 
+      req.parameter name: 'idle_tag_sets' do |p|
+        p.description = 'Number of tag sets that the user prefers to not be processed by Ingenia'
+        p.type        = :integer
+      end
+
       req.parameter name: 'total_tags' do |p|
         p.description = 'Number of tags you have own'
         p.type        = :integer
