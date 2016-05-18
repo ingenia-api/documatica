@@ -2403,6 +2403,11 @@ Response:
         p.type        = :integer
       end
 
+      req.parameter name: 'idle_tags' do |p|
+        p.description = 'Number of tags that the user prefers to not be processed by Ingenia'
+        p.type        = :integer
+      end
+
       req.parameter name: 'ready_to_classify' do |p|
         p.description = 'True if all tags assigned to items have been processed'
         p.type        = :boolean
