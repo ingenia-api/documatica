@@ -1393,6 +1393,54 @@ Response:
 
   end
 
+  api.resource name: 'Clusters' do |r|
+    r.description = ""
+
+    r.request name: 'Show' do |req|
+      req.description = 'Returns a list clusters for a given bundle'
+      req.call_type   = :get
+      req.path        = '/clusters'
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'ID of the bundle to show clusters for.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.example = <<-EOF
+curl 'https://api.ingeniapi.com/v2/clusters?bundle_id=544&api_key=$api_key'
+
+Response:
+
+{
+  "bundle_id": 544,
+  "date": "2016-05-18T08:00:15Z",
+  "clusters": [
+    {
+      "cluster": {
+        "id": 105636,
+        "score": 0.0235,
+        "words": [
+          {
+            "text": "journal",
+            "score": 457.39
+          },
+          {
+            "text": "org",
+            "score": 421.19
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+      EOF
+
+    end
+
+  end
+
 
   ##
   # Items
