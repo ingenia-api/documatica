@@ -2381,7 +2381,7 @@ Response:
     end
   end
 
-  api.resource name: 'Content Service' do |r|
+  api.resource name: 'Text extraction' do |r|
     r.description = "Returns stripped text for a given url"
 
     r.request name: 'Get stripped text' do |req|
