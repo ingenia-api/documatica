@@ -33,6 +33,18 @@ full_text = define_parameter(name: 'full_text') do |p|
   p.default     = false
 end
 
+uri = define_parameter(name: 'uri') do |p|
+  p.description = 'The url of the article you want to extract'
+  p.type        = :string
+  p.default     = false
+end
+
+url = define_parameter(name: 'url') do |p|
+  p.description = 'The url of the html you want to return'
+  p.type        = :string
+  p.default     = false
+end
+
 metadata    = define_parameter(name: 'metadata') do |m|
   m.description = <<-DESC
   A list of attributes you can associate to the knowledge item.
@@ -2365,6 +2377,48 @@ Response:
 '{
   "2824" : "destroyed"
 }'
+      EOF
+    end
+  end
+
+  api.resource name: 'Content Service' do |r|
+    r.description = "Returns stripped text for a given url"
+
+    r.request name: 'Get stripped text' do |req|
+      req.description = 'Returns stripped text for a given url'
+      req.call_type   = :post
+
+      req.parameter uri
+      req.example = <<-EOF
+# Request to get stripped content for url
+curl -X POST -H 'Content-Type: application/json' -d '{"url":{"uri":"https://techcrunch.com/2016/08/02/instagram-stories/"}}' http://content-service.ingeniapi.com/urls
+
+Response:
+
+'{
+  "url": {
+    "uri": "https://techcrunch.com/2016/08/02/instagram-stories/"
+  },
+  "title": "Instagram launches “Stories,” a Snapchatty feature for imperfect sharing",
+  "content": "People only post the highlights of their life on Instagram, so today the app adds its own version of “Stories” ...'
+      EOF
+    end
+
+    r.request name: 'Get full html' do |req|
+      req.description = 'Returns full html for a url'
+      req.call_type   = :get
+
+      req.parameter url
+      req.example = <<-EOF
+# Request to get stripped content for url
+curl 'https://techcrunch.com/2016/08/02/instagram-stories/'
+
+Response:
+<xmp>'<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
+<head>
+  <title>Instagram launches &#8220;Stories,&#8221; a Snapchatty feature for imperfect sharing  |  TechCrunch</title>
+  ...'</xmp>
       EOF
     end
   end
