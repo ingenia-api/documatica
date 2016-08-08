@@ -1397,7 +1397,7 @@ Response:
     r.description = ""
 
     r.request name: 'Show' do |req|
-      req.description = 'Returns a list clusters for a given bundle'
+      req.description = 'Returns a list of clusters for a given bundle'
       req.call_type   = :get
       req.path        = '/clusters'
 
