@@ -1439,6 +1439,55 @@ Response:
 
     end
 
+    r.request name: 'Transform cluster into tag' do |req|
+      req.description = 'Creates a tag using the given cluser'
+      req.call_type   = :put
+      req.path        = '/clusters/:id'
+
+      req.parameter name: 'cluster_id' do |p|
+        p.description = 'ID of the cluster to convert.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'cluster_action' do |p|
+        p.description = 'Action for cluser. In this case, should be "save".'
+        p.type        = :string
+        p.required    = :true
+      end
+
+      req.example = <<-EOF
+curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_id=102165&cluster_action=save&api_key=$api_key'
+
+Response:
+
+{
+  "bundle_id": 544,
+  "date": "2016-05-18T08:00:15Z",
+  "clusters": [
+    {
+      "cluster": {
+        "id": 105636,
+        "score": 0.0235,
+        "words": [
+          {
+            "text": "journal",
+            "score": 457.39
+          },
+          {
+            "text": "org",
+            "score": 421.19
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+      EOF
+
+    end
+
   end
 
 
