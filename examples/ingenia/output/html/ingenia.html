@@ -23,7 +23,7 @@
   <p>If you would like to verify your API key or code data path then use the <a href="#call-administrative-calls-status">status</a> call.</p>
 
   <h3 id='api-libraries'>Ruby API library</h3>
-  <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
+  <a href="httpss://github.com/ingenia-api/ingenia_ruby">httpss://github.com/ingenia-api/ingenia_ruby</a>
 
   <h3 id='api-rate-limiting'>Rate limiting</h3>
 
@@ -233,7 +233,7 @@
                       <div class="desc_example">
                         <h6>Example</h6>
                         
-                          <p class="example_code">http://www.example.com</p>
+                          <p class="example_code">https://www.example.com</p>
 
                       </div>
 
@@ -379,10 +379,10 @@
 
                         A list of attributes you can associate to the knowledge item.
 
-  Valid types of metadata are date, string, collection and number.
-  'date': which includes a time for when an event occurred
-  'string': General purpose content
-  'collection': One item from defined collection
+  Valid types of metadata are date, string, collection and number.</br>
+  'date': which includes a time for when an event occurred</br>
+  'string': General purpose content</br>
+  'collection': One item from defined collection</br>
   'number': A numerical value
 
 
@@ -408,7 +408,7 @@
     supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
     from it.</p>
     <p>The text and the URL are input as part of the JSON component. The file
-    is sent as a multipart encoded http field.</p>
+    is sent as a multipart encoded https field.</p>
 
     <p>[2] Only specify one of the following: tag_sets, tags or tag_ids </p>
 </p>
@@ -450,6 +450,60 @@
               <tbody>
 
                 <tr>
+                  <td class="param_name">bundle_id</td>
+
+                  <td class = "type">
+
+                      <code>numeric</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The id of the bundle that this item belongs to
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">bundle_name</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The name of the bundle that this item belongs to
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">concordance</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The extent to which the user and Ingenia agree on the categorisation of the item. 0 if the tags are different, 1 if they are identical. Use this to identify content that may need to be reviewed
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
                   <td class="param_name">id</td>
 
                   <td class = "type">
@@ -469,6 +523,42 @@
                           <p class="example_code">785uU423aC</p>
 
                       </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">item_state</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The current state of the item
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">language</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The language of the conent in this item
 
 
                   </td>
@@ -751,6 +841,24 @@
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">metadata</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      any additional data you associated to this content; it may include dates, values, urls, additional text, etc.
+
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -897,7 +1005,16 @@
             <pre class="prettyprint">
   {
     "name":"Tech Startups",
-    "tag_set_ids": [ 232, 332, 6582 ]
+    "tag_sets": [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id" : 2819,
+        "name" : "Tag Set Two"
+      }
+    ]
   }</pre>
           </div>
 
@@ -977,24 +1094,6 @@
 
 
                 <tr>
-                  <td class="param_name">language</td>
-
-                  <td class = "type">
-
-                      <code>string</code>
-
-                  </td>
-
-                  <td class = "description">
-
-                      The language of your bundle
-
-
-                  </td>
-                </tr>
-
-
-                <tr>
                   <td class="param_name">created_at</td>
 
                   <td class = "type">
@@ -1062,7 +1161,6 @@
       { "name": "technology", "id": 14562 },
       { "name": "business", "id": 666 }
     ],
-    "language": "en",
     "created_at":"2014-03-13T15:36:51Z",
     "updated_at":"2014-03-13T15:36:51Z",
   }</pre>
@@ -1276,24 +1374,6 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
 
                 <tr>
-                  <td class="param_name">consistency</td>
-
-                  <td class = "type">
-
-                      <code>float</code>
-
-                  </td>
-
-                  <td class = "description">
-
-                      From 0 to 1; consistency gets closer to 1 the more Ingenia considers the items associated to this tag as similar to one another; if this value is low, we advise to re-assess the items associated to this tag
-
-
-                  </td>
-                </tr>
-
-
-                <tr>
                   <td class="param_name">description</td>
 
                   <td class = "type">
@@ -1377,10 +1457,603 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
     "name":"Text Analytics",
     "tag_set_id":8547,
     "confidence":0.95,
-    "consistency":0.92,
-    "description":"",
+    "description":"the process of deriving high-quality information from text",
     "created_at":"2014-03-13T12:59:32Z",
     "updated_at":"2014-03-13T12:59:32Z"
+  }</pre>
+          </div>
+
+
+        </div>
+
+        <div id="tag-rules:-index-output" class = "object tag-rules:-index-output">
+          <h3 class = "object-heading" id="object-tag-rules:-index-output">Tag rules: index output</h3>
+
+          <p>A list of rules applied to a tag to influence whether or not to apply the tag to an item. </p>
+
+          <div class = "fields">
+            <h4>Fields</h4>
+
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th class="title_desc">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td class="param_name">tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The ID of the tag to which this tag rule belongs
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">text</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the word or phrase that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">language</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the language for "text" (optional, required if you pass the "text" parameter
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">rule_tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the id of the "rule tag", or the tag that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">influence</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the extent to which the "target tag" is influenced by either "text" or "rule tag", a number between -1 (greatest effect to prevent "target tag" from being applied) to 1 (greatest effect to ensure "target tag" is applied).
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_rule_mode</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                        A the way in which the rule is being applied. These modes are supported:</br>
+  'word_present': apply "influence" to the "target tag" if the "text" is present</br>
+  'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
+  'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
+  'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+
+
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">created_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag rule was created
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">updated_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag rule was last updated
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+              </tbody>
+              </table>
+              
+          </div>
+
+
+          <div class = "example clear">
+            <h4>Example</h4>
+            <pre class="prettyprint">
+  {
+    "tag": {
+      "id":554273,
+      "name":"Text Analytics",
+    },
+    "tag_rule": [{
+      "text": "data",
+      "influence": 0.4,
+      "language": "en",
+      "tag_rule_mode":"word_present",
+      "created_at":"2014-03-13T12:59:32Z",
+      "updated_at":"2014-03-13T12:59:32Z"
+    },
+    ...
+    ]
+  }</pre>
+          </div>
+
+
+        </div>
+
+        <div id="tag-rule:-show-output" class = "object tag-rule:-show-output">
+          <h3 class = "object-heading" id="object-tag-rule:-show-output">Tag Rule: show output</h3>
+
+          <p>A rule applied to a tag to influence whether or not to apply the tag to an item. </p>
+
+          <div class = "fields">
+            <h4>Fields</h4>
+
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th class="title_desc">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td class="param_name">tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The ID of the tag to which this tag rule belongs
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">text</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the word or phrase that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">language</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the language for "text" (optional, required if you pass the "text" parameter
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">rule_tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the id of the "rule tag", or the tag that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">influence</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the extent to which the "target tag" is influenced by either "text" or "rule tag", a number between -1 (greatest effect to prevent "target tag" from being applied) to 1 (greatest effect to ensure "target tag" is applied).
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_rule_mode</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                        A the way in which the rule is being applied. These modes are supported:</br>
+  'word_present': apply "influence" to the "target tag" if the "text" is present</br>
+  'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
+  'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
+  'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+
+
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">created_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag rule was created
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">2013-12-16T11:24:52+00:00</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">updated_at</td>
+
+                  <td class = "type">
+
+                      <code>date_time</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      When this tag rule was last updated
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">2013-12-16T11:25:52+00:00</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+              </tbody>
+              </table>
+              
+          </div>
+
+
+          <div class = "example clear">
+            <h4>Example</h4>
+            <pre class="prettyprint">
+  {
+    "tag": {
+      "id":554273,
+      "name":"Text Analytics",
+    },
+    "tag_rule": {
+      "text": "data",
+      "influence": 0.4,
+      "language": "en",
+      "tag_rule_mode":"word_present",
+      "created_at":"2014-03-13T12:59:32Z",
+      "updated_at":"2014-03-13T12:59:32Z"
+    }
+  }</pre>
+          </div>
+
+
+        </div>
+
+        <div id="tag-rule:-create-input" class = "object tag-rule:-create-input">
+          <h3 class = "object-heading" id="object-tag-rule:-create-input">Tag rule: create input</h3>
+
+          <p>A rule to apply to a tag to influence use of that tag. </p>
+
+          <div class = "fields">
+            <h4>Fields</h4>
+
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th class="title_desc">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td class="param_name">tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The ID of the tag to which this tag rule belongs
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">text</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the word or phrase that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">language</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the language for "text" (optional, required if you pass the "text" parameter
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">rule_tag_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the id of the "rule tag", or the tag that influences the "target tag"
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">influence</td>
+
+                  <td class = "type">
+
+                      <code>float</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the extent to which the "target tag" is influenced by either "text" or "rule tag", a number between -1 (greatest effect to prevent "target tag" from being applied) to 1 (greatest effect to ensure "target tag" is applied).
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_rule_mode</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                        A the way in which the rule is being applied. These modes are supported:</br>
+  'word_present': apply "influence" to the "target tag" if the "text" is present</br>
+  'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
+  'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
+  'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+
+
+
+
+                  </td>
+                </tr>
+
+
+              </tbody>
+              </table>
+              
+                <h5>Notes</h5>
+                <p class='footnote'>      <p>[1] A tag rule must include either an entry for the tuple "text" and "language", or for "rule tag", but NOT both. </p>
+      <p>[2] You can associate as many rules as you like to a tag. Do so cautiously, and make sure they work well together, or you risk to apply the target tag all the time, or never.</p>
+</p>
+              
+          </div>
+
+
+          <div class = "example clear">
+            <h4>Example</h4>
+            <pre class="prettyprint">
+  {
+    "text":"ruby",
+    "influence":0.5,
+    "language":"en",
+    "tag_rule_mode":"word_present"
+  }
+
+  OR
+
+  {
+    "influence":0.5,
+    "rule_tag_id":12,
+    "tag_rule_mode":"word_present"
   }</pre>
           </div>
 
@@ -1779,7 +2452,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                               <div class="desc_example">
                                 <h6>Example</h6>
                                 
-                                  <p class="example_code">http://www.example.com</p>
+                                  <p class="example_code">https://www.example.com</p>
 
                               </div>
 
@@ -1915,1154 +2588,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
     supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
     from it.</p>
       <p>The text and the URL are input as part of the JSON component. The file
-    is sent as a multipart encoded http field.</p>
-</p>
-                      
-
-
-
-                  </div>
-
-
-
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-
-
-
-
-        <div class = "resource Recommendation engine">
-        <h3 class = "resource-heading" id='resource-Recommendation engine'>Recommendation engine</h3>
-
-        <div class = "resource-body" >
-          <div class = "description"></div>
-
-          <div class = "requests">
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar-to-text" >
-                 <h5>Similar to text</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
-
-
-
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Text of item for which we want other similar items
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            bundle_id
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the first bundle you created.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">77</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            bundle_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Find similar items in one or more bundles. If this parameter is omitted, ingenia find items from any of your bundles.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">1,4,77</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The number of items to return, the maximum is 100.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">15</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            full_text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Show the results with all their text, however long
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            mode
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">auto</p>
-                              </div>
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">mode=tag</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            metadata_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which match these criteria
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            item_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
-
-                  </div>
-
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-recommendation-engine-similar-to-tags" >
-                 <h5>Similar to tags</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_tags</div>
-
-
-
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              JSON encoded array of tag IDs for which we want relevant items
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">[ 45, 787, 23 ]</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            bundle_ids
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>array</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the tags
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">1,4,77</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The number of items to return, the maximum is 100.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">15</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            full_text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Show the results with all their text, however long
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            metadata_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which match these criteria
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            item_filters
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
-
-
-
-                              <div class="desc_example">
-                                <h6>Example</h6>
-                                
-                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
-
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
-
-                  </div>
-
-
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-
-
-
-
-        <div class = "resource Summarisation">
-        <h3 class = "resource-heading" id='resource-Summarisation'>Summarisation</h3>
-
-        <div class = "resource-body" >
-          <div class = "description"></div>
-
-          <div class = "requests">
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-summarisation-summarise" >
-                 <h5>Summarise</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/summarise</div>
-
-
-
-
-                <div class = "description">
-                  <h5>Description</h5>
-                  <code class="get_post">GET</code> is also supported
-                </div>
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Text to summarise: the key sentences will be extracted
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            id
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              ID of the item to be summarised.
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            include_tags
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              If true the resulting sentences will be organised by each tag associated to the text, if false they are returned as a list
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">true</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            order_by_position
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              If true, the results will be ordered as they appear in the text, if false, they will be ordered by the score of the sentence
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">false</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            max_sentences
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Maximum number of sentences to return
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">2</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-
-
-
-
-        <div class = "resource Items">
-        <h3 class = "resource-heading" id='resource-Items'>Items</h3>
-
-        <div class = "resource-body" >
-          <div class = "description">Blocks of textual content, typically self-contained and homogeneous</div>
-
-          <div class = "requests">
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-index" >
-                 <h5>Index</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items</div>
-
-
-
-
-                <div class = "description">
-                  <h5>Description</h5>
-                  Returns a list of all your items
-                </div>
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            limit
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Return these many results
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">10</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            full_text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Show the results with all their text, however long
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            offset
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Offset the results I receive by this amount
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">0</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-show" >
-                 <h5>Show</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items/:id</div>
-
-
-
-
-                <div class = "description">
-                  <h5>Description</h5>
-                  Returns a single item
-                </div>
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            id
-
-
-                            <span class='text-muted'>required</span>
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The ID of the item you want to show
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            full_text
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Show the results with all their text, however long
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-                  <div class = "response">
-                    <h4>Response</h4>
-
-                    <p>See <a href="#object-item:-show-output">Item: show output</a></p>
-
-                  </div>
-
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-create" >
-                 <h5>Create</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/items</div>
-
-
-
-
-                <div class = "description">
-                  <h5>Description</h5>
-                  Creates a new item
-                </div>
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            <a href='#item:-create---update-input'>json</a>
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>json</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              An item is a block of text to which you can associate tags, that belongs to a bundle
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx). [1]
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            update_existing
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Choice of what to do if the item sent via a create call already exists on Ingenia, as determined by its item ID. If this field is true, the tags supplied will overwrite those on the existing item. If false, no data is modified and a response is returned with a 409 code (Conflict) together with the existing item as JSON.
-
-
-                              <div class="desc_example">
-                                <h6>Default</h6>
-                                <p class="example_code">true</p>
-                              </div>
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            classify
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>boolean</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              If true, the response will also include a classification
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-                        <h5>Notes</h5>
-                        <p class='footnote'>        <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
-        supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
-        from it.</p>
-        <p>The text and the URL are input as part of the JSON component. The file
-        is sent as a multipart encoded http field.</p>
-
+    is sent as a multipart encoded https field.</p>
 </p>
                       
 
@@ -3070,37 +2596,28 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint"># Simply post item's text
-curl -X POST \
-  -F'json={ "text" : "Some inline text" }' \
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/classify?text=A%20comparative%20study%20of%20European%20secondary%20education%20systems%20illustrated%20issues%20related%20to%20their%20budgetary%20sustainability&api_key=$api_key'
 
-# Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
-curl -X POST \
-  -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+Response:
 
-# Create an item with some text, create a new tag set ('my tag set') and add
-# a tag ('foo') with a score of 0.2 to that tag set..
-curl -X POST \
-  -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
-
-# Create an item with the tag ('foo')
-curl -X POST \
-  -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \
-  'http://api.ingeniapi.com/v2/items=$api_key&classify=true'
-
-# Post url to retrieve content from and create an item with that content
-curl -X POST \
-  -F'json={ "url" : "http://www.zdziarski.com/blog/?p=3875" }' \
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key'
-
-# Post a file using multipart/form-data upload and create an item with that content
-curl -X POST \
-  -F'json={}' \
-  -F'file=@article.txt' \
-  'http://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
+{
+  "classification_status": "complete",
+  "text": "A comparative study of European secondary education systems illustrated issues related to their budgetary sustainability",
+  "results": {
+    "Themes": {
+      "tags": [
+        {
+          "machine_score": -0.15,
+          "name": "Ed-tech",
+          "id": 174857,
+          "rule_score": 0.21,
+          "score": 0.06
+        }
+      ],
+      "id": "1627"
+    }
+  }
+}
 </pre>
                         </div>
 
@@ -3112,212 +2629,24 @@ curl -X POST \
               </div>
 
 
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-update" >
-                 <h5>Update</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/items/:id</div>
+            </div>
+          </div>
+        </div>
 
 
 
 
-                <div class = "description">
-                  <h5>Description</h5>
-                  Update an existing item
-                </div>
+        <div class = "resource Personalisation">
+        <h3 class = "resource-heading" id='resource-Personalisation'>Personalisation</h3>
 
+        <div class = "resource-body" >
+          <div class = "description"></div>
 
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            id
-
-
-                            <span class='text-muted'>required</span>
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The ID of the item you want to update
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            <a href='#item:-create---update-input'>json</a>
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>json</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              An item is a block of text to which you can associate tags, that belongs to a bundle
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            file
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>multipart</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). [1]
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-                        <h5>Notes</h5>
-                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
-        supported include txt, html, pdf, all the MS Office formats). If you
-        send a URL, Ingenia will extract the most meaningful text from it,
-        e.g., ignoring links. If you send a file, it will extract the text
-        from it.</p>
-        <p>The text and the URL are input as part of the JSON component. The file
-        is sent as a multipart encoded http field.</p>
-</p>
-                      
-
-
-
-                  </div>
-
-
-
-                </div>
-              </div>
+          <div class = "requests">
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-delete" >
-                 <h5>Delete</h5>
-              </div>
-
-              <div class = "panel-body">
-
-                  <h5>Path</h5>
-
-                    <div class = "path well"> <span> <code class="get_post">DELETE</code> </span> api.ingeniapi.com/v2/items/:id</div>
-
-
-
-
-                <div class = "description">
-                  <h5>Description</h5>
-                  Delete an existing item
-                </div>
-
-
-                  <div class = "parameters">
-                    <h5>Parameters</h5>
-
-                    <table class = "table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Type</th>
-                          <th class="title_desc">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <tr>
-                          <td class="param_name">
-
-                            id
-
-
-                            <span class='text-muted'>required</span>
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>string</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              The ID of the item you want to delete
-
-
-
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                      </table>
-                      
-
-
-
-                  </div>
-
-
-
-                </div>
-              </div>
-
-
-            <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-items-similar-to" >
+              <div class = "panel-heading" id="call-personalisation-similar-to" >
                  <h5>Similar to</h5>
               </div>
 
@@ -3597,6 +2926,49 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X GET 'https://api.ingeniapi.com/v2/items/ID423455-12-1432321250/similar_to?limit=3&api_key=$api_key'
+
+Response:
+
+[
+  {
+    "item": {
+      "id": "ID1959443-12-1458267383",
+      "text": "
+ So it’s been a little over a year since GitHub fired me.
+I initially made a vague tweet about leaving the company, and then a few weeks later I wrot..."
+    },
+    "mode": "word",
+    "similarity": 0.194
+  },
+  {
+    "item": {
+      "id": "ID1834322-12-1455638255",
+      "text": "  
+ I worked there. It was literally the worst experience of my career - and I have worked at all of the hardest charging blue chips and two successfu..."
+    },
+    "mode": "word",
+    "similarity": 0.193
+  },
+  {
+    "item": {
+      "id": "ID1847748-12-1455841393",
+      "text": "Table of Contents (Show)Table of Contents (Hide)
+ In This Issue of Venture Weekly:
+ Top Story 
+Why Category Leaders Win,  By Ablorde Ashigbi
+ Per..."
+    },
+    "mode": "word",
+    "similarity": 0.19
+  }
+]
+
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -3606,6 +2978,2054 @@ curl -X POST \
                     <p>See <a href="#object-similarity-response">Similarity response</a></p>
 
                   </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-personalisation-similar-to-text" >
+                 <h5>Similar to text</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/similar_to_text</div>
+
+
+
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            text
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Text of item for which we want other similar items
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The bundle this item would most likely be found in. If this parameter is omitted, ingenia assumes the first bundle you created.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">77</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Find similar items in one or more bundles. If this parameter is omitted, ingenia find items from any of your bundles.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">1,4,77</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            limit
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The number of items to return, the maximum is 100.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">15</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            full_text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show the results with all their text, however long
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            mode
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Constrain matches to base similarity on just "tag", just "word", or "auto" (first tags, then words)
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">auto</p>
+                              </div>
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">mode=tag</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/similar_to_text?text=technology%latest&limit=3&api_key=$api_key'
+
+Response:
+
+[
+  {
+    "item": {
+      "id": "ID218266-10-1425298759",
+      "text": "Clarus Financial Technology | Esma
++447771824036"
+    },
+    "mode": "word",
+    "similarity": 0.966
+  },
+  {
+    "item": {
+      "id": "CyberVally",
+      "text": "Technology blog group. blogging about latest technology related news."
+    },
+    "mode": "word",
+    "similarity": 0.87
+  },
+  {
+    "item": {
+      "id": "TechoTrack",
+      "text": "This is a technology blog. We provide latest updates on gadgets and technology."
+    },
+    "mode": "word",
+    "similarity": 0.869
+  }
+]
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-personalisation-similar-to-tags" >
+                 <h5>Similar to tags</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/similar_to_tags</div>
+
+
+
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_ids
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              JSON encoded array of tag IDs for which we want relevant items
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">[ 45, 787, 23 ]</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Find similar items in one or more bundles. If this parameter is omitted, ingenia will attempt to infer the bundles from the tags
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">1,4,77</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            limit
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The number of items to return, the maximum is 100.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">15</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            full_text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show the results with all their text, however long
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            metadata_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which match these criteria
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">metadata_filters[author]=Joe%20Bloggs</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_filters
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Instruct ingenia to only consider knowledge items which were created within specific dates. Dates are inclusive.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">item_filters[from]=2014-12-25&item_filters[to]=2014-12-30</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X GET 'http://api.ingeniapi.com/v2/similar_to_tags?tag_ids=%5B189454%2C189475%5D&limit=3&api_key=$api_key'
+
+Response:
+
+[
+  {
+    "item": {
+      "id": "ID1959443-12-1458267383",
+      "text": "
+ So it’s been a little over a year since GitHub fired me.
+I initially made a vague tweet about leaving the company, and then a few weeks later I wrot..."
+    },
+    "mode": "word",
+    "similarity": 0.194
+  },
+  {
+    "item": {
+      "id": "ID1834322-12-1455638255",
+      "text": "  
+ I worked there. It was literally the worst experience of my career - and I have worked at all of the hardest charging blue chips and two successfu..."
+    },
+    "mode": "word",
+    "similarity": 0.193
+  },
+  {
+    "item": {
+      "id": "ID1847748-12-1455841393",
+      "text": "Table of Contents (Show)Table of Contents (Hide)
+ In This Issue of Venture Weekly:
+ Top Story 
+Why Category Leaders Win,  By Ablorde Ashigbi
+ Per..."
+    },
+    "mode": "word",
+    "similarity": 0.19
+  }
+]
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-similarity-response">Similarity response</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class = "resource Summarisation">
+        <h3 class = "resource-heading" id='resource-Summarisation'>Summarisation</h3>
+
+        <div class = "resource-body" >
+          <div class = "description"></div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-summarisation-summarise" >
+                 <h5>Summarise</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/summarise</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  <code class="get_post">GET</code> is also supported
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Text to summarise: the key sentences will be extracted [1]
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            url
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              URL of article to summarise: the key sentences will be extracted [1]
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the item to be summarised.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            include_tags
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              If true the resulting sentences will be organised by each tag associated to the text, if false they are returned as a list
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">true</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            order_by_position
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              If true, the results will be ordered as they appear in the text, if false, they will be ordered by the score of the sentence
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">false</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            max_sentences
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Maximum number of sentences to return
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">2</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>      <p>[1] You must input content as either text or a URL. </p>
+</p>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/summarise?url=http://techcrunch.com/2016/05/11/charged/&api_key=$api_key'
+
+Response:
+
+{
+  "results": {
+    "Relevance": {
+      "tags": [
+        {
+          "machine_score": 0.11,
+          "name": "Relevance",
+          "id": 174842,
+          "rule_score": 0.31,
+          "score": 0.42,
+          "sentences": [
+            {
+              "text": "Venture capitalists in some sectors are increasingly eager to fund serious scientific innovations, they can be much tougher to do due diligence on than simple software that can be assessed based on immediate market traction.",
+              "score": 0.055,
+              "position": 4812
+            },
+            {
+              "text": " Otherwise, it could find it difficult to raise additional funding, hire or retain talent, and avoid a negative press spiral.",
+              "score": 0.043,
+              "position": 4686
+            }
+          ]
+        }
+      ],
+      "id": "1625"
+    }
+  }
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class = "resource Keywords">
+        <h3 class = "resource-heading" id='resource-Keywords'>Keywords</h3>
+
+        <div class = "resource-body" >
+          <div class = "description"></div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-keywords-show" >
+                 <h5>Show</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/keywords/:item_id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns a list of keywords for a given item
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            item_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the item to show keyfords for.
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/keywords/457?api_key=$api_key'
+
+Response:
+
+[
+  {
+    "text": "chronograph",
+    "occurrences": 1,
+    "score": 254
+  },
+  {
+    "text": "measure",
+    "occurrences": 3,
+    "score": 122
+  },
+  {
+    "text": "time",
+    "occurrences": 8,
+    "score": 12
+  }
+]
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class = "resource Clusters">
+        <h3 class = "resource-heading" id='resource-Clusters'>Clusters</h3>
+
+        <div class = "resource-body" >
+          <div class = "description"></div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-clusters-show" >
+                 <h5>Show</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/clusters</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns a list of clusters for a given bundle
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the bundle to show clusters for.
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/clusters?bundle_id=544&api_key=$api_key'
+
+Response:
+
+{
+  "bundle_id": 544,
+  "date": "2016-05-18T08:00:15Z",
+  "clusters": [
+    {
+      "cluster": {
+        "id": 105636,
+        "score": 0.0235,
+        "words": [
+          {
+            "text": "journal",
+            "score": 457.39
+          },
+          {
+            "text": "org",
+            "score": 421.19
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-clusters-transform-cluster-into-tag" >
+                 <h5>Transform cluster into tag</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Creates a tag using the given cluser
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            cluster_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the cluster to convert.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            cluster_action
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Action for cluser. In this case, should be "save".
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_id=102165&cluster_action=save&api_key=$api_key'
+
+Response:
+
+{
+  "bundle_id": 544,
+  "date": "2016-05-18T08:00:15Z",
+  "clusters": [
+    {
+      "cluster": {
+        "id": 105636,
+        "score": 0.0235,
+        "words": [
+          {
+            "text": "journal",
+            "score": 457.39
+          },
+          {
+            "text": "org",
+            "score": 421.19
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class = "resource Items">
+        <h3 class = "resource-heading" id='resource-Items'>Items</h3>
+
+        <div class = "resource-body" >
+          <div class = "description">Blocks of textual content, typically self-contained and homogeneous</div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-index" >
+                 <h5>Index</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns a list of all your items
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            limit
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Return these many results
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">10</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            full_text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show the results with all their text, however long
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            offset
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Offset the results I receive by this amount
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">0</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/items?api_key=$api_key'
+
+Response:
+
+[
+  {
+    "bundle_id": 778,
+    "bundle_name": "Here we go again",
+    "concordance": null,
+    "created_at": "2016-05-10T15:35:59Z",
+    "id": "61265a8b2e56ff9693753fd044630ed5",
+    "item_state": "processed",
+    "language": "en",
+    "last_classified_at": "2016-05-10T15:38:47Z",
+    "membership_degree": null,
+    "updated_at": "2016-05-10T15:38:47Z",
+    "tag_sets": [
+
+    ],
+    "text": "Some inline text",
+    "metadata": [
+      null
+    ]
+  },
+  {
+    "bundle_id": 778,
+    "bundle_name": "Here we go again",
+    "concordance": null,
+    "created_at": "2016-05-10T16:03:59Z",
+    "id": "3fdb62127e7a839e3f4e0ab6de7cd869",
+    "item_state": "processed",
+    "language": "en",
+    "last_classified_at": "2016-05-10T16:04:00Z",
+    "membership_degree": null,
+    "updated_at": "2016-05-10T16:04:01Z",
+    "tag_sets": [
+
+    ],
+    "text": "Smartwatch cheats force Thai students back to exam halls - BBC News\nSome 3,000 students in Thailand must retake university entrance exams after a cheating scam involving cameras and smartwatches was uncovered.The sophisticated scam happened at Rangsit University in Bangkok.The ...",
+    "metadata": [
+      null,
+      {
+        "name": "url-fetched",
+        "type": "date",
+        "content": "2016-05-10 16:03:59"
+      },
+      {
+        "name": "url",
+        "type": "url",
+        "content": "http://www.bbc.co.uk/news/world-asia-36253769"
+      }
+    ]
+  }
+]
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-item:-show-output">Item: show output</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-show" >
+                 <h5>Show</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/items/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns a single item
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the item you want to show
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            full_text
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show the results with all their text, however long
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key'
+
+Response:
+
+{
+  "bundle_id": 778,
+  "bundle_name": "Tech Startups",
+  "concordance": null,
+  "created_at": "2016-05-10T15:35:59Z",
+  "id": "61265a8b2e56ff9693753fd044630ed5",
+  "item_state": "processed",
+  "language": "en",
+  "last_classified_at": "2016-05-10T15:38:47Z",
+  "membership_degree": null,
+  "updated_at": "2016-05-10T15:38:47Z",
+  "tag_sets": [
+
+  ],
+  "text": "Some inline text",
+  "metadata": [
+    null
+  ]
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-item:-show-output">Item: show output</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-create" >
+                 <h5>Create</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/items</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Creates a new item
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            <a href='#item:-create---update-input'>json</a>
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>json</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              An item is a block of text to which you can associate tags, that belongs to a bundle
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            file
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>multipart</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              File to be used as text source. Sent as multipart upload. Accepted file extensions are: Text (txt), Postscript Document Format (pdf) and Microsoft Office Documents (doc, docx, xlsx, ppt, pptx). [1]
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            update_existing
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Choice of what to do if the item sent via a create call already exists on Ingenia, as determined by its item ID. If this field is true, the tags supplied will overwrite those on the existing item. If false, no data is modified and a response is returned with a 409 code (Conflict) together with the existing item as JSON.
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">true</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            classify
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>boolean</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              If true, the response will also include a classification
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
+        supported for files include txt, html, pdf and all MS Office formats. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded https field.</p>
+
+</p>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint"># Simply post item's text
+curl -X POST \
+  -F'json={ "text" : "Some inline text" }' \
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+
+# Create an item with some text and assign a tag ('foo') to it with a score of 0.2.
+curl -X POST \
+  -F'json={ "text" : "Some inline text" , "tags" : { "foo" : 0.2 } }' \
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+
+# Create an item with some text, create a new tag set ('my tag set') and add
+# a tag ('foo') with a score of 0.2 to that tag set..
+curl -X POST \
+  -F'json={ "text" : "Some inline text" , "tag_sets" : { "my tag set" :  { "foo" : 0.2 } } }' \
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true'
+
+# Create an item with the tag ('foo')
+curl -X POST \
+  -F'json={ "text" : "Some inline text" , "tags" : [ "foo"]  }' \
+  'https://api.ingeniapi.com/v2/items=$api_key&classify=true'
+
+# Post url to retrieve content from and create an item with that content
+curl -X POST \
+  -F'json={ "url" : "https://www.zdziarski.com/blog/?p=3875" }' \
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key'
+
+# Post a file using multipart/form-data upload and create an item with that content
+curl -X POST \
+  -F'json={}' \
+  -F'file=@article.txt' \
+  'https://api.ingeniapi.com/v2/items?api_key=$api_key&classify=true&update_existing=true'
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-item:-create---update-input">Item: create / update input</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-update" >
+                 <h5>Update</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/items/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Update an existing item
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the item you want to update
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            <a href='#item:-create---update-input'>json</a>
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>json</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              An item is a block of text to which you can associate tags, that belongs to a bundle
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            file
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>multipart</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              File to be used as text source. Sent as multipart upload. Accepted file types are: Text (txt), Postscript Document Format (pdf), Microsoft Office Documents (doc, docx, xls, xlsx, ppt, pptx). [1]
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+                        <h5>Notes</h5>
+                        <p class='footnote'>        <p>[1] You can input content as ONE of: text, a URL, a file (formats
+        supported include txt, html, pdf, all the MS Office formats). If you
+        send a URL, Ingenia will extract the most meaningful text from it,
+        e.g., ignoring links. If you send a file, it will extract the text
+        from it.</p>
+        <p>The text and the URL are input as part of the JSON component. The file
+        is sent as a multipart encoded https field.</p>
+</p>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT \
+-F'json={ "text" : "Some updated text" , "tags" : [ "foo"]  }' \
+'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key
+
+Response:
+
+{
+  "bundle_id": 778,
+  "created_at": "2016-05-10T15:35:59Z",
+  "id": "61265a8b2e56ff9693753fd044630ed5",
+  "last_classified_at": "2016-05-10T16:54:56Z",
+  "updated_at": "2016-05-10T16:54:57Z",
+  "text": "Some updated text",
+  "tag_sets": [
+    {
+      "Technologia": {
+        "id": 2860,
+        "tags": [
+          {
+            "id": 189475,
+            "name": "foo",
+            "user_selected": "t",
+            "user_assigned": true,
+            "score": "0.0",
+            "machine_score": "0",
+            "rule_score": null,
+            "user_assigned_score": "0"
+          }
+        ]
+      }
+    }
+  ]
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-item:-create---update-input">Item: create / update input</a></p>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-items-delete" >
+                 <h5>Delete</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">DELETE</code> </span> api.ingeniapi.com/v2/items/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Delete an existing item
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the item you want to delete
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X DELETE 'https://api.ingeniapi.com/v2/items/61265a8b2e56ff9693753fd044630ed5?api_key=$api_key'
+
+Response:
+
+{
+  "61265a8b2e56ff9693753fd044630ed5": "destroyed",
+  "bundle_id": 778
+}
+</pre>
+                        </div>
+
+                  </div>
+
 
 
                 </div>
@@ -3725,8 +5145,47 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/bundles?api_key=$api_key'
+
+Response:
+
+'{
+  [
+    {
+      "id":755,
+      "name":"New Bundle",
+      "tag_sets" : [
+        { "name" : "technology", "id": 14562 },
+        { "name" : "business", "id": 666 }
+      ],
+      "created_at" : "2016-04-06T09:00:44Z",
+      "updated_at":"2016-04-06T09:00:44Z"
+    },
+    {
+      "id" : 756,
+      "name" : "Another Bundle",
+      "tag_sets" : [
+        { "name" : "technology", "id": 14562 }
+      ],
+      "created_at" : "2016-04-07T11:44:26Z",
+      "updated_at":"2016-04-07T11:44:26Z"
+    }
+  ]
+}'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-bundle:-show-output">Bundle: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -3798,6 +5257,25 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+Response:
+
+'{
+    "id" : 47858,
+    "name" : "Tech Startups",
+    "tag_sets" : [
+      { "name" : "technology", "id": 14562 },
+      { "name" : "business", "id": 666 }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -3852,6 +5330,8 @@ curl -X POST \
                             text
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -3876,8 +5356,34 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/bundles/find_by_name?name=Tech%20Startups&api_key=$api_key'
+
+Response:
+
+'{
+    "id" : 47858,
+    "name" : "Tech Startups",
+    "tag_sets" : [
+      { "name" : "technology", "id": 14562 },
+      { "name" : "business", "id": 666 }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z",
+  }'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-bundle:-show-output">Bundle: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -3923,6 +5429,8 @@ curl -X POST \
                             <a href='#bundle:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -3947,8 +5455,42 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST \
+  -F'json={ "name" : "New Bundle", "tag_set_ids" : [2820, 2819] }' \
+  'https://api.ingeniapi.com/v2/bundles?api_key=$api_key'
+
+Response:
+
+'{
+    "id" : 47858,
+    "name" : "New Bundle",
+    "tag_sets" : [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id : 2819,
+        "name : "Tag Set Two"
+      }
+    ],
+    "created_at" :"2014-03-13T15:36:51Z",
+    "updated_at" :"2014-03-13T15:36:51Z"
+  }'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-bundle:-create---update-input">Bundle: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4020,6 +5562,8 @@ curl -X POST \
                             <a href='#bundle:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -4044,8 +5588,42 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT \
+  -F'json={ "name" : "New Bundle Updated" }' \
+  'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+Response:
+
+'{
+    "id" : 47858,
+    "name" : "New Bundle Updated",
+    "tag_sets" : [
+      {
+        "id" : 2820,
+        "name" : "Tag Set One"
+      },
+      {
+        "id : 2819,
+        "name : "Tag Set Two"
+      }
+    ],
+    "created_at" :"2016-04-06T09:00:44Z",
+    "updated_at" :"2016-04-06T09:00:44Z",
+  }'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-bundle:-create---update-input">Bundle: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4116,6 +5694,19 @@ curl -X POST \
                       
 
 
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X DELETE \
+  'https://api.ingeniapi.com/v2/bundles/47858?api_key=$api_key'
+
+Response:
+
+'{
+    "47858" : "destroyed"
+  }'
+</pre>
+                        </div>
 
                   </div>
 
@@ -4240,12 +5831,44 @@ curl -X POST \
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl http://api.ingeniapi.com/v2/tags?api_key=$api_key
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
+
+Response:
+
+[
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
+    "description": "a term for data sets that are so large or complex that traditional data processing applications are inadequate",
+    "id": 189453,
+    "name": "Big Data",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:12:43Z"
+  },
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:08:05Z",
+    "current_state": "not_enough_items_to_learn",
+    "description": "the process of deriving high-quality information from text",
+    "id": 189452,
+    "name": "Text Analytics",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:08:05Z"
+  }
+]
 </pre>
                         </div>
 
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag:-show-output">Tag: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4317,6 +5940,25 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
+
+Response:
+
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
+    "description": "",
+    "id": 189453,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:12:43Z"
+  }
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -4371,6 +6013,8 @@ curl -X POST \
                             text
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -4395,8 +6039,34 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/tags/find_by_name?name=New%20Tag&api_key=$api_key'
+
+Response:
+
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "not_enough_items_to_learn",
+    "description": "",
+    "id": 189453,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T16:12:43Z"
+  }
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag:-show-output">Tag: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4442,6 +6112,8 @@ curl -X POST \
                             <a href='#tag:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -4468,14 +6140,34 @@ curl -X POST \
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl -X POST \
-  -F'json={ "tag_set_id" : 52, "name" : "wine" }' \
-  http://api.ingeniapi.com/v2/tags?api_key=$api_key
+                          <pre class="prettyprint">curl -X POST \ 
+  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \ 
+  'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
+
+Response:
+
+  { 
+    "confidence": 0.0,
+    "created_at": "2016-05-04T17:05:18Z",
+    "current_state": "unprocessed",
+    "description": "",
+    "id": 189455,
+    "name": "New Tag",
+    "tag_set_id": 2858,
+    "updated_at": "2016-05-04T17:05:18Z"
+  }
 </pre>
                         </div>
 
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag:-create---update-input">Tag: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4547,6 +6239,8 @@ curl -X POST \
                             <a href='#tag:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -4571,8 +6265,35 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT \
+  -F'json={ "name" : "New Tag Updated" }' \
+  'https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
+
+Response:
+
+  {
+    "confidence": 0.0,
+    "created_at": "2016-05-04T16:12:43Z",
+    "current_state": "unprocessed",
+    "description": "",
+    "id": 189453,
+    "name": "New Tag Updated",
+    "tag_set_id": 2858
+  }
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag:-create---update-input">Tag: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -4680,8 +6401,19 @@ curl -X POST \
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl -X POST \
-  http://api.ingeniapi.com/v2/tags/8/merge?tag_ids='[7,8]'&api_key=$api_key
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/tags/189454/merge?tag_ids=%5B189452%2C189453%5D&api_key=$api_key'
+
+/*(Where:
+   '%5B' = '['
+   '%2C' = ','
+   '%5D' = ']'
+  for constructing array of IDs in url params)*/
+
+Response:
+
+  {
+    "189454":"merged"
+  }
 </pre>
                         </div>
 
@@ -4758,6 +6490,19 @@ curl -X POST \
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">
+curl -X DELETE 'https://api.ingeniapi.com/v2/tags/189454?api_key=$api_key'
+
+Response:
+
+  {
+    "189455" : "destroyed"
+  }
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -4773,11 +6518,11 @@ curl -X POST \
 
 
 
-        <div class = "resource Tag Rules">
-        <h3 class = "resource-heading" id='resource-Tag Rules'>Tag Rules</h3>
+        <div class = "resource Tag rules">
+        <h3 class = "resource-heading" id='resource-Tag rules'>Tag rules</h3>
 
         <div class = "resource-body" >
-          <div class = "description">Tag Rules are rules that you want to associate with a tag to influence the tag choice</div>
+          <div class = "description">Tag rules are rules that you want to associate with a tag to influence the tag choice</div>
 
           <div class = "requests">
 
@@ -4849,7 +6594,7 @@ curl -X POST \
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
 </pre>
                         </div>
 
@@ -4859,7 +6604,7 @@ curl -X POST \
                   <div class = "response">
                     <h4>Response</h4>
 
-                    <p>See <a href="#object-tag-rules:-index-output">Tag Rules: index output</a></p>
+                    <p>See <a href="#object-tag-rules:-index-output">Tag rules: index output</a></p>
 
                   </div>
 
@@ -4961,7 +6706,7 @@ curl -X POST \
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
 </pre>
                         </div>
 
@@ -5016,30 +6761,6 @@ curl -X POST \
                         <tr>
                           <td class="param_name">
 
-                            <a href='#tag-rule:-create-input'>json</a>
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>json</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              A rule to apply to a tag to influence use of that tag.
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
                             tag_id
 
 
@@ -5073,12 +6794,19 @@ curl -X POST \
                           <h4>Example request</h4>
                           <pre class="prettyprint">curl -X POST \
   -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \
-  http://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
 </pre>
                         </div>
 
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-rule:-create-input">Tag rule: create input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -5179,7 +6907,7 @@ curl -X POST \
                         <div class="request-example"
                           <h4>Example request</h4>
                           <pre class="prettyprint">curl -X DELETE \
-  http://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+  https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
 </pre>
                         </div>
 
@@ -5307,15 +7035,39 @@ curl -X POST \
                         <div class="request-example"
                           <h4>Example request</h4>
                           <pre class="prettyprint"># Simple request to fetch all tag sets
-curl -s -q http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+curl -s -q 'https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key'
 
 # ...and a bit more advanced example
-curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key
+curl -s -q 'https://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=42&api_key=$api_key'
+
+Response:
+
+'[
+  {
+    "created_at" : "2016-04-06T11:01:18Z",
+    "id" : 2820,
+    "name" : "Tag Set One",
+    "updated_at" : "2016-04-06T11:04:00Z"
+  },
+  {
+    "created_at" : "2016-04-06T09:00:44Z",
+    "id" : 2819,
+    "name" : "Tag Set Two",
+    "updated_at":"2016-04-06T09:00:44Z"
+  }
+]'
 </pre>
                         </div>
 
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-set:-show-output">Tag set: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -5387,6 +7139,21 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x'
+
+Response:
+
+'{
+  "created_at" : "2016-04-07T16:13:52Z",
+  "id" : 2822,
+  "name" : "Big Data",
+  "updated_at" : "2016-04-07T16:13:52Z"
+}'
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -5411,7 +7178,7 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag sets/find_by_name</div>
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag_sets/find_by_name</div>
 
 
 
@@ -5441,6 +7208,8 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                             text
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -5465,8 +7234,30 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl 'https://api.ingeniapi.com/v2/tag_sets/find_by_name?name=Big%20Data&api_key=$api_key'
+
+Response:
+
+'{
+  "created_at" : "2016-04-07T16:13:52Z",
+  "id" : 2822,
+  "name" : "Big Data",
+  "updated_at" : "2016-04-07T16:13:52Z"
+}'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-set:-show-output">Tag set: show output</a></p>
+
+                  </div>
 
 
                 </div>
@@ -5512,6 +7303,8 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                             <a href='#tag-set:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -5540,12 +7333,28 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                           <h4>Example request</h4>
                           <pre class="prettyprint">curl -s -X POST \
   -F'json={ "name" : "new tag s" }' \
-  http://api.ingeniapi.com/v2/tag_sets?api_key=$api_key
+  'https://api.ingeniapi.com/v2/tag_sets?api_key=$api_key'
+
+Response:
+
+'{
+  "created_at" : "2016-04-07T16:49:24Z",
+  "id" : 2823,
+  "name" : "new tag s",
+  "updated_at" : "2016-04-07T16:49:24Z"
+}'
 </pre>
                         </div>
 
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-set:-create---update-input">Tag set: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -5617,6 +7426,8 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                             <a href='#tag-set:-create---update-input'>json</a>
 
 
+                            <span class='text-muted'>required</span>
+
                           </td>
 
                           <td class = "type">
@@ -5641,8 +7452,32 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -s -X PUT \
+  -F'json={ "name" : "Updated Tag Set Name" }' \
+  'https://api.ingeniapi.com/v2/tag_sets/2823?api_key=$api_key'
+
+Response:
+
+'{
+  "created_at" : "2016-04-07T16:49:24Z",
+  "id" : 2823,
+  "name" : "Updated Tag Set Name",
+  "updated_at" : "2016-04-07T16:58:11Z"
+}'
+</pre>
+                        </div>
+
                   </div>
 
+
+                  <div class = "response">
+                    <h4>Response</h4>
+
+                    <p>See <a href="#object-tag-set:-create---update-input">Tag set: create / update input</a></p>
+
+                  </div>
 
 
                 </div>
@@ -5748,6 +7583,25 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">
+curl -X POST 'https://api.ingeniapi.com/v2/tag_sets/2824/merge?tag_set_ids=%5B2833%2C2832%5D&api_key=$api_key'
+
+/*(Where:
+ '%5B' = '['
+ '%2C' = ','
+ '%5D' = ']'
+for constructing array of IDs in url params)*/
+
+Response:
+
+'{
+  {"tag_set_id" : 2824}
+}'
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -5821,6 +7675,19 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">
+curl -X DELETE 'https://api.ingeniapi.com/v2/tag_sets/2824?api_key=$api_key'
+
+Response:
+
+'{
+  "2824" : "destroyed"
+}'
+</pre>
+                        </div>
+
                   </div>
 
 
@@ -5836,8 +7703,186 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
 
 
-        <div class = "resource Administrative Calls">
-        <h3 class = "resource-heading" id='resource-Administrative Calls'>Administrative Calls</h3>
+        <div class = "resource Text extraction">
+        <h3 class = "resource-heading" id='resource-Text extraction'>Text extraction</h3>
+
+        <div class = "resource-body" >
+          <div class = "description">Returns stripped text for a given url</div>
+
+          <div class = "requests">
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-text-extraction-get-stripped-text" >
+                 <h5>Get stripped text</h5>
+              </div>
+
+              <div class = "panel-body">
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns stripped text for a given url
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            uri
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The url of the article you want to extract
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint"># Request to get stripped content for url
+curl -X POST -H 'Content-Type: application/json' -d '{"url":{"uri":"https://techcrunch.com/2016/08/02/instagram-stories/"}}' http://content-service.ingeniapi.com/urls
+
+Response:
+
+'{
+  "url": {
+    "uri": "https://techcrunch.com/2016/08/02/instagram-stories/"
+  },
+  "title": "Instagram launches “Stories,” a Snapchatty feature for imperfect sharing",
+  "content": "People only post the highlights of their life on Instagram, so today the app adds its own version of “Stories” ...'
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-text-extraction-get-full-html" >
+                 <h5>Get full html</h5>
+              </div>
+
+              <div class = "panel-body">
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Returns full html for a url
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            url
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The url of the html you want to return
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint"># Request to get stripped content for url
+curl 'https://techcrunch.com/2016/08/02/instagram-stories/'
+
+Response:
+<xmp>'<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
+<head>
+  <title>Instagram launches &#8220;Stories,&#8221; a Snapchatty feature for imperfect sharing  |  TechCrunch</title>
+  ...'</xmp>
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class = "resource Administrative calls">
+        <h3 class = "resource-heading" id='resource-Administrative calls'>Administrative calls</h3>
 
         <div class = "resource-body" >
           <div class = "description"></div>
@@ -6097,6 +8142,30 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                         <tr>
                           <td class="param_name">
 
+                            idle_tag_sets
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tag sets that the user prefers to not be processed by Ingenia
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             total_tags
 
 
@@ -6193,6 +8262,30 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                         <tr>
                           <td class="param_name">
 
+                            idle_tags
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Number of tags that the user prefers to not be processed by Ingenia
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
                             ready_to_classify
 
 
@@ -6219,6 +8312,33 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                       
 
 
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X GET 'https://api.ingeniapi.com/v2/status?api_key=$api_key'
+
+Response:
+
+{
+    "total_bundles": 17,
+    "processed_bundles": 1,
+    "total_items": 2,
+    "pending_items": 0,
+    "processed_items": 2,
+    "total_tag_sets": 2,
+    "pending_tag_sets": 0,
+    "processed_tag_sets": 0,
+    "untrained_tag_sets": 2,
+    "idle_tag_sets": 0,
+    "total_tags": 3,
+    "pending_tags": 0,
+    "processed_tags": 0,
+    "untrained_tags": 3,
+    "idle_tags": 0,
+    "ready_to_classify": true
+  }
+</pre>
+                        </div>
 
                   </div>
 
@@ -6261,83 +8381,21 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
                       </thead>
                       <tbody>
 
-                        <tr>
-                          <td class="param_name">
-
-                            item_count
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Number of items you have that are about to be deleted
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_set_count
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Number of tag sets you have that are about to be deleted
-
-
-
-                          </td>
-                        </tr>
-
-
-                        <tr>
-                          <td class="param_name">
-
-                            tag_count
-
-
-                          </td>
-
-                          <td class = "type">
-
-                              <code>integer</code>
-
-                          </td>
-
-                          <td class = "description">
-
-                              Number of tags you have that are about to be deleted
-
-
-
-                          </td>
-                        </tr>
-
-
                       </tbody>
                       </table>
                       
 
 
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X POST 'https://api.ingeniapi.com/v2/clear_data?api_key=$api_key'
+
+Response:
+
+{}
+</pre>
+                        </div>
 
                   </div>
 
@@ -6389,6 +8447,12 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
 
             <li><a href="#object-tag:-show-output">Tag: show output</a></li>
 
+            <li><a href="#object-tag-rules:-index-output">Tag rules: index output</a></li>
+
+            <li><a href="#object-tag-rule:-show-output">Tag Rule: show output</a></li>
+
+            <li><a href="#object-tag-rule:-create-input">Tag rule: create input</a></li>
+
             <li><a href="#object-tag-set:-create---update-input">Tag set: create / update input</a></li>
 
             <li><a href="#object-tag-set:-show-output">Tag set: show output</a></li>
@@ -6408,13 +8472,15 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
             </ul>
           </li>
 
-          <li class="title expandable" data-submenuid="menu_recommendation-engine">Recommendation engine</li>
+          <li class="title expandable" data-submenuid="menu_personalisation">Personalisation</li>
           <li class="options">
-            <ul id="menu_recommendation-engine">
+            <ul id="menu_personalisation">
 
-              <li><a href='#call-recommendation-engine-similar-to-text'>Similar to text</a></li>
+              <li><a href='#call-personalisation-similar-to'>Similar to</a></li>
 
-              <li><a href='#call-recommendation-engine-similar-to-tags'>Similar to tags</a></li>
+              <li><a href='#call-personalisation-similar-to-text'>Similar to text</a></li>
+
+              <li><a href='#call-personalisation-similar-to-tags'>Similar to tags</a></li>
 
             </ul>
           </li>
@@ -6424,6 +8490,26 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
             <ul id="menu_summarisation">
 
               <li><a href='#call-summarisation-summarise'>Summarise</a></li>
+
+            </ul>
+          </li>
+
+          <li class="title expandable" data-submenuid="menu_keywords">Keywords</li>
+          <li class="options">
+            <ul id="menu_keywords">
+
+              <li><a href='#call-keywords-show'>Show</a></li>
+
+            </ul>
+          </li>
+
+          <li class="title expandable" data-submenuid="menu_clusters">Clusters</li>
+          <li class="options">
+            <ul id="menu_clusters">
+
+              <li><a href='#call-clusters-show'>Show</a></li>
+
+              <li><a href='#call-clusters-transform-cluster-into-tag'>Transform cluster into tag</a></li>
 
             </ul>
           </li>
@@ -6441,8 +8527,6 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
               <li><a href='#call-items-update'>Update</a></li>
 
               <li><a href='#call-items-delete'>Delete</a></li>
-
-              <li><a href='#call-items-similar-to'>Similar to</a></li>
 
             </ul>
           </li>
@@ -6487,7 +8571,7 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
             </ul>
           </li>
 
-          <li class="title expandable" data-submenuid="menu_tag-rules">Tag Rules</li>
+          <li class="title expandable" data-submenuid="menu_tag-rules">Tag rules</li>
           <li class="options">
             <ul id="menu_tag-rules">
 
@@ -6523,7 +8607,18 @@ curl -s -q http://api.ingeniapi.com/v2/tag_sets?limit=100&offset=100&bundle_id=4
             </ul>
           </li>
 
-          <li class="title expandable" data-submenuid="menu_administrative-calls">Administrative Calls</li>
+          <li class="title expandable" data-submenuid="menu_text-extraction">Text extraction</li>
+          <li class="options">
+            <ul id="menu_text-extraction">
+
+              <li><a href='#call-text-extraction-get-stripped-text'>Get stripped text</a></li>
+
+              <li><a href='#call-text-extraction-get-full-html'>Get full html</a></li>
+
+            </ul>
+          </li>
+
+          <li class="title expandable" data-submenuid="menu_administrative-calls">Administrative calls</li>
           <li class="options">
             <ul id="menu_administrative-calls">
 

@@ -628,20 +628,19 @@ json_tag_rules_show = define_object(name: 'Tag rules: index output') do |tag_rul
   'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
   'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
   'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
-  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create
-  'heirarchies': "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
 
   DESC
     p.type        = :string
   end
 
-  tag_rule.parameter name: 'tag_rules:(array):created_at' do |p|
+  tag_rule.parameter name: 'created_at' do |p|
     p.description = 'When this tag rule was created'
     p.type        = :date_time
     p.example     = '2013-12-16T11:24:52+00:00'
   end
 
-  tag_rule.parameter name: 'tag_rules:(array):updated_at' do |p|
+  tag_rule.parameter name: 'updated_at' do |p|
     p.description = 'When this tag rule was last updated'
     p.type        = :date_time
     p.example     = '2013-12-16T11:25:52+00:00'
@@ -664,10 +663,6 @@ json_tag_rules_show = define_object(name: 'Tag rules: index output') do |tag_rul
     ...
     ]
   }'
-  tag_rule.footnote = <<-FN
-    <p>[1] A tag rule must include either an entry for the tuple "text" and "language", or for "rule tag", and not both. </p>
-    <p>[2] You can associate as many rules as you like to a tag. Do so cautiously, and make sure they work well together, or you risk to apply the target tag all the time, or never.</p>
-  FN
 end
 
 json_tag_rule_show = define_object(name: 'Tag Rule: show output') do |tag_rule|
@@ -706,8 +701,7 @@ json_tag_rule_show = define_object(name: 'Tag Rule: show output') do |tag_rule|
   'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
   'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
   'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
-  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create
-  'heirarchies': "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
 
   DESC
     p.type        = :string
@@ -740,10 +734,6 @@ json_tag_rule_show = define_object(name: 'Tag Rule: show output') do |tag_rule|
       "updated_at":"2014-03-13T12:59:32Z"
     }
   }'
-  tag_rule.footnote = <<-FN
-      <p>[1] A tag rule must include either an entry for the tuple "text" and "language", or for "rule tag", and not both. </p>
-      <p>[2] You can associate as many rules as you like to a tag. Do so cautiously, and make sure they work well together, or you risk to apply the target tag all the time, or never.</p>
-      FN
 end
 
 # TagRule JSON POST form
@@ -752,23 +742,42 @@ json_tag_rule_create = define_object(name: 'Tag rule: create input') do |tag_rul
   tag_rule.type        = :json
   tag_rule.this_is_json!
 
+  tag_rule.parameter name: 'tag_id' do |p|
+    p.description = 'The ID of the tag to which this tag rule belongs'
+    p.type        = :integer
+    p.required    = true
+  end
+
   tag_rule.parameter name: 'text' do |p|
-    p.description = 'The word or phrase to which the rule should apply.'
+    p.description = 'the word or phrase that influences the "target tag"'
     p.type        = :string
   end
 
   tag_rule.parameter name: 'language' do |p|
-    p.description = 'The language of the word you\'ve entered.'
+    p.description = 'the language for "text" (optional, required if you pass the "text" parameter'
     p.type        = :string
   end
 
+  tag_rule.parameter name: 'rule_tag_id' do |p|
+    p.description = 'the id of the "rule tag", or the tag that influences the "target tag"'
+    p.type        = :integer
+  end
+
   tag_rule.parameter name: 'influence' do |p|
-    p.description = 'A number from -1 to 1, it indicates the "strength" of the rule.'
+    p.description = 'the extent to which the "target tag" is influenced by either "text" or "rule tag", a number between -1 (greatest effect to prevent "target tag" from being applied) to 1 (greatest effect to ensure "target tag" is applied).'
     p.type        = :float
   end
 
   tag_rule.parameter name: 'tag_rule_mode' do |p|
-    p.description = 'The tag rule mode used. Options are; word_present, word_absent, word_skipped or word_capped'
+    p.description =  <<-DESC
+  A the way in which the rule is being applied. These modes are supported:</br>
+  'word_present': apply "influence" to the "target tag" if the "text" is present</br>
+  'word_absent':  apply "influence" to the "target tag" if the "text" is absent</br>
+  'word_skip':  ignore this "text", if it is present ("influence" is not used in this mode)</br>
+  'word_cap': cap the role of "text" for the "target tag" to at most the value of "influence"</br>
+  'tag_present': apply "influence" to the "target tag" if the "rule_tag" is present (Note: this is useful to create hierarchies: "target_tag" is a parent, "rule_tag" is a child, "influence" is 1)
+
+    DESC
     p.type        = :string
   end
 
@@ -778,7 +787,20 @@ json_tag_rule_create = define_object(name: 'Tag rule: create input') do |tag_rul
     "influence":0.5,
     "language":"en",
     "tag_rule_mode":"word_present"
+  }
+
+  OR
+
+  {
+    "influence":0.5,
+    "rule_tag_id":12,
+    "tag_rule_mode":"word_present"
   }'
+
+  tag_rule.footnote = <<-FN
+      <p>[1] A tag rule must include either an entry for the tuple "text" and "language", or for "rule tag", but NOT both. </p>
+      <p>[2] You can associate as many rules as you like to a tag. Do so cautiously, and make sure they work well together, or you risk to apply the target tag all the time, or never.</p>
+  FN
 end
 
 # TagSet JSON POST form
@@ -2258,7 +2280,8 @@ curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
       req.description = 'Create a new tag rule'
       req.call_type   = :post
       req.path        = '/tag/:tag_id/tag_rules'
-      req.parameter json_tag_rule_create
+
+      req.response = json_tag_rule_create
       req.example = <<-EOF
 curl -X POST \\
   -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \\
