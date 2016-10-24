@@ -6,7 +6,7 @@ gem 'rest-client', "~> 0"
 
 gem 'thor', "~> 0"
 
-gem "activesupport"
+gem "activesupport", "4.0.4"
 
 gem 'i18n'
 
