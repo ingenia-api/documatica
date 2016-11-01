@@ -794,7 +794,7 @@ json_tag_rule_create = define_object(name: 'Tag rule: create input') do |tag_rul
   {
     "influence":0.5,
     "rule_tag_id":12,
-    "tag_rule_mode":"word_present"
+    "tag_rule_mode":"tag_present"
   }'
 
   tag_rule.footnote = <<-FN
@@ -2120,13 +2120,13 @@ Response:
 
       req.parameter json_tag
       req.example = <<-EOF
-curl -X POST \\ 
-  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \\ 
+curl -X POST \\
+  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \\
   'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
 
 Response:
 
-  { 
+  {
     "confidence": 0.0,
     "created_at": "2016-05-04T17:05:18Z",
     "current_state": "unprocessed",
@@ -2239,11 +2239,11 @@ Response:
     r.request name: 'Index' do |req|
       req.description = 'List all your tag rules for a tag'
       req.call_type   = :get
-      req.path        = '/tag/:tag_id/tag_rules'
+      req.path        = '/tags/:tag_id/tag_rules'
 
       req.response = json_tag_rules_show
       req.example  = <<-EOF
-curl https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
       EOF
 
       req.parameter name: 'tag_id' do |p|
@@ -2256,11 +2256,11 @@ curl https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
     r.request name: 'Show' do |req|
       req.description = 'View a single tag rule'
       req.call_type   = :get
-      req.path        = '/tag/:tag_id/tag_rules/:id'
+      req.path        = '/tags/:tag_id/tag_rules/:id'
 
       req.response = json_tag_rule_show
       req.example  = <<-EOF
-curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+curl https://api.ingeniapi.com/v2/tags/5/tag_rules/6?api_key=$api_key
       EOF
 
       req.parameter name: 'id' do |p|
@@ -2279,13 +2279,13 @@ curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
     r.request name: 'Create' do |req|
       req.description = 'Create a new tag rule'
       req.call_type   = :post
-      req.path        = '/tag/:tag_id/tag_rules'
+      req.path        = '/tags/:tag_id/tag_rules'
 
       req.response = json_tag_rule_create
       req.example = <<-EOF
 curl -X POST \\
   -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \\
-  https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+  https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
       EOF
 
       req.parameter name: 'tag_id' do |p|
@@ -2298,10 +2298,10 @@ curl -X POST \\
     r.request name: 'Delete' do |req|
       req.description = 'Delete an existing tag rule'
       req.call_type   = :delete
-      req.path        = '/tag/:tag_id/tag_rules/:id'
+      req.path        = '/tags/:tag_id/tag_rules/:id'
       req.example     = <<-EOF
 curl -X DELETE \\
-  https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+  https://api.ingeniapi.com/v2/tags/5/tag_rules/6?api_key=$api_key
       EOF
 
       req.parameter name: 'id' do |p|

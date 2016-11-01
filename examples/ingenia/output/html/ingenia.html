@@ -2053,7 +2053,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
   {
     "influence":0.5,
     "rule_tag_id":12,
-    "tag_rule_mode":"word_present"
+    "tag_rule_mode":"tag_present"
   }</pre>
           </div>
 
@@ -6140,13 +6140,13 @@ Response:
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl -X POST \ 
-  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \ 
+                          <pre class="prettyprint">curl -X POST \
+  -F'json={ "tag_set_id" : 2858, "name" : "New Tag" }' \
   'https://api.ingeniapi.com/v2/tags?api_key=$api_key'
 
 Response:
 
-  { 
+  {
     "confidence": 0.0,
     "created_at": "2016-05-04T17:05:18Z",
     "current_state": "unprocessed",
@@ -6536,7 +6536,7 @@ Response:
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules</div>
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tags/:tag_id/tag_rules</div>
 
 
 
@@ -6594,7 +6594,7 @@ Response:
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
 </pre>
                         </div>
 
@@ -6622,7 +6622,7 @@ Response:
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules/:id</div>
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/tags/:tag_id/tag_rules/:id</div>
 
 
 
@@ -6706,7 +6706,7 @@ Response:
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+                          <pre class="prettyprint">curl https://api.ingeniapi.com/v2/tags/5/tag_rules/6?api_key=$api_key
 </pre>
                         </div>
 
@@ -6734,7 +6734,7 @@ Response:
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules</div>
+                    <div class = "path well"> <span> <code class="get_post">POST</code> </span> api.ingeniapi.com/v2/tags/:tag_id/tag_rules</div>
 
 
 
@@ -6794,7 +6794,7 @@ Response:
                           <h4>Example request</h4>
                           <pre class="prettyprint">curl -X POST \
   -F'json={ "text": "tag_text", "influence" : 0.3, "language": "en", "tag_rule_mode": "word_present" }' \
-  https://api.ingeniapi.com/v2/tag/5/tag_rules?api_key=$api_key
+  https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
 </pre>
                         </div>
 
@@ -6822,7 +6822,7 @@ Response:
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">DELETE</code> </span> api.ingeniapi.com/v2/tag/:tag_id/tag_rules/:id</div>
+                    <div class = "path well"> <span> <code class="get_post">DELETE</code> </span> api.ingeniapi.com/v2/tags/:tag_id/tag_rules/:id</div>
 
 
 
@@ -6907,7 +6907,7 @@ Response:
                         <div class="request-example"
                           <h4>Example request</h4>
                           <pre class="prettyprint">curl -X DELETE \
-  https://api.ingeniapi.com/v2/tag/5/tag_rules/6?api_key=$api_key
+  https://api.ingeniapi.com/v2/tags/5/tag_rules/6?api_key=$api_key
 </pre>
                         </div>
 
