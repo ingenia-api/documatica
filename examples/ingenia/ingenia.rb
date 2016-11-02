@@ -1483,24 +1483,18 @@ Response:
     end
 
     r.request name: 'Transform cluster into tag' do |req|
-      req.description = 'Creates a tag using the given cluser'
+      req.description = 'Creates a tag using the given cluster'
       req.call_type   = :put
       req.path        = '/clusters/:id'
 
-      req.parameter name: 'cluster_id' do |p|
-        p.description = 'ID of the cluster to convert.'
-        p.type        = :integer
-        p.required    = :true
-      end
-
       req.parameter name: 'cluster_action' do |p|
-        p.description = 'Action for cluser. In this case, should be "save".'
+        p.description = 'Action for cluster. In this case, it should be "transform_to_tag".'
         p.type        = :string
         p.required    = :true
       end
 
       req.example = <<-EOF
-curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_id=102165&cluster_action=save&api_key=$api_key'
+curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=transform_to_tag&api_key=$api_key'
 
 Response:
 
