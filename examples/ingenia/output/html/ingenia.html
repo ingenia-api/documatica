@@ -3988,8 +3988,8 @@ Response:
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-clusters-show" >
-                 <h5>Show</h5>
+              <div class = "panel-heading" id="call-clusters-index" >
+                 <h5>Index</h5>
               </div>
 
               <div class = "panel-body">
@@ -4026,7 +4026,29 @@ Response:
                             bundle_id
 
 
-                            <span class='text-muted'>required</span>
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the bundle to show clusters for. If one is not provided, clusters for all your bundles will be returned.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            cluster_limit
+
 
                           </td>
 
@@ -4038,8 +4060,42 @@ Response:
 
                           <td class = "description">
 
-                              ID of the bundle to show clusters for.
+                              Limit on the number of clusters per bundle to return.
 
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">20</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            word_limit
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Limit on the number of words per cluster to return.
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">20</p>
+                              </div>
 
 
                           </td>
@@ -4093,22 +4149,22 @@ Response:
 
 
             <div class = "request panel panel-default">
-              <div class = "panel-heading" id="call-clusters-transform-cluster-into-tag" >
-                 <h5>Transform cluster into tag</h5>
+              <div class = "panel-heading" id="call-clusters-show" >
+                 <h5>Show</h5>
               </div>
 
               <div class = "panel-body">
 
                   <h5>Path</h5>
 
-                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
+                    <div class = "path well"> <span> <code class="get_post">GET</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
 
 
 
 
                 <div class = "description">
                   <h5>Description</h5>
-                  Creates a tag using the given cluser
+                  Returns a specific cluster of words
                 </div>
 
 
@@ -4128,7 +4184,7 @@ Response:
                         <tr>
                           <td class="param_name">
 
-                            cluster_id
+                            id
 
 
                             <span class='text-muted'>required</span>
@@ -4143,13 +4199,127 @@ Response:
 
                           <td class = "description">
 
-                              ID of the cluster to convert.
+                              ID of the cluster you want to show.
 
 
 
                           </td>
                         </tr>
 
+
+                        <tr>
+                          <td class="param_name">
+
+                            word_limit
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Limit on the number of words in the cluster to return.
+
+
+                              <div class="desc_example">
+                                <h6>Default</h6>
+                                <p class="example_code">20</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">      curl 'https://api.ingeniapi.com/v2/clusters/149061?word_limit=4&api_key=$api_key'
+
+      Response:
+
+      {
+        "id": 149061,
+        "score": 0.0118,
+        "words": [
+          {
+            "text": "tax",
+            "score": 8.5
+          },
+          {
+            "text": "cash",
+            "score": 2.57
+          },
+          {
+            "text": "payable",
+            "score": 2.5
+          },
+          {
+            "text": "financial",
+            "score": 2.2
+          }
+        ],
+        "knowledge_items": [
+          4379077,
+          4379091,
+          4379092
+        ],
+        "related_tags": [],
+        "related previous clusters": []
+      }
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-clusters-transform-cluster-into-tag" >
+                 <h5>Transform cluster into tag</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Creates a tag using the given cluster
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
 
                         <tr>
                           <td class="param_name">
@@ -4169,7 +4339,7 @@ Response:
 
                           <td class = "description">
 
-                              Action for cluser. In this case, should be "save".
+                              Action for cluster. In this case, it should be "transform_to_tag".
 
 
 
@@ -4185,32 +4355,29 @@ Response:
 
                         <div class="request-example"
                           <h4>Example request</h4>
-                          <pre class="prettyprint">curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_id=102165&cluster_action=save&api_key=$api_key'
+                          <pre class="prettyprint">curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=transform_to_tag&api_key=$api_key'
 
 Response:
 
 {
-  "bundle_id": 544,
-  "date": "2016-05-18T08:00:15Z",
-  "clusters": [
-    {
-      "cluster": {
-        "id": 105636,
-        "score": 0.0235,
-        "words": [
-          {
-            "text": "journal",
-            "score": 457.39
-          },
-          {
-            "text": "org",
-            "score": 421.19
-          },
-          ...
-        ]
-      }
-    }
-  ]
+  "cluster_actions": {
+    "action": "transform_to_tag",
+    "action_payload": "{"tag_set_id"=>"2860", "name"=>"Cluster Tag"}",
+    "cluster_id": 102165,
+    "created_at": "2016-11-02T12:15:49Z",
+    "id": 49,
+    "updated_at": "2016-11-02T12:33:52Z"
+  },
+  "tags": {
+    "confidence": 0,
+    "created_at": "2016-11-02T12:33:52Z",
+    "current_state": "unprocessed",
+    "description": "",
+    "id": 192038,
+    "name": "Cluster Tag",
+    "tag_set_id": 2860,
+    "updated_at": "2016-11-02T12:33:52Z"
+  }
 }
 </pre>
                         </div>
@@ -8506,6 +8673,8 @@ Response:
           <li class="title expandable" data-submenuid="menu_clusters">Clusters</li>
           <li class="options">
             <ul id="menu_clusters">
+
+              <li><a href='#call-clusters-index'>Index</a></li>
 
               <li><a href='#call-clusters-show'>Show</a></li>
 

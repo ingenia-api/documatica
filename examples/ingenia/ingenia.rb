@@ -1437,7 +1437,6 @@ Response:
   end
 
   api.resource name: 'Clusters' do |r|
-    r.description = ""
 
     r.request name: 'Index' do |req|
       req.description = 'Returns a list of clusters for a given bundle'
@@ -1445,9 +1444,20 @@ Response:
       req.path        = '/clusters'
 
       req.parameter name: 'bundle_id' do |p|
-        p.description = 'ID of the bundle to show clusters for.'
+        p.description = 'ID of the bundle to show clusters for. If one is not provided, clusters for all your bundles will be returned.'
         p.type        = :integer
-        p.required    = :true
+      end
+
+      req.parameter name: 'cluster_limit' do |p|
+        p.description = 'Limit on the number of clusters per bundle to return.'
+        p.default     = 20
+        p.type        = :integer
+      end
+
+      req.parameter name: 'word_limit' do |p|
+        p.description = 'Limit on the number of words per cluster to return.'
+        p.default     = 20
+        p.type        = :integer
       end
 
       req.example = <<-EOF
@@ -1478,6 +1488,61 @@ Response:
     }
   ]
 }
+      EOF
+
+    end
+
+    r.request name: 'Show' do |req|
+      req.description = 'Returns a specific cluster of words'
+      req.call_type   = :get
+      req.path        = '/clusters/:id'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of the cluster you want to show.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'word_limit' do |p|
+        p.description = 'Limit on the number of words in the cluster to return.'
+        p.default     = 20
+        p.type        = :integer
+      end
+
+      req.example = <<-EOF
+      curl 'https://api.ingeniapi.com/v2/clusters/149061?word_limit=4&api_key=$api_key'
+
+      Response:
+
+      {
+        "id": 149061,
+        "score": 0.0118,
+        "words": [
+          {
+            "text": "tax",
+            "score": 8.5
+          },
+          {
+            "text": "cash",
+            "score": 2.57
+          },
+          {
+            "text": "payable",
+            "score": 2.5
+          },
+          {
+            "text": "financial",
+            "score": 2.2
+          }
+        ],
+        "knowledge_items": [
+          4379077,
+          4379091,
+          4379092
+        ],
+        "related_tags": [],
+        "related previous clusters": []
+      }
       EOF
 
     end
