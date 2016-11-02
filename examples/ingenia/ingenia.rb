@@ -1439,7 +1439,7 @@ Response:
   api.resource name: 'Clusters' do |r|
     r.description = ""
 
-    r.request name: 'Show' do |req|
+    r.request name: 'Index' do |req|
       req.description = 'Returns a list of clusters for a given bundle'
       req.call_type   = :get
       req.path        = '/clusters'
@@ -1499,27 +1499,24 @@ curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://a
 Response:
 
 {
-  "bundle_id": 544,
-  "date": "2016-05-18T08:00:15Z",
-  "clusters": [
-    {
-      "cluster": {
-        "id": 105636,
-        "score": 0.0235,
-        "words": [
-          {
-            "text": "journal",
-            "score": 457.39
-          },
-          {
-            "text": "org",
-            "score": 421.19
-          },
-          ...
-        ]
-      }
-    }
-  ]
+  "cluster_actions": {
+    "action": "transform_to_tag",
+    "action_payload": "{\"tag_set_id\"=>\"2860\", \"name\"=>\"Cluster Tag\"}",
+    "cluster_id": 102165,
+    "created_at": "2016-11-02T12:15:49Z",
+    "id": 49,
+    "updated_at": "2016-11-02T12:33:52Z"
+  },
+  "tags": {
+    "confidence": 0,
+    "created_at": "2016-11-02T12:33:52Z",
+    "current_state": "unprocessed",
+    "description": "",
+    "id": 192038,
+    "name": "Cluster Tag",
+    "tag_set_id": 2860,
+    "updated_at": "2016-11-02T12:33:52Z"
+  }
 }
       EOF
 
