@@ -1444,7 +1444,7 @@ Response:
       req.path        = '/clusters'
 
       req.parameter name: 'bundle_id' do |p|
-        p.description = 'ID of the bundle to show clusters for. If one is not provided, clusters for all your bundles will be returned.'
+        p.description = 'ID of the bundle to show clusters for. If one is not provided, all of your bundles and their respective clusters will be returned.'
         p.type        = :integer
       end
 
@@ -1461,35 +1461,55 @@ Response:
       end
 
       req.example = <<-EOF
-curl 'https://api.ingeniapi.com/v2/clusters?bundle_id=544&api_key=$api_key'
+curl 'https://api.ingeniapi.com/v2/clusters?word_limit=4&api_key=$api_key'
 
 Response:
 
-{
-  "bundle_id": 544,
-  "date": "2016-05-18T08:00:15Z",
-  "clusters": [
+[
     {
-      "cluster": {
-        "id": 105636,
-        "score": 0.0235,
-        "words": [
-          {
-            "text": "journal",
-            "score": 457.39
-          },
-          {
-            "text": "org",
-            "score": 421.19
-          },
-          ...
-        ]
-      }
+      "bundle_id": 851,
+      "date": "2016-09-23T13:00:16Z",
+      "clusters": [
+        {
+          "cluster": {
+            "id": 149061,
+            "score": 0.0118,
+            "words": [
+              {
+                "text": "tax",
+                "score": 8.5
+              },
+              {
+                "text": "cash",
+                "score": 2.57
+              },
+              {
+                "text": "payable",
+                "score": 2.5
+              },
+              {
+                "text": "financial",
+                "score": 2.2
+              }
+            ],
+            "knowledge_items": [
+              4379077,
+              4379091,
+              4379092,
+            ],
+            "related_tags": [
+              191845
+            ],
+            "related previous clusters": [
+              ...
+            ]
+          }
+        },
+        {...}
     }
-  ]
-}
+    {...}
+]
       EOF
-
     end
 
     r.request name: 'Show' do |req|
@@ -1540,7 +1560,9 @@ Response:
           4379091,
           4379092
         ],
-        "related_tags": [],
+        "related_tags": [
+          191845
+        ],
         "related previous clusters": []
       }
       EOF
@@ -1551,6 +1573,12 @@ Response:
       req.description = 'Creates a tag using the given cluster'
       req.call_type   = :put
       req.path        = '/clusters/:id'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of the cluster you want to update.'
+        p.type        = :integer
+        p.required    = :true
+      end
 
       req.parameter name: 'cluster_action' do |p|
         p.description = 'Action for cluster. In this case, it should be "transform_to_tag".'
