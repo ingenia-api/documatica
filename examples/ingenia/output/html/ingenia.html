@@ -367,6 +367,32 @@
 
 
                 <tr>
+                  <td class="param_name">language</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      the ISO639-2 code for language (see full list [here](http://www.loc.gov/standards/iso639-2/php/English_list.php)), in lower case. This enables you to ensure Ingenia processes this content in that language. If not passed, Ingenia assumes the language is the same as the bundle to which the item belongs. If 'auto', Ingenia will automatically detect the language: especially useful for multi-language bundles.
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">en</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
                   <td class="param_name">metadata</td>
 
                   <td class = "type">
@@ -558,7 +584,7 @@
 
                   <td class = "description">
 
-                      The language of the conent in this item
+                      The language of the content in this item
 
 
                   </td>
@@ -4428,6 +4454,124 @@ Response:
     "updated_at": "2016-11-02T12:33:52Z"
   }
 }
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-clusters-ignore-cluster" >
+                 <h5>Ignore Cluster</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Marks the given cluster to be ignored in future. Use this if it is clearly irrelevant or incorrect.
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the cluster you want to update.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            cluster_action
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Action for cluster. In this case, it should be "ignore".
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT -F 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=ignore&api_key=$api_key'
+
+Response:
+
+{
+    "cluster_actions": {
+      "action": "ignore",
+      "action_payload": "",
+      "cluster_id": 102165,
+      "created_at": "2016-11-17T12:14:16Z",
+      "id": 52,
+      "updated_at": "2016-11-17T12:14:16Z"
+    }
+  }
 </pre>
                         </div>
 
@@ -8728,6 +8872,8 @@ Response:
               <li><a href='#call-clusters-show'>Show</a></li>
 
               <li><a href='#call-clusters-transform-cluster-into-tag'>Transform cluster into tag</a></li>
+
+              <li><a href='#call-clusters-ignore-cluster'>Ignore Cluster</a></li>
 
             </ul>
           </li>

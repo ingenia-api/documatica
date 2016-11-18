@@ -291,6 +291,12 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
     p.example     = '[ 45, 787, 23 ]'
   end
 
+  item.parameter name: 'language' do |p|
+    p.description = "the ISO639-2 code for language (see full list [here](http://www.loc.gov/standards/iso639-2/php/English_list.php)), in lower case. This enables you to ensure Ingenia processes this content in that language. If not passed, Ingenia assumes the language is the same as the bundle to which the item belongs. If 'auto', Ingenia will automatically detect the language: especially useful for multi-language bundles."
+    p.type        = :string
+    p.example     =  'en'
+  end
+
   item.example = <<-EXAMPLE
   {
     text: "High tech startups and their positive power to change for good",
@@ -345,7 +351,7 @@ json_item_show      = define_object(name: 'Item: show output') do |item|
   end
 
   item.parameter name: 'language' do |p|
-    p.description = 'The language of the conent in this item'
+    p.description = 'The language of the content in this item'
     p.type        = :string
   end
 
@@ -1611,6 +1617,42 @@ Response:
     "updated_at": "2016-11-02T12:33:52Z"
   }
 }
+      EOF
+
+    end
+
+    r.request name: 'Ignore Cluster' do |req|
+      req.description = 'Marks the given cluster to be ignored in future. Use this if it is clearly irrelevant or incorrect.'
+      req.call_type   = :put
+      req.path        = '/clusters/:id'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of the cluster you want to update.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'cluster_action' do |p|
+        p.description = 'Action for cluster. In this case, it should be "ignore".'
+        p.type        = :string
+        p.required    = :true
+      end
+
+      req.example = <<-EOF
+curl -X PUT -F 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=ignore&api_key=$api_key'
+
+Response:
+
+{
+    "cluster_actions": {
+      "action": "ignore",
+      "action_payload": "",
+      "cluster_id": 102165,
+      "created_at": "2016-11-17T12:14:16Z",
+      "id": 52,
+      "updated_at": "2016-11-17T12:14:16Z"
+    }
+  }
       EOF
 
     end
