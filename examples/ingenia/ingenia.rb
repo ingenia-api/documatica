@@ -292,9 +292,12 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
   end
 
   item.parameter name: 'language' do |p|
-    p.description = "the ISO639-2 code for language (see full list [here](http://www.loc.gov/standards/iso639-2/php/English_list.php)), in lower case. This enables you to ensure Ingenia processes this content in that language. If not passed, Ingenia assumes the language is the same as the bundle to which the item belongs. If 'auto', Ingenia will automatically detect the language: especially useful for multi-language bundles."
+    p.description = "The ISO639-2 code for language (see the full list at http://www.loc.gov/standards/iso639-2/php/English_list.php), in lower case.
+    This enables you to ensure Ingenia processes this content in that language.
+    If not passed, Ingenia assumes the language is the same as the bundle to which the item belongs.
+    If 'auto', Ingenia will automatically detect the language: especially useful for multi-language bundles."
     p.type        = :string
-    p.example     =  'en'
+    p.example     =  "'en'"
   end
 
   item.example = <<-EXAMPLE
