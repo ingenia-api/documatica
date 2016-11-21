@@ -1595,6 +1595,18 @@ Response:
         p.required    = :true
       end
 
+      req.parameter name: 'tag_set_id' do |p|
+        p.description = 'The ID of the Tag Set that you want the new Tag to be saved in.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'name' do |p|
+        p.description = 'The name for this new tag.'
+        p.type        = :string
+        p.required    = :true
+      end
+
       req.example = <<-EOF
 curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=transform_to_tag&api_key=$api_key'
 
