@@ -856,12 +856,23 @@ json_tag_set_show = define_object(name: 'Tag set: show output') do |tag_set|
     p.example     = '2013-12-16T11:25:52+00:00'
   end
 
+  tag_set.parameter name: 'bundles' do |p|
+    p.description = 'A list of bundles associated to this tag set'
+    p.type        = :array
+  end
+
   tag_set.example = '
   {
     "id":178751,
     "name":"Big Data",
     "created_at":"2014-03-12T12:17:33Z",
-    "updated_at":"2014-03-12T12:17:33Z"
+    "updated_at":"2014-03-12T12:17:33Z",
+    "bundles": [
+      {
+        "id": 778,
+        "name": "A Bundle Name"
+      }
+    ]
   }'
 end
 
@@ -2585,12 +2596,28 @@ Response:
     "id" : 2820,
     "name" : "Tag Set One",
     "updated_at" : "2016-04-06T11:04:00Z"
+    "bundles": [
+      {
+        "id": 773,
+        "name": "Some Bundle"
+      },
+      {
+        "id": 774,
+        "name": "Some Other Bundle"
+      }
+    ]
   },
   {
     "created_at" : "2016-04-06T09:00:44Z",
     "id" : 2819,
     "name" : "Tag Set Two",
-    "updated_at":"2016-04-06T09:00:44Z"
+    "updated_at":"2016-04-06T09:00:44Z",
+    "bundles": [
+      {
+        "id": 773,
+        "name": "A Different Bundle"
+      }
+    ]
   }
 ]'
       EOF
@@ -2612,12 +2639,22 @@ curl 'https://api.ingeniapi.com/v2/tag_sets/2820?api_key=haDJdWeW41iwzEup7n8x'
 
 Response:
 
-'{
-  "created_at" : "2016-04-07T16:13:52Z",
-  "id" : 2822,
-  "name" : "Big Data",
-  "updated_at" : "2016-04-07T16:13:52Z"
-}'
+{
+  "created_at": "2016-05-04T11:30:43Z",
+  "id": 2857,
+  "name": "New Tag Set",
+  "updated_at": "2016-05-04T12:52:56Z",
+  "bundles": [
+    {
+      "id": 773,
+      "name": "Prodotti"
+    },
+    {
+      "id": 774,
+      "name": "Articoli"
+    }
+  ]
+}
 EOF
       req.response = json_tag_set_show
     end
@@ -2641,11 +2678,16 @@ Response:
   "id" : 2822,
   "name" : "Big Data",
   "updated_at" : "2016-04-07T16:13:52Z"
+  "bundles": [
+    {
+      "id": 773,
+      "name": "A Bundle Name"
+    }
+  ]
 }'
       EOF
       req.response = json_tag_set_show
       end
-
 
     end
 
