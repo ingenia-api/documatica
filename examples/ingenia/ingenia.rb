@@ -1606,6 +1606,18 @@ Response:
         p.required    = :true
       end
 
+      req.parameter name: 'tag_set_id' do |p|
+        p.description = 'The ID of the Tag Set that you want the new Tag to be saved in.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'name' do |p|
+        p.description = 'The name for this new tag.'
+        p.type        = :string
+        p.required    = :true
+      end
+
       req.example = <<-EOF
 curl -X PUT -F'json={ "name" : "Cluster Tag", "tag_set_id" : 2860  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=transform_to_tag&api_key=$api_key'
 
@@ -1629,6 +1641,48 @@ Response:
     "name": "Cluster Tag",
     "tag_set_id": 2860,
     "updated_at": "2016-11-02T12:33:52Z"
+  }
+}
+      EOF
+
+    end
+
+    r.request name: 'Merge cluster into tag' do |req|
+      req.description = 'Merges a given cluster into an existing tag'
+      req.call_type   = :put
+      req.path        = '/clusters/:id'
+
+      req.parameter name: 'id' do |p|
+        p.description = 'ID of the Cluster you want to merge.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.parameter name: 'cluster_action' do |p|
+        p.description = 'Action for cluster. In this case, it should be "merge_into_tag".'
+        p.type        = :string
+        p.required    = :true
+      end
+
+      req.parameter name: 'tag_id' do |p|
+        p.description = 'The ID of the Tag you want to merge the Cluster into.'
+        p.type        = :integer
+        p.required    = :true
+      end
+
+      req.example = <<-EOF
+curl -X PUT -F'json={ "tag_id" : 192038  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=merge_into_tag&api_key=$api_key'
+
+Response:
+
+{
+  "cluster_actions": {
+    "action": "merge_into_tag",
+    "action_payload": "{\"tag_id\"=>\"192038\"}",
+    "cluster_id": 102165,
+    "created_at": "2016-11-02T15:17:49Z",
+    "id": 50,
+    "updated_at": "2016-11-02T15:35:52Z"
   }
 }
       EOF
