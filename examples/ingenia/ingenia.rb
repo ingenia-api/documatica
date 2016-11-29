@@ -2365,14 +2365,105 @@ Response:
   api.resource name: 'Tag rules' do |r|
     r.description = "Tag rules are rules that you want to associate with a tag to influence the tag choice"
 
+    r.request name: 'Index For User' do |req|
+      req.description = "List all of the current user's tag rules, organised by tag."
+      req.call_type   = :get
+      req.path        = '/tag_rules'
+
+      req.response = json_tag_rules_show
+      req.example  = <<-EOF
+curl https://api.ingeniapi.com/v2/tag_rules?api_key=$api_key
+
+Response:
+
+[
+  {
+    "id": 189879,
+    "name": "Questions",
+    "rules": [
+      {
+        "id": 10963,
+        "tag_rule_mode": "word_absent",
+        "rule_tag_id": null,
+        "word": "help",
+        "language": "en",
+        "influence": -0.1,
+        "created_at": "2016-06-02T18:10:24Z",
+        "updated_at": "2016-06-02T18:10:24Z"
+      },
+      {
+        "id": 10964,
+        "tag_rule_mode": "word_present",
+        "rule_tag_id": null,
+        "word": "question",
+        "language": "en",
+        "influence": 0.1,
+        "created_at": "2016-06-02T18:10:24Z",
+        "updated_at": "2016-06-02T18:10:24Z"
+      }
+    ]
+  },
+  {
+    "id": 189840,
+    "name": "service improvements",
+    "rules": [
+      {
+        "id": 10783,
+        "tag_rule_mode": "word_present",
+        "rule_tag_id": null,
+        "word": "better",
+        "language": "en",
+        "influence": 0.1,
+        "created_at": "2016-06-02T18:10:24Z",
+        "updated_at": "2016-06-02T18:10:24Z"
+      },
+      {...}
+    ]
+  },
+  {...}
+]
+EOF
+    end
+
     r.request name: 'Index' do |req|
-      req.description = 'List all your tag rules for a tag'
+      req.description = 'List all of your tag rules for a specific tag.'
       req.call_type   = :get
       req.path        = '/tags/:tag_id/tag_rules'
 
       req.response = json_tag_rules_show
       req.example  = <<-EOF
 curl https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
+
+Response:
+
+{
+  "tag": {
+    "id": 189879,
+    "name": "Questions"
+  },
+  "tag_rules": [
+    {
+      "id": 10963,
+      "tag_rule_mode": "word_absent",
+      "rule_tag_id": null,
+      "word": "help",
+      "language": "en",
+      "influence": -0.1,
+      "created_at": "2016-06-02T18:10:24Z",
+      "updated_at": "2016-06-02T18:10:24Z"
+    },
+    {
+      "id": 10964,
+      "tag_rule_mode": "word_present",
+      "rule_tag_id": null,
+      "word": "question",
+      "language": "en",
+      "influence": 0.1,
+      "created_at": "2016-06-02T18:10:24Z",
+      "updated_at": "2016-06-02T18:10:24Z"
+    }
+  ]
+}
       EOF
 
       req.parameter name: 'tag_id' do |p|
@@ -2390,6 +2481,25 @@ curl https://api.ingeniapi.com/v2/tags/5/tag_rules?api_key=$api_key
       req.response = json_tag_rule_show
       req.example  = <<-EOF
 curl https://api.ingeniapi.com/v2/tags/5/tag_rules/6?api_key=$api_key
+
+Response:
+
+{
+  "tag": {
+    "id": 189879,
+    "name": "Questions"
+  },
+  "tag_rule": {
+    "id": 10963,
+    "tag_rule_mode": "word_absent",
+    "rule_tag_id": null,
+    "word": "help",
+    "language": "en",
+    "influence": -0.1,
+    "created_at": "2016-06-02T18:10:24Z",
+    "updated_at": "2016-06-02T18:10:24Z"
+  }
+}
       EOF
 
       req.parameter name: 'id' do |p|
