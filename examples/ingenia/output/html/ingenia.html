@@ -10,7 +10,7 @@
 
       <div class="stanza">
 
-        <h2 id="objects">Getting started. <small>Version 2.0</small></h2>
+        <h2 id="objects">Getting started</h2>
 
           <p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
 
@@ -4449,6 +4449,58 @@ Response:
                         </tr>
 
 
+                        <tr>
+                          <td class="param_name">
+
+                            tag_set_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the Tag Set that you want the new Tag to be saved in.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            name
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The name for this new tag.
+
+
+
+                          </td>
+                        </tr>
+
+
                       </tbody>
                       </table>
                       
@@ -4479,6 +4531,150 @@ Response:
     "name": "Cluster Tag",
     "tag_set_id": 2860,
     "updated_at": "2016-11-02T12:33:52Z"
+  }
+}
+</pre>
+                        </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+
+            <div class = "request panel panel-default">
+              <div class = "panel-heading" id="call-clusters-merge-cluster-into-tag" >
+                 <h5>Merge cluster into tag</h5>
+              </div>
+
+              <div class = "panel-body">
+
+                  <h5>Path</h5>
+
+                    <div class = "path well"> <span> <code class="get_post">PUT</code> </span> api.ingeniapi.com/v2/clusters/:id</div>
+
+
+
+
+                <div class = "description">
+                  <h5>Description</h5>
+                  Merges a given cluster into an existing tag
+                </div>
+
+
+                  <div class = "parameters">
+                    <h5>Parameters</h5>
+
+                    <table class = "table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th class="title_desc">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td class="param_name">
+
+                            id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              ID of the Cluster you want to merge.
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            cluster_action
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>string</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Action for cluster. In this case, it should be "merge_into_tag".
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_id
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the Tag you want to merge the Cluster into.
+
+
+
+                          </td>
+                        </tr>
+
+
+                      </tbody>
+                      </table>
+                      
+
+
+
+                        <div class="request-example"
+                          <h4>Example request</h4>
+                          <pre class="prettyprint">curl -X PUT -F'json={ "tag_id" : 192038  }' 'https://api.ingeniapi.com/v2/clusters/102165?cluster_action=merge_into_tag&api_key=$api_key'
+
+Response:
+
+{
+  "cluster_actions": {
+    "action": "merge_into_tag",
+    "action_payload": "{"tag_id"=>"192038"}",
+    "cluster_id": 102165,
+    "created_at": "2016-11-02T15:17:49Z",
+    "id": 50,
+    "updated_at": "2016-11-02T15:35:52Z"
   }
 }
 </pre>
@@ -4766,7 +4962,23 @@ Response:
     "membership_degree": null,
     "updated_at": "2016-05-10T15:38:47Z",
     "tag_sets": [
-
+      {
+        "Cooking": {
+          "id": 42,
+          "tags": [
+            {
+              "id": 81656,
+              "name": "french-cuisine",
+              "user_selected": "t",
+              "user_assigned": true,
+              "score": "0.06",
+              "machine_score": "0.06",
+              "rule_score": "0",
+              "user_assigned_score": "0"
+            }
+          ]
+        }
+      }
     ],
     "text": "Some inline text",
     "metadata": [
@@ -4785,7 +4997,23 @@ Response:
     "membership_degree": null,
     "updated_at": "2016-05-10T16:04:01Z",
     "tag_sets": [
-
+      {
+        "Tech": {
+          "id": 57,
+          "tags": [
+            {
+              "id": 91567,
+              "name": "wearables",
+              "user_selected": "t",
+              "user_assigned": true,
+              "score": "0.06",
+              "machine_score": "0.06",
+              "rule_score": "0",
+              "user_assigned_score": "0"
+            }
+          ]
+        }
+      }
     ],
     "text": "Smartwatch cheats force Thai students back to exam halls - BBC News\nSome 3,000 students in Thailand must retake university entrance exams after a cheating scam involving cameras and smartwatches was uncovered.The sophisticated scam happened at Rangsit University in Bangkok.The ...",
     "metadata": [
@@ -4928,7 +5156,23 @@ Response:
   "membership_degree": null,
   "updated_at": "2016-05-10T15:38:47Z",
   "tag_sets": [
-
+    {
+      "Tech": {
+        "id": 57,
+        "tags": [
+          {
+            "id": 91567,
+            "name": "wearables",
+            "user_selected": "t",
+            "user_assigned": true,
+            "score": "0.06",
+            "machine_score": "0.06",
+            "rule_score": "0",
+            "user_assigned_score": "0"
+          }
+        ]
+      }
+    }
   ],
   "text": "Some inline text",
   "metadata": [
@@ -8998,7 +9242,7 @@ Response:
     <div id="navigation" class="is_side_menu">
 
       <ul id="sections">
-        <li class="title expandable" data-submenuid='menu_getting_started'>Getting started: version 2</li>
+        <li class="title expandable" data-submenuid='menu_getting_started'>Getting started</li>
         <li class="options">
           <ul id="menu_getting_started">
             <li><a href="#api-libraries">API libraries</a></li>
@@ -9090,6 +9334,8 @@ Response:
               <li><a href='#call-clusters-show'>Show</a></li>
 
               <li><a href='#call-clusters-transform-cluster-into-tag'>Transform cluster into tag</a></li>
+
+              <li><a href='#call-clusters-merge-cluster-into-tag'>Merge cluster into tag</a></li>
 
               <li><a href='#call-clusters-ignore-cluster'>Ignore Cluster</a></li>
 
@@ -9215,7 +9461,7 @@ Response:
 
 
       </ul>
-      <a href="/documentation?version=1">V1 documentation</a>
+      <a href="/documentation?version=1">Documentation: deprecated version</a>
 
     </div>
   </div>

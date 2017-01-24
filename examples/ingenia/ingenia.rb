@@ -1761,7 +1761,23 @@ Response:
     "membership_degree": null,
     "updated_at": "2016-05-10T15:38:47Z",
     "tag_sets": [
-
+      {
+        "Cooking": {
+          "id": 42,
+          "tags": [
+            {
+              "id": 81656,
+              "name": "french-cuisine",
+              "user_selected": "t",
+              "user_assigned": true,
+              "score": "0.06",
+              "machine_score": "0.06",
+              "rule_score": "0",
+              "user_assigned_score": "0"
+            }
+          ]
+        }
+      }
     ],
     "text": "Some inline text",
     "metadata": [
@@ -1780,7 +1796,23 @@ Response:
     "membership_degree": null,
     "updated_at": "2016-05-10T16:04:01Z",
     "tag_sets": [
-
+      {
+        "Tech": {
+          "id": 57,
+          "tags": [
+            {
+              "id": 91567,
+              "name": "wearables",
+              "user_selected": "t",
+              "user_assigned": true,
+              "score": "0.06",
+              "machine_score": "0.06",
+              "rule_score": "0",
+              "user_assigned_score": "0"
+            }
+          ]
+        }
+      }
     ],
     "text": "Smartwatch cheats force Thai students back to exam halls - BBC News\\nSome 3,000 students in Thailand must retake university entrance exams after a cheating scam involving cameras and smartwatches was uncovered.The sophisticated scam happened at Rangsit University in Bangkok.The ...",
     "metadata": [
@@ -1833,7 +1865,23 @@ Response:
   "membership_degree": null,
   "updated_at": "2016-05-10T15:38:47Z",
   "tag_sets": [
-
+    {
+      "Tech": {
+        "id": 57,
+        "tags": [
+          {
+            "id": 91567,
+            "name": "wearables",
+            "user_selected": "t",
+            "user_assigned": true,
+            "score": "0.06",
+            "machine_score": "0.06",
+            "rule_score": "0",
+            "user_assigned_score": "0"
+          }
+        ]
+      }
+    }
   ],
   "text": "Some inline text",
   "metadata": [
