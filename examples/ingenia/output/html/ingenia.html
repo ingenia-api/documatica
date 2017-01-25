@@ -2125,6 +2125,24 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">bundle_id</td>
+
+                  <td class = "type">
+
+                      <code>integer</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The id of the bundle to which the tag_set should be associated. Can be blank if bundle does not yet exist.
+
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -2135,7 +2153,8 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
             <h4>Example</h4>
             <pre class="prettyprint">
   {
-    "name":"Big Data"
+    "name" : "Big Data"
+    "bundle_id" : "56"
   }</pre>
           </div>
 
