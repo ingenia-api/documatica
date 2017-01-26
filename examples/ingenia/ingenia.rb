@@ -824,15 +824,15 @@ json_tag_set         = define_object(name: 'Tag set: create / update input') do 
     p.type        = :string
   end
 
-  tag_set.parameter name: 'bundle_id' do |p|
-    p.description = 'The id of the bundle to which the tag_set should be associated. Can be blank if bundle does not yet exist.'
-    p.type        = :integer
+  tag_set.parameter name: 'bundle_ids' do |p|
+    p.description = 'A list of the ids of bundles to which the tag set should be associated. Can be left blank if tag set should not be associated to any just yet.'
+    p.type        = :array
   end
 
   tag_set.example = '
   {
     "name" : "Big Data"
-    "bundle_id" : "56"
+    "bundle_ids" : "[42, 56]"
   }'
 end
 
