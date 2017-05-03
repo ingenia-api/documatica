@@ -12,7 +12,7 @@
 
         <h2 id="objects">Getting started</h2>
 
-          <p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
+          <p>Check out the <a href="/vox"> demo </a> to see Ingenia in action.</p>
 
   <p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
 
@@ -23,7 +23,7 @@
   <p>If you would like to verify your API key or code data path then use the <a href="#call-administrative-calls-status">status</a> call.</p>
 
   <h3 id='api-libraries'>Ruby API library</h3>
-  <a href="https://github.com/ingenia-api/ingenia_ruby">httpss://github.com/ingenia-api/ingenia_ruby</a>
+  <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
 
   <h3 id='api-rate-limiting'>Rate limiting</h3>
 
@@ -421,6 +421,70 @@
                         <h6>Example</h6>
                         
                           <p class="example_code">[{ name: 'published_date', type: 'date', content: '2012-01-20 00:00:00' }, { name: 'title', type: 'string', content: 'A day to remember',  { name: 'author', type: 'collection', content: 'Joe Bloggs' },      { name: 'author', type: 'collection', content: 'John Smith' }]</p>
+
+                      </div>
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">delimiters</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                          <p>A list of characters or words that Ingenia will use to split the text you send into smaller blocks. This is useful if you want to identify and analyse tags at a per-sentence level.</p>
+    <p>For instance, you may break down the text: <i style='font-style:italic'>'The staff were friendly, but the food was disappointing'</i> into two by splitting on the word <i style='font-style:italic'>' but '</i>: </p>
+    <p>i.e. The first part of the text could be categorised as 'staff' and 'positive' and the second part as 'room' and 'negative', thus enabling you to identify granularly which specific features are or are not appreciated.</p>
+
+    <p>You can send an empty array in order to use the default set of delimiters to split the text:</p>
+    <p><i style='font-style:italic'>['. ', '? ', '! ', '
+']</i>.</p>
+
+    <p>Please note, you will need to specify for each delimiters whether to require a subsequent space. i.e. <i style='font-style:italic'>[':']</i> is not the same as <i style='font-style:italic'>[': ']</i>. This also applies to using words. i.e. splitting on <i style='font-style:italic'>['but']</i> is not the same as <i style='font-style:italic'>[' but ']</i>.</p>
+    <br>
+
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">    ['. ', ' but ']
+</p>
+
+                          <p class="example_code">    <p>This would split the following text:</p>
+</p>
+
+                          <p class="example_code">    <i style='font-style:italic'>"I liked it overall. The food was good but the service could be improved."</i>
+</p>
+
+                          <p class="example_code">    <p>into three separate chunks:</p>
+</p>
+
+                          <p class="example_code">
+</p>
+
+                          <p class="example_code">    "I liked it overall"
+</p>
+
+                          <p class="example_code"><br>
+</p>
+
+                          <p class="example_code">    "The food was good"
+</p>
+
+                          <p class="example_code"><br>
+</p>
+
+                          <p class="example_code">    "the service could be improved."
+</p>
 
                       </div>
 
@@ -882,6 +946,53 @@
                   <td class = "description">
 
                       any additional data you associated to this content; it may include dates, values, urls, additional text, etc.
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">aggregated_items</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      This only appears for items that have been split using delimiters defined during item creation. It is a list of the component items that make up the overall text.
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">partial_id</td>
+
+                  <td class = "type">
+
+                      <code>string</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      If there are aggregated_items present, each will have a partial_id to uniquely identify it. This will be an alphanumeric string containing the overall item id, a number representing its position in the original text, and a unique identifier
+
+
+                      <div class="desc_example">
+                        <h6>Example</h6>
+                        
+                          <p class="example_code">6bbd66632349f38b87af3cb8b370a481_00001_e64305ac4dfe6168e52f1afb32e713d5
+</p>
+
+                          <p class="example_code">   ------>   overallitemid_positionintext_uniqueidentifier</p>
+
+                      </div>
 
 
                   </td>

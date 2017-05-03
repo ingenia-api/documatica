@@ -67,7 +67,7 @@ end
 #
 
 DESCRIPTION =<<-DESC
-  <p>Check out the <a href="/pages/demo"> demo </a> to see Ingenia in action.</p>
+  <p>Check out the <a href="/vox"> demo </a> to see Ingenia in action.</p>
 
   <p>Look at the <a href="/faq">FAQ</a> for any questions.</p>
 
@@ -78,7 +78,7 @@ DESCRIPTION =<<-DESC
   <p>If you would like to verify your API key or code data path then use the <a href="#call-administrative-calls-status">status</a> call.</p>
 
   <h3 id='api-libraries'>Ruby API library</h3>
-  <a href="https://github.com/ingenia-api/ingenia_ruby">httpss://github.com/ingenia-api/ingenia_ruby</a>
+  <a href="https://github.com/ingenia-api/ingenia_ruby">https://github.com/ingenia-api/ingenia_ruby</a>
 
   <h3 id='api-rate-limiting'>Rate limiting</h3>
 
@@ -300,17 +300,35 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
     p.example     =  "'en'"
   end
 
-  item.example = <<-EXAMPLE
-  {
-    text: "High tech startups and their positive power to change for good",
-    tag_sets: {
-      "Topics": [ "startups", "technology" ],
-      "Mood": [ "positive" ]
-    }
-  }
-  EXAMPLE
-
   item.parameter metadata
+
+  item.parameter name: 'delimiters' do |p|
+    p.description = <<-DESC
+    <p>A list of characters or words that Ingenia will use to split the text you send into smaller blocks. This is useful if you want to identify and analyse tags at a per-sentence level.</p>
+    <p>For instance, you may break down the text: <i style='font-style:italic'>'The staff were friendly, but the food was disappointing'</i> into two by splitting on the word <i style='font-style:italic'>' but '</i>: </p>
+    <p>i.e. The first part of the text could be categorised as 'staff' and 'positive' and the second part as 'room' and 'negative', thus enabling you to identify granularly which specific features are or are not appreciated.</p>
+
+    <p>You can send an empty array in order to use the default set of delimiters to split the text:</p>
+    <p><i style='font-style:italic'>['. ', '? ', '! ', '\n']</i>.</p>
+
+    <p>Please note, you will need to specify for each delimiters whether to require a subsequent space. i.e. <i style='font-style:italic'>[':']</i> is not the same as <i style='font-style:italic'>[': ']</i>. This also applies to using words. i.e. splitting on <i style='font-style:italic'>['but']</i> is not the same as <i style='font-style:italic'>[' but ']</i>.</p>
+    <br>
+    DESC
+
+    p.type       = :array
+    p.example    = <<-EXAMPLE
+    ['. ', ' but ']
+    <p>This would split the following text:</p>
+    <i style='font-style:italic'>"I liked it overall. The food was good but the service could be improved."</i>
+    <p>into three separate chunks:</p>
+
+    "I liked it overall"
+<br>
+    "The food was good"
+<br>
+    "the service could be improved."
+    EXAMPLE
+  end
 
   item.footnote =<<-FN
     <p>[1] You can input content as one of these fields: text, a URL, a file. Formats
@@ -321,6 +339,16 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
 
     <p>[2] Only specify one of the following: tag_sets, tags or tag_ids </p>
   FN
+
+  item.example = <<-EXAMPLE
+  {
+    text: "High tech startups and their positive power to change for good",
+    tag_sets: {
+      "Topics": [ "startups", "technology" ],
+      "Mood": [ "positive" ]
+    }
+  }
+  EXAMPLE
 
 end
 
@@ -435,6 +463,17 @@ json_item_show      = define_object(name: 'Item: show output') do |item|
   item.parameter name: 'metadata' do |p|
     p.description = 'any additional data you associated to this content; it may include dates, values, urls, additional text, etc.'
     p.type        = :array
+  end
+
+  item.parameter name: 'aggregated_items' do |p|
+    p.description = 'This only appears for items that have been split using delimiters defined during item creation. It is a list of the component items that make up the overall text.'
+    p.type        = :array
+  end
+
+  item.parameter name: 'partial_id' do |p|
+    p.description = 'If there are aggregated_items present, each will have a partial_id to uniquely identify it. This will be an alphanumeric string containing the overall item id, a number representing its position in the original text, and a unique identifier'
+    p.type        = :string
+    p.example     = "6bbd66632349f38b87af3cb8b370a481_00001_e64305ac4dfe6168e52f1afb32e713d5\n   ------>   overallitemid_positionintext_uniqueidentifier"
   end
 
   item.example = '
