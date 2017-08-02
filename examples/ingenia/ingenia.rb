@@ -9,7 +9,7 @@ extend DocSmoosher::TopLevel
 
 # Shared fields
 limit = define_parameter(name: 'limit') do |p|
-  p.description = 'Return these many results'
+  p.description = 'Return up to this many results, up to a maximum of 1000.'
   p.type        = :integer
   p.default     = 10
 end
@@ -558,7 +558,7 @@ json_tag            = define_object(name: 'Tag: create / update input') do |tag|
   end
 
   tag.parameter name: 'tag_set_id' do |p|
-    p.description = 'The ID of the tag_set to which this tag belongs'
+    p.description = 'The ID of the tag_set to which this tag belongs.    REQUIRED.'
     p.type        = :integer
     p.required    = true
   end
@@ -788,6 +788,7 @@ end
 json_tag_rule_create = define_object(name: 'Tag rule: create input') do |tag_rule|
   tag_rule.description = "A rule to apply to a tag to influence use of that tag."
   tag_rule.type        = :json
+  tag_rule.required    = true
   tag_rule.this_is_json!
 
   tag_rule.parameter name: 'tag_id' do |p|
@@ -1030,13 +1031,13 @@ define_api(name: 'Ingenia API', description: DESCRIPTION) do |api|
       end
 
       req.parameter name: 'min_tags' do |p|
-        p.description = 'Return at least these many tags'
+        p.description = 'Return at least these many tags, up to a maximum of 1000.'
         p.type        = :integer
         p.default     = 0
       end
 
       req.parameter name: 'max_tags' do |p|
-        p.description = 'Return at most these many tags'
+        p.description = 'Return at most these many tags, up to a maximum of 1000.'
         p.type        = :integer
         p.default     = 6
       end
@@ -1891,6 +1892,12 @@ Response:
         p.type        = :string
         p.required    = true
       end
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'The ID of the bundle containing the item you want to show. Items in different bundles could have the same ID, so this ensures the item returned is the correct one.'
+        p.type        = :integer
+      end
+
       #req.parameter api_key
       req.parameter full_text
       req.example = <<-EOF
@@ -2179,8 +2186,8 @@ Response:
       req.path        = '/bundles/find_by_name'
 
       #req.parameter api_key
-      req.parameter name: 'text' do |p|
-        p.description = 'Text of the bundle to look for'
+      req.parameter name: 'name' do |p|
+        p.description = 'Name of the bundle to look for'
         p.type        = :string
         p.required    = true
       end
@@ -2375,8 +2382,8 @@ Response:
       req.call_type   = :get
       req.path        = '/tags/find_by_name'
 
-      req.parameter name: 'text' do |p|
-        p.description = 'Text of the tag to look for'
+      req.parameter name: 'name' do |p|
+        p.description = 'Name of the tag to look for'
         p.type        = :string
         p.required    = true
       end
@@ -2690,6 +2697,8 @@ curl -X POST \\
         p.type        = :integer
         p.required    = true
       end
+
+      req.parameter json_tag_rule_create
     end
 
     r.request name: 'Delete' do |req|

@@ -1356,7 +1356,7 @@
 
                   <td class = "description">
 
-                      The ID of the tag_set to which this tag belongs
+                      The ID of the tag_set to which this tag belongs.    REQUIRED.
 
 
                   </td>
@@ -2721,7 +2721,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Return at least these many tags
+                              Return at least these many tags, up to a maximum of 1000.
 
 
                               <div class="desc_example">
@@ -2750,7 +2750,7 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
 
                           <td class = "description">
 
-                              Return at most these many tags
+                              Return at most these many tags, up to a maximum of 1000.
 
 
                               <div class="desc_example">
@@ -5001,7 +5001,7 @@ Response:
 
                           <td class = "description">
 
-                              Return these many results
+                              Return up to this many results, up to a maximum of 1000.
 
 
                               <div class="desc_example">
@@ -5231,6 +5231,30 @@ Response:
                           <td class = "description">
 
                               The ID of the item you want to show
+
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              The ID of the bundle containing the item you want to show. Items in different bundles could have the same ID, so this ensures the item returned is the correct one.
 
 
 
@@ -5858,7 +5882,7 @@ Response:
 
                           <td class = "description">
 
-                              Return these many results
+                              Return up to this many results, up to a maximum of 1000.
 
 
                               <div class="desc_example">
@@ -6088,7 +6112,7 @@ Response:
                         <tr>
                           <td class="param_name">
 
-                            text
+                            name
 
 
                             <span class='text-muted'>required</span>
@@ -6103,7 +6127,7 @@ Response:
 
                           <td class = "description">
 
-                              Text of the bundle to look for
+                              Name of the bundle to look for
 
 
 
@@ -6542,7 +6566,7 @@ Response:
 
                           <td class = "description">
 
-                              Return these many results
+                              Return up to this many results, up to a maximum of 1000.
 
 
                               <div class="desc_example">
@@ -6771,7 +6795,7 @@ Response:
                         <tr>
                           <td class="param_name">
 
-                            text
+                            name
 
 
                             <span class='text-muted'>required</span>
@@ -6786,7 +6810,7 @@ Response:
 
                           <td class = "description">
 
-                              Text of the tag to look for
+                              Name of the tag to look for
 
 
 
@@ -7704,6 +7728,32 @@ Response:
                         </tr>
 
 
+                        <tr>
+                          <td class="param_name">
+
+                            <a href='#tag-rule:-create-input'>json</a>
+
+
+                            <span class='text-muted'>required</span>
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>json</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              A rule to apply to a tag to influence use of that tag.
+
+
+
+                          </td>
+                        </tr>
+
+
                       </tbody>
                       </table>
                       
@@ -7904,7 +7954,7 @@ Response:
 
                           <td class = "description">
 
-                              Return these many results
+                              Return up to this many results, up to a maximum of 1000.
 
 
                               <div class="desc_example">
