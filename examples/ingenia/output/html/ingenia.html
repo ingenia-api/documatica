@@ -183,7 +183,7 @@
 
                   <td class = "description">
 
-                      An alphanumeric id unique to each bundle. You can use your own, or have Ingenia generate one for you
+                      An alphanumeric id unique to each item within a bundle. You can use your own, or have Ingenia generate one for you. Note: Can NOT contain commas.
 
 
                       <div class="desc_example">
@@ -5060,6 +5060,102 @@ Response:
                               <div class="desc_example">
                                 <h6>Default</h6>
                                 <p class="example_code">0</p>
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            ids
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>array</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show only items with these ids.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">[1a, 2b, 4a, 6c]</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            bundle_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show only items from this bundle.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">34</p>
+
+                              </div>
+
+
+                          </td>
+                        </tr>
+
+
+                        <tr>
+                          <td class="param_name">
+
+                            tag_set_id
+
+
+                          </td>
+
+                          <td class = "type">
+
+                              <code>integer</code>
+
+                          </td>
+
+                          <td class = "description">
+
+                              Show only items associated to this tag_set.
+
+
+
+                              <div class="desc_example">
+                                <h6>Example</h6>
+                                
+                                  <p class="example_code">27</p>
+
                               </div>
 
 

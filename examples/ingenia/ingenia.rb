@@ -240,7 +240,7 @@ json_item           = define_object(name: 'Item: create / update input') do |ite
   item.this_is_json!
 
   item.parameter name: 'id' do |p|
-    p.description = 'An alphanumeric id unique to each bundle. You can use your own, or have Ingenia generate one for you'
+    p.description = 'An alphanumeric id unique to each item within a bundle. You can use your own, or have Ingenia generate one for you. Note: Can NOT contain commas.'
     p.default     = '[generated]'
     p.type        = :string
     p.example     = '785uU423aC'
@@ -1789,6 +1789,25 @@ Response:
       req.parameter limit
       req.parameter full_text
       req.parameter offset
+
+      req.parameter name: 'ids' do |p|
+        p.description = 'Show only items with these ids.'
+        p.type        = :array
+        p.example     = "[1a, 2b, 4a, 6c]"
+      end
+
+      req.parameter name: 'bundle_id' do |p|
+        p.description = 'Show only items from this bundle.'
+        p.type        = :integer
+        p.example     = "34"
+      end
+
+      req.parameter name: 'tag_set_id' do |p|
+        p.description = 'Show only items associated to this tag_set.'
+        p.type        = :integer
+        p.example     = "27"
+      end
+
       req.example = <<-EOF
 curl 'https://api.ingeniapi.com/v2/items?api_key=$api_key'
 
