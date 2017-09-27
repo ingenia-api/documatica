@@ -1583,6 +1583,42 @@ You will want to privilege recall (with a disposition > 0.5) if you want each ta
                 </tr>
 
 
+                <tr>
+                  <td class="param_name">significant_words</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      Up to 5 words or phrases closely associated with this tag. Useful to understand the 'meaning' of the tag.
+
+
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="param_name">tag_relationships</td>
+
+                  <td class = "type">
+
+                      <code>array</code>
+
+                  </td>
+
+                  <td class = "description">
+
+                      The other tags to which the current one is similar, either because of its name (relationship_type: by_name), or because of how it has been assigned to the content (relationship_type: by_assignment); each presented with related tag_id and its name, the relationship type, and a value between 0 and 1 that quantifies the closeness of the relationship, where 1 is highest. Most used to deduplicate your tags, or to identify interesting relationships.
+
+
+                  </td>
+                </tr>
+
+
               </tbody>
               </table>
               
@@ -6827,7 +6863,7 @@ Response:
         "related_tag_id": 198742,
         "related_tag_name": "Tech startup",
         "relationship_type": "by_name",
-        "value": 0.38
+        "value": 0.68
       }
     ]
   }
@@ -6958,7 +6994,7 @@ Response:
         "related_tag_id": 198742,
         "related_tag_name": "Tech startup",
         "relationship_type": "by_name",
-        "value": 0.38
+        "value": 0.68
       }
     ]
   }

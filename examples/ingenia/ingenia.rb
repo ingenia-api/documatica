@@ -628,6 +628,16 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
     p.example     = '2013-12-16T11:25:52+00:00'
   end
 
+  tag.parameter name: 'significant_words' do |p|
+    p.description = "Up to 5 words or phrases closely associated with this tag. Useful to understand the 'meaning' of the tag."
+    p.type        = :array
+  end
+
+  tag.parameter name: 'tag_relationships' do |p|
+    p.description = 'The other tags to which the current one is similar, either because of its name (relationship_type: by_name), or because of how it has been assigned to the content (relationship_type: by_assignment); each presented with related tag_id and its name, the relationship type, and a value between 0 and 1 that quantifies the closeness of the relationship, where 1 is highest. Most used to deduplicate your tags, or to identify interesting relationships.'
+    p.type        = :array
+  end
+
   tag.example = '
 {
   "id": 192745,
@@ -2452,7 +2462,7 @@ Response:
         "related_tag_id": 198742,
         "related_tag_name": "Tech startup",
         "relationship_type": "by_name",
-        "value": 0.38
+        "value": 0.68
       }
     ]
   }
@@ -2513,7 +2523,7 @@ Response:
         "related_tag_id": 198742,
         "related_tag_name": "Tech startup",
         "relationship_type": "by_name",
-        "value": 0.38
+        "value": 0.68
       }
     ]
   }
