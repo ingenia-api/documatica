@@ -629,15 +629,47 @@ json_tag_show = define_object(name: 'Tag: show output') do |tag|
   end
 
   tag.example = '
-  {
-    "id":554273,
-    "name":"Text Analytics",
-    "tag_set_id":8547,
-    "confidence":0.95,
-    "description":"the process of deriving high-quality information from text",
-    "created_at":"2014-03-13T12:59:32Z",
-    "updated_at":"2014-03-13T12:59:32Z"
-  }'
+{
+  "id": 192745,
+  "name": "Finance",
+  "created_at": "2017-09-18T13:15:16.407Z",
+  "updated_at": "2017-09-18T14:49:40.259Z",
+  "tag_set_id": 4564,
+  "confidence": 0.85,
+  "current_state": "processed",
+  "description": "",
+  "significant_words": [
+    {
+        "text": "finance"
+    },
+    {
+        "text": "bank"
+    },
+    {
+        "text": "accounts"
+    },
+    {
+        "text": "capital markets"
+    },
+    {
+        "text": "fintech"
+    }
+  ],
+  "tag_relationships": [
+    {
+      "related_tag_id": 191711,
+      "related_tag_name": "Economics",
+      "relationship_type": "by_assignment",
+      "value": 0.74
+    },
+    {
+      "related_tag_id": 194712,
+      "related_tag_name": "Fintech",
+      "relationship_type": "by_name",
+      "value": 0.66
+    }
+  ]
+}'
 end
 
 json_tag_rules_show = define_object(name: 'Tag rules: index output') do |tag_rule|
@@ -2343,24 +2375,86 @@ Response:
 
 [
   {
-    "confidence": 0.0,
-    "created_at": "2016-05-04T16:12:43Z",
-    "current_state": "not_enough_items_to_learn",
-    "description": "a term for data sets that are so large or complex that traditional data processing applications are inadequate",
-    "id": 189453,
-    "name": "Big Data",
-    "tag_set_id": 2858,
-    "updated_at": "2016-05-04T16:12:43Z"
+    "id": 192745,
+    "name": "Finance",
+    "created_at": "2017-09-18T13:15:16.407Z",
+    "updated_at": "2017-09-18T14:49:40.259Z",
+    "tag_set_id": 4564,
+    "confidence": 0.85,
+    "current_state": "processed",
+    "description": "",
+    "significant_words": [
+      {
+        "text": "finance"
+      },
+      {
+        "text": "bank"
+      },
+      {
+        "text": "accounts"
+      },
+      {
+        "text": "capital markets"
+      },
+      {
+        "text": "fintech"
+      }
+    ],
+    "tag_relationships": [
+      {
+        "related_tag_id": 191711,
+        "related_tag_name": "Economics",
+        "relationship_type": "by_assignment",
+        "value": 0.74
+      },
+      {
+        "related_tag_id": 194712,
+        "related_tag_name": "Fintech",
+        "relationship_type": "by_name",
+        "value": 0.66
+      }
+    ]
   },
   {
-    "confidence": 0.0,
-    "created_at": "2016-05-04T16:08:05Z",
-    "current_state": "not_enough_items_to_learn",
-    "description": "the process of deriving high-quality information from text",
-    "id": 189452,
-    "name": "Text Analytics",
-    "tag_set_id": 2858,
-    "updated_at": "2016-05-04T16:08:05Z"
+    "id": 198745,
+    "name": "Technology",
+    "created_at": "2017-09-18T17:15:16.407Z",
+    "updated_at": "2017-09-18T17:49:40.259Z",
+    "tag_set_id": 4564,
+    "confidence": 1,
+    "current_state": "processed",
+    "description": "",
+    "significant_words": [
+      {
+        "text": "technology"
+      },
+      {
+        "text": "software"
+      },
+      {
+        "text": "company"
+      },
+      {
+        "text": "clean"
+      },
+      {
+        "text": "create"
+      }
+    ],
+    "tag_relationships": [
+      {
+        "related_tag_id": 198711,
+        "related_tag_name": "Innovation",
+        "relationship_type": "by_assignment",
+        "value": 0.88
+      },
+      {
+        "related_tag_id": 198742,
+        "related_tag_name": "Tech startup",
+        "relationship_type": "by_name",
+        "value": 0.38
+      }
+    ]
   }
 ]
       EOF
@@ -2383,14 +2477,45 @@ curl 'https://api.ingeniapi.com/v2/tags/189453?api_key=$api_key'
 Response:
 
   {
-    "confidence": 0.0,
-    "created_at": "2016-05-04T16:12:43Z",
-    "current_state": "not_enough_items_to_learn",
+    "id": 198745,
+    "name": "Technology",
+    "created_at": "2017-09-18T17:15:16.407Z",
+    "updated_at": "2017-09-18T17:49:40.259Z",
+    "tag_set_id": 4564,
+    "confidence": 1,
+    "current_state": "processed",
     "description": "",
-    "id": 189453,
-    "name": "New Tag",
-    "tag_set_id": 2858,
-    "updated_at": "2016-05-04T16:12:43Z"
+    "significant_words": [
+      {
+        "text": "technology"
+      },
+      {
+        "text": "software"
+      },
+      {
+        "text": "company"
+      },
+      {
+        "text": "clean"
+      },
+      {
+        "text": "create"
+      }
+    ],
+    "tag_relationships": [
+      {
+        "related_tag_id": 198711,
+        "related_tag_name": "Innovation",
+        "relationship_type": "by_assignment",
+        "value": 0.88
+      },
+      {
+        "related_tag_id": 198742,
+        "related_tag_name": "Tech startup",
+        "relationship_type": "by_name",
+        "value": 0.38
+      }
+    ]
   }
       EOF
       req.response = json_tag_show
